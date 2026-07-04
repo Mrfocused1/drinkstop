@@ -24,13 +24,11 @@ img{max-width:100%;display:block}
 .hd a.order-link{font-weight:800;text-decoration:none;color:#fff;background:#0a0a0a;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 22px;border-radius:999px;white-space:nowrap;}
 /* hero */
 .hero{position:relative;text-align:center;padding:56px 20px 40px;overflow:hidden;}
-.hero .ed{display:inline-block;border:2px solid #fff;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px;}
 .hero h1{font-size:clamp(40px,9vw,110px);line-height:.92;letter-spacing:-.01em;}
 .hero h1 .thin{display:block;font-size:.42em;letter-spacing:.14em;margin:18px 0 6px;}
-.hero .pouch-stage{position:relative;width:min(78vw,440px);aspect-ratio:1/1;margin:34px auto 6px;}
-.hero .pouch-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .8s ease;filter:drop-shadow(0 24px 44px rgba(0,0,0,.6));}
-.hero .pouch-stage img.on{opacity:1;}
-.hero p.sub{max-width:560px;margin:10px auto 30px;opacity:.8;font-size:clamp(15px,2vw,19px);}
+.hero-img img{width:100%;height:auto;display:block;}
+.hero-sub{text-align:center;padding:34px 20px 48px;background:var(--ink);}
+.hero-sub p.sub{max-width:560px;margin:0 auto 26px;opacity:.8;font-size:clamp(15px,2vw,19px);}
 .cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0a0a0a;font-weight:800;font-size:16px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:18px 40px;border-radius:999px;transition:.15s;}
 .cta:hover{transform:translateY(-2px);}
 /* ticker */
@@ -116,20 +114,19 @@ img{max-width:100%;display:block}
 </header>
 
 <section class="hero">
-  <span class="ed">Limited event edition · One night only</span>
   <h1 class="adieu">
     Drink Stop
     <span class="thin">×</span>
     Boy Better Know
   </h1>
-  <div class="pouch-stage">
-    <img class="on" src="../wp-content/uploads/2025/bbk/bbk-pouch-red.png" alt="BBK red pouch">
-    <img src="../wp-content/uploads/2025/bbk/bbk-pouch-yellow.png" alt="BBK yellow pouch">
-    <img src="../wp-content/uploads/2025/bbk/bbk-pouch-green.png" alt="BBK green pouch">
-  </div>
+</section>
+<div class="hero-img">
+  <img src="../wp-content/uploads/2025/bbk/bbk-green-studio.png" alt="DRINK STOP × BBK — frozen rum pouch">
+</div>
+<div class="hero-sub">
   <p class="sub">Frozen rum, pressed into a BBK pouch. Made for the event — when it's done, it's done.</p>
   <a class="cta" href="#order">Order now ↓</a>
-</section>
+</div>
 
 <div class="tick"><div class="strip" id="strip">
   <span>Boy Better Know</span><span>×</span><span>Drink Stop</span><span>·</span><span>Event edition</span><span>·</span><span>18+</span><span>·</span>
@@ -179,10 +176,6 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<div class="banner">
-  <img src="../wp-content/uploads/2025/bbk/bbk-green-studio.png" alt="BBK green pouch — studio shot with lime, watermelon and ginger">
-</div>
-
 <section class="order" id="order">
   <div class="wrap">
     <h2 class="adieu">Lock yours in.</h2>
@@ -229,10 +222,6 @@ img{max-width:100%;display:block}
 </footer>
 
 <script>
-// pouch rotation
-(function(){var im=document.querySelectorAll('.pouch-stage img');var i=0;
-setInterval(function(){im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on');},2600);})();
-
 // direct order — no onboarding
 (function(){
   var PRICE=5, qty=2, flav=[];
