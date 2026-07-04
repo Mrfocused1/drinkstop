@@ -45,7 +45,7 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .flav .swatch{width:44px;height:44px;border-radius:12px;margin-bottom:14px}
 /* qty */
 .qtyrow{display:flex;align-items:center;gap:16px;margin:8px 0 30px}
-.qtybtn{width:56px;height:56px;border-radius:50%;border:3px solid var(--ink);background:#fff;font-size:26px;font-weight:900;cursor:pointer;transition:.15s}
+.qtybtn{width:56px;height:56px;border-radius:50%;border:3px solid var(--ink);background:#fff;font-size:26px;font-weight:900;cursor:pointer;transition:.15s;color:var(--ink);-webkit-appearance:none;appearance:none}
 .qtybtn:hover{background:var(--ink);color:#fff}
 .qtyval{font-family:'Adieu',sans-serif;font-weight:900;font-size:44px;min-width:80px;text-align:center}
 .qtyunit{opacity:.6;font-weight:700}
@@ -65,7 +65,8 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .thumb{max-height:160px;border-radius:12px;margin:0 auto 10px;display:block}
 /* nav buttons */
 .nav{display:flex;justify-content:space-between;gap:14px;margin-top:34px;max-width:900px}
-.btn{font:inherit;font-weight:800;font-size:16px;letter-spacing:.02em;padding:16px 34px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;transition:.18s;text-transform:uppercase}
+.btn{font:inherit;font-weight:800;font-size:16px;letter-spacing:.02em;padding:16px 34px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;transition:.18s;text-transform:uppercase;color:var(--ink);-webkit-appearance:none;appearance:none;white-space:nowrap}
+@media(max-width:480px){.btn{padding:14px 22px;font-size:15px}}
 .btn.prev{background:transparent}
 .btn.prev:hover{background:var(--ink);color:#fff}
 .btn.next{background:var(--green);border-color:var(--green)}
@@ -137,13 +138,12 @@ function navHtml(nextLabel, canBack=true, nextId='next', nextDisabled=false){
 
 const STEPS={
  intro:()=>`
-  <span class="pill">Order Now</span>
   <h1 class="q">Let's get<br>the party started.</h1>
   <p class="sub">Frozen rum cocktails, delivered your way. Answer a few quick questions and we'll sort your order — standard flavours or a fully custom, branded pouch.</p>
   ${navHtml('Start →', false)}`,
 
  design:()=>`
-  <div class="kicker">Step 1 · The basics</div>
+  <div class="kicker">The basics</div>
   <h1 class="q">How do you<br>want it?</h1>
   <p class="sub">Grab our classics, or put your own stamp on the pouch.</p>
   <div class="cards">
