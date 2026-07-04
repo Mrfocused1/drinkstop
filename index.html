@@ -158,8 +158,10 @@
 .marquee__item--text{white-space:nowrap!important;}
 @keyframes heroPouchFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
 @media(max-width:72em){
-  /* mobile hero: the collage image IS the hero — no text, just the CTA and one star */
-  .hero-mobile-image{display:block;width:100%;height:auto;}
+  /* mobile hero: the collage image IS the hero — no text, just the CTA and one star.
+     Hero fills the first viewport minus the ticker, so the marquee hugs the bottom edge. */
+  .hero{height:calc(100svh - 84px)!important;min-height:520px;}
+  .hero-mobile-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
   .hero-heading,.hero-pouch-stack,.hero-back-graphic,.hero-front-graphic{display:none!important;}
   .hero .container{position:absolute!important;left:0!important;right:0!important;bottom:4%!important;top:auto!important;z-index:6;height:auto!important;padding:0!important;margin:0!important;gap:0!important;align-items:center!important;justify-content:center!important;}
   .drinkstop-star--2{display:block;top:3%;right:4%;width:64px;z-index:4;}
