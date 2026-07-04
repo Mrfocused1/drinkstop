@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRINK STOP × BOY BETTER KNOW</title>
+<meta name="description" content="DRINK STOP × Boy Better Know — a limited event-edition frozen rum pouch. One event. Three flavours. Gone when it's gone. 18+.">
+<link rel="icon" href="../wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Adieu';src:url('../wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff2') format('woff2'),url('../wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff') format('woff');font-weight:900;font-display:swap;}
+:root{--ink:#0a0a0a;--paper:#f5f2e9;--red:#e8202a;--yellow:#f2b200;--green:#8fc93a;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--ink);color:#fff;-webkit-font-smoothing:antialiased;line-height:1.45;}
+img{max-width:100%;display:block}
+.adieu{font-family:'Adieu','Manrope',sans-serif;font-weight:900;text-transform:uppercase;}
+/* header */
+.hd{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--paper);border-bottom:3px solid #000;}
+.lockup{display:flex;align-items:center;gap:14px;}
+.lockup img{height:44px;width:auto}
+.lockup .x{font-family:'Adieu',sans-serif;font-weight:900;font-size:20px;color:#0a0a0a;}
+.hd a.order-link{font-weight:800;text-decoration:none;color:#fff;background:#0a0a0a;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 22px;border-radius:999px;white-space:nowrap;}
+/* hero */
+.hero{position:relative;text-align:center;padding:56px 20px 40px;overflow:hidden;}
+.hero .ed{display:inline-block;border:2px solid #fff;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px;}
+.hero h1{font-size:clamp(40px,9vw,110px);line-height:.92;letter-spacing:-.01em;}
+.hero h1 .thin{display:block;font-size:.42em;letter-spacing:.14em;margin:18px 0 6px;}
+.hero .pouch-stage{position:relative;width:min(78vw,440px);aspect-ratio:1/1;margin:34px auto 6px;}
+.hero .pouch-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .8s ease;filter:drop-shadow(0 24px 44px rgba(0,0,0,.6));}
+.hero .pouch-stage img.on{opacity:1;}
+.hero p.sub{max-width:560px;margin:10px auto 30px;opacity:.8;font-size:clamp(15px,2vw,19px);}
+.cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0a0a0a;font-weight:800;font-size:16px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:18px 40px;border-radius:999px;transition:.15s;}
+.cta:hover{transform:translateY(-2px);}
+/* ticker */
+.tick{overflow:hidden;border-top:3px solid #fff;border-bottom:3px solid #fff;padding:14px 0;background:var(--ink);}
+.tick .strip{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:tk 40s linear infinite;}
+.tick span{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(20px,3.4vw,34px);}
+@keyframes tk{to{transform:translateX(-50%)}}
+/* story */
+.story{max-width:900px;margin:0 auto;padding:80px 22px 60px;}
+.story h2{font-size:clamp(30px,5.6vw,58px);line-height:.95;margin-bottom:22px;}
+.story p{font-size:clamp(16px,2.1vw,20px);opacity:.85;margin-bottom:18px;max-width:720px;}
+.story .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:34px;}
+.story .fact{border:2px solid #ffffff2e;border-radius:18px;padding:20px;}
+.story .fact b{display:block;font-family:'Adieu',sans-serif;font-size:26px;margin-bottom:6px;}
+.story .fact span{font-size:14px;opacity:.7;}
+/* flavours */
+.flav{max-width:1100px;margin:0 auto;padding:30px 22px 70px;}
+.flav h2{font-size:clamp(30px,5.6vw,58px);text-align:center;margin-bottom:40px;}
+.flav .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;}
+.fcard{border:3px solid #fff;border-radius:26px;overflow:hidden;background:#111;}
+.fcard .im{background:radial-gradient(circle at 50% 40%, #3a3a3a 0%, #101010 75%);}
+.fcard img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.fcard .nm{display:flex;align-items:center;gap:12px;padding:18px 20px;border-top:3px solid #fff;}
+.fcard .dot{width:22px;height:22px;border-radius:50%;flex:none;}
+.fcard h3{font-family:'Adieu',sans-serif;font-size:20px;text-transform:uppercase;}
+.fcard small{display:block;font-weight:600;opacity:.65;font-size:13px;margin-top:2px;}
+/* order */
+.order{background:var(--paper);color:var(--ink);padding:80px 22px 90px;}
+.order .wrap{max-width:760px;margin:0 auto;}
+.order h2{font-size:clamp(32px,6vw,64px);line-height:.95;}
+.order p.lead{margin:14px 0 36px;font-size:clamp(15px,2vw,19px);opacity:.75;max-width:560px;}
+.ochoice{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:30px;}
+.oc{position:relative;border:3px solid var(--ink);border-radius:18px;background:#fff;padding:16px;cursor:pointer;transition:.15s;text-align:left;font:inherit;}
+.oc .dot{width:20px;height:20px;border-radius:50%;margin-bottom:10px;}
+.oc h4{font-family:'Adieu',sans-serif;font-size:17px;text-transform:uppercase;color:var(--ink);}
+.oc.sel{background:#0a0a0a;}
+.oc.sel h4{color:#fff;}
+.qrow{display:flex;align-items:center;gap:16px;margin:6px 0 8px;}
+.qbtn{width:54px;height:54px;border-radius:50%;border:3px solid var(--ink);background:#fff;color:var(--ink);font-size:24px;font-weight:900;cursor:pointer;-webkit-appearance:none;appearance:none;}
+.qval{font-family:'Adieu',sans-serif;font-size:40px;min-width:70px;text-align:center;}
+.qunit{opacity:.6;font-weight:700;}
+.total{font-size:20px;font-weight:800;margin:6px 0 30px;}
+.total b{font-family:'Adieu',sans-serif;font-size:26px;}
+.total span{opacity:.55;font-size:15px;font-weight:700;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.order input{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:3px solid var(--ink);border-radius:14px;background:#fff;color:var(--ink);}
+.order input:focus{outline:none;border-color:var(--green);}
+.err{color:var(--red);font-weight:700;font-size:14px;min-height:20px;margin:8px 0 4px;}
+.place{width:100%;margin-top:6px;background:var(--ink);color:#fff;border:3px solid var(--ink);font:inherit;font-weight:800;font-size:17px;letter-spacing:.05em;text-transform:uppercase;padding:20px;border-radius:999px;cursor:pointer;-webkit-appearance:none;appearance:none;white-space:nowrap;transition:.15s;}
+.place:hover{transform:translateY(-2px);}
+.done-msg{display:none;text-align:center;padding:30px 0 6px;}
+.done-msg .big{font-family:'Adieu',sans-serif;font-size:clamp(34px,7vw,56px);text-transform:uppercase;}
+.done-msg p{margin-top:10px;font-weight:600;opacity:.75;}
+/* footer */
+.ft{background:var(--ink);text-align:center;padding:34px 20px;}
+.ft .lockup{justify-content:center;margin-bottom:16px;}
+.ft .lockup img{height:34px;filter:none;}
+.ft .lockup img.ds{filter:invert(1) hue-rotate(180deg);}
+.ft p{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.55;}
+.ft a{color:#fff;}
+@media(max-width:560px){
+  .hd a.order-link{padding:10px 16px;font-size:12px;}
+  .lockup img{height:34px;}
+  .frow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="lockup">
+    <img src="../wp-content/uploads/2025/10/drinkstop-logo.png" alt="DRINK STOP">
+    <span class="x">×</span>
+    <img src="../wp-content/uploads/2025/bbk/bbk-logo.png" alt="BOY BETTER KNOW">
+  </div>
+  <a class="order-link" href="#order">Order</a>
+</header>
+
+<section class="hero">
+  <span class="ed">Limited event edition · One night only</span>
+  <h1 class="adieu">
+    Drink Stop
+    <span class="thin">×</span>
+    Boy Better Know
+  </h1>
+  <div class="pouch-stage">
+    <img class="on" src="../wp-content/uploads/2025/bbk/bbk-pouch-red.png" alt="BBK red pouch">
+    <img src="../wp-content/uploads/2025/bbk/bbk-pouch-yellow.png" alt="BBK yellow pouch">
+    <img src="../wp-content/uploads/2025/bbk/bbk-pouch-green.png" alt="BBK green pouch">
+  </div>
+  <p class="sub">Frozen rum, pressed into a BBK pouch. Made for the event — when it's done, it's done.</p>
+  <a class="cta" href="#order">Order now ↓</a>
+</section>
+
+<div class="tick"><div class="strip" id="strip">
+  <span>Boy Better Know</span><span>×</span><span>Drink Stop</span><span>·</span><span>Event edition</span><span>·</span><span>18+</span><span>·</span>
+  <span>Boy Better Know</span><span>×</span><span>Drink Stop</span><span>·</span><span>Event edition</span><span>·</span><span>18+</span><span>·</span>
+</div></div>
+
+<section class="story">
+  <h2 class="adieu">Grime royalty.<br>Frozen rum.</h2>
+  <p>Boy Better Know is North London history — the grime collective and label built from the ground up by brothers Skepta and JME in 2005, alongside Jammer, Frisco, Shorty and DJ Maximum. No major label, no permission asked: tunes pressed independently and t-shirts printed by hand and sold at raves, on road, wherever the scene was.</p>
+  <p>From winning Red Bull Culture Clash in 2012 to taking over The O2 for a full-day festival in 2017, BBK turned independence into an institution. That's the energy this pouch carries.</p>
+  <p>For one event only, DRINK STOP froze that legacy: three colours, real rum, the BBK stamp on the bag. In the stands, in the pit, in the function — pouch in hand.</p>
+  <div class="facts">
+    <div class="fact"><b class="adieu">2005</b><span>Founded in North London by Skepta &amp; JME</span></div>
+    <div class="fact"><b class="adieu">2012</b><span>Red Bull Culture Clash champions</span></div>
+    <div class="fact"><b class="adieu">2017</b><span>The O2 Takeover — grime's biggest day out</span></div>
+    <div class="fact"><b class="adieu">1 night</b><span>This pouch exists for one event only</span></div>
+  </div>
+</section>
+
+<section class="flav">
+  <h2 class="adieu">Three colours.<br>No refills.</h2>
+  <div class="grid">
+    <div class="fcard">
+      <div class="im"><img src="../wp-content/uploads/2025/bbk/bbk-pouch-red.png" alt="BBK Red"></div>
+      <div class="nm"><span class="dot" style="background:var(--red)"></span>
+        <div><h3>Red</h3><small>Rum, fruit punch &amp; watermelon</small></div></div>
+    </div>
+    <div class="fcard">
+      <div class="im"><img src="../wp-content/uploads/2025/bbk/bbk-pouch-yellow.png" alt="BBK Yellow"></div>
+      <div class="nm"><span class="dot" style="background:var(--yellow)"></span>
+        <div><h3>Yellow</h3><small>Rum, apple, lemon &amp; ginger</small></div></div>
+    </div>
+    <div class="fcard">
+      <div class="im"><img src="../wp-content/uploads/2025/bbk/bbk-pouch-green.png" alt="BBK Green"></div>
+      <div class="nm"><span class="dot" style="background:var(--green)"></span>
+        <div><h3>Green</h3><small>Pineapple, apple &amp; guava</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="wrap">
+    <h2 class="adieu">Lock yours in.</h2>
+    <p class="lead">No forms marathon. Pick your colours, say how many, drop your details — collect at the event.</p>
+
+    <div id="oform">
+      <div class="ochoice">
+        <button type="button" class="oc" data-f="Red"><span class="dot" style="background:var(--red)"></span><h4>Red</h4></button>
+        <button type="button" class="oc" data-f="Yellow"><span class="dot" style="background:var(--yellow)"></span><h4>Yellow</h4></button>
+        <button type="button" class="oc" data-f="Green"><span class="dot" style="background:var(--green)"></span><h4>Green</h4></button>
+      </div>
+
+      <div class="qrow">
+        <button type="button" class="qbtn" id="minus">–</button>
+        <div class="qval" id="qv">2</div>
+        <button type="button" class="qbtn" id="plus">+</button>
+        <span class="qunit">pouches</span>
+      </div>
+      <div class="total">Total <b id="tot">£10</b> <span>· £5 each · pay at collection</span></div>
+
+      <div class="frow">
+        <input id="nm" type="text" placeholder="Full name" autocomplete="name">
+        <input id="em" type="email" placeholder="E-mail" autocomplete="email">
+      </div>
+      <input id="ph" type="tel" placeholder="Phone (optional)" autocomplete="tel">
+      <div class="err" id="err"></div>
+      <button type="button" class="place" id="place">Place order →</button>
+    </div>
+
+    <div class="done-msg" id="doneMsg">
+      <div class="big">Order in.</div>
+      <p id="doneTxt"></p>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="lockup">
+    <img class="ds" src="../wp-content/uploads/2025/10/drinkstop-logo.png" alt="DRINK STOP">
+    <span class="x" style="color:#fff">×</span>
+    <img src="../wp-content/uploads/2025/bbk/bbk-logo.png" alt="BOY BETTER KNOW" style="filter:invert(1)">
+  </div>
+  <p>Drink Stop × Boy Better Know · Event edition · Please drink responsibly · 18+ only · <a href="../index.html">drinkstop.shop</a></p>
+</footer>
+
+<script>
+// pouch rotation
+(function(){var im=document.querySelectorAll('.pouch-stage img');var i=0;
+setInterval(function(){im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on');},2600);})();
+
+// direct order — no onboarding
+(function(){
+  var PRICE=5, qty=2, flav=[];
+  var qv=document.getElementById('qv'), tot=document.getElementById('tot'), err=document.getElementById('err');
+  function paint(){qv.textContent=qty;tot.textContent='£'+(qty*PRICE);}
+  document.getElementById('plus').onclick=function(){qty++;paint();};
+  document.getElementById('minus').onclick=function(){if(qty>1)qty--;paint();};
+  document.querySelectorAll('.oc').forEach(function(b){
+    b.onclick=function(){var f=b.dataset.f,i=flav.indexOf(f);
+      if(i<0){flav.push(f);b.classList.add('sel');}else{flav.splice(i,1);b.classList.remove('sel');}};
+  });
+  document.getElementById('place').onclick=function(){
+    var nm=document.getElementById('nm').value.trim(), em=document.getElementById('em').value.trim();
+    if(!flav.length){err.textContent='Pick at least one colour.';return;}
+    if(!nm){err.textContent='We need your name.';return;}
+    if(!/^\S+@\S+\.\S+$/.test(em)){err.textContent='That e-mail doesn’t look right.';return;}
+    err.textContent='';
+    var body='DRINK STOP x BOY BETTER KNOW - EVENT ORDER%0A%0A'
+      +'Colours: '+flav.join(', ')+'%0AQuantity: '+qty+' pouches%0ATotal: £'+(qty*PRICE)+' (£5 each)%0A%0A'
+      +'Name: '+encodeURIComponent(nm)+'%0AEmail: '+encodeURIComponent(em)
+      +(document.getElementById('ph').value?'%0APhone: '+encodeURIComponent(document.getElementById('ph').value):'');
+    document.getElementById('oform').style.display='none';
+    var d=document.getElementById('doneMsg');d.style.display='block';
+    document.getElementById('doneTxt').innerHTML='Nice one, '+nm.split(' ')[0]+' — '+qty+' pouches ('+flav.join(', ')+') reserved. Collect and pay at the event bar.';
+    window.location.href='mailto:hello@drinkstop.co.uk?subject=BBK%20Event%20Order&body='+body;
+  };
+})();
+</script>
+</body>
+</html>
