@@ -268,6 +268,14 @@
   /* occasion cards: 4x breathing room (base gap was .625rem) */
   .lifestyle-column--cards{gap:2.5rem!important;}
 }
+.cool-wall{position:relative;padding:5rem 0;background:#FFF9E0;}
+.cool-wall__title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;text-align:center;margin-bottom:2.5rem;}
+.cool-wall__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.cool-wall__tile{position:relative;aspect-ratio:4/5;border-radius:30px;overflow:hidden;background:#000;}
+.cool-wall__media{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+.cool-wall__logo{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;object-fit:contain;z-index:1;}
+@media (max-width:64rem){.cool-wall__grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:36rem){.cool-wall__grid{grid-template-columns:1fr;gap:1rem;}.cool-wall__title{margin-bottom:1.5rem;}}
 </style>
 </head>
 
@@ -772,7 +780,51 @@
 
                                           </div>
           </section>
-        
+
+        <section class="cool-wall" id="cool-wall">
+          <div class="container">
+            <h2 class="cool-wall__title">THE COOL WALL</h2>
+            <div class="cool-wall__grid">
+
+              <div class="cool-wall__tile">
+                <img src="wp-content/uploads/2025/drinks/pouch-4.webp" alt="" loading="lazy" class="cool-wall__media">
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+              <div class="cool-wall__tile">
+                <video class="cool-wall__media" src="wp-content/themes/pley-by-ney/assets/images/santos-partnership.webm" autoplay muted loop playsinline></video>
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+              <div class="cool-wall__tile">
+                <img src="wp-content/uploads/2025/drinks/pouch-yellow.webp" alt="" loading="lazy" class="cool-wall__media">
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+              <div class="cool-wall__tile">
+                <img src="wp-content/uploads/2025/drinks/pouch-green.webp" alt="" loading="lazy" class="cool-wall__media">
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+              <div class="cool-wall__tile">
+                <video class="cool-wall__media" src="wp-content/themes/pley-by-ney/assets/images/packaging.webm" autoplay muted loop playsinline></video>
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+              <div class="cool-wall__tile">
+                <img src="wp-content/uploads/2025/drinks/pouch-red.webp" alt="" loading="lazy" class="cool-wall__media">
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+              <div class="cool-wall__tile">
+                <img src="wp-content/uploads/2025/drinks/pouch-7.webp" alt="" loading="lazy" class="cool-wall__media">
+                <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" class="cool-wall__logo">
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         <section class="lifestyle">
   <div class="container">
     <div class="lifestyle-column lifestyle-column--left">
