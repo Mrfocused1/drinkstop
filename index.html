@@ -276,6 +276,12 @@
 .cool-wall__logo{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;object-fit:contain;z-index:1;}
 @media (max-width:64rem){.cool-wall__grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:36rem){.cool-wall__grid{grid-template-columns:repeat(2,1fr);gap:.75rem;}.cool-wall__title{margin-bottom:1.5rem;}.cool-wall__tile{border-radius:16px;}.cool-wall__logo{width:1.75rem;height:1.75rem;top:.5rem;right:.5rem;}}
+/* desktop "Our Drinks" nav dropdown */
+.drinks-dropdown{position:relative;}
+.drinks-dropdown__menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border-radius:1rem;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:.5rem;min-width:200px;opacity:0;visibility:hidden;transition:opacity .15s ease,transform .15s ease;z-index:50;}
+.drinks-dropdown:hover .drinks-dropdown__menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px);}
+.drinks-dropdown__menu a{display:block;padding:.6rem .9rem;border-radius:.6rem;color:#0a0a0a;text-decoration:none;font-size:.9rem;font-weight:600;white-space:nowrap;}
+.drinks-dropdown__menu a:hover{background:#f3f3f3;}
 </style>
 </head>
 
@@ -297,11 +303,20 @@
             </a>
           </li>
 
-          <li>
+          <li class="drinks-dropdown">
             <a href="index.html#sabores">
               <div class="main-header__nav-item-text is-default">Our Drinks</div>
               <div class="main-header__nav-item-text is-absolute">Our Drinks</div>
             </a>
+            <div class="drinks-dropdown__menu">
+              <a href="index.html#mangofunk">Rum For Your Life</a>
+              <a href="index.html#tropisamba">Rumbaclart 2.0</a>
+              <a href="index.html#rumbaclart1">Rumbaclart 1.0</a>
+              <a href="index.html#summerset">Summer Set</a>
+              <a href="index.html#blutiful">Blutiful</a>
+              <a href="index.html#rumazing">Rumazing</a>
+              <a href="index.html#greengroov">Suck Your Rum</a>
+            </div>
           </li>
 
           <li>
@@ -1238,15 +1253,31 @@
 
             <ul class="offcanvas-submenu">
               <li class="offcanvas-submenu__item">
-                <a href="index.html#mangofunk" class="offcanvas-products-category-link">Mangofunk</a>
+                <a href="index.html#mangofunk" class="offcanvas-products-category-link">Rum For Your Life</a>
               </li>
 
               <li class="offcanvas-submenu__item">
-                <a href="index.html#greengroov" class="offcanvas-products-category-link">SUCK YOUR RUM</a>
+                <a href="index.html#tropisamba" class="offcanvas-products-category-link">Rumbaclart 2.0</a>
               </li>
 
               <li class="offcanvas-submenu__item">
-                <a href="index.html#tropisamba" class="offcanvas-products-category-link">RUMBACLART 2.0</a>
+                <a href="index.html#rumbaclart1" class="offcanvas-products-category-link">Rumbaclart 1.0</a>
+              </li>
+
+              <li class="offcanvas-submenu__item">
+                <a href="index.html#summerset" class="offcanvas-products-category-link">Summer Set</a>
+              </li>
+
+              <li class="offcanvas-submenu__item">
+                <a href="index.html#blutiful" class="offcanvas-products-category-link">Blutiful</a>
+              </li>
+
+              <li class="offcanvas-submenu__item">
+                <a href="index.html#rumazing" class="offcanvas-products-category-link">Rumazing</a>
+              </li>
+
+              <li class="offcanvas-submenu__item">
+                <a href="index.html#greengroov" class="offcanvas-products-category-link">Suck Your Rum</a>
               </li>
             </ul>
           </li>
