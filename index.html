@@ -209,8 +209,8 @@
 .marquee__item{flex:0 0 auto!important;white-space:nowrap!important;}
 .marquee__item--text{white-space:nowrap!important;}
 @keyframes heroPouchFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
-.product-versions{grid-template-columns:auto;}
-.product-version-chip{width:auto;white-space:nowrap;}
+.product-versions{display:flex;}
+.product-version-chip{width:auto;white-space:nowrap;flex:0 0 auto;}
 @media(max-width:72em){
   /* mobile hero: the collage image IS the hero — no text, just the CTA and one star.
      Hero fills the first viewport minus the ticker, so the marquee hugs the bottom edge. */
