@@ -68,6 +68,20 @@
 <link rel="apple-touch-icon" href="wp-content/uploads/2025/10/cropped-favicon-2-180x180.webp" />
 <meta name="msapplication-TileImage" content="wp-content/uploads/2025/10/cropped-favicon-2-270x270.webp" />
 		<style type="text/css" id="wp-custom-css">
+			.skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    padding: 0.75rem 1.25rem;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+}
+.skip-to-content:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+}
 			.sustainability__products--image .btn--ghost {
     display: none !important;
 }
@@ -180,7 +194,8 @@
 </head>
 
 <body class="home wp-singular page-template-default page page-id-6 wp-embed-responsive wp-theme-pley-by-ney">
-  
+  <a class="skip-to-content" href="index.html#main-content">Skip to content</a>
+
 </div>
   <header class="main-header">
   <div class="container">
@@ -250,7 +265,7 @@
   </div>
 </header><div id="smooth-wrapper">
   <div id="smooth-content">
-    <main class="page-home">
+    <main class="page-home" id="main-content">
       <div class="page-scroll-block--one">
         <section class="hero">
   <img class="hero-mobile-image" src="wp-content/uploads/2025/drinks/hero-mobile.webp" alt="DRINK STOP — frozen rum cocktails">
