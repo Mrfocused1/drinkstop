@@ -939,7 +939,7 @@
 
       
 <div class="wpcf7 no-js" id="wpcf7-f20-o1" lang="pt-BR" dir="ltr" data-wpcf7-id="20">
-<p class="contact-form-success sr-only" id="contact-form-success" role="status">Thanks — we'll be in touch.</p>
+<p class="contact-form-success sr-only" id="contact-form-success" role="status" aria-live="polite" aria-atomic="true">Thanks — we'll be in touch.</p>
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
 <form action="index.html#wpcf7-f20-o1" method="post" class="wpcf7-form init" aria-label="Formulários de contato" novalidate="novalidate" data-status="init">
 <fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="20" /><input type="hidden" name="_wpcf7_version" value="6.1.5" /><input type="hidden" name="_wpcf7_locale" value="pt_BR" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f20-o1" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" />
@@ -986,6 +986,7 @@
     if (!form || !success) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
       form.style.display = 'none';
       success.classList.remove('sr-only');
     });
