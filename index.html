@@ -250,6 +250,16 @@
   .sustainability__products--metric{width:17rem!important;}
   .sustainability__products--metric--title{font-size:3.5rem!important;}
 }
+@media(min-width:64em){
+  /* Bug 5 fix: portrait product images (1086x1448, e.g. greengroov/rumbaclart1)
+     had no height cap on desktop, so their auto-height (scaled to 100% width)
+     exceeded the wrapper's height and overflowed/cropped past the card edges.
+     object-fit:contain only works if the box itself doesn't overflow, so give
+     the whole chain (wrapper -> picture -> img) a definite height so the
+     percentage resolves correctly at each level. */
+  .product-image-wrapper picture{height:100%;}
+  .product-image-wrapper img{height:100%!important;}
+}
 @media(max-width:1023px){
   /* close the desktop scroll-spacer gap between product cards */
   .products div[style="height: 50svh"]{height:6svh!important;}
