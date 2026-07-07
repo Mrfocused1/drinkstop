@@ -233,7 +233,15 @@
   /* product cards: square media box with the drink as the focal point (like the original) */
   .product-view{aspect-ratio:1/1!important;}
   .product-image-wrapper{position:absolute!important;inset:0!important;height:auto!important;padding:0!important;}
-  .product-image-bg{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;height:106%!important;width:auto!important;max-width:none!important;}
+  .product-image-bg{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;height:100%!important;width:auto!important;max-width:none!important;}
+}
+@media(max-width:63.99em){
+  /* Bug 1 fix: lifestyle pill title was 2.5rem (40px) — too big for the 20rem/3.75rem pill on mobile. */
+  .lifestyle__card--title{font-size:clamp(1.125rem,4.5vw,1.75rem)!important;}
+  /* Bug 2 fix: metric title was 4.375rem (70px) — "custom" overflowed the 15rem bordered box.
+     Widen the box and scale the type so the word fits on one line without breaking. */
+  .sustainability__products--metric{width:min(88vw,15rem)!important;padding:1rem 1.25rem!important;}
+  .sustainability__products--metric--title{font-size:clamp(2rem,7vw,3.25rem)!important;line-height:1!important;}
 }
 @media(max-width:1023px){
   /* close the desktop scroll-spacer gap between product cards */
