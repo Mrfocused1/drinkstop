@@ -112,6 +112,35 @@
     .sustainability__institute {
         padding: 2rem 0 !important;
     }
+}
+
+/* Mobile tap target improvements — ensure 44x44px minimum */
+@media (max-width: 64em) {
+    /* Header nav links: add padding to reach 44px height */
+    .main-header-nav__list li a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Order Now CTA: increase vertical padding to reach 44px height */
+    .btn--icon {
+        min-height: 2.75rem;
+    }
+
+    /* Hamburger/offcanvas toggle: increase size to 44x44px */
+    .offcanvas-toggle {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+    }
+
+    /* Contact form submit button: increase vertical padding to reach 44px height */
+    .wpcf7-submit {
+        min-height: 2.75rem;
+        padding-top: 0.875rem !important;
+        padding-bottom: 0.875rem !important;
+    }
 }		</style>
 		
   
