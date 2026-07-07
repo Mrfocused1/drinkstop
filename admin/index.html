@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — DRINK STOP</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--green:#00ef02;--cream:#fffbe6;--ink:#0a0a0a;--red:#e8202a;--border:#00000018;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:#f4f4ef;color:var(--ink);line-height:1.4;-webkit-font-smoothing:antialiased;}
+.gate{position:fixed;inset:0;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:999;}
+.gate-box{background:#fff;border-radius:20px;padding:36px;width:100%;max-width:360px;text-align:center;}
+.gate-box h1{font-size:22px;margin-bottom:8px;}
+.gate-box p{font-size:13px;opacity:.6;margin-bottom:20px;}
+.gate-box input{width:100%;padding:12px 14px;border:2px solid var(--ink);border-radius:10px;font-size:15px;margin-bottom:12px;}
+.gate-box button{width:100%;padding:12px;border:none;border-radius:10px;background:var(--green);font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;}
+.gate-err{color:var(--red);font-size:12px;min-height:16px;margin-bottom:8px;}
+.app{display:none;}
+.app.show{display:flex;min-height:100vh;}
+.sidebar{width:220px;background:var(--ink);color:#fff;flex-shrink:0;padding:24px 0;position:sticky;top:0;height:100vh;overflow-y:auto;}
+.sidebar h2{font-size:16px;padding:0 20px 20px;letter-spacing:.05em;}
+.sidebar .tab{display:block;width:100%;text-align:left;background:none;border:none;color:#ffffffaa;padding:12px 20px;font-size:14px;font-weight:700;cursor:pointer;border-left:3px solid transparent;}
+.sidebar .tab:hover{color:#fff;background:#ffffff0a;}
+.sidebar .tab.active{color:#fff;border-left-color:var(--green);background:#ffffff10;}
+.sidebar .foot{padding:20px;font-size:11px;opacity:.4;margin-top:auto;}
+.main{flex:1;display:flex;flex-direction:column;min-width:0;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;}
+.topbar h1{font-size:18px;}
+.topbar-actions{display:flex;gap:10px;}
+.btn{font:inherit;font-weight:800;font-size:13px;padding:10px 18px;border-radius:999px;border:2px solid var(--ink);cursor:pointer;background:#fff;color:var(--ink);}
+.btn.primary{background:var(--green);border-color:var(--green);}
+.btn.danger{border-color:var(--red);color:var(--red);}
+.btn:hover{filter:brightness(.95);}
+.content-area{flex:1;display:flex;overflow:hidden;}
+.panel{flex:1;padding:28px;overflow-y:auto;max-width:640px;}
+.preview-wrap{width:380px;flex-shrink:0;border-left:1px solid var(--border);background:#fff;display:flex;flex-direction:column;}
+.preview-wrap h3{padding:14px 18px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;opacity:.6;border-bottom:1px solid var(--border);}
+.preview-wrap iframe{flex:1;border:none;width:100%;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em;opacity:.6;margin-bottom:6px;}
+.field input,.field textarea{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:2px solid var(--border);border-radius:8px;background:#fff;}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--green);}
+.field textarea{min-height:70px;resize:vertical;}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;position:relative;}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.card-head b{font-size:14px;}
+.card-remove{width:26px;height:26px;border-radius:50%;border:2px solid var(--red);background:#fff;color:var(--red);cursor:pointer;font-weight:900;flex-shrink:0;}
+.hide-toggle{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;margin-top:10px;}
+.section-title{font-size:22px;font-weight:800;margin-bottom:4px;}
+.section-sub{font-size:13px;opacity:.6;margin-bottom:22px;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;transition:.2s;pointer-events:none;z-index:50;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.note{font-size:12px;opacity:.55;background:#fffbe6;border:1px dashed var(--border);border-radius:8px;padding:10px 12px;margin-bottom:16px;}
+.add-btn{width:100%;padding:12px;border:2px dashed var(--ink);border-radius:12px;background:none;font-weight:800;font-size:13px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <h1>DRINK STOP Admin</h1>
+    <p>Temporary access code — replace with real login once Supabase auth is connected.</p>
+    <div class="gate-err" id="gateErr"></div>
+    <input type="password" id="gatePw" placeholder="Access code">
+    <button id="gateBtn">Enter</button>
+  </div>
+</div>
+
+<div class="app" id="app">
+  <nav class="sidebar">
+    <h2>DRINK STOP<br>ADMIN</h2>
+    <button class="tab" data-tab="hero">Hero</button>
+    <button class="tab" data-tab="products">Products</button>
+    <button class="tab" data-tab="coolwall">Cool Wall</button>
+    <button class="tab" data-tab="pricing">Pricing</button>
+    <button class="tab" data-tab="contact">Contact</button>
+    <div class="foot">Storage: localStorage (temporary)<br>TODO: Supabase</div>
+  </nav>
+
+  <div class="main">
+    <div class="topbar">
+      <h1 id="pageTitle">Hero</h1>
+      <div class="topbar-actions">
+        <button class="btn" id="exportBtn">Export JSON</button>
+        <button class="btn" id="importBtn">Import JSON</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none">
+        <button class="btn danger" id="resetBtn">Reset defaults</button>
+        <button class="btn primary" id="saveBtn">Save changes</button>
+      </div>
+    </div>
+    <div class="content-area">
+      <div class="panel" id="panel"></div>
+      <div class="preview-wrap">
+        <h3>Live preview</h3>
+        <iframe id="preview" src="../index.html"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // TEMPORARY access gate — this is client-side only and NOT real security.
+  // TODO: replace entirely with Supabase Auth once wired up.
+  const GATE_KEY = 'drinkstop_admin_gate';
+  const ACCESS_CODE = 'drinkstop2026';
+  const gate = document.getElementById('gate'), app = document.getElementById('app');
+  function unlock(){ gate.style.display='none'; app.classList.add('show'); init(); }
+  if (sessionStorage.getItem(GATE_KEY) === '1') unlock();
+  document.getElementById('gateBtn').onclick = () => {
+    const val = document.getElementById('gatePw').value;
+    if (val === ACCESS_CODE) { sessionStorage.setItem(GATE_KEY,'1'); unlock(); }
+    else document.getElementById('gateErr').textContent = 'Wrong code.';
+  };
+  document.getElementById('gatePw').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('gateBtn').click(); });
+</script>
+
+<script>window.CONTENT_JSON_PATH = '../admin-content.json';</script>
+<script src="../assets/content-loader.js"></script>
+<script>
+(function(){
+  let DATA = null;
+  let activeTab = 'hero';
+  const panel = document.getElementById('panel');
+  const toastEl = document.getElementById('toast');
+
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); setTimeout(()=>toastEl.classList.remove('show'), 1800); }
+  function uid(prefix){ return prefix + '-' + Math.random().toString(36).slice(2,8); }
+
+  function render(){
+    document.getElementById('pageTitle').textContent = { hero:'Hero', products:'Products', coolwall:'Cool Wall', pricing:'Pricing', contact:'Contact' }[activeTab];
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === activeTab));
+    panel.innerHTML = RENDERERS[activeTab]();
+    wireTab(activeTab);
+  }
+
+  const RENDERERS = {
+    hero: () => `
+      <div class="section-title">Hero section</div>
+      <div class="section-sub">The big banner text at the top of the homepage.</div>
+      <div class="field"><label>Eyebrow text (small line above headline, supports &lt;br&gt;)</label><textarea id="h_eyebrow">${esc(DATA.hero.eyebrow)}</textarea></div>
+      <div class="field"><label>Headline — first word</label><input id="h_first" value="${esc(DATA.hero.titleFirst)}"></div>
+      <div class="field"><label>Headline — rest</label><input id="h_second" value="${esc(DATA.hero.titleSecond)}"></div>
+      <div class="field"><label>Order button text</label><input id="h_cta" value="${esc(DATA.hero.ctaText)}"></div>`,
+
+    products: () => {
+      const items = DATA.products.items, order = DATA.products.order, extra = DATA.products.extra || [];
+      const cardHtml = (id, item, isExtra) => `
+        <div class="card" data-id="${id}" data-extra="${isExtra?1:0}">
+          <div class="card-head"><b>${esc(item.name)||'(untitled)'}</b>${isExtra?`<button class="card-remove" data-remove-extra="${id}">✕</button>`:''}</div>
+          <div class="field"><label>Name</label><input data-f="name" value="${esc(item.name)}"></div>
+          <div class="field"><label>Subtitle</label><input data-f="subtitle" value="${esc(item.subtitle)}"></div>
+          <div class="field"><label>Description</label><textarea data-f="description">${esc(item.description)}</textarea></div>
+          <div class="field"><label>Size chip text</label><input data-f="chip" value="${esc(item.chip)}"></div>
+          <div class="field"><label>Background colour (hex)</label><input data-f="color" value="${esc(item.color)}"></div>
+          <label class="hide-toggle"><input type="checkbox" data-f="hidden" ${item.hidden?'checked':''}> Hide this product from the site</label>
+        </div>`;
+      return `
+      <div class="section-title">Products</div>
+      <div class="section-sub">Edit existing drinks, or add a new one. Images are managed via the site's image files for now — ask Claude to swap a product's picture directly.</div>
+      ${order.map(id => cardHtml(id, items[id], false)).join('')}
+      ${extra.map(item => cardHtml(item.id, item, true)).join('')}
+      <button class="add-btn" id="addProduct">+ Add new product</button>`;
+    },
+
+    coolwall: () => {
+      const tiles = DATA.coolWall.tiles, extra = DATA.coolWall.extra || [];
+      const tileHtml = (tile, i, isExtra) => `
+        <div class="card" data-idx="${i}" data-extra="${isExtra?1:0}" data-id="${tile.id||''}">
+          <div class="card-head"><b>Tile ${isExtra?'(added)':i+1}</b>${isExtra?`<button class="card-remove" data-remove-extra="${tile.id}">✕</button>`:''}</div>
+          <div class="field"><label>Media file path (image or .mp4)</label><input data-f="src" value="${esc(tile.src)}"></div>
+          <label class="hide-toggle"><input type="checkbox" data-f="hidden" ${tile.hidden?'checked':''}> Hide this tile</label>
+        </div>`;
+      return `
+      <div class="section-title">The Cool Wall</div>
+      <div class="section-sub">Edit the media grid on the homepage. Add a new tile by pasting a file path already uploaded to the site.</div>
+      <div class="field"><label>Section title</label><input id="cw_title" value="${esc(DATA.coolWall.title)}"></div>
+      ${tiles.map((t,i)=>tileHtml(t,i,false)).join('')}
+      ${extra.map((t,i)=>tileHtml(t,i,true)).join('')}
+      <button class="add-btn" id="addTile">+ Add new tile</button>`;
+    },
+
+    pricing: () => {
+      const p = DATA.pricing;
+      const row = (label, design, type) => `
+        <div class="field"><label>${label} 150ml</label><input data-price="${design}.${type}.150" value="${p[design][type]['150']}"></div>
+        <div class="field"><label>${label} 250ml</label><input data-price="${design}.${type}.250" value="${p[design][type]['250']}"></div>`;
+      return `
+      <div class="section-title">Pricing</div>
+      <div class="section-sub">Per-pouch prices (£) shown in the order flow. Applies to both pouch and bottle packaging for now.</div>
+      <b>Original design</b>
+      <div class="pricing-grid">${row('Alcohol','original','alcohol')}${row('Mocktail','original','mocktail')}</div>
+      <b>Custom design</b>
+      <div class="pricing-grid">${row('Alcohol','custom','alcohol')}${row('Mocktail','custom','mocktail')}</div>
+      <div class="field" style="margin-top:16px"><label>Custom design fee note</label><input id="p_feenote" value="${esc(p.customDesignFeeNote)}"></div>`;
+    },
+
+    contact: () => `
+      <div class="section-title">Contact</div>
+      <div class="section-sub">Contact details shown across the site.</div>
+      <div class="note">The contact form itself isn't connected to anything yet — it'll send via Resend once that's set up.</div>
+      <div class="field"><label>Email address</label><input id="c_email" value="${esc(DATA.contact.email)}"></div>`
+  };
+
+  function esc(s){ return (s==null?'':''+s).replace(/"/g,'&quot;'); }
+
+  function wireTab(tab){
+    if (tab === 'hero') {
+      ['eyebrow','first','second','cta'].forEach(k => {
+        const el = document.getElementById('h_'+k); if (!el) return;
+        el.oninput = () => { DATA.hero[{eyebrow:'eyebrow',first:'titleFirst',second:'titleSecond',cta:'ctaText'}[k]] = el.value; };
+      });
+    }
+    if (tab === 'products') {
+      panel.querySelectorAll('.card').forEach(card => {
+        const id = card.dataset.id, isExtra = card.dataset.extra === '1';
+        const target = isExtra ? DATA.products.extra.find(x=>x.id===id) : DATA.products.items[id];
+        card.querySelectorAll('[data-f]').forEach(inp => {
+          inp.addEventListener('input', () => {
+            const f = inp.dataset.f;
+            target[f] = inp.type === 'checkbox' ? inp.checked : inp.value;
+            if (f === 'name') card.querySelector('.card-head b').textContent = inp.value || '(untitled)';
+          });
+        });
+      });
+      document.getElementById('addProduct').onclick = () => {
+        const id = uid('product');
+        DATA.products.extra.push({ id, name:'New Product', subtitle:'', description:'', chip:'250 ml/150 ml', color:'#6CAD1A', hidden:false });
+        render();
+      };
+      panel.querySelectorAll('[data-remove-extra]').forEach(btn => {
+        btn.onclick = () => { DATA.products.extra = DATA.products.extra.filter(x=>x.id!==btn.dataset.removeExtra); render(); };
+      });
+    }
+    if (tab === 'coolwall') {
+      const titleEl = document.getElementById('cw_title'); if (titleEl) titleEl.oninput = () => DATA.coolWall.title = titleEl.value;
+      panel.querySelectorAll('.card').forEach(card => {
+        const isExtra = card.dataset.extra === '1';
+        const target = isExtra ? DATA.coolWall.extra.find(x=>x.id===card.dataset.id) : DATA.coolWall.tiles[+card.dataset.idx];
+        card.querySelectorAll('[data-f]').forEach(inp => {
+          inp.addEventListener('input', () => { target[inp.dataset.f] = inp.type==='checkbox' ? inp.checked : inp.value; });
+        });
+      });
+      document.getElementById('addTile').onclick = () => {
+        const id = uid('tile');
+        DATA.coolWall.extra.push({ id, src:'', type:'video', hidden:false });
+        render();
+      };
+      panel.querySelectorAll('[data-remove-extra]').forEach(btn => {
+        btn.onclick = () => { DATA.coolWall.extra = DATA.coolWall.extra.filter(x=>x.id!==btn.dataset.removeExtra); render(); };
+      });
+    }
+    if (tab === 'pricing') {
+      panel.querySelectorAll('[data-price]').forEach(inp => {
+        inp.addEventListener('input', () => {
+          const [design,type,size] = inp.dataset.price.split('.');
+          DATA.pricing[design][type][size] = parseFloat(inp.value) || 0;
+        });
+      });
+      const feeEl = document.getElementById('p_feenote'); if (feeEl) feeEl.oninput = () => DATA.pricing.customDesignFeeNote = feeEl.value;
+    }
+    if (tab === 'contact') {
+      const el = document.getElementById('c_email'); if (el) el.oninput = () => DATA.contact.email = el.value;
+    }
+  }
+
+  function refreshPreview(){ document.getElementById('preview').src = '../index.html?t=' + Date.now(); }
+
+  async function init(){
+    DATA = await window.DrinkStopContent.loadContent();
+    if (!DATA) { toast('Could not load content — check admin-content.json path'); return; }
+    document.querySelectorAll('.tab').forEach(t => t.onclick = () => { activeTab = t.dataset.tab; render(); });
+    document.getElementById('saveBtn').onclick = () => { window.DrinkStopContent.saveContent(DATA); toast('Saved'); refreshPreview(); };
+    document.getElementById('resetBtn').onclick = () => { if (confirm('Reset all edits back to shipped defaults?')) { window.DrinkStopContent.resetContent(); location.reload(); } };
+    document.getElementById('exportBtn').onclick = () => {
+      const blob = new Blob([JSON.stringify(DATA, null, 2)], { type:'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'admin-content.json'; a.click();
+    };
+    document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+    document.getElementById('importFile').onchange = e => {
+      const file = e.target.files[0]; if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => { try { DATA = JSON.parse(ev.target.result); render(); toast('Imported — remember to Save'); } catch(err) { toast('Invalid JSON file'); } };
+      reader.readAsText(file);
+    };
+    render();
+  }
+  window.init = init;
+})();
+</script>
+</body>
+</html>

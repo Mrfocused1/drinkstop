@@ -1,0 +1,43 @@
+{
+  "_comment": "Shipped default content for the DRINK STOP site admin panel. This file is the fallback source of truth until Supabase storage is wired in — at that point, loadContent()/saveContent() in content-loader.js should be swapped to read/write Supabase instead of localStorage, and this file's shape should map directly to your tables.",
+  "hero": {
+    "eyebrow": "Frozen rum cocktails<br>in a pouch.",
+    "titleFirst": "Rum",
+    "titleSecond": "for your life.",
+    "ctaText": "Order now"
+  },
+  "products": {
+    "items": {
+      "mangofunk":   { "name": "RUM FOR YOUR LIFE", "subtitle": "Rum, fruit punch & watermelon.", "description": "Sweet, loaded and dangerously easy. Frozen rum with a fruit-punch hit — the one you'll be running back for.", "chip": "250 ml/150 ml", "color": "#6CAD1A", "hidden": false },
+      "tropisamba":  { "name": "RUMBACLART 2.0", "subtitle": "Pineapple, apple & guava.", "description": "Tropical, smooth and unapologetic. The remix nobody asked for and everybody finished. Island energy, frozen.", "chip": "250 ml/150 ml", "color": "#FDC901", "hidden": false },
+      "rumbaclart1": { "name": "RUMBACLART 1.0", "subtitle": "Rum, mango, passionfruit & orange.", "description": "The original troublemaker. Mango, passionfruit and ripe orange hauled into frozen rum before the remix was even a thought. Tropical, loud and first to the party.", "chip": "250 ml/150 ml", "color": "#FB5F01", "hidden": false },
+      "summerset":   { "name": "SUMMER SET", "subtitle": "Rum, pineapple & coconut.", "description": "Sunshine in a pouch. Creamy coconut and sweet pineapple over ice-cold rum — bottled summer, no airport required. Sip slow and pretend you're seaside.", "chip": "250 ml/150 ml", "color": "#4E992B", "hidden": false },
+      "blutiful":    { "name": "BLUTIFUL", "subtitle": "Rum, blue raspberry, apple & lemon.", "description": "Pretty in blue. Sharp blue raspberry cut with crisp apple and lemon over frozen rum. Eye-catching, mouth-puckering and gone in seconds.", "chip": "250 ml/150 ml", "color": "#EB030D", "hidden": false },
+      "rumazing":    { "name": "RUMAZING", "subtitle": "Rum, apple & mango.", "description": "Unreal. Ripe mango and crisp apple smashed into frozen rum. Dangerously smooth, dangerously moreish — straight-up amazing.", "chip": "250 ml/150 ml", "color": "#FD6B01", "hidden": false },
+      "greengroov":  { "name": "SUCK YOUR RUM", "subtitle": "Rum, apple, lemon & ginger.", "description": "Sharp, zingy and with a proper kick. Ginger heat meets ice-cold rum — sip slow, or don't.", "chip": "250 ml/150 ml", "color": "#8CC212", "hidden": false }
+    },
+    "order": ["mangofunk", "tropisamba", "rumbaclart1", "summerset", "blutiful", "rumazing", "greengroov"],
+    "extra": []
+  },
+  "coolWall": {
+    "title": "THE COOL WALL",
+    "tiles": [
+      { "id": "clip-1", "src": "wp-content/uploads/2026/07/cool-wall/clip-1.mp4", "type": "video", "hidden": false },
+      { "id": "clip-2", "src": "wp-content/uploads/2026/07/cool-wall/clip-2.mp4", "type": "video", "hidden": false },
+      { "id": "clip-3", "src": "wp-content/uploads/2026/07/cool-wall/clip-3.mp4", "type": "video", "hidden": false },
+      { "id": "clip-4", "src": "wp-content/uploads/2026/07/cool-wall/clip-4.mp4", "type": "video", "hidden": false },
+      { "id": "clip-5", "src": "wp-content/uploads/2026/07/cool-wall/clip-5.mp4", "type": "video", "hidden": false },
+      { "id": "clip-6", "src": "wp-content/uploads/2026/07/cool-wall/clip-6.mp4", "type": "video", "hidden": false },
+      { "id": "clip-7", "src": "wp-content/uploads/2026/07/cool-wall/clip-7.mp4", "type": "video", "hidden": false }
+    ],
+    "extra": []
+  },
+  "pricing": {
+    "original": { "alcohol": { "150": 5, "250": 8 }, "mocktail": { "150": 3, "250": 4 } },
+    "custom":   { "alcohol": { "150": 6, "250": 9 }, "mocktail": { "150": 4, "250": 5 } },
+    "customDesignFeeNote": "from £30 (confirmed on request)"
+  },
+  "contact": {
+    "email": "hello@drinkstop.co.uk"
+  }
+}

@@ -120,8 +120,18 @@ const FLAVOURS=[
   {id:'suck',name:'Suck Your Rum',desc:'Rum, apple, lemon & ginger',color:'#f2b200'},
   {id:'rumba',name:'Rumbaclart 2.0',desc:'Pineapple, apple & guava',color:'#3cc24a'},
 ];
-const PRICING={original:{alcohol:{150:5,250:8},mocktail:{150:3,250:4}},custom:{alcohol:{150:6,250:9},mocktail:{150:4,250:5}}};
-const CUSTOM_DESIGN_FEE_NOTE='from £30 (confirmed on request)';
+let PRICING={original:{alcohol:{150:5,250:8},mocktail:{150:3,250:4}},custom:{alcohol:{150:6,250:9},mocktail:{150:4,250:5}}};
+let CUSTOM_DESIGN_FEE_NOTE='from £30 (confirmed on request)';
+// TODO(supabase): once wired up, PRICING/CUSTOM_DESIGN_FEE_NOTE should be fetched from Supabase
+// instead of the localStorage-backed admin-content.json flow below.
+document.addEventListener('drinkstop:content-applied', e => {
+  const data = e.detail;
+  if (data && data.pricing) {
+    PRICING = { original: data.pricing.original, custom: data.pricing.custom };
+    CUSTOM_DESIGN_FEE_NOTE = data.pricing.customDesignFeeNote || CUSTOM_DESIGN_FEE_NOTE;
+    render();
+  }
+});
 function unitPrice(design,type,size){const d=design==='custom'?'custom':'original';return PRICING[d][type||'alcohol'][size||150];}
 function price(){return unitPrice(S.design,S.type,S.size);}
 const S={design:null, type:null, size:null, flavours:[], qty:5, occasion:'', customFlavours:[], artwork:null, artworkName:'', brief:'', designMode:null, name:'', email:'', phone:'', area:'',
@@ -440,5 +450,6 @@ function validate(key){
 }
 render();
 </script>
+<script src="assets/content-loader.js"></script>
 </body>
 </html>

@@ -264,7 +264,7 @@
 }
 @media(max-width:1023px){
   /* close the desktop scroll-spacer gap between product cards */
-  .products div[style="height: 50svh"]{height:6svh!important;}
+  .products div[style="height: 50svh"]{display:none!important;}
   /* occasion cards: 4x breathing room (base gap was .625rem) */
   .lifestyle-column--cards{gap:2.5rem!important;}
 }
@@ -372,10 +372,10 @@
   <img width="1180" height="1333" class="hero-mobile-image" src="wp-content/uploads/2025/drinks/hero-mobile.webp" alt="DRINK STOP — frozen rum cocktails">
   <div class="container">
     <div class="hero-heading">
-      <p class="hero-eyebrow">Frozen rum cocktails<br>in a pouch.</p>
+      <p class="hero-eyebrow" data-ck="hero.eyebrow">Frozen rum cocktails<br>in a pouch.</p>
       <h1 class="hero-title">
-        <span class="hero-title--first">Rum</span>
-        <span class="hero-title--second">for your life.</span>
+        <span class="hero-title--first" data-ck="hero.titleFirst">Rum</span>
+        <span class="hero-title--second" data-ck="hero.titleSecond">for your life.</span>
       </h1>
 
       <img width="316" height="334" class="stop-motion stop-float hero-heading--spark" src="wp-content/uploads/2025/10/hero-spark.webp" alt="">
@@ -389,8 +389,8 @@
       </div>
 
       <div class="btn-text-wrapper">
-        <div class="btn-text is-default">Order now</div>
-        <div class="btn-text is-absolute">Order now</div>
+        <div class="btn-text is-default" data-ck="hero.ctaText">Order now</div>
+        <div class="btn-text is-absolute" data-ck="hero.ctaText">Order now</div>
       </div>
     </a>
   </div>
@@ -461,13 +461,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.mangofunk.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
-                      
-                      <h2>RUM FOR YOUR LIFE</h2>
-                      <h3>Rum, fruit punch & watermelon.</h3>
-                      <p> Sweet, loaded and dangerously easy. Frozen rum with a fruit-punch hit — the one you’ll be running back for.</p>
+
+                      <h2 data-ck="products.mangofunk.name">RUM FOR YOUR LIFE</h2>
+                      <h3 data-ck="products.mangofunk.subtitle">Rum, fruit punch & watermelon.</h3>
+                      <p data-ck="products.mangofunk.description"> Sweet, loaded and dangerously easy. Frozen rum with a fruit-punch hit — the one you’ll be running back for.</p>
 
                       <div class="product-card__btn">
                         <a href="product/mangofunk/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -510,13 +510,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.tropisamba.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
                       
-                      <h2>RUMBACLART 2.0</h2>
-                      <h3>Pineapple, apple & guava.</h3>
-                      <p>Tropical, smooth and unapologetic. The remix nobody asked for and everybody finished. Island energy, frozen.</p>
+                      <h2 data-ck="products.tropisamba.name">RUMBACLART 2.0</h2>
+                      <h3 data-ck="products.tropisamba.subtitle">Pineapple, apple & guava.</h3>
+                      <p data-ck="products.tropisamba.description">Tropical, smooth and unapologetic. The remix nobody asked for and everybody finished. Island energy, frozen.</p>
 
                       <div class="product-card__btn">
                         <a href="product/tropisamba/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -558,13 +558,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.rumbaclart1.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
 
-                      <h2>RUMBACLART 1.0</h2>
-                      <h3>Rum, mango, passionfruit & orange.</h3>
-                      <p>The original troublemaker. Mango, passionfruit and ripe orange hauled into frozen rum before the remix was even a thought. Tropical, loud and first to the party.</p>
+                      <h2 data-ck="products.rumbaclart1.name">RUMBACLART 1.0</h2>
+                      <h3 data-ck="products.rumbaclart1.subtitle">Rum, mango, passionfruit & orange.</h3>
+                      <p data-ck="products.rumbaclart1.description">The original troublemaker. Mango, passionfruit and ripe orange hauled into frozen rum before the remix was even a thought. Tropical, loud and first to the party.</p>
 
                       <div class="product-card__btn">
                         <a href="product/rumbaclart1/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -606,13 +606,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.summerset.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
 
-                      <h2>SUMMER SET</h2>
-                      <h3>Rum, pineapple & coconut.</h3>
-                      <p>Sunshine in a pouch. Creamy coconut and sweet pineapple over ice-cold rum — bottled summer, no airport required. Sip slow and pretend you're seaside.</p>
+                      <h2 data-ck="products.summerset.name">SUMMER SET</h2>
+                      <h3 data-ck="products.summerset.subtitle">Rum, pineapple & coconut.</h3>
+                      <p data-ck="products.summerset.description">Sunshine in a pouch. Creamy coconut and sweet pineapple over ice-cold rum — bottled summer, no airport required. Sip slow and pretend you're seaside.</p>
 
                       <div class="product-card__btn">
                         <a href="product/summerset/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -654,13 +654,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.blutiful.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
 
-                      <h2>BLUTIFUL</h2>
-                      <h3>Rum, blue raspberry, apple & lemon.</h3>
-                      <p>Pretty in blue. Sharp blue raspberry cut with crisp apple and lemon over frozen rum. Eye-catching, mouth-puckering and gone in seconds.</p>
+                      <h2 data-ck="products.blutiful.name">BLUTIFUL</h2>
+                      <h3 data-ck="products.blutiful.subtitle">Rum, blue raspberry, apple & lemon.</h3>
+                      <p data-ck="products.blutiful.description">Pretty in blue. Sharp blue raspberry cut with crisp apple and lemon over frozen rum. Eye-catching, mouth-puckering and gone in seconds.</p>
 
                       <div class="product-card__btn">
                         <a href="product/blutiful/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -702,13 +702,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.rumazing.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
 
-                      <h2>RUMAZING</h2>
-                      <h3>Rum, apple & mango.</h3>
-                      <p>Unreal. Ripe mango and crisp apple smashed into frozen rum. Dangerously smooth, dangerously moreish — straight-up amazing.</p>
+                      <h2 data-ck="products.rumazing.name">RUMAZING</h2>
+                      <h3 data-ck="products.rumazing.subtitle">Rum, apple & mango.</h3>
+                      <p data-ck="products.rumazing.description">Unreal. Ripe mango and crisp apple smashed into frozen rum. Dangerously smooth, dangerously moreish — straight-up amazing.</p>
 
                       <div class="product-card__btn">
                         <a href="product/rumazing/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -750,13 +750,13 @@
                     <div class="product-content">
                                               <div class="product-versions">
                                                                                                                                           <div class="product-version-chip">
-                                <h5>250 ml/150 ml</h5>
+                                <h5 data-ck="products.greengroov.chip">250 ml/150 ml</h5>
                               </div>
                                                                               </div>
 
-                      <h2>SUCK YOUR RUM</h2>
-                      <h3>Rum, apple, lemon & ginger.</h3>
-                      <p>Sharp, zingy and with a proper kick. Ginger heat meets ice-cold rum — sip slow, or don’t.</p>
+                      <h2 data-ck="products.greengroov.name">SUCK YOUR RUM</h2>
+                      <h3 data-ck="products.greengroov.subtitle">Rum, apple, lemon & ginger.</h3>
+                      <p data-ck="products.greengroov.description">Sharp, zingy and with a proper kick. Ginger heat meets ice-cold rum — sip slow, or don’t.</p>
 
                       <div class="product-card__btn">
                         <a href="product/greengroov/index.html" class="btn btn--icon btn--ghost" data-product-modal data-type="ajax">
@@ -798,7 +798,7 @@
 
         <section class="cool-wall" id="cool-wall">
           <div class="container">
-            <h2 class="cool-wall__title">THE COOL WALL</h2>
+            <h2 class="cool-wall__title" data-ck="coolwall.title">THE COOL WALL</h2>
             <div class="cool-wall__grid">
 
               <div class="cool-wall__tile">
@@ -1047,12 +1047,12 @@
       <p>Got a question, feedback, or just wanna talk? Hit us up, the DRINK STOP way: straight and no fuss.</p>
 
       <div class="contact-form-infos">
-        <a href="index.html#" target="_blank">
+        <a href="mailto:hello@drinkstop.co.uk" target="_blank" data-ck="contact.email.href">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewbox="0 0 24 25" fill="none">
             <path d="M21 4.59766H3C2.70163 4.59766 2.41548 4.71618 2.2045 4.92716C1.99353 5.13814 1.875 5.42429 1.875 5.72266V18.4727C1.875 18.9699 2.07254 19.4469 2.42417 19.7985C2.77581 20.1501 3.25272 20.3477 3.75 20.3477H20.25C20.7473 20.3477 21.2242 20.1501 21.5758 19.7985C21.9275 19.4469 22.125 18.9699 22.125 18.4727V5.72266C22.125 5.42429 22.0065 5.13814 21.7955 4.92716C21.5845 4.71618 21.2984 4.59766 21 4.59766ZM12 12.4464L5.89219 6.84766H18.1078L12 12.4464ZM8.69906 12.4727L4.125 16.6652V8.28016L8.69906 12.4727ZM10.3641 13.9989L11.2397 14.8023C11.4472 14.9926 11.7185 15.0982 12 15.0982C12.2815 15.0982 12.5528 14.9926 12.7603 14.8023L13.6359 13.9989L18.1078 18.0977H5.89219L10.3641 13.9989ZM15.3009 12.4727L19.875 8.28016V16.6652L15.3009 12.4727Z" fill="black" />
           </svg>
 
-          hello@drinkstop.co.uk
+          <span data-ck="contact.email">hello@drinkstop.co.uk</span>
         </a>
 
         <a href="tel:08000314550" target="_blank">
@@ -1075,6 +1075,7 @@
 <div class="wpcf7 no-js" id="wpcf7-f20-o1" lang="pt-BR" dir="ltr" data-wpcf7-id="20">
 <p class="contact-form-success sr-only" id="contact-form-success" role="status" aria-live="polite" aria-atomic="true">Thanks — we'll be in touch.</p>
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<!-- TODO(resend): this form currently has no live backend (static export of a WordPress Contact Form 7 form). Once Resend is wired up, replace its submit handling with a fetch() to your Resend-backed endpoint instead of the CF7 AJAX flow. -->
 <form action="index.html#wpcf7-f20-o1" method="post" class="wpcf7-form init" aria-label="Formulários de contato" novalidate="novalidate" data-status="init">
 <fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="20" /><input type="hidden" name="_wpcf7_version" value="6.1.5" /><input type="hidden" name="_wpcf7_locale" value="pt_BR" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f20-o1" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" />
 </fieldset>
@@ -1413,5 +1414,6 @@ var wpcf7 = {
       videos.forEach(function (video) { observer.observe(video); });
     })();
   </script>
+  <script src="assets/content-loader.js"></script>
   </body>
 </html>
