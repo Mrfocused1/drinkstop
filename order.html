@@ -84,6 +84,23 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .done .check{width:96px;height:96px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:52px}
 .foot{text-align:center;padding:16px;font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.5;text-transform:uppercase}
 .pill{display:inline-block;background:var(--ink);color:var(--cream);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+/* mix & match builder */
+.mixbuild{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:22px 24px;margin-bottom:22px}
+.mb-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid #00000012}
+.mb-row:first-child{padding-top:0}
+.mb-label{font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.05em;opacity:.65;min-width:90px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.segbtn{font:inherit;font-weight:800;font-size:14px;padding:9px 16px;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:.15s;-webkit-appearance:none;appearance:none}
+.segbtn.on{background:var(--ink);color:#fff}
+.segbtn:hover{transform:translateY(-1px)}
+.mb-price{font-weight:800;font-size:16px;margin-top:14px}
+.mb-price span{opacity:.6;font-weight:700;font-size:13px;display:block;margin-top:2px}
+.mixlist{margin-bottom:18px}
+.mixrow{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--ink);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+.mixrow-info{flex:1;font-weight:700;font-size:14px}
+.mixrow-sub{font-weight:800;font-size:16px;white-space:nowrap}
+.mixrow-x{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);background:#fff;cursor:pointer;font-weight:900;color:var(--ink);flex-shrink:0;-webkit-appearance:none;appearance:none}
+.mixrow-x:hover{background:var(--red);color:#fff;border-color:var(--red)}
 </style>
 </head>
 <body>
@@ -103,15 +120,20 @@ const FLAVOURS=[
   {id:'suck',name:'Suck Your Rum',desc:'Rum, apple, lemon & ginger',color:'#f2b200'},
   {id:'rumba',name:'Rumbaclart 2.0',desc:'Pineapple, apple & guava',color:'#3cc24a'},
 ];
-const PRICE=5; // £ per pouch (original)
-const S={design:null, flavours:[], qty:5, occasion:'', customFlavours:[], artwork:null, artworkName:'', brief:'', designMode:null, name:'', email:'', phone:'', area:''};
+const PRICING={original:{alcohol:{150:5,250:8},mocktail:{150:3,250:4}},custom:{alcohol:{150:6,250:9},mocktail:{150:4,250:5}}};
+const CUSTOM_DESIGN_FEE_NOTE='from £30 (confirmed on request)';
+function unitPrice(design,type,size){const d=design==='custom'?'custom':'original';return PRICING[d][type||'alcohol'][size||150];}
+function price(){return unitPrice(S.design,S.type,S.size);}
+const S={design:null, type:null, size:null, flavours:[], qty:5, occasion:'', customFlavours:[], artwork:null, artworkName:'', brief:'', designMode:null, name:'', email:'', phone:'', area:'',
+  mix:[], mixCur:{type:'alcohol',packaging:'pouch',design:'original',size:150,qty:5}};
 let idx=0;
 
 // build the ordered list of step-keys based on branch
 function sequence(){
-  const base=['intro','design'];
+  const base=['intro','design','type','size'];
   if(S.design==='original') return [...base,'flavours','qty','details','review','done'];
   if(S.design==='custom')   return [...base,'occasion','customflav','qtyc','artwork','details','review','done'];
+  if(S.design==='mix')      return ['intro','design','mixbuilder','details','review','done'];
   return base;
 }
 const el=document.getElementById('step');
@@ -119,7 +141,7 @@ const pbar=document.getElementById('pbar'), plab=document.getElementById('plab')
 
 function render(){
   const seq=sequence(); const key=seq[idx];
-  const totalSteps = S.design ? (seq.length-1) : 6; // exclude 'done'; estimate 6 before branch chosen
+  const totalSteps = S.design ? (seq.length-1) : 8; // exclude 'done'; estimate 8 before branch chosen
   const shown = Math.min(idx+1, totalSteps);
   pbar.style.width=(key==='done'?100:(idx/totalSteps)*100)+'%';
   plab.textContent = key==='done' ? 'Done' : ('Step '+shown+' of '+totalSteps);
@@ -151,8 +173,86 @@ const STEPS={
       <div class="ct">Original</div><div class="cd">Classic DRINK STOP pouches. Pick your flavours and go.</div></div>
     <div class="card ${S.design==='custom'?'sel':''}" data-d="custom"><div class="tick">✓</div>
       <div class="ct">Custom</div><div class="cd">Your brand, event or artwork printed on the pouch.</div></div>
+    <div class="card ${S.design==='mix'?'sel':''}" data-d="mix"><div class="tick">✓</div>
+      <div class="ct">Mix & Match</div><div class="cd">Combine alcohol, mocktail, bottles, pouches — even custom design — in one order.</div></div>
   </div>
   ${navHtml('Continue →', true,'next', !S.design)}`,
+
+ type:()=>`
+  <div class="kicker">The basics</div>
+  <h1 class="q">Alcohol or<br>mocktail?</h1>
+  <p class="sub">Same great flavours — pick your pouch style.</p>
+  <div class="cards">
+    <div class="card ${S.type==='alcohol'?'sel':''}" data-t="alcohol"><div class="tick">✓</div>
+      <div class="ct">Alcohol</div><div class="cd">Our classic frozen rum pouches, 5% ABV.</div></div>
+    <div class="card ${S.type==='mocktail'?'sel':''}" data-t="mocktail"><div class="tick">✓</div>
+      <div class="ct">Mocktail</div><div class="cd">All the flavour, none of the alcohol.</div></div>
+  </div>
+  ${navHtml('Continue →', true,'next', !S.type)}`,
+
+ size:()=>`
+  <div class="kicker">The basics</div>
+  <h1 class="q">What<br>size?</h1>
+  <p class="sub">Pick your pouch size — this sets your price per pouch.</p>
+  <div class="cards">
+    <div class="card ${S.size===150?'sel':''}" data-s="150"><div class="tick">✓</div>
+      <div class="ct">150ml</div><div class="cd">£${PRICING[S.design==='custom'?'custom':'original'][S.type||'alcohol'][150]} per pouch</div></div>
+    <div class="card ${S.size===250?'sel':''}" data-s="250"><div class="tick">✓</div>
+      <div class="ct">250ml</div><div class="cd">£${PRICING[S.design==='custom'?'custom':'original'][S.type||'alcohol'][250]} per pouch</div></div>
+  </div>
+  ${navHtml('Continue →', true,'next', !S.size)}`,
+
+ mixbuilder:()=>{
+   const cur=S.mixCur;
+   const curPrice=unitPrice(cur.design,cur.type,cur.size);
+   const rows=S.mix.map((it,i)=>`
+     <div class="mixrow">
+       <div class="mixrow-info">${it.qty}x ${it.type==='mocktail'?'Mocktail':'Alcohol'} · ${it.packaging==='bottle'?'Bottle':'Pouch'} · ${it.size}ml${it.design==='custom'?' · Custom design':''}</div>
+       <div class="mixrow-sub">£${unitPrice(it.design,it.type,it.size)*it.qty}</div>
+       <button class="mixrow-x" data-rm="${i}">✕</button>
+     </div>`).join('');
+   const productTotal=S.mix.reduce((sum,it)=>sum+unitPrice(it.design,it.type,it.size)*it.qty,0);
+   const hasCustom=S.mix.some(it=>it.design==='custom');
+   const totalQty=S.mix.reduce((sum,it)=>sum+it.qty,0);
+   return `
+   <div class="kicker">Mix & match</div>
+   <h1 class="q">Build your<br>mix.</h1>
+   <p class="sub">Combine alcohol, mocktail, bottles and pouches — even custom design — in one order. Add as many combos as you like, minimum 5 pouches total.</p>
+
+   <div class="mixbuild">
+     <div class="mb-row"><span class="mb-label">Style</span><div class="seg">
+       <button class="segbtn ${cur.type==='alcohol'?'on':''}" data-cur="type" data-v="alcohol">Alcohol</button>
+       <button class="segbtn ${cur.type==='mocktail'?'on':''}" data-cur="type" data-v="mocktail">Mocktail</button>
+     </div></div>
+     <div class="mb-row"><span class="mb-label">Packaging</span><div class="seg">
+       <button class="segbtn ${cur.packaging==='pouch'?'on':''}" data-cur="packaging" data-v="pouch">Pouch</button>
+       <button class="segbtn ${cur.packaging==='bottle'?'on':''}" data-cur="packaging" data-v="bottle">Bottle</button>
+     </div></div>
+     <div class="mb-row"><span class="mb-label">Design</span><div class="seg">
+       <button class="segbtn ${cur.design==='original'?'on':''}" data-cur="design" data-v="original">Original</button>
+       <button class="segbtn ${cur.design==='custom'?'on':''}" data-cur="design" data-v="custom">Custom</button>
+     </div></div>
+     <div class="mb-row"><span class="mb-label">Size</span><div class="seg">
+       <button class="segbtn ${cur.size===150?'on':''}" data-cur="size" data-v="150">150ml</button>
+       <button class="segbtn ${cur.size===250?'on':''}" data-cur="size" data-v="250">250ml</button>
+     </div></div>
+     <div class="mb-row"><span class="mb-label">Qty</span>
+       <div class="qtyrow" style="margin:0">
+         <button class="qtybtn" data-curq="-1" style="width:40px;height:40px;font-size:20px">–</button>
+         <div class="qtyval" id="curqv" style="font-size:24px;min-width:46px">${cur.qty}</div>
+         <button class="qtybtn" data-curq="1" style="width:40px;height:40px;font-size:20px">+</button>
+       </div>
+     </div>
+     <div class="mb-price">£${curPrice} per ${cur.packaging}${cur.design==='custom'?`<span>+ custom design fee, ${CUSTOM_DESIGN_FEE_NOTE}</span>`:''}</div>
+     <button class="btn next" id="addmix" style="margin-top:16px">+ Add to mix</button>
+   </div>
+
+   ${S.mix.length?`<div class="mixlist">${rows}</div>`:''}
+
+   <div class="qtotal">Running total <b id="mixtotal">£${productTotal}</b>${hasCustom?`<span> + custom design fee, ${CUSTOM_DESIGN_FEE_NOTE}</span>`:''}</div>
+   <div class="err" id="err">${totalQty>0&&totalQty<5?'Minimum 5 pouches total across your mix.':''}</div>
+   ${navHtml('Continue →', true,'next', S.mix.length===0)}`;
+ },
 
  flavours:()=>`
   <div class="kicker">Original · Flavours</div>
@@ -161,7 +261,7 @@ const STEPS={
   <div class="cards flav">
     ${FLAVOURS.map(f=>`<div class="card ${S.flavours.includes(f.id)?'sel':''}" data-f="${f.id}"><div class="tick">✓</div>
       <div class="swatch" style="background:${f.color}"></div>
-      <div class="ct">${f.name}</div><div class="cd">${f.desc} · 5% ABV</div></div>`).join('')}
+      <div class="ct">${f.name}</div><div class="cd">${f.desc} · ${S.type==='mocktail'?'0% ABV':'5% ABV'}</div></div>`).join('')}
   </div>
   ${navHtml('Continue →', true,'next', S.flavours.length===0)}`,
 
@@ -175,7 +275,7 @@ const STEPS={
     <button class="qtybtn" data-q="1">+</button>
     <span class="qtyunit">pouches</span>
   </div>
-  <div class="qtotal">Total <b id="qtotal">£${S.qty*PRICE}</b> <span>· £${PRICE} each</span></div>
+  <div class="qtotal">Total <b id="qtotal">£${S.qty*price()}</b> <span>· £${price()} each</span></div>
   ${navHtml('Continue →')}`,
 
  occasion:()=>`
@@ -208,7 +308,8 @@ const STEPS={
     <button class="qtybtn" data-q="1">+</button>
     <span class="qtyunit">pouches</span>
   </div>
-  <div class="qtotal">Total <b id="qtotal">£${(S.qty<5?5:S.qty)*PRICE}</b> <span>· £${PRICE} each</span></div>
+  <div class="qtotal">Total <b id="qtotal">£${(S.qty<5?5:S.qty)*price()}</b> <span>· £${price()} each</span></div>
+  <p class="sub" style="margin-bottom:0;font-size:15px">+ custom design fee, ${CUSTOM_DESIGN_FEE_NOTE}</p>
   ${navHtml('Continue →')}`,
 
  artwork:()=>`
@@ -234,11 +335,20 @@ const STEPS={
   ${navHtml('Review order →')}`,
 
  review:()=>{
-   const rows=[['Type', S.design==='custom'?'Custom design':'Original design']];
-   if(S.design==='original'){ rows.push(['Flavours', S.flavours.map(id=>fname(id)).join(', ')]); rows.push(['Quantity', S.qty+' pouches']); rows.push(['Total', '£'+(S.qty*PRICE)+' (£'+PRICE+' each)']); }
-   else { rows.push(['Occasion', S.occasion]); rows.push(['Base flavour(s)', S.customFlavours.map(id=>fname(id)).join(', ')]); rows.push(['Quantity', (S.qty<5?5:S.qty)+' pouches']); rows.push(['Total', '£'+((S.qty<5?5:S.qty)*PRICE)+' (£'+PRICE+' each)']);
-          rows.push(['Design', S.designMode==='upload'?('Uploaded: '+(S.artworkName||'file')):'Design requested']);
-          if(S.designMode==='request'&&S.brief) rows.push(['Brief', S.brief]); }
+   let rows=[];
+   if(S.design==='mix'){
+     const productTotal=S.mix.reduce((sum,it)=>sum+unitPrice(it.design,it.type,it.size)*it.qty,0);
+     const hasCustom=S.mix.some(it=>it.design==='custom');
+     rows.push(['Design', 'Mix & match']);
+     S.mix.forEach((it,i)=>{ rows.push(['Item '+(i+1), `${it.qty}x ${it.type==='mocktail'?'Mocktail':'Alcohol'} · ${it.packaging==='bottle'?'Bottle':'Pouch'} · ${it.size}ml${it.design==='custom'?' · Custom design':''} — £${unitPrice(it.design,it.type,it.size)*it.qty}`]); });
+     rows.push(['Total', '£'+productTotal+(hasCustom?' + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE:'')]);
+   } else {
+     rows.push(['Design', S.design==='custom'?'Custom design':'Original design'], ['Style', S.type==='mocktail'?'Mocktail (alcohol-free)':'Alcohol'], ['Size', S.size+'ml']);
+     if(S.design==='original'){ rows.push(['Flavours', S.flavours.map(id=>fname(id)).join(', ')]); rows.push(['Quantity', S.qty+' pouches']); rows.push(['Total', '£'+(S.qty*price())+' (£'+price()+' each)']); }
+     else { rows.push(['Occasion', S.occasion]); rows.push(['Base flavour(s)', S.customFlavours.map(id=>fname(id)).join(', ')]); rows.push(['Quantity', (S.qty<5?5:S.qty)+' pouches']); rows.push(['Total', '£'+((S.qty<5?5:S.qty)*price())+' (£'+price()+' each) + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE]);
+            rows.push(['Artwork', S.designMode==='upload'?('Uploaded: '+(S.artworkName||'file')):'Design requested']);
+            if(S.designMode==='request'&&S.brief) rows.push(['Brief', S.brief]); }
+   }
    rows.push(['Name', S.name]); rows.push(['Email', S.email]);
    if(S.phone) rows.push(['Phone', S.phone]); if(S.area) rows.push(['Delivery', S.area]);
    return `<div class="kicker">Final check</div><h1 class="q">Look good?</h1>
@@ -263,9 +373,18 @@ const STEPS={
 function fname(id){const f=FLAVOURS.find(x=>x.id===id);return f?f.name:id;}
 function esc(s){return (''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function orderText(){
-  let t='DRINK STOP order\n\nType: '+(S.design==='custom'?'Custom design':'Original design')+'\n';
-  if(S.design==='original'){t+='Flavours: '+S.flavours.map(fname).join(', ')+'\nQuantity: '+S.qty+' pouches\nTotal: £'+(S.qty*PRICE)+' (£'+PRICE+' each)\n';}
-  else{t+='Occasion: '+S.occasion+'\nBase flavours: '+S.customFlavours.map(fname).join(', ')+'\nQuantity: '+(S.qty<5?5:S.qty)+' pouches\nTotal: £'+((S.qty<5?5:S.qty)*PRICE)+' (£'+PRICE+' each)\nDesign: '+(S.designMode==='upload'?'Artwork uploaded ('+(S.artworkName||'file')+')':'Requested — brief: '+S.brief)+'\n';}
+  let t='DRINK STOP order\n\n';
+  if(S.design==='mix'){
+    const productTotal=S.mix.reduce((sum,it)=>sum+unitPrice(it.design,it.type,it.size)*it.qty,0);
+    const hasCustom=S.mix.some(it=>it.design==='custom');
+    t+='Design: Mix & match\n';
+    S.mix.forEach((it,i)=>{ t+='Item '+(i+1)+': '+it.qty+'x '+(it.type==='mocktail'?'Mocktail':'Alcohol')+' · '+(it.packaging==='bottle'?'Bottle':'Pouch')+' · '+it.size+'ml'+(it.design==='custom'?' · Custom design':'')+' — £'+(unitPrice(it.design,it.type,it.size)*it.qty)+'\n'; });
+    t+='Total: £'+productTotal+(hasCustom?' + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE:'')+'\n';
+  } else {
+    t+='Design: '+(S.design==='custom'?'Custom design':'Original design')+'\nStyle: '+(S.type==='mocktail'?'Mocktail (alcohol-free)':'Alcohol')+'\nSize: '+S.size+'ml\n';
+    if(S.design==='original'){t+='Flavours: '+S.flavours.map(fname).join(', ')+'\nQuantity: '+S.qty+' pouches\nTotal: £'+(S.qty*price())+' (£'+price()+' each)\n';}
+    else{t+='Occasion: '+S.occasion+'\nBase flavours: '+S.customFlavours.map(fname).join(', ')+'\nQuantity: '+(S.qty<5?5:S.qty)+' pouches\nTotal: £'+((S.qty<5?5:S.qty)*price())+' (£'+price()+' each) + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE+'\nDesign: '+(S.designMode==='upload'?'Artwork uploaded ('+(S.artworkName||'file')+')':'Requested — brief: '+S.brief)+'\n';}
+  }
   t+='\nName: '+S.name+'\nEmail: '+S.email+(S.phone?'\nPhone: '+S.phone:'')+(S.area?'\nDelivery: '+S.area:'');
   return t;
 }
@@ -292,11 +411,19 @@ function updateNext(){ const n=document.getElementById('next'); if(n && sequence
 function wire(key){
   const prev=document.getElementById('prev'); if(prev) prev.onclick=()=>go(-1);
   const next=document.getElementById('next'); if(next) next.onclick=()=>{ if(!validate(key))return; go(1); };
-  if(key==='design') el.querySelectorAll('[data-d]').forEach(c=>c.onclick=()=>{S.design=c.dataset.d; S.qty=5; reseq();render();});
+  if(key==='design') el.querySelectorAll('[data-d]').forEach(c=>c.onclick=()=>{S.design=c.dataset.d; S.qty=5; S.type=null; S.size=null; reseq();render();});
+  if(key==='type') el.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>{S.type=c.dataset.t;render();});
+  if(key==='size') el.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>{S.size=parseInt(c.dataset.s);render();});
+  if(key==='mixbuilder'){
+    el.querySelectorAll('[data-cur]').forEach(b=>b.onclick=()=>{const k=b.dataset.cur; S.mixCur[k]=(k==='size')?parseInt(b.dataset.v):b.dataset.v; render();});
+    el.querySelectorAll('[data-curq]').forEach(b=>b.onclick=()=>{const step=parseInt(b.dataset.curq); S.mixCur.qty=Math.max(1,S.mixCur.qty+step); document.getElementById('curqv').textContent=S.mixCur.qty;});
+    const addBtn=document.getElementById('addmix'); if(addBtn) addBtn.onclick=()=>{S.mix.push({...S.mixCur}); S.mixCur={...S.mixCur, qty:5}; render();};
+    el.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{S.mix.splice(parseInt(b.dataset.rm),1); render();});
+  }
   if(key==='flavours') el.querySelectorAll('[data-f]').forEach(c=>c.onclick=()=>{toggle(S.flavours,c.dataset.f);render();});
   if(key==='customflav') el.querySelectorAll('[data-cf]').forEach(c=>c.onclick=()=>{toggle(S.customFlavours,c.dataset.cf);render();});
   if(key==='occasion') el.querySelectorAll('[data-o]').forEach(c=>c.onclick=()=>{S.occasion=c.dataset.o;render();});
-  if(key==='qty'||key==='qtyc'){el.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const min=5,step=parseInt(b.dataset.q); S.qty=Math.max(min,(S.qty<min?min:S.qty)+step); document.getElementById('qv').textContent=S.qty; const qt=document.getElementById('qtotal'); if(qt)qt.textContent='£'+(S.qty*PRICE);});}
+  if(key==='qty'||key==='qtyc'){el.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const min=5,step=parseInt(b.dataset.q); S.qty=Math.max(min,(S.qty<min?min:S.qty)+step); document.getElementById('qv').textContent=S.qty; const qt=document.getElementById('qtotal'); if(qt)qt.textContent='£'+(S.qty*price());});}
   if(key==='artwork'){el.querySelectorAll('[data-dm]').forEach(c=>c.onclick=()=>{S.designMode=c.dataset.dm;render();}); dmPanel(); updateNext();}
   if(key==='details'){['name','email','phone','area'].forEach(k=>{const i=document.getElementById('f_'+k); if(i)i.oninput=e=>S[k]=e.target.value;});}
   if(key==='review'){const pl=document.getElementById('place'); if(pl)pl.onclick=()=>go(1);}
@@ -308,6 +435,7 @@ function validate(key){
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email)){err.textContent='Need a valid email to confirm.';return false;}
     err.textContent='';}
   if(key==='artwork') return artworkValid();
+  if(key==='mixbuilder'){ const totalQty=S.mix.reduce((sum,it)=>sum+it.qty,0); if(totalQty<5){ const err=document.getElementById('err'); if(err)err.textContent='Minimum 5 pouches total across your mix.'; return false; } }
   return true;
 }
 render();
