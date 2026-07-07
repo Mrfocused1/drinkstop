@@ -243,6 +243,13 @@
   .sustainability__products--metric{width:min(88vw,15rem)!important;padding:1rem 1.25rem!important;}
   .sustainability__products--metric--title{font-size:clamp(2rem,7vw,3.25rem)!important;line-height:1!important;}
 }
+@media(min-width:64em){
+  /* Bug 3 fix: lifestyle pill title was 3.75rem (60px) — wrapped to 2 lines and overflowed the 5.625rem-tall pill on desktop. */
+  .lifestyle__card--title{font-size:2.75rem!important;}
+  /* Bug 4 fix: metric title was 4.375rem (70px) — "custom" overflowed the 15rem bordered box on desktop. */
+  .sustainability__products--metric{width:17rem!important;}
+  .sustainability__products--metric--title{font-size:3.5rem!important;}
+}
 @media(max-width:1023px){
   /* close the desktop scroll-spacer gap between product cards */
   .products div[style="height: 50svh"]{height:6svh!important;}
@@ -655,7 +662,7 @@
                   <a href="product/summerset/index.html" class="float-link" data-product-modal data-type="ajax"></a>
                 </div>
 
-                                              <div class="product-card" style="background-color: #C9443A;" id="blutiful">
+                                              <div class="product-card" style="background-color: #EB030D;" id="blutiful">
                   <div class="container">
                     <div class="product-content">
                                               <div class="product-versions">
@@ -684,7 +691,7 @@
                       </div>
                     </div>
 
-                    <div class="product-view" style="background-color: #C9443A;">
+                    <div class="product-view" style="background-color: #EB030D;">
                       <div class="product-image-wrapper">
                         <img loading="lazy" width="1672" height="941" src="wp-content/uploads/2025/09/drinkstop-blutiful.webp" class="product-image-bg" alt="" decoding="async">
                         <picture>
@@ -703,7 +710,7 @@
                   <a href="product/blutiful/index.html" class="float-link" data-product-modal data-type="ajax"></a>
                 </div>
 
-                                              <div class="product-card" style="background-color: #EE7C1F;" id="rumazing">
+                                              <div class="product-card" style="background-color: #FD6B01;" id="rumazing">
                   <div class="container">
                     <div class="product-content">
                                               <div class="product-versions">
@@ -732,7 +739,7 @@
                       </div>
                     </div>
 
-                    <div class="product-view" style="background-color: #EE7C1F;">
+                    <div class="product-view" style="background-color: #FD6B01;">
                       <div class="product-image-wrapper">
                         <img loading="lazy" width="1672" height="941" src="wp-content/uploads/2025/09/drinkstop-rumazing.webp" class="product-image-bg" alt="" decoding="async">
                         <picture>
