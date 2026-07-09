@@ -148,10 +148,10 @@ let idx=0;
 
 // build the ordered list of step-keys based on branch
 function sequence(){
-  const base=['intro','design','type','size'];
+  const base=['intro','choose','design','type','size'];
   if(S.design==='original') return [...base,'flavours','qty','details','review','done'];
   if(S.design==='custom')   return [...base,'occasion','customflav','qtyc','artwork','details','review','done'];
-  if(S.design==='mix')      return ['intro','design','mixbuilder','details','review','done'];
+  if(S.design==='mix')      return ['intro','choose','design','mixbuilder','details','review','done'];
   return base;
 }
 const el=document.getElementById('step');
@@ -159,7 +159,7 @@ const pbar=document.getElementById('pbar'), plab=document.getElementById('plab')
 
 function render(){
   const seq=sequence(); const key=seq[idx];
-  const totalSteps = S.design ? (seq.length-1) : 8; // exclude 'done'; estimate 8 before branch chosen
+  const totalSteps = S.design ? (seq.length-1) : 9; // exclude 'done'; estimate 9 before branch chosen
   const shown = Math.min(idx+1, totalSteps);
   pbar.style.width=(key==='done'?100:(idx/totalSteps)*100)+'%';
   plab.textContent = key==='done' ? 'Done' : ('Step '+shown+' of '+totalSteps);
@@ -181,6 +181,18 @@ const STEPS={
   <h1 class="q">Let's get<br>the party started.</h1>
   <p class="sub">Frozen rum cocktails, delivered your way. Answer a few quick questions and we'll sort your order — standard flavours or a fully custom, branded pouch.</p>
   ${navHtml('Start →', false)}`,
+
+ choose:()=>`
+  <div class="kicker">The basics</div>
+  <h1 class="q">Quick order,<br>or the full experience?</h1>
+  <p class="sub">However you'd rather do this — both get you the same pouches.</p>
+  <div class="cards">
+    <div class="card" data-choice="quick"><div class="tick">✓</div>
+      <div class="ct">Quick Order</div><div class="cd">One page, pick your pouch and go. Fastest way to order.</div></div>
+    <div class="card" data-choice="full"><div class="tick">✓</div>
+      <div class="ct">Full Experience</div><div class="cd">Step-by-step, with mix &amp; match and custom design options.</div></div>
+  </div>
+  <div class="nav"><button class="btn prev" id="prev">← Back</button></div>`,
 
  design:()=>`
   <div class="kicker">The basics</div>
@@ -429,6 +441,10 @@ function updateNext(){ const n=document.getElementById('next'); if(n && sequence
 function wire(key){
   const prev=document.getElementById('prev'); if(prev) prev.onclick=()=>go(-1);
   const next=document.getElementById('next'); if(next) next.onclick=()=>{ if(!validate(key))return; go(1); };
+  if(key==='choose') el.querySelectorAll('[data-choice]').forEach(c=>c.onclick=()=>{
+    if(c.dataset.choice==='quick'){ window.location.href='quick-order.html'; return; }
+    go(1);
+  });
   if(key==='design') el.querySelectorAll('[data-d]').forEach(c=>c.onclick=()=>{S.design=c.dataset.d; S.qty=5; S.type=null; S.size=null; reseq();render();});
   if(key==='type') el.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>{S.type=c.dataset.t;render();});
   if(key==='size') el.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>{S.size=parseInt(c.dataset.s);render();});
