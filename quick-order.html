@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Order — DRINK STOP</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp">
+<style>
+@font-face{font-family:'Adieu';src:url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff2') format('woff2'),url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff') format('woff');font-weight:900;font-display:swap;}
+:root{--green:#00ef02;--cream:#fffbe6;--ink:#0a0a0a;--red:#e8202a;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);line-height:1.4;-webkit-font-smoothing:antialiased;padding-bottom:90px;}
+.ohead{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;}
+.ohead .logo{height:44px;width:auto;display:block}
+.ohead a.back{font-weight:800;text-decoration:none;color:var(--ink);font-size:14px;display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:2px solid var(--ink);border-radius:999px}
+.ohead a.back:hover{background:var(--ink);color:var(--cream)}
+h1.q{font-family:'Adieu','Manrope',sans-serif;font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:6px}
+p.sub{opacity:.7;font-size:15px;margin-bottom:28px;max-width:520px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:start;}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;}}
+.section{margin-bottom:30px;}
+.label{font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.05em;opacity:.6;margin-bottom:12px;}
+.seg{display:flex;gap:10px;flex-wrap:wrap;}
+.segbtn{font:inherit;font-weight:800;font-size:14px;padding:12px 22px;border-radius:999px;border:2.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:.15s;-webkit-appearance:none;appearance:none}
+.segbtn.on{background:var(--ink);color:#fff}
+.segbtn:hover{transform:translateY(-1px)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{display:flex;align-items:center;gap:10px;border:2.5px solid var(--ink);border-radius:16px;padding:12px 16px;cursor:pointer;background:#fff;transition:.15s;}
+.chip:hover{transform:translateY(-2px)}
+.chip.sel{background:var(--green);border-color:var(--green);}
+.chip .swatch{width:16px;height:16px;border-radius:5px;flex-shrink:0;}
+.chip .cname{font-weight:800;font-size:14px;}
+.qtyrow{display:flex;align-items:center;gap:16px;}
+.qtybtn{width:48px;height:48px;border-radius:50%;border:2.5px solid var(--ink);background:#fff;font-size:22px;font-weight:900;cursor:pointer;color:var(--ink);-webkit-appearance:none;appearance:none}
+.qtybtn:hover{background:var(--ink);color:#fff}
+.qtyval{font-family:'Adieu',sans-serif;font-weight:900;font-size:34px;min-width:64px;text-align:center}
+.custom-panel{margin-top:16px;padding:18px;border:2px dashed var(--ink);border-radius:16px;display:none;}
+.custom-panel.show{display:block;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-weight:800;font-size:13px;margin-bottom:6px;}
+.field input,.field textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:2.5px solid var(--ink);border-radius:12px;background:#fff;}
+.field textarea{min-height:90px;resize:vertical;}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px #00ef0233}
+.err{color:var(--red);font-weight:700;font-size:13px;margin-top:4px;min-height:16px}
+/* summary card */
+.summary{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:26px;position:sticky;top:24px;}
+.summary h3{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:20px;margin-bottom:16px;}
+.sumrow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;font-size:14px;border-bottom:1px solid #00000012;}
+.sumrow:last-of-type{border-bottom:0;}
+.sumrow .k{opacity:.65;font-weight:700;}
+.sumrow .v{font-weight:800;text-align:right;}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 6px;padding-top:14px;border-top:2px solid var(--ink);}
+.sum-total b{font-family:'Adieu',sans-serif;font-size:30px;}
+.sum-note{font-size:12px;opacity:.6;margin-bottom:16px;}
+.placebtn{width:100%;font:inherit;font-weight:800;font-size:16px;letter-spacing:.02em;padding:16px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;background:var(--green);text-transform:uppercase;-webkit-appearance:none;appearance:none;}
+.placebtn:hover{filter:brightness(.94)}
+.placebtn:disabled{opacity:.4;cursor:not-allowed}
+/* mobile sticky bar */
+.mobilebar{display:none;}
+@media(max-width:900px){
+  .summary{position:static;}
+  body{padding-bottom:0;}
+}
+.foot{text-align:center;padding:16px;font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.5;text-transform:uppercase}
+.done-view{max-width:520px;margin:60px auto;text-align:center;padding:0 24px;}
+.done-view .check{width:88px;height:88px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:46px}
+.done-view .big{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(34px,7vw,60px);line-height:.95;margin-bottom:14px}
+.done-view .btn{display:inline-block;text-decoration:none;font-weight:800;padding:14px 28px;border-radius:999px;border:3px solid var(--ink);color:var(--ink);margin:6px;}
+.done-view .btn.primary{background:var(--green);border-color:var(--green);}
+</style>
+</head>
+<body>
+<header class="ohead">
+  <a href="index.html"><img class="logo" src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="DRINK STOP"></a>
+  <a class="back" href="index.html">✕ Close</a>
+</header>
+
+<main id="main">
+  <div style="max-width:1100px;margin:0 auto;padding:8px 24px 0">
+    <h1 class="q">Quick order.</h1>
+    <p class="sub">Pick your pouch, set your quantity, done. For mix-and-match orders or bulk/event pricing, use the <a href="order.html" style="color:inherit;text-decoration:underline">full order form</a> instead.</p>
+  </div>
+
+  <div class="wrap">
+    <div>
+      <div class="section">
+        <div class="label">Style</div>
+        <div class="seg">
+          <button class="segbtn" data-set="type" data-v="alcohol">Alcohol</button>
+          <button class="segbtn" data-set="type" data-v="mocktail">Mocktail</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">Size</div>
+        <div class="seg">
+          <button class="segbtn" data-set="size" data-v="150">150ml</button>
+          <button class="segbtn" data-set="size" data-v="250">250ml</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">Design</div>
+        <div class="seg">
+          <button class="segbtn" data-set="design" data-v="original">Original</button>
+          <button class="segbtn" data-set="design" data-v="custom">Custom</button>
+        </div>
+        <div class="custom-panel" id="customPanel">
+          <div class="field"><label>Describe your design (colours, logo, event, vibe)</label><textarea id="f_brief" placeholder="The more detail the better — we'll follow up with a quote and concept."></textarea></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">Flavours</div>
+        <div class="chips" id="flavourChips"></div>
+      </div>
+
+      <div class="section">
+        <div class="label">Quantity</div>
+        <div class="qtyrow">
+          <button class="qtybtn" data-q="-1">–</button>
+          <div class="qtyval" id="qv">5</div>
+          <button class="qtybtn" data-q="1">+</button>
+          <span style="opacity:.6;font-weight:700">pouches (min 5)</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">Your details</div>
+        <div class="field"><label>Full name</label><input id="f_name" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input id="f_email" type="email" placeholder="you@email.com"></div>
+        <div class="field"><label>Phone (optional)</label><input id="f_phone" placeholder="+44 …"></div>
+        <div class="field"><label>Delivery area / postcode</label><input id="f_area" placeholder="e.g. London SE1"></div>
+        <div class="err" id="err"></div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h3>Your order</h3>
+      <div class="sumrow"><span class="k">Style</span><span class="v" id="sumStyle">Alcohol</span></div>
+      <div class="sumrow"><span class="k">Size</span><span class="v" id="sumSize">150ml</span></div>
+      <div class="sumrow"><span class="k">Design</span><span class="v" id="sumDesign">Original</span></div>
+      <div class="sumrow"><span class="k">Flavours</span><span class="v" id="sumFlavours">—</span></div>
+      <div class="sumrow"><span class="k">Quantity</span><span class="v" id="sumQty">5 pouches</span></div>
+      <div class="sum-total"><span>Total</span><b id="sumTotal">£25</b></div>
+      <div class="sum-note" id="sumNote"></div>
+      <button class="placebtn" id="placeBtn" disabled>Select flavours to continue</button>
+    </div>
+  </div>
+</main>
+
+<div class="foot">DRINK STOP · Please drink responsibly · 18+ only</div>
+
+<script>
+let PRICING={original:{alcohol:{150:5,250:8},mocktail:{150:3,250:4}},custom:{alcohol:{150:6,250:9},mocktail:{150:4,250:5}}};
+let CUSTOM_DESIGN_FEE_NOTE='from £30 (confirmed on request)';
+document.addEventListener('drinkstop:content-applied', e => {
+  const data = e.detail;
+  if (data && data.pricing) { PRICING = { original: data.pricing.original, custom: data.pricing.custom }; CUSTOM_DESIGN_FEE_NOTE = data.pricing.customDesignFeeNote || CUSTOM_DESIGN_FEE_NOTE; renderSummary(); }
+});
+
+const FLAVOURS=[
+  {id:'run',name:'Rum For Your Life',desc:'Rum, fruit punch & watermelon',color:'#e8202a'},
+  {id:'suck',name:'Suck Your Rum',desc:'Rum, apple, lemon & ginger',color:'#f2b200'},
+  {id:'rumba',name:'Rumbaclart 2.0',desc:'Pineapple, apple & guava',color:'#3cc24a'},
+];
+const MOCKTAIL_FLAVOURS=[
+  {id:'m-watermelon-pineapple',name:'Watermelon & Pineapple',color:'#e8202a'},
+  {id:'m-lemon-apple',name:'Lemon & Apple',color:'#f2b200'},
+  {id:'m-apple-mango',name:'Apple & Mango',color:'#FD6B01'},
+  {id:'m-blue-raspberry',name:'Blue Raspberry, Apple & Lemon',color:'#1f6fd6'},
+  {id:'m-ginger-apple-lemon',name:'Ginger, Apple & Lemon',color:'#3cc24a'},
+];
+
+const S = { type:'alcohol', size:150, design:'original', flavours:[], qty:5, name:'', email:'', phone:'', area:'', brief:'' };
+
+function currentFlavourList(){ return S.type==='mocktail' ? MOCKTAIL_FLAVOURS : FLAVOURS; }
+function price(){ return PRICING[S.design==='custom'?'custom':'original'][S.type][S.size]; }
+function fname(id){ const f = FLAVOURS.find(x=>x.id===id) || MOCKTAIL_FLAVOURS.find(x=>x.id===id); return f ? f.name : id; }
+function esc(s){ return (''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function renderChips(){
+  document.getElementById('flavourChips').innerHTML = currentFlavourList().map(f => `
+    <div class="chip ${S.flavours.includes(f.id)?'sel':''}" data-flavour="${f.id}">
+      <span class="swatch" style="background:${f.color}"></span><span class="cname">${esc(f.name)}</span>
+    </div>`).join('');
+  document.querySelectorAll('[data-flavour]').forEach(chip => {
+    chip.onclick = () => {
+      const id = chip.dataset.flavour;
+      const i = S.flavours.indexOf(id);
+      if (i < 0) S.flavours.push(id); else S.flavours.splice(i, 1);
+      renderChips(); renderSummary();
+    };
+  });
+}
+
+function renderSummary(){
+  document.getElementById('sumStyle').textContent = S.type === 'mocktail' ? 'Mocktail' : 'Alcohol';
+  document.getElementById('sumSize').textContent = S.size + 'ml';
+  document.getElementById('sumDesign').textContent = S.design === 'custom' ? 'Custom' : 'Original';
+  document.getElementById('sumFlavours').textContent = S.flavours.length ? S.flavours.map(fname).join(', ') : '—';
+  document.getElementById('sumQty').textContent = S.qty + ' pouches';
+  const total = S.qty * price();
+  document.getElementById('sumTotal').textContent = '£' + total;
+  document.getElementById('sumNote').textContent = S.design === 'custom' ? ('+ custom design fee, ' + CUSTOM_DESIGN_FEE_NOTE) : ('£' + price() + ' each');
+  const btn = document.getElementById('placeBtn');
+  btn.disabled = S.flavours.length === 0;
+  btn.textContent = S.flavours.length === 0 ? 'Select flavours to continue' : `Place order · £${total}`;
+}
+
+document.querySelectorAll('[data-set]').forEach(btn => {
+  btn.onclick = () => {
+    const key = btn.dataset.set, val = key === 'size' ? parseInt(btn.dataset.v) : btn.dataset.v;
+    S[key] = val;
+    document.querySelectorAll(`[data-set="${key}"]`).forEach(b => b.classList.toggle('on', b.dataset.v == btn.dataset.v));
+    if (key === 'type') { S.flavours = []; renderChips(); }
+    if (key === 'design') document.getElementById('customPanel').classList.toggle('show', val === 'custom');
+    renderSummary();
+  };
+});
+// set initial active state
+document.querySelector('[data-set="type"][data-v="alcohol"]').classList.add('on');
+document.querySelector('[data-set="size"][data-v="150"]').classList.add('on');
+document.querySelector('[data-set="design"][data-v="original"]').classList.add('on');
+
+document.querySelectorAll('[data-q]').forEach(b => {
+  b.onclick = () => { S.qty = Math.max(5, S.qty + parseInt(b.dataset.q)); document.getElementById('qv').textContent = S.qty; renderSummary(); };
+});
+
+['name','email','phone','area'].forEach(k => { document.getElementById('f_'+k).oninput = e => S[k] = e.target.value; });
+document.getElementById('f_brief').oninput = e => S.brief = e.target.value;
+
+function orderText(){
+  let t = 'DRINK STOP quick order\n\nStyle: ' + (S.type==='mocktail'?'Mocktail (alcohol-free)':'Alcohol') + '\nSize: ' + S.size + 'ml\nDesign: ' + (S.design==='custom'?'Custom design':'Original design') + '\n';
+  t += 'Flavours: ' + S.flavours.map(fname).join(', ') + '\nQuantity: ' + S.qty + ' pouches\nTotal: £' + (S.qty*price()) + ' (£' + price() + ' each)';
+  if (S.design === 'custom') t += ' + custom design fee, ' + CUSTOM_DESIGN_FEE_NOTE + (S.brief ? '\nBrief: ' + S.brief : '');
+  t += '\n\nName: ' + S.name + '\nEmail: ' + S.email + (S.phone?'\nPhone: '+S.phone:'') + (S.area?'\nDelivery: '+S.area:'');
+  return t;
+}
+
+document.getElementById('placeBtn').onclick = () => {
+  const err = document.getElementById('err');
+  if (!S.name.trim()) { err.textContent = 'Pop your name in.'; return; }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email)) { err.textContent = 'Need a valid email to confirm.'; return; }
+  err.textContent = '';
+  const body = encodeURIComponent(orderText());
+  document.getElementById('main').innerHTML = `
+    <div class="done-view">
+      <div class="check">✓</div>
+      <div class="big">Order in.</div>
+      <p class="sub" style="margin:0 auto 20px">Nice one, ${esc(S.name.split(' ')[0]||'')}. We'll email <b>${esc(S.email)}</b> shortly to confirm.</p>
+      <a class="btn primary" href="mailto:hello@drinkstop.co.uk?subject=DRINK%20STOP%20Quick%20Order&body=${body}">Email us a copy →</a>
+      <a class="btn" href="index.html">Back to site</a>
+    </div>`;
+};
+
+renderChips();
+renderSummary();
+</script>
+<script src="assets/content-loader.js"></script>
+</body>
+</html>

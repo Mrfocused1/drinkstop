@@ -120,6 +120,14 @@ const FLAVOURS=[
   {id:'suck',name:'Suck Your Rum',desc:'Rum, apple, lemon & ginger',color:'#f2b200'},
   {id:'rumba',name:'Rumbaclart 2.0',desc:'Pineapple, apple & guava',color:'#3cc24a'},
 ];
+const MOCKTAIL_FLAVOURS=[
+  {id:'m-watermelon-pineapple',name:'Watermelon & Pineapple',desc:'Watermelon and pineapple',color:'#e8202a'},
+  {id:'m-lemon-apple',name:'Lemon & Apple',desc:'Lemon and apple',color:'#f2b200'},
+  {id:'m-apple-mango',name:'Apple & Mango',desc:'Apple and mango',color:'#FD6B01'},
+  {id:'m-blue-raspberry',name:'Blue Raspberry, Apple & Lemon',desc:'Blue raspberry, apple and lemon',color:'#1f6fd6'},
+  {id:'m-ginger-apple-lemon',name:'Ginger, Apple & Lemon',desc:'Ginger, apple and lemon',color:'#3cc24a'},
+];
+function currentFlavourList(){ return S.type==='mocktail' ? MOCKTAIL_FLAVOURS : FLAVOURS; }
 let PRICING={original:{alcohol:{150:5,250:8},mocktail:{150:3,250:4}},custom:{alcohol:{150:6,250:9},mocktail:{150:4,250:5}}};
 let CUSTOM_DESIGN_FEE_NOTE='from £30 (confirmed on request)';
 // TODO(supabase): once wired up, PRICING/CUSTOM_DESIGN_FEE_NOTE should be fetched from Supabase
@@ -269,7 +277,7 @@ const STEPS={
   <h1 class="q">Pick your<br>flavours.</h1>
   <p class="sub">Choose one or more. You'll set quantities next.</p>
   <div class="cards flav">
-    ${FLAVOURS.map(f=>`<div class="card ${S.flavours.includes(f.id)?'sel':''}" data-f="${f.id}"><div class="tick">✓</div>
+    ${currentFlavourList().map(f=>`<div class="card ${S.flavours.includes(f.id)?'sel':''}" data-f="${f.id}"><div class="tick">✓</div>
       <div class="swatch" style="background:${f.color}"></div>
       <div class="ct">${f.name}</div><div class="cd">${f.desc} · ${S.type==='mocktail'?'0% ABV':'5% ABV'}</div></div>`).join('')}
   </div>
@@ -301,9 +309,9 @@ const STEPS={
  customflav:()=>`
   <div class="kicker">Custom · What's inside</div>
   <h1 class="q">Which base<br>flavour(s)?</h1>
-  <p class="sub">The pouch is yours — the rum inside is ours. Pick what goes in.</p>
+  <p class="sub">The pouch is yours — ${S.type==='mocktail'?'the mix':'the rum'} inside is ours. Pick what goes in.</p>
   <div class="cards flav">
-    ${FLAVOURS.map(f=>`<div class="card ${S.customFlavours.includes(f.id)?'sel':''}" data-cf="${f.id}"><div class="tick">✓</div>
+    ${currentFlavourList().map(f=>`<div class="card ${S.customFlavours.includes(f.id)?'sel':''}" data-cf="${f.id}"><div class="tick">✓</div>
       <div class="swatch" style="background:${f.color}"></div><div class="ct">${f.name}</div><div class="cd">${f.desc}</div></div>`).join('')}
   </div>
   ${navHtml('Continue →', true,'next', S.customFlavours.length===0)}`,
@@ -380,7 +388,7 @@ const STEPS={
  }
 };
 
-function fname(id){const f=FLAVOURS.find(x=>x.id===id);return f?f.name:id;}
+function fname(id){const f=FLAVOURS.find(x=>x.id===id)||MOCKTAIL_FLAVOURS.find(x=>x.id===id);return f?f.name:id;}
 function esc(s){return (''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function orderText(){
   let t='DRINK STOP order\n\n';
