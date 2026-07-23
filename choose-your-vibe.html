@@ -32,28 +32,86 @@
     }
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;min-width:320px;color:var(--ink);background:var(--paper);font-family:'Manrope',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+    body{margin:0;min-width:320px;padding-top:5.5625rem;color:var(--ink);background:var(--paper);font-family:'Manrope',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
     button,input{font:inherit}button{color:inherit}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
     .display{font-family:'Adieu','Arial Black',Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-weight:900;letter-spacing:-.02em;line-height:.92;text-transform:uppercase}
     .eyebrow{margin:0 0 .65rem;color:var(--red);font-size:.82rem;font-weight:900;letter-spacing:.045em;text-transform:uppercase}
     .shell{min-height:100vh;overflow:hidden}
 
-    /* HEADER — matches site black bar + logo */
-    .header{position:relative;z-index:50;display:grid;min-height:88px;grid-template-columns:minmax(180px,1fr) auto minmax(140px,1fr);align-items:center;gap:1.5rem;padding:0 2rem;color:#fff;background:var(--ink)}
-    .brand{justify-self:start;display:inline-flex;align-items:center;height:48px}
-    .brand img{height:100%;width:auto;object-fit:contain;filter:brightness(0) invert(1)}
-    .nav{display:flex;gap:clamp(1.2rem,2.5vw,2.8rem);align-items:center}
-    .nav a{position:relative;padding:.8rem 0;font-size:.88rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-    .nav a.active{color:var(--yellow)}
-    .nav a::after{position:absolute;right:0;bottom:.35rem;left:0;height:3px;border-radius:99px;background:var(--yellow);content:"";opacity:0;transform:scaleX(.4);transition:.2s var(--ui)}
-    .nav a:hover::after,.nav a.active::after{opacity:1;transform:scaleX(1)}
-    .header-actions{display:flex;align-items:center;justify-self:end;gap:1rem}
-    .icon{display:grid;width:43px;height:43px;place-items:center;border:2px solid #fff;border-radius:50%;background:transparent;color:#fff;font-size:1.1rem;cursor:pointer}
+    /* HEADER — homepage main-header design (green bar, Adieu nav, hover text-swap) */
+    .container{width:90rem;max-width:100%;margin:0 auto;padding-right:1rem;padding-left:1rem}
+    @media(min-width:64em){.container{padding-right:1.25rem;padding-left:1.25rem}}
+    .main-header{position:fixed;top:0;left:0;z-index:60;width:100%;height:5.5625rem;background-color:#3cf02d;border-bottom:1px solid #000;padding-top:1.25rem;padding-bottom:1.25rem}
+    .main-header:before{content:"";position:absolute;top:0;left:0;z-index:-10;width:100%;height:100%;background-color:#ffffe7;opacity:0;transition:opacity .3s .2s,background-color .3s}
+    .main-header .container{display:flex;align-items:center;justify-content:flex-start}
+    .main-header-wrapper{display:none}
+    @media(min-width:64em){.main-header-wrapper{display:flex;align-items:center;justify-content:space-between;width:100%}}
+    .main-header__logo{position:absolute;top:50%;left:50%;display:inline-flex;width:5.0625rem;height:3rem;transform:translate(-50%,-50%)}
+    @media(min-width:64em){.main-header__logo{position:static;margin-right:2.5rem;transform:none}}
+    @media(min-width:80em){.main-header__logo{margin-right:3.75rem}}
+    .main-header-nav__list{display:flex;align-items:center;gap:1.875rem;margin:0;padding:0;list-style:none}
+    @media(min-width:80em){.main-header-nav__list{gap:2.5rem}}
+    .main-header-nav__list li{position:relative;z-index:1;overflow:hidden}
+    .main-header-nav__list li a{display:inline-flex;font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase}
+    .is-default{position:relative}
+    .is-absolute{position:absolute;transform:translateY(150%)}
+    .is-default,.is-absolute{z-index:1;line-height:1.25;transition:transform .3s}
+    .main-header-nav__list li:hover .main-header__nav-item-text.is-default{transform:translateY(-150%)}
+    .main-header-nav__list li:hover .main-header__nav-item-text.is-absolute{transform:translateY(-100%)}
+    .main-header-actions{display:flex;align-items:center;gap:1.25rem}
+    .drinks-dropdown{position:relative}
+    .drinks-dropdown__menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border-radius:1rem;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:.5rem;min-width:200px;opacity:0;visibility:hidden;transition:opacity .15s ease,transform .15s ease;z-index:50}
+    .drinks-dropdown:hover .drinks-dropdown__menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px)}
+    .drinks-dropdown__menu a{display:block;padding:.6rem .9rem;border-radius:.6rem;color:#0a0a0a;text-decoration:none;font-family:'Manrope',sans-serif;font-size:.9rem;font-weight:600;text-transform:none;white-space:nowrap}
+    .drinks-dropdown__menu a:hover{background:#f3f3f3}
+    .btn{position:relative;z-index:2;display:inline-flex;width:fit-content;padding:.75rem 1.25rem;background-color:#ffde14;border:1px solid black;border-radius:1.875rem;color:#000;font-family:'Adieu',sans-serif;font-size:.875rem;font-weight:900;line-height:1;text-transform:uppercase;cursor:pointer;transition:color .3s}
+    @media(min-width:40em){.btn{font-size:1rem}}
+    .btn:hover .btn-text-wrapper .btn-text.is-default{transform:translateY(-150%)}
+    .btn:hover .btn-text-wrapper .btn-text.is-absolute{transform:translateY(0)}
+    .btn--ghost{background-color:transparent}
+    .btn--icon{align-items:center;gap:.625rem;padding:.1875rem 1.25rem .1875rem .1875rem}
+    .btn--icon.btn--ghost:hover .btn__icon-slot{background-color:#ffffe7}
+    .btn--icon.btn--ghost:hover .btn__icon-slot svg path{fill:#000}
+    .btn__icon-slot{display:flex;align-items:center;justify-content:center;width:2.1875rem;height:2.1875rem;background-color:#000;border-radius:50%;transition:background-color .3s}
+    .btn__icon-slot svg path{fill:#ffffe7;transition:fill .3s}
+    .btn-text-wrapper{position:relative;flex-direction:column;align-items:center;display:flex;justify-content:center;overflow:hidden}
+    .vibe-cart{position:relative;display:flex;align-items:center;justify-content:center;width:2.1875rem;height:2.1875rem;border:0;border-radius:50%;background:#000;cursor:pointer;transition:background-color .3s;padding:0}
+    .vibe-cart svg path{fill:#ffffe7;transition:fill .3s}
+    .vibe-cart:hover{background-color:#ffffe7}
+    .vibe-cart:hover svg path{fill:#000}
+    .vibe-cart .count{position:absolute;top:-8px;right:-8px;display:grid;min-width:22px;height:22px;place-items:center;border:2px solid #000;border-radius:99px;background:var(--yellow);color:var(--ink);font-size:.68rem;font-weight:900}
+    .offcanvas-toggle{position:absolute;top:1.5625rem;right:1.5rem;display:flex;width:2.375rem;height:2.375rem;min-width:2.75rem;min-height:2.75rem;justify-content:center;align-items:center;background-color:#000;border:0;border-radius:50%;outline:1px solid #000;outline-offset:4px;cursor:pointer}
+    @media(min-width:64em){.offcanvas-toggle{display:none}}
+    .offcanvas-toggle svg{position:absolute;top:50%;left:50%;pointer-events:none;transform:translate(-50%,-50%);transition:opacity .3s}
+    .offcanvas-toggle__menu{opacity:1}
+    .offcanvas-toggle__close{opacity:0}
+    .has-offcanvas .offcanvas{opacity:1;pointer-events:auto}
+    @media(min-width:64em){.has-offcanvas .offcanvas{display:none}}
+    .has-offcanvas .offcanvas-toggle__menu{opacity:0}
+    .has-offcanvas .offcanvas-toggle__close{opacity:1}
+    .has-offcanvas{overflow:hidden}
+    .offcanvas{position:fixed;top:0;left:0;z-index:50;width:100%;height:100dvh;padding:9rem 1.25rem 2rem;background-color:#3cf02d;opacity:0;overflow-y:auto;pointer-events:none;transition:opacity .3s}
+    .offcanvas-nav{width:100%;height:100%}
+    .offcanvas-nav a{display:inline-flex}
+    .offcanvas-menu,.offcanvas-submenu{display:flex;flex-direction:column;width:100%;margin:0;padding:0;list-style:none}
+    .offcanvas-menu{align-items:flex-start;gap:1.5rem}
+    .offcanvas-submenu{display:none;gap:1.25rem;margin-bottom:.25rem;margin-top:1.5rem}
+    .offcanvas-menu__item a,.offcanvas-submenu__item a{color:#000;font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;line-height:1}
+    .offcanvas-menu__item a{font-size:1.5rem}
+    .offcanvas-menu__item--has-submenu>a{position:relative;padding-right:2.5rem}
+    .offcanvas-menu__item--has-submenu>a:after{content:"";position:absolute;top:0;right:.25rem;width:1.5rem;height:1.5rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31' height='30' viewBox='0 0 31 30' fill='none'%3E%3Cpath d='M25.4597 12.4107L16.0847 21.4732C15.9976 21.5575 15.8942 21.6243 15.7804 21.6699C15.6666 21.7155 15.5446 21.739 15.4214 21.739C15.2982 21.739 15.1762 21.7155 15.0624 21.6699C14.9486 21.6243 14.8452 21.5575 14.7581 21.4732L5.38314 12.4107C5.20723 12.2407 5.1084 12.01 5.1084 11.7695C5.1084 11.5291 5.20723 11.2984 5.38314 11.1284C5.55905 10.9583 5.79764 10.8628 6.04642 10.8628C6.2952 10.8628 6.53379 10.9583 6.7097 11.1284L15.4214 19.5508L24.1331 11.1284C24.2202 11.0442 24.3237 10.9774 24.4375 10.9318C24.5513 10.8862 24.6732 10.8628 24.7964 10.8628C24.9196 10.8628 25.0416 10.8862 25.1554 10.9318C25.2692 10.9774 25.3726 11.0442 25.4597 11.1284C25.5468 11.2126 25.6159 11.3125 25.663 11.4225C25.7102 11.5326 25.7344 11.6505 25.7344 11.7695C25.7344 11.8886 25.7102 12.0065 25.663 12.1165C25.6159 12.2266 25.5468 12.3265 25.4597 12.4107Z' fill='black'/%3E%3C/svg%3E");background-size:1.625rem;background-repeat:no-repeat;background-position:center}
+    .offcanvas-menu__item--open .offcanvas-submenu{display:flex}
+    .offcanvas-submenu__item a{font-size:1.125rem}
+    .has-scrolled .main-header{transition:transform .3s .3s}
+    .has-scrolled .main-header:before{opacity:1}
+    .has-sticky-header .main-header{transition:transform .3s;transform:translateY(-100%)}
+    .has-offcanvas.has-scrolled .main-header:before{background-color:#3cf02d}
+    .has-offcanvas .mobile-progress{opacity:0}
     .cart{position:relative;display:grid;min-width:48px;min-height:48px;place-items:center;border:0;background:transparent;color:inherit;cursor:pointer;font-size:1.45rem}
     .count{position:absolute;top:0;right:-2px;display:grid;min-width:24px;height:24px;place-items:center;border:2px solid var(--ink);border-radius:99px;background:var(--yellow);color:var(--ink);font-size:.72rem;font-weight:900}
 
     /* DESKTOP LAYOUT */
-    .experience{position:relative;display:grid;min-height:calc(100vh - 88px);grid-template-columns:minmax(235px,.8fr) minmax(520px,1.65fr) minmax(320px,.93fr);grid-template-rows:minmax(660px,1fr) auto;column-gap:clamp(1.7rem,3vw,4rem);padding:clamp(2.4rem,4vw,4.3rem) clamp(2rem,4vw,4.5rem) 1.8rem;background:radial-gradient(circle at 48% 45%,#fff 0,rgba(255,255,255,.72) 18rem,transparent 40rem),var(--paper);isolation:isolate}
+    .experience{position:relative;display:grid;min-height:calc(100vh - 5.5625rem);grid-template-columns:minmax(235px,.8fr) minmax(520px,1.65fr) minmax(320px,.93fr);grid-template-rows:minmax(660px,1fr) auto;column-gap:clamp(1.7rem,3vw,4rem);padding:clamp(2.4rem,4vw,4.3rem) clamp(2rem,4vw,4.5rem) 1.8rem;background:radial-gradient(circle at 48% 45%,#fff 0,rgba(255,255,255,.72) 18rem,transparent 40rem),var(--paper);isolation:isolate}
     .experience::before{position:absolute;z-index:-1;inset:0;background-image:radial-gradient(circle at 15% 15%,var(--active-soft),transparent 25rem),radial-gradient(circle at 80% 60%,var(--active-soft),transparent 30rem);content:"";opacity:.55;transition:var(--copy-duration) var(--ui)}
     .intro{align-self:center;padding-bottom:3rem}
     .intro h1{max-width:9ch;margin:0;font-size:clamp(2.7rem,3.4vw,3.6rem)}
@@ -155,8 +213,6 @@
 
     /* TABLET */
     @media(max-width:1180px) and (min-width:761px){
-      .header{grid-template-columns:1fr auto}
-      .nav{display:none}
       .experience{grid-template-columns:minmax(220px,.72fr) minmax(440px,1.35fr)}
       .purchase{grid-column:1/-1;width:min(100%,760px);justify-self:center}
       .trust-strip{grid-template-columns:repeat(2,1fr)}
@@ -167,14 +223,13 @@
     /* MOBILE FLOW */
     @media(max-width:760px){
       body{background:var(--paper)}
-      .header,.intro,.trust-strip{display:none}
+      .intro,.trust-strip{display:none}
       .shell{overflow:visible}
-      .experience{display:block;min-height:100svh;padding:0;background:var(--paper)}
+      .experience{display:block;min-height:calc(100svh - 5.5625rem);padding:0;background:var(--paper)}
       .experience::before{display:none}
-      .mobile-top{position:absolute;z-index:60;top:max(.8rem,env(safe-area-inset-top));right:1.3rem;left:1.3rem;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+      .mobile-top{position:absolute;z-index:60;top:max(.8rem,env(safe-area-inset-top));right:1.3rem;left:1.3rem;display:flex;align-items:center;justify-content:flex-end;pointer-events:none}
       .mobile-top>*{pointer-events:auto}
-      .mobile-logo{display:flex;align-items:center;gap:.5rem;height:36px}
-      .mobile-logo img{height:100%;width:auto}
+      .experience[data-step="summary"] .mobile-top{display:none}
       .skip{border:0;background:transparent;font-weight:900;cursor:pointer;min-height:44px;padding:0 .25rem}
       .mobile-progress{position:fixed;z-index:80;right:0;bottom:max(1.3rem,env(safe-area-inset-bottom));left:0;display:flex;justify-content:center;gap:.8rem;width:max-content;margin:0 auto;padding:.55rem .9rem;border-radius:99px;background:rgba(255,249,232,.88);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(42,31,6,.12);pointer-events:none}
       .mobile-progress button{width:11px;height:11px;border:0;border-radius:50%;background:#d1c8b8;pointer-events:auto;padding:0}
@@ -184,11 +239,11 @@
       .experience[data-step="flavour"] [data-mobile-panel="flavour"],
       .experience[data-step="summary"] [data-mobile-panel="summary"]{display:flex}
 
-      .welcome{min-height:100svh;flex-direction:column;padding:max(6.5rem,calc(env(safe-area-inset-top) + 5.4rem)) 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4.2rem));background:radial-gradient(circle at 50% 14%,rgba(255,255,255,.5),transparent 15rem),var(--yellow)}
+      .welcome{min-height:calc(100svh - 5.5625rem);flex-direction:column;padding:max(4.4rem,calc(env(safe-area-inset-top) + 3.4rem)) 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4.2rem));background:radial-gradient(circle at 50% 14%,rgba(255,255,255,.5),transparent 15rem),var(--yellow)}
       .welcome h1{max-width:7.5ch;margin:0;font-size:clamp(2.5rem,11.5vw,3.4rem)}
       .welcome .strap{margin:.8rem 0 0;color:var(--ink);font-size:1rem}
       .welcome p{margin:.35rem 0 0;font-weight:600}
-      .welcome-visual{position:relative;min-height:43svh;margin:0 -1.35rem;overflow:hidden;isolation:isolate}
+      .welcome-visual{position:relative;min-height:41svh;margin:0 -1.35rem;overflow:hidden;isolation:isolate}
       .welcome-bg{position:absolute;z-index:-1;inset:-1rem;background-image:var(--mobile-bg);background-position:center bottom;background-repeat:no-repeat;background-size:cover}
       .welcome-product{position:absolute;right:0;bottom:-.5rem;left:0;display:grid;place-items:center}
       .welcome-product img{width:auto;height:min(40svh,340px);filter:drop-shadow(0 21px 25px rgba(32,16,0,.2))}
@@ -208,12 +263,12 @@
       .step-line span::after{position:absolute;top:50%;right:-5px;width:10px;height:10px;border-radius:50%;background:#cec5b5;content:"";transform:translateY(-50%)}
       .step-line .done,.step-line .current,.step-line .done::after,.step-line .current::after{background:var(--red)}
 
-      .carousel-panel{min-height:100svh;flex-direction:column;padding:0 0 max(5rem,calc(env(safe-area-inset-bottom) + 4rem));background:radial-gradient(circle at 50% 35%,#fff,transparent 20rem),var(--paper)}
-      .stage{min-height:44svh;margin-top:.25rem;border-radius:0}
+      .carousel-panel{min-height:calc(100svh - 5.5625rem);flex-direction:column;padding:0 0 max(5rem,calc(env(safe-area-inset-bottom) + 4rem));background:radial-gradient(circle at 50% 35%,#fff,transparent 20rem),var(--paper)}
+      .stage{min-height:41svh;margin-top:.25rem;border-radius:0}
       .stage::after{height:18%}
       .stage-bg{background-image:var(--mobile-bg);background-position:center;background-size:cover;opacity:.86}
       .product{top:52%}
-      .product img{height:min(40svh,350px)}
+      .product img{height:min(38svh,335px)}
       .product.prev{--x:-82%;--s:.6;--b:6px;--o:.42}
       .product.next{--x:82%;--s:.6;--b:6px;--o:.42}
       .product.far-prev{--x:-145%;--s:.42;--b:10px;--o:.15}
@@ -225,14 +280,16 @@
       .description{font-size:.88rem}
       .tag{padding:.42rem .7rem;font-size:.61rem}
       .dots{margin-top:.85rem}
+      .swipe{display:none}
       .swipe-copy span{display:none}
       .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:1rem 1.25rem 0}
 
-      .purchase{min-height:100svh;flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
-      .mobile-summary-hero{position:relative;display:grid;min-height:34svh;place-items:center;overflow:hidden;isolation:isolate}
+      .purchase{min-height:calc(100svh - 5.5625rem);flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
+      .mobile-summary-hero{position:relative;display:grid;min-height:31svh;place-items:center;overflow:hidden;isolation:isolate}
       .mobile-summary-bg{position:absolute;z-index:-1;inset:0;background-image:var(--mobile-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.84}
-      .mobile-summary-hero img{width:auto;height:min(30svh,255px);filter:drop-shadow(0 18px 25px rgba(26,17,0,.18))}
+      .mobile-summary-hero img{width:auto;height:min(27svh,235px);filter:drop-shadow(0 18px 25px rgba(26,17,0,.18))}
       .purchase-content{padding:1rem 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4rem));text-align:center}
+      .purchase .eyebrow{display:none}
       .purchase h2{font-size:clamp(1.5rem,6.9vw,2.6rem)}
       .purchase .description{display:none}
       .purchase hr{margin:1rem 0}
@@ -257,31 +314,97 @@
 </head>
 <body>
   <div class="shell">
-    <header class="header">
-      <a class="brand" href="index.html" aria-label="DRINK STOP home">
-        <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" width="160" height="100" alt="DRINK STOP" />
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a class="active" href="choose-your-vibe.html">Flavours</a>
-        <a href="index.html#sobre">About</a>
-        <a href="index.html#contato">Contact</a>
-        <a href="order.html">Order</a>
-      </nav>
-      <div class="header-actions">
-        <a class="icon" href="order.html" aria-label="Account / order">◎</a>
-        <button class="cart" type="button" aria-label="Basket" data-open-basket>
-          🛒<span class="count" data-cart-count>0</span>
+    <header class="main-header">
+      <div class="container">
+        <a href="index.html" class="main-header__logo"><img width="564" height="362" src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="DRINK STOP" style="height:100%;width:auto;object-fit:contain;"></a>
+
+        <div class="main-header-wrapper">
+          <nav class="main-header-nav" aria-label="Primary">
+            <ul class="main-header-nav__list">
+              <li>
+                <a href="index.html#sobre">
+                  <div class="main-header__nav-item-text is-default">About</div>
+                  <div class="main-header__nav-item-text is-absolute">About</div>
+                </a>
+              </li>
+              <li class="drinks-dropdown">
+                <a href="index.html#sabores">
+                  <div class="main-header__nav-item-text is-default">Our Drinks</div>
+                  <div class="main-header__nav-item-text is-absolute">Our Drinks</div>
+                </a>
+                <div class="drinks-dropdown__menu">
+                  <a href="index.html#mangofunk">Rum For Your Life</a>
+                  <a href="index.html#tropisamba">Rumbaclart 2.0</a>
+                  <a href="index.html#rumbaclart1">Rumbaclart 1.0</a>
+                  <a href="index.html#summerset">Summer Set</a>
+                  <a href="index.html#blutiful">Blutiful</a>
+                  <a href="index.html#rumazing">Rumazing</a>
+                  <a href="index.html#greengroov">Suck Your Rum</a>
+                </div>
+              </li>
+              <li>
+                <a href="choose-your-vibe.html" aria-current="page">
+                  <div class="main-header__nav-item-text is-default">Order Now</div>
+                  <div class="main-header__nav-item-text is-absolute">Order Now</div>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="main-header-actions">
+            <button class="vibe-cart" type="button" aria-label="Basket" data-open-basket>
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="#ffffe7"/></svg>
+              <span class="count" data-cart-count>0</span>
+            </button>
+            <a href="choose-your-vibe.html" class="btn btn--icon btn--ghost">
+              <div class="btn__icon-slot">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                  <path d="M17.9788 2.52031C17.7824 2.32389 17.5373 2.18336 17.2685 2.11319C16.9998 2.04302 16.7172 2.04575 16.4499 2.1211L16.4327 2.12656L1.43974 6.67188C1.13567 6.76007 0.865564 6.93856 0.665199 7.1837C0.464835 7.42884 0.343668 7.72906 0.317747 8.0446C0.291825 8.36015 0.362374 8.67612 0.520047 8.95067C0.67772 9.22522 0.915078 9.4454 1.20068 9.58203L7.73349 12.7656L10.914 19.3008C11.0394 19.5675 11.2383 19.7928 11.4875 19.9503C11.7366 20.1078 12.0255 20.1909 12.3202 20.1898C12.3647 20.1898 12.4101 20.1898 12.4554 20.1844C12.7718 20.16 13.073 20.0391 13.3184 19.8378C13.5638 19.6366 13.7414 19.3649 13.8272 19.0594L18.3726 4.06641C18.3748 4.06084 18.3767 4.05509 18.378 4.04922C18.4534 3.78189 18.4561 3.49931 18.3859 3.23058C18.3158 2.96185 18.1752 2.71668 17.9788 2.52031ZM12.2577 17.7711L9.57256 12.2523L13.1663 8.6625C13.2535 8.5753 13.3227 8.47177 13.3699 8.35783C13.4171 8.24389 13.4414 8.12177 13.4414 7.99844C13.4414 7.87511 13.4171 7.75299 13.3699 7.63905C13.3227 7.52511 13.2535 7.42158 13.1663 7.33438C13.0791 7.24717 12.9756 7.178 12.8616 7.1308C12.7477 7.0836 12.6256 7.05931 12.5022 7.05931C12.3789 7.05931 12.2568 7.0836 12.1429 7.1308C12.0289 7.178 11.9254 7.24717 11.8382 7.33438L8.24443 10.9281L2.72803 8.24141L16.4054 4.09375L12.2577 17.7711Z" fill="#FFFFE7" />
+                </svg>
+              </div>
+              <div class="btn-text-wrapper">
+                <div class="btn-text is-default">Order Now</div>
+                <div class="btn-text is-absolute">Order Now</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <button class="offcanvas-toggle" type="button" aria-label="Menu">
+          <svg class="offcanvas-toggle__menu" width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.8125 6.44922C15.8125 6.69786 15.7137 6.93632 15.5379 7.11213C15.3621 7.28795 15.1236 7.38672 14.875 7.38672H1.125C0.87636 7.38672 0.637903 7.28795 0.462087 7.11213C0.286272 6.93632 0.1875 6.69786 0.1875 6.44922C0.1875 6.20058 0.286272 5.96212 0.462087 5.78631C0.637903 5.61049 0.87636 5.51172 1.125 5.51172H14.875C15.1236 5.51172 15.3621 5.61049 15.5379 5.78631C15.7137 5.96212 15.8125 6.20058 15.8125 6.44922ZM1.125 2.38672H14.875C15.1236 2.38672 15.3621 2.28795 15.5379 2.11213C15.7137 1.93632 15.8125 1.69786 15.8125 1.44922C15.8125 1.20058 15.7137 0.962121 15.5379 0.786306C15.3621 0.610491 0.87636 0.511719 14.875 0.511719H1.125C0.87636 0.511719 0.637903 0.610491 0.462087 0.786306C0.286272 0.962121 0.1875 1.20058 0.1875 1.44922C0.1875 1.69786 0.286272 1.93632 0.462087 2.11213C0.637903 2.28795 0.87636 2.38672 1.125 2.38672ZM14.875 10.5117H1.125C0.87636 10.5117 0.637903 10.6105 0.462087 10.7863C0.286272 10.9621 0.1875 11.2006 0.1875 11.4492C0.1875 11.6979 0.286272 11.9363 0.462087 12.1121C0.637903 12.2879 0.87636 12.3867 1.125 12.3867H14.875C15.1236 12.3867 15.3621 12.2879 15.5379 12.1121C15.7137 11.9363 15.8125 11.6979 15.8125 11.4492C15.8125 11.2006 15.7137 10.9621 15.5379 10.7863C15.3621 10.6105 15.1236 10.5117 14.875 10.5117Z" fill="#FFFFE7" />
+          </svg>
+          <svg class="offcanvas-toggle__close" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.2887 12.4107C13.4649 12.5868 13.5638 12.8257 13.5638 13.0748C13.5638 13.3238 13.4649 13.5627 13.2887 13.7388C13.1126 13.915 12.8737 14.0139 12.6247 14.0139C12.3756 14.0139 12.1367 13.915 11.9606 13.7388L7.00045 8.77711L2.03874 13.7373C1.86262 13.9134 1.62374 14.0123 1.37467 14.0123C1.1256 14.0123 0.886731 13.9134 0.710611 13.7373C0.53449 13.5612 0.435547 13.3223 0.435547 13.0732C0.435547 12.8241 0.53449 12.5853 0.710611 12.4091L5.67233 7.44899L0.712173 2.48727C0.536053 2.31115 0.437109 2.07228 0.437109 1.82321C0.437109 1.57414 0.536053 1.33527 0.712173 1.15915C0.888293 0.983025 1.12716 0.884082 1.37624 0.884082C1.62531 0.884082 1.86418 0.983025 2.0403 1.15915L7.00045 6.12086L11.9622 1.15836C12.1383 0.982244 12.3772 0.883301 12.6262 0.883301C12.8753 0.883301 13.1142 0.982244 13.2903 1.15836C13.4664 1.33448 13.5654 1.57336 13.5654 1.82243C13.5654 2.0715 13.4664 2.31037 13.2903 2.48649L8.32858 7.44899L13.2887 12.4107Z" fill="#FFFFE7" />
+          </svg>
         </button>
       </div>
     </header>
 
+    <div class="offcanvas">
+      <nav class="offcanvas-nav" aria-label="Mobile">
+        <ul class="offcanvas-menu">
+          <li class="offcanvas-menu__item"><a href="index.html#sobre">About</a></li>
+          <li class="offcanvas-menu__item offcanvas-menu__item--has-submenu">
+            <a href="index.html#sabores">Our Drinks</a>
+            <ul class="offcanvas-submenu">
+              <li class="offcanvas-submenu__item"><a href="index.html#mangofunk">Rum For Your Life</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#tropisamba">Rumbaclart 2.0</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#rumbaclart1">Rumbaclart 1.0</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#summerset">Summer Set</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#blutiful">Blutiful</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#rumazing">Rumazing</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#greengroov">Suck Your Rum</a></li>
+            </ul>
+          </li>
+          <li class="offcanvas-menu__item"><a href="choose-your-vibe.html">Order Now</a></li>
+        </ul>
+      </nav>
+    </div>
+
     <main>
       <section class="experience" id="flavours" data-step="welcome" aria-label="Choose your vibe">
         <div class="mobile-top">
-          <a class="mobile-logo" href="index.html" aria-label="DRINK STOP home">
-            <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" width="120" height="76" alt="DRINK STOP" />
-          </a>
           <button class="skip" type="button" data-skip>Skip</button>
         </div>
         <div class="mobile-progress" role="tablist" aria-label="Onboarding progress">
@@ -801,6 +924,25 @@
     const stepKey = params.get('step');
     const validSteps = ['welcome', 'flavour', 'summary'];
     step(validSteps.includes(stepKey) ? stepKey : (window.matchMedia('(max-width:760px)').matches ? 'welcome' : 'flavour'));
+
+    // Site header — homepage behaviour: scroll states + offcanvas menu
+    const offcanvasToggle = document.querySelector('.offcanvas-toggle');
+    if (offcanvasToggle) offcanvasToggle.addEventListener('click', () => document.body.classList.toggle('has-offcanvas'));
+    $$('.offcanvas-menu__item--has-submenu > a').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); a.parentElement.classList.toggle('offcanvas-menu__item--open'); }));
+    $$('.offcanvas-menu__item:not(.offcanvas-menu__item--has-submenu) a, .offcanvas-submenu a').forEach((a) => a.addEventListener('click', () => document.body.classList.remove('has-offcanvas')));
+    let lastScrollY = window.scrollY, scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        document.body.classList.toggle('has-scrolled', y > 40);
+        if (y > lastScrollY && y > 40) document.body.classList.add('has-sticky-header');
+        else if (y < lastScrollY) document.body.classList.remove('has-sticky-header');
+        lastScrollY = y;
+        scrollTicking = false;
+      });
+    }, { passive: true });
   </script>
 </body>
 </html>
