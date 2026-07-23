@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="Choose your vibe — frozen rum cocktails in a pouch. Real rum, bold flavours, delivered frozen across the UK. 18+." />
+  <title>Choose Your Vibe — DRINK STOP</title>
+  <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-32x32.webp" sizes="32x32" />
+  <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp" sizes="192x192" />
+  <link rel="apple-touch-icon" href="wp-content/uploads/2025/10/cropped-favicon-2-180x180.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/product-rumbaclart-2.webp" />
+  <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-desktop-rumbaclart-2.webp" media="(min-width:761px)" />
+  <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-mobile-rumbaclart-2.webp" media="(max-width:760px)" />
+  <style>
+    @font-face{
+      font-family:'Adieu';
+      src:url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff2') format('woff2'),
+          url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff') format('woff');
+      font-weight:900;font-display:swap;
+    }
+    :root{
+      --ink:#111111;--paper:#fff9e8;--paper2:#fffdf5;--red:#e9040d;--yellow:#fdcc04;
+      --orange:#fc6801;--purple:#33076c;--green:#2b8e2d;--muted:#716b61;--line:rgba(17,17,17,.14);
+      --active:#2b8e2d;--active-soft:rgba(43,142,45,.12);--desktop-bg:none;--mobile-bg:none;
+      --pop:cubic-bezier(.18,.84,.28,1);--ui:cubic-bezier(.22,1,.36,1);
+      --shadow:0 24px 70px rgba(65,44,5,.11),0 4px 16px rgba(65,44,5,.08);
+      --duration:.52s;--copy-duration:.32s;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-width:320px;color:var(--ink);background:var(--paper);font-family:'Manrope',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+    button,input{font:inherit}button{color:inherit}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .display{font-family:'Adieu','Arial Black',Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-weight:900;letter-spacing:-.02em;line-height:.92;text-transform:uppercase}
+    .eyebrow{margin:0 0 .65rem;color:var(--red);font-size:.82rem;font-weight:900;letter-spacing:.045em;text-transform:uppercase}
+    .shell{min-height:100vh;overflow:hidden}
+
+    /* HEADER — matches site black bar + logo */
+    .header{position:relative;z-index:50;display:grid;min-height:88px;grid-template-columns:minmax(180px,1fr) auto minmax(140px,1fr);align-items:center;gap:1.5rem;padding:0 2rem;color:#fff;background:var(--ink)}
+    .brand{justify-self:start;display:inline-flex;align-items:center;height:48px}
+    .brand img{height:100%;width:auto;object-fit:contain;filter:brightness(0) invert(1)}
+    .nav{display:flex;gap:clamp(1.2rem,2.5vw,2.8rem);align-items:center}
+    .nav a{position:relative;padding:.8rem 0;font-size:.88rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .nav a.active{color:var(--yellow)}
+    .nav a::after{position:absolute;right:0;bottom:.35rem;left:0;height:3px;border-radius:99px;background:var(--yellow);content:"";opacity:0;transform:scaleX(.4);transition:.2s var(--ui)}
+    .nav a:hover::after,.nav a.active::after{opacity:1;transform:scaleX(1)}
+    .header-actions{display:flex;align-items:center;justify-self:end;gap:1rem}
+    .icon{display:grid;width:43px;height:43px;place-items:center;border:2px solid #fff;border-radius:50%;background:transparent;color:#fff;font-size:1.1rem;cursor:pointer}
+    .cart{position:relative;display:grid;min-width:48px;min-height:48px;place-items:center;border:0;background:transparent;color:inherit;cursor:pointer;font-size:1.45rem}
+    .count{position:absolute;top:0;right:-2px;display:grid;min-width:24px;height:24px;place-items:center;border:2px solid var(--ink);border-radius:99px;background:var(--yellow);color:var(--ink);font-size:.72rem;font-weight:900}
+
+    /* DESKTOP LAYOUT */
+    .experience{position:relative;display:grid;min-height:calc(100vh - 88px);grid-template-columns:minmax(235px,.8fr) minmax(520px,1.65fr) minmax(320px,.93fr);grid-template-rows:minmax(660px,1fr) auto;column-gap:clamp(1.7rem,3vw,4rem);padding:clamp(2.4rem,4vw,4.3rem) clamp(2rem,4vw,4.5rem) 1.8rem;background:radial-gradient(circle at 48% 45%,#fff 0,rgba(255,255,255,.72) 18rem,transparent 40rem),var(--paper);isolation:isolate}
+    .experience::before{position:absolute;z-index:-1;inset:0;background-image:radial-gradient(circle at 15% 15%,var(--active-soft),transparent 25rem),radial-gradient(circle at 80% 60%,var(--active-soft),transparent 30rem);content:"";opacity:.55;transition:var(--copy-duration) var(--ui)}
+    .intro{align-self:center;padding-bottom:3rem}
+    .intro h1{max-width:9ch;margin:0;font-size:clamp(2.7rem,3.4vw,3.6rem)}
+    .strap{margin:1.1rem 0 0;color:var(--red);font-size:clamp(1.05rem,1.5vw,1.45rem);font-weight:900;text-transform:uppercase;letter-spacing:.02em}
+    .intro-copy{max-width:27rem;margin:1rem 0 0;font-weight:500;color:#3d3a34}
+    .benefits{display:grid;gap:1.1rem;margin-top:2rem}
+    .benefit{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:.9rem}
+    .benefit i,.trust i{display:grid;width:46px;height:46px;place-items:center;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-weight:900;font-size:1.05rem}
+    .benefit strong,.benefit span,.trust strong,.trust span{display:block}
+    .benefit strong,.trust strong{font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+    .benefit span,.trust span{margin-top:.15rem;color:#49453f;font-size:.82rem;font-weight:500}
+
+    /* CAROUSEL */
+    .carousel-panel{position:relative;display:flex;min-width:0;flex-direction:column;justify-content:center}
+    .stage{position:relative;min-height:clamp(520px,62vh,720px);overflow:hidden;border-radius:34px;isolation:isolate}
+    .stage::after{position:absolute;z-index:8;right:0;bottom:0;left:0;height:24%;background:linear-gradient(180deg,transparent,rgba(255,249,232,.65));content:"";pointer-events:none}
+    .stage-bg{position:absolute;z-index:-1;inset:0;background-image:var(--desktop-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.97;transform:scale(1.035);transition:opacity .3s ease,transform .65s var(--ui)}
+    .stage.changing .stage-bg{opacity:.42;transform:scale(1.075)}
+    .track{position:absolute;z-index:2;inset:0;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+    .product{
+      --x:0%;--s:1;--b:0px;--o:1;--r:0deg;
+      position:absolute;top:49%;left:50%;
+      opacity:var(--o);filter:blur(var(--b)) saturate(calc(.55 + var(--o)*.45));
+      transform:translate(-50%,-50%) translateX(var(--x)) scale(var(--s)) rotate(var(--r));
+      transform-origin:50% 76%;
+      transition:transform var(--duration) var(--pop),filter .42s var(--ui),opacity .36s ease;
+      will-change:transform,filter,opacity;cursor:pointer;
+    }
+    .product img{display:block;width:auto;height:clamp(360px,47vh,520px);pointer-events:none;filter:drop-shadow(0 28px 31px rgba(30,20,0,.18))}
+    .product.active{z-index:7;--x:0%;--s:1;--b:0px;--o:1}
+    .product.prev{z-index:4;--x:-122%;--s:.64;--b:7px;--o:.54;--r:-2deg}
+    .product.next{z-index:4;--x:122%;--s:.64;--b:7px;--o:.54;--r:2deg}
+    .product.far-prev{z-index:2;--x:-185%;--s:.44;--b:12px;--o:.25;--r:-3deg}
+    .product.far-next{z-index:2;--x:185%;--s:.44;--b:12px;--o:.25;--r:3deg}
+    .product.hidden{z-index:1;--s:.35;--b:15px;--o:0;pointer-events:none}
+    .arrow{position:absolute;z-index:18;top:52%;display:grid;width:58px;height:58px;place-items:center;border:1px solid rgba(17,17,17,.12);border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 9px 24px rgba(42,31,6,.1);font-size:2rem;cursor:pointer;transform:translateY(-50%);transition:.2s var(--ui)}
+    .arrow:hover{transform:translateY(-50%) scale(1.06)}
+    .arrow:focus-visible{outline:3px solid var(--active);outline-offset:2px}
+    .arrow.prev-arrow{left:.4rem}.arrow.next-arrow{right:.4rem}
+    .carousel-copy{position:relative;z-index:12;width:min(100%,640px);margin:-.8rem auto 0;text-align:center}
+    .carousel-copy h2{margin:0;font-size:clamp(1.6rem,2.6vw,2.9rem);overflow-wrap:break-word}
+    .ingredients{margin:.35rem 0 0;color:var(--active);font-size:clamp(.94rem,1.25vw,1.2rem);font-weight:900;text-transform:uppercase;transition:color var(--copy-duration)}
+    .description{margin:.7rem auto 0;max-width:28rem;color:#4a463f;font-weight:500}
+    .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin-top:1rem}
+    .tag{padding:.48rem .9rem;border-radius:99px;background:var(--ink);color:#fff;font-size:.69rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+    .tag:nth-child(1){background:var(--yellow);color:var(--ink)}
+    .tag:nth-child(2){background:var(--active)}
+    .tag:nth-child(3){background:var(--purple)}
+    .dots{position:relative;z-index:12;display:flex;justify-content:center;gap:.72rem;margin-top:1rem}
+    .dot{width:12px;height:12px;border:0;border-radius:50%;background:#c7c0b1;cursor:pointer;transition:.26s var(--ui);padding:0}
+    .dot.active{width:31px;border-radius:99px;background:var(--active)}
+    .dot:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+    .swipe{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-top:.45rem;font-weight:900}
+    .swipe b{font-size:1.8rem}
+    .swipe-copy{display:grid;gap:.1rem;margin:.1rem 0 0;text-align:center;text-transform:uppercase}
+    .swipe-copy strong{font-size:.78rem}
+    .swipe-copy span{color:var(--muted);font-size:.65rem}
+
+    /* PURCHASE */
+    .purchase{align-self:center;overflow:hidden;border:1px solid rgba(125,97,26,.16);border-radius:24px;background:rgba(255,253,245,.96);box-shadow:var(--shadow)}
+    .purchase-content{padding:clamp(1.4rem,2.4vw,2.35rem)}
+    .purchase h2{margin:0;font-size:clamp(1.55rem,1.8vw,1.85rem);overflow-wrap:normal}
+    .purchase .ingredients{font-size:.98rem}
+    .purchase hr{border:0;border-top:3px solid var(--ink);margin:1.35rem 0}
+    .control-row,.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+    .label{display:block;margin-bottom:.55rem;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+    .stepper{display:grid;min-width:150px;min-height:54px;grid-template-columns:1fr 1fr 1fr;align-items:center;border:1px solid rgba(17,17,17,.22);border-radius:14px;overflow:hidden}
+    .stepper button{height:100%;border:0;background:transparent;font-size:1.3rem;font-weight:900;cursor:pointer}
+    .stepper button:hover{background:rgba(17,17,17,.05)}
+    .stepper button:focus-visible{outline:2px solid var(--active);outline-offset:-2px}
+    .stepper output{text-align:center;font-weight:900;font-size:1.15rem}
+    .size{display:grid;min-width:118px;min-height:48px;place-items:center;border-radius:99px;background:var(--yellow);font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+    .price-row strong{display:block;font-family:'Adieu','Arial Black',Impact,sans-serif;font-size:clamp(2.6rem,3.8vw,4.6rem);letter-spacing:-.02em;line-height:.9}
+    .price-row .was{display:block;margin-top:.25rem;color:var(--muted);font-size:.85rem;font-weight:700;text-decoration:line-through}
+    .save{padding:.65rem .8rem;border:2px solid var(--green);border-radius:13px;color:var(--green);font-size:.78rem;font-weight:900;line-height:1.1;text-align:center;text-transform:uppercase}
+    .primary{display:inline-flex;min-height:58px;align-items:center;justify-content:space-between;gap:1rem;border:0;border-radius:99px;padding:0 1.55rem;background:var(--ink);color:#fff;box-shadow:0 12px 25px rgba(17,17,17,.14);cursor:pointer;font-size:.94rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em;transition:.22s var(--ui)}
+    .primary:hover{transform:translateY(-2px);box-shadow:0 17px 30px rgba(17,17,17,.2)}
+    .primary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+    .buy{width:100%;margin-top:1.75rem}
+    .delivery{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:.9rem 0 0;color:var(--green);font-size:.76rem;font-weight:900;text-align:center;text-transform:uppercase}
+
+    /* TRUST */
+    .trust-strip{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:2rem;border:1px solid rgba(125,97,26,.12);border-radius:22px;background:rgba(255,255,255,.68);box-shadow:0 12px 40px rgba(59,43,10,.06);overflow:hidden}
+    .trust{display:grid;min-height:104px;grid-template-columns:auto 1fr;align-items:center;gap:.9rem;padding:1.15rem 1.5rem}
+    .trust+.trust{border-left:1px solid var(--line)}
+    .trust i{width:52px;height:52px}
+
+    .mobile-top,.mobile-progress,.welcome,.mobile-head,.mobile-summary-hero,.mobile-continue{display:none}
+
+    /* DIALOG */
+    dialog{border:0;border-radius:26px;padding:0;background:transparent;max-width:calc(100vw - 2rem)}
+    dialog::backdrop{background:rgba(17,17,17,.55);backdrop-filter:blur(7px)}
+    .dialog-card{position:relative;width:min(92vw,430px);border-radius:26px;padding:2rem;background:var(--paper2);box-shadow:0 30px 90px rgba(0,0,0,.28)}
+    .dialog-card h2{margin:0;font-size:2rem}
+    .dialog-close{position:absolute;top:.6rem;right:.8rem;border:0;background:transparent;font-size:1.7rem;cursor:pointer}
+    .dialog-card .primary{width:100%;margin-top:1rem;justify-content:center}
+    .dialog-actions{display:grid;gap:.75rem;margin-top:1.25rem}
+    .dialog-actions .ghost{display:inline-flex;min-height:52px;align-items:center;justify-content:center;border:2px solid var(--ink);border-radius:99px;background:transparent;font-weight:900;text-transform:uppercase;cursor:pointer}
+
+    /* TABLET */
+    @media(max-width:1180px) and (min-width:761px){
+      .header{grid-template-columns:1fr auto}
+      .nav{display:none}
+      .experience{grid-template-columns:minmax(220px,.72fr) minmax(440px,1.35fr)}
+      .purchase{grid-column:1/-1;width:min(100%,760px);justify-self:center}
+      .trust-strip{grid-template-columns:repeat(2,1fr)}
+      .trust:nth-child(3){border-left:0;border-top:1px solid var(--line)}
+      .trust:nth-child(4){border-top:1px solid var(--line)}
+    }
+
+    /* MOBILE FLOW */
+    @media(max-width:760px){
+      body{background:var(--paper)}
+      .header,.intro,.trust-strip{display:none}
+      .shell{overflow:visible}
+      .experience{display:block;min-height:100svh;padding:0;background:var(--paper)}
+      .experience::before{display:none}
+      .mobile-top{position:absolute;z-index:60;top:max(.8rem,env(safe-area-inset-top));right:1.3rem;left:1.3rem;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+      .mobile-top>*{pointer-events:auto}
+      .mobile-logo{display:flex;align-items:center;gap:.5rem;height:36px}
+      .mobile-logo img{height:100%;width:auto}
+      .skip{border:0;background:transparent;font-weight:900;cursor:pointer;min-height:44px;padding:0 .25rem}
+      .mobile-progress{position:fixed;z-index:80;right:0;bottom:max(1.3rem,env(safe-area-inset-bottom));left:0;display:flex;justify-content:center;gap:.8rem;width:max-content;margin:0 auto;padding:.55rem .9rem;border-radius:99px;background:rgba(255,249,232,.88);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(42,31,6,.12);pointer-events:none}
+      .mobile-progress button{width:11px;height:11px;border:0;border-radius:50%;background:#d1c8b8;pointer-events:auto;padding:0}
+      .mobile-progress button.active{background:var(--red)}
+      [data-mobile-panel]{display:none}
+      .experience[data-step="welcome"] [data-mobile-panel="welcome"],
+      .experience[data-step="flavour"] [data-mobile-panel="flavour"],
+      .experience[data-step="summary"] [data-mobile-panel="summary"]{display:flex}
+
+      .welcome{min-height:100svh;flex-direction:column;padding:max(6.5rem,calc(env(safe-area-inset-top) + 5.4rem)) 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4.2rem));background:radial-gradient(circle at 50% 14%,rgba(255,255,255,.5),transparent 15rem),var(--yellow)}
+      .welcome h1{max-width:7.5ch;margin:0;font-size:clamp(2.5rem,11.5vw,3.4rem)}
+      .welcome .strap{margin:.8rem 0 0;color:var(--ink);font-size:1rem}
+      .welcome p{margin:.35rem 0 0;font-weight:600}
+      .welcome-visual{position:relative;min-height:43svh;margin:0 -1.35rem;overflow:hidden;isolation:isolate}
+      .welcome-bg{position:absolute;z-index:-1;inset:-1rem;background-image:var(--mobile-bg);background-position:center bottom;background-repeat:no-repeat;background-size:cover}
+      .welcome-product{position:absolute;right:0;bottom:-.5rem;left:0;display:grid;place-items:center}
+      .welcome-product img{width:auto;height:min(40svh,340px);filter:drop-shadow(0 21px 25px rgba(32,16,0,.2))}
+      .welcome-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+      .welcome-benefits .benefit{align-items:start}
+      .welcome-benefits .benefit:nth-child(3){display:none}
+      .welcome-benefits .benefit i{width:35px;height:35px;background:transparent;color:var(--red);font-size:1.4rem}
+      .welcome-benefits .benefit strong{font-size:.72rem}
+      .welcome-benefits .benefit span{font-size:.66rem}
+      .welcome .primary{width:100%;margin-top:1.15rem}
+
+      .mobile-head{display:grid;grid-template-columns:48px 1fr 48px;align-items:start;gap:.8rem;padding:max(1rem,env(safe-area-inset-top)) 1.15rem 0}
+      .round{display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.9);font-size:1.35rem;cursor:pointer}
+      .mobile-head p{margin:.5rem 0 0;font-size:.82rem;font-weight:900;text-align:center;text-transform:uppercase}
+      .step-line{display:grid;grid-template-columns:repeat(4,1fr);width:min(46vw,190px);margin:.6rem auto 0}
+      .step-line span{position:relative;height:4px;background:#cec5b5}
+      .step-line span::after{position:absolute;top:50%;right:-5px;width:10px;height:10px;border-radius:50%;background:#cec5b5;content:"";transform:translateY(-50%)}
+      .step-line .done,.step-line .current,.step-line .done::after,.step-line .current::after{background:var(--red)}
+
+      .carousel-panel{min-height:100svh;flex-direction:column;padding:0 0 max(5rem,calc(env(safe-area-inset-bottom) + 4rem));background:radial-gradient(circle at 50% 35%,#fff,transparent 20rem),var(--paper)}
+      .stage{min-height:44svh;margin-top:.25rem;border-radius:0}
+      .stage::after{height:18%}
+      .stage-bg{background-image:var(--mobile-bg);background-position:center;background-size:cover;opacity:.86}
+      .product{top:52%}
+      .product img{height:min(40svh,350px)}
+      .product.prev{--x:-82%;--s:.6;--b:6px;--o:.42}
+      .product.next{--x:82%;--s:.6;--b:6px;--o:.42}
+      .product.far-prev{--x:-145%;--s:.42;--b:10px;--o:.15}
+      .product.far-next{--x:145%;--s:.42;--b:10px;--o:.15}
+      .arrow{display:none}
+      .carousel-copy{margin-top:-.2rem;padding:0 1.25rem}
+      .carousel-copy h2{font-size:clamp(1.75rem,7.4vw,2.6rem)}
+      .ingredients{font-size:.88rem}
+      .description{font-size:.88rem}
+      .tag{padding:.42rem .7rem;font-size:.61rem}
+      .dots{margin-top:.85rem}
+      .swipe-copy span{display:none}
+      .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:1rem 1.25rem 0}
+
+      .purchase{min-height:100svh;flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
+      .mobile-summary-hero{position:relative;display:grid;min-height:34svh;place-items:center;overflow:hidden;isolation:isolate}
+      .mobile-summary-bg{position:absolute;z-index:-1;inset:0;background-image:var(--mobile-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.84}
+      .mobile-summary-hero img{width:auto;height:min(30svh,255px);filter:drop-shadow(0 18px 25px rgba(26,17,0,.18))}
+      .purchase-content{padding:1rem 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4rem));text-align:center}
+      .purchase h2{font-size:clamp(1.5rem,6.9vw,2.6rem)}
+      .purchase .description{display:none}
+      .purchase hr{margin:1rem 0}
+      .control-row>div{flex:1}
+      .stepper,.size{width:100%;min-width:0}
+      .price-row{align-items:center;text-align:left}
+      .price-row strong{font-size:clamp(2.8rem,12vw,4.2rem)}
+      .buy{margin-top:1.25rem}
+    }
+
+    @media(min-width:761px){.purchase .eyebrow{display:none}}
+    .fallback{display:grid;min-height:430px;place-items:center;align-content:center;gap:.6rem;border:3px dashed rgba(17,17,17,.25);border-radius:36px;background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,255,255,.45)),var(--active-soft);box-shadow:0 20px 45px rgba(0,0,0,.1);text-align:center}
+    .fallback strong{font-family:'Adieu',Impact,sans-serif;font-size:2rem;line-height:.95;text-transform:uppercase}
+    .fallback small{font-weight:800;text-transform:uppercase}
+    @media(max-width:760px){.fallback{min-height:330px}}
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition-duration:1ms!important;animation-duration:1ms!important}
+      .product{transition:none!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="DRINK STOP home">
+        <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" width="160" height="100" alt="DRINK STOP" />
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a class="active" href="choose-your-vibe.html">Flavours</a>
+        <a href="index.html#sobre">About</a>
+        <a href="index.html#contato">Contact</a>
+        <a href="order.html">Order</a>
+      </nav>
+      <div class="header-actions">
+        <a class="icon" href="order.html" aria-label="Account / order">◎</a>
+        <button class="cart" type="button" aria-label="Basket" data-open-basket>
+          🛒<span class="count" data-cart-count>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="experience" id="flavours" data-step="welcome" aria-label="Choose your vibe">
+        <div class="mobile-top">
+          <a class="mobile-logo" href="index.html" aria-label="DRINK STOP home">
+            <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" width="120" height="76" alt="DRINK STOP" />
+          </a>
+          <button class="skip" type="button" data-skip>Skip</button>
+        </div>
+        <div class="mobile-progress" role="tablist" aria-label="Onboarding progress">
+          <button type="button" class="active" data-step-target="welcome" aria-label="Welcome"></button>
+          <button type="button" data-step-target="flavour" aria-label="Flavour"></button>
+          <button type="button" data-step-target="summary" aria-label="Summary"></button>
+        </div>
+
+        <section class="welcome" data-mobile-panel="welcome" aria-label="Welcome">
+          <div>
+            <h1 class="display">Choose<br>your vibe</h1>
+            <p class="strap">Frozen rum cocktails in a pouch.</p>
+            <p>Big flavour. Zero fuss.</p>
+          </div>
+          <div class="welcome-visual">
+            <div class="welcome-bg" aria-hidden="true"></div>
+            <div class="welcome-product" data-welcome-product></div>
+          </div>
+          <div class="welcome-benefits">
+            <article class="benefit"><i aria-hidden="true">❄</i><div><strong>Frozen & ready</strong><span>Keep frozen. Squeeze and enjoy.</span></div></article>
+            <article class="benefit"><i aria-hidden="true">●</i><div><strong>Real rum</strong><span>Made with real rum for real good times.</span></div></article>
+            <article class="benefit"><i aria-hidden="true">✦</i><div><strong>All good vibes</strong><span>Just pour and party.</span></div></article>
+          </div>
+          <button class="primary" type="button" data-start><span>Start swiping</span><span aria-hidden="true">→</span></button>
+        </section>
+
+        <section class="intro" aria-label="Introduction">
+          <p class="eyebrow">Step 1 of 3</p>
+          <h1 class="display">Choose<br>your vibe</h1>
+          <p class="strap">Frozen. Rum. Ready.</p>
+          <p class="intro-copy">Real rum cocktails, frozen to perfection and delivered straight to your door.</p>
+          <div class="benefits">
+            <article class="benefit"><i aria-hidden="true">❄</i><div><strong>Frozen for freshness</strong><span>Arrives cold, stays perfect.</span></div></article>
+            <article class="benefit"><i aria-hidden="true">●</i><div><strong>Real rum inside</strong><span>Premium rum. No shortcuts.</span></div></article>
+            <article class="benefit"><i aria-hidden="true">▢</i><div><strong>Pour, squeeze, enjoy</strong><span>No shaker. No mess. Just good vibes.</span></div></article>
+          </div>
+        </section>
+
+        <section class="carousel-panel" data-mobile-panel="flavour" aria-roledescription="carousel" aria-label="Flavour carousel">
+          <div class="mobile-head">
+            <button class="round" type="button" data-mobile-back aria-label="Back">←</button>
+            <div>
+              <p>Pick your flavour</p>
+              <div class="step-line" aria-hidden="true"><span class="done"></span><span class="current"></span><span></span><span></span></div>
+            </div>
+            <span></span>
+          </div>
+          <div class="stage" data-stage>
+            <div class="stage-bg" aria-hidden="true"></div>
+            <button class="arrow prev-arrow" type="button" data-prev aria-label="Previous flavour">‹</button>
+            <div class="track" data-track role="group" aria-live="polite"></div>
+            <button class="arrow next-arrow" type="button" data-next aria-label="Next flavour">›</button>
+          </div>
+          <div class="carousel-copy">
+            <h2 class="display" data-name>Drink name</h2>
+            <p class="ingredients" data-ingredients>Ingredients</p>
+            <p class="description" data-description>Description</p>
+            <div class="tags" data-tags></div>
+          </div>
+          <div class="dots" data-dots role="tablist" aria-label="Flavour pagination"></div>
+          <div class="swipe" aria-hidden="true"><span>←</span><b>☝</b><span>→</span></div>
+          <p class="swipe-copy"><strong>Drag or click to explore flavours</strong><span>Active drink expands. Adjacent drinks shrink and blur.</span></p>
+          <button class="primary mobile-continue" type="button" data-continue><span>Choose this flavour</span><span aria-hidden="true">→</span></button>
+        </section>
+
+        <aside class="purchase" data-mobile-panel="summary" aria-label="Purchase panel">
+          <div class="mobile-head">
+            <button class="round" type="button" data-summary-back aria-label="Back">←</button>
+            <div>
+              <p>You've chosen</p>
+              <div class="step-line" aria-hidden="true"><span class="done"></span><span class="done"></span><span class="done"></span><span class="current"></span></div>
+            </div>
+            <button class="cart" type="button" aria-label="Basket" data-open-basket>🛍<span class="count" data-cart-count>0</span></button>
+          </div>
+          <div class="mobile-summary-hero">
+            <div class="mobile-summary-bg" aria-hidden="true"></div>
+            <div data-summary-product></div>
+          </div>
+          <div class="purchase-content">
+            <p class="eyebrow">You've chosen</p>
+            <h2 class="display" data-purchase-name>Drink name</h2>
+            <p class="ingredients" data-purchase-ingredients>Ingredients</p>
+            <p class="description" data-purchase-description>Description</p>
+            <hr>
+            <div class="control-row">
+              <div>
+                <span class="label" id="qty-label">Quantity</span>
+                <div class="stepper" role="group" aria-labelledby="qty-label">
+                  <button type="button" data-decrease aria-label="Decrease quantity">−</button>
+                  <output data-quantity aria-live="polite">1</output>
+                  <button type="button" data-increase aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+              <div>
+                <span class="label">Size</span>
+                <span class="size">250 ml</span>
+              </div>
+            </div>
+            <hr>
+            <div class="price-row">
+              <div>
+                <span class="label">Price</span>
+                <strong data-total>£6.99</strong>
+                <span class="was" data-was hidden></span>
+              </div>
+              <span class="save" data-save>Save 10%<br>multi-buys</span>
+            </div>
+            <button class="primary buy" type="button" data-buy><span>Buy now</span><span aria-hidden="true">→</span></button>
+            <p class="delivery">▱ Frozen delivery across the UK</p>
+          </div>
+        </aside>
+
+        <section class="trust-strip" aria-label="Trust and delivery">
+          <article class="trust"><i aria-hidden="true">❄</i><div><strong>Frozen delivery</strong><span>Packed with care. Delivered frozen to your door.</span></div></article>
+          <article class="trust"><i aria-hidden="true">▣</i><div><strong>Secure checkout</strong><span>Pay safely with card, Apple Pay or Klarna.</span></div></article>
+          <article class="trust"><i aria-hidden="true">✪</i><div><strong>Real rum quality</strong><span>Made with premium rum. No shortcuts. Ever.</span></div></article>
+          <article class="trust"><i aria-hidden="true">18+</i><div><strong>Drink responsibly</strong><span>18+ only. Please drink responsibly.</span></div></article>
+        </section>
+      </section>
+    </main>
+
+    <dialog data-dialog aria-labelledby="dialog-title">
+      <form method="dialog" class="dialog-card">
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+        <p class="eyebrow">Added to basket</p>
+        <h2 class="display" id="dialog-title" data-dialog-title>Drink name</h2>
+        <p data-dialog-copy>1 × 250 ml</p>
+        <div class="dialog-actions">
+          <button class="primary" type="submit" value="continue">Continue browsing</button>
+          <a class="ghost" href="order.html" data-checkout>Checkout / full order →</a>
+        </div>
+      </form>
+    </dialog>
+  </div>
+
+  <script>
+    /**
+     * Drink Stop — Choose Your Vibe
+     * Edit product / desktop / mobile paths here when assets change.
+     * id matches site product keys used on order.html / quick-order.html.
+     */
+    const VIBE_ASSET = 'wp-content/uploads/2026/07/vibe';
+    const drinks = [
+      {
+        id: 'tropisamba',
+        name: 'Rumbaclart 2.0',
+        ingredients: 'Pineapple, Apple & Guava',
+        description: 'Tropical. Punchy. Unstoppable.',
+        accent: '#2B8E2D',
+        soft: 'rgba(43,142,45,.12)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-rumbaclart-2.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-rumbaclart-2.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-2.webp`
+      },
+      {
+        id: 'mangofunk',
+        name: 'Rum for Your Life',
+        ingredients: 'Rum, Fruit Punch & Watermelon',
+        description: 'Tropical. Loud. Legendary.',
+        accent: '#E9040D',
+        soft: 'rgba(233,4,13,.12)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-rum-for-your-life.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-rum-for-your-life.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-rum-for-your-life.webp`
+      },
+      {
+        id: 'greengroov',
+        name: 'Suck Your Rum',
+        ingredients: 'Rum, Apple, Lemon & Ginger',
+        description: 'Sharp. Warm. Smooth. No apologies.',
+        accent: '#33076C',
+        soft: 'rgba(51,7,108,.12)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-suck-your-rum.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-suck-your-rum.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-suck-your-rum.webp`
+      },
+      {
+        id: 'blutiful',
+        name: 'Blutiful',
+        ingredients: 'Rum, Raspberry, Apple & Lemon',
+        description: 'Bright. Electric. Ice-cold energy.',
+        accent: '#1457E6',
+        soft: 'rgba(20,87,230,.12)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-blutiful.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-blutiful.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-blutiful.webp`
+      },
+      {
+        id: 'rumbaclart1',
+        name: 'Rumbaclart 1.0',
+        ingredients: 'Rum, Mango, Passionfruit & Orange',
+        description: 'Juicy. Golden. Pure tropical pressure.',
+        accent: '#FC6801',
+        soft: 'rgba(252,104,1,.12)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-rumbaclart-1.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-rumbaclart-1.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-1.webp`
+      },
+      {
+        id: 'rumazing',
+        name: 'Rumazing',
+        ingredients: 'Rum, Apple & Mango',
+        description: 'Sweet. Juicy. Smooth from first squeeze.',
+        accent: '#E5007D',
+        soft: 'rgba(229,0,125,.12)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-rumazing.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-rumazing.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-rumazing.webp`
+      },
+      {
+        id: 'summerset',
+        name: 'Summer Set',
+        ingredients: 'Rum, Pineapple & Coconut',
+        description: 'Creamy. Tropical. Sunshine in a pouch.',
+        accent: '#E9040D',
+        soft: 'rgba(233,4,13,.10)',
+        price: 6.99,
+        tags: ['Real rum', 'Frozen', 'Party ready'],
+        product: `${VIBE_ASSET}/product-summer-set.webp`,
+        desktop: `${VIBE_ASSET}/background-desktop-summer-set.webp`,
+        mobile: `${VIBE_ASSET}/background-mobile-summer-set.webp`
+      }
+    ];
+
+    const MULTI_BUY_MIN = 2;
+    const MULTI_BUY_RATE = 0.10; // 10% off when qty >= 2
+    const BASKET_KEY = 'drinkstop_vibe_basket';
+
+    const S = { index: 0, qty: 1, cart: 0, startX: null, delta: 0, drag: false, basket: [] };
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => [...document.querySelectorAll(s)];
+    const money = (n) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
+
+    const E = {
+      root: $('.experience'),
+      stage: $('[data-stage]'),
+      track: $('[data-track]'),
+      dots: $('[data-dots]'),
+      name: $('[data-name]'),
+      ingredients: $('[data-ingredients]'),
+      description: $('[data-description]'),
+      tags: $('[data-tags]'),
+      purchaseName: $('[data-purchase-name]'),
+      purchaseIngredients: $('[data-purchase-ingredients]'),
+      purchaseDescription: $('[data-purchase-description]'),
+      welcome: $('[data-welcome-product]'),
+      summary: $('[data-summary-product]'),
+      qty: $('[data-quantity]'),
+      total: $('[data-total]'),
+      was: $('[data-was]'),
+      save: $('[data-save]'),
+      counts: $$('[data-cart-count]'),
+      dialog: $('[data-dialog]'),
+      dialogTitle: $('[data-dialog-title]'),
+      dialogCopy: $('[data-dialog-copy]')
+    };
+
+    function loadBasket() {
+      try {
+        const raw = localStorage.getItem(BASKET_KEY);
+        S.basket = raw ? JSON.parse(raw) : [];
+        if (!Array.isArray(S.basket)) S.basket = [];
+      } catch (_) { S.basket = []; }
+      S.cart = S.basket.reduce((n, line) => n + (line.qty || 0), 0);
+    }
+
+    function saveBasket() {
+      try { localStorage.setItem(BASKET_KEY, JSON.stringify(S.basket)); } catch (_) {}
+    }
+
+    function cssUrl(v) {
+      return v ? `url("${String(v).replaceAll('"', '\\"')}")` : 'none';
+    }
+
+    function productNode(d, { eager = false } = {}) {
+      if (!d.product) {
+        const box = document.createElement('div');
+        box.className = 'fallback';
+        box.innerHTML = `<strong>${d.name}</strong><small>Add product image</small>`;
+        return box;
+      }
+      const img = document.createElement('img');
+      img.src = d.product;
+      img.alt = `${d.name} frozen cocktail pouch`;
+      img.draggable = false;
+      img.decoding = 'async';
+      if (eager) img.loading = 'eager';
+      else img.loading = 'lazy';
+      return img;
+    }
+
+    function build() {
+      drinks.forEach((d, i) => {
+        const card = document.createElement('article');
+        card.className = 'product';
+        card.dataset.index = String(i);
+        card.setAttribute('role', 'option');
+        card.setAttribute('aria-label', d.name);
+        card.append(productNode(d, { eager: i < 2 }));
+        card.addEventListener('click', () => setIndex(i));
+        E.track.append(card);
+
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', `Choose ${d.name}`);
+        dot.setAttribute('role', 'tab');
+        dot.addEventListener('click', () => setIndex(i));
+        E.dots.append(dot);
+      });
+    }
+
+    function distance(i, a, n) {
+      let d = i - a;
+      if (d > n / 2) d -= n;
+      if (d < -n / 2) d += n;
+      return d;
+    }
+
+    function positions() {
+      [...E.track.children].forEach((card, i) => {
+        const d = distance(i, S.index, drinks.length);
+        card.className = 'product';
+        card.classList.add(
+          d === 0 ? 'active' :
+          d === -1 ? 'prev' :
+          d === 1 ? 'next' :
+          d === -2 ? 'far-prev' :
+          d === 2 ? 'far-next' : 'hidden'
+        );
+        card.setAttribute('aria-selected', d === 0 ? 'true' : 'false');
+      });
+      [...E.dots.children].forEach((dot, i) => {
+        const on = i === S.index;
+        dot.classList.toggle('active', on);
+        dot.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    function renderProduct(target, d) {
+      target.replaceChildren(productNode(d, { eager: true }));
+    }
+
+    function preloadAround(i) {
+      const idxs = [i, (i + 1) % drinks.length, (i - 1 + drinks.length) % drinks.length];
+      idxs.forEach((idx) => {
+        const d = drinks[idx];
+        [d.product, d.desktop, d.mobile].forEach((src) => {
+          if (!src) return;
+          const img = new Image();
+          img.src = src;
+        });
+      });
+    }
+
+    function lineTotal(d, qty) {
+      const base = d.price * qty;
+      if (qty >= MULTI_BUY_MIN) return base * (1 - MULTI_BUY_RATE);
+      return base;
+    }
+
+    function price() {
+      const d = drinks[S.index];
+      const qty = S.qty;
+      const base = d.price * qty;
+      const total = lineTotal(d, qty);
+      E.qty.textContent = String(qty);
+      E.total.textContent = money(total);
+      const multi = qty >= MULTI_BUY_MIN;
+      E.save.hidden = !multi;
+      if (multi) {
+        const pct = Math.round(MULTI_BUY_RATE * 100);
+        E.save.innerHTML = `Save ${pct}%<br>multi-buys`;
+        E.was.hidden = false;
+        E.was.textContent = money(base);
+      } else {
+        E.was.hidden = true;
+        E.was.textContent = '';
+      }
+    }
+
+    function render() {
+      const d = drinks[S.index];
+      E.root.style.setProperty('--active', d.accent);
+      E.root.style.setProperty('--active-soft', d.soft);
+      E.root.style.setProperty('--desktop-bg', cssUrl(d.desktop));
+      E.root.style.setProperty('--mobile-bg', cssUrl(d.mobile));
+      E.name.textContent = d.name;
+      E.ingredients.textContent = d.ingredients;
+      E.description.textContent = d.description;
+      E.purchaseName.textContent = d.name;
+      E.purchaseIngredients.textContent = d.ingredients;
+      E.purchaseDescription.textContent = d.description;
+      E.tags.replaceChildren();
+      (d.tags || ['Real rum', 'Frozen', 'Party ready']).forEach((t) => {
+        const s = document.createElement('span');
+        s.className = 'tag';
+        s.textContent = t;
+        E.tags.append(s);
+      });
+      renderProduct(E.welcome, d);
+      renderProduct(E.summary, d);
+      price();
+      preloadAround(S.index);
+    }
+
+    function setIndex(i) {
+      const n = ((i % drinks.length) + drinks.length) % drinks.length;
+      if (n === S.index) return;
+      S.index = n;
+      S.qty = 1;
+      E.stage.classList.add('changing');
+      positions();
+      render();
+      window.setTimeout(() => E.stage.classList.remove('changing'), 330);
+    }
+
+    const prev = () => setIndex(S.index - 1);
+    const next = () => setIndex(S.index + 1);
+
+    function step(v) {
+      E.root.dataset.step = v;
+      $$('[data-step-target]').forEach((b) => b.classList.toggle('active', b.dataset.stepTarget === v));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function counts() {
+      E.counts.forEach((x) => { x.textContent = String(S.cart); });
+    }
+
+    function addToBasket() {
+      const d = drinks[S.index];
+      const existing = S.basket.find((line) => line.id === d.id && line.size === 250);
+      if (existing) existing.qty += S.qty;
+      else S.basket.push({ id: d.id, name: d.name, size: 250, qty: S.qty, unitPrice: d.price });
+      S.cart = S.basket.reduce((n, line) => n + line.qty, 0);
+      saveBasket();
+      counts();
+      E.dialogTitle.textContent = d.name;
+      E.dialogCopy.textContent = `${S.qty} × 250 ml — ${E.total.textContent}`;
+      if (E.dialog.showModal) E.dialog.showModal();
+      else window.alert(`${d.name} added to basket.`);
+    }
+
+    $('[data-prev]').addEventListener('click', prev);
+    $('[data-next]').addEventListener('click', next);
+    $('[data-decrease]').addEventListener('click', () => { S.qty = Math.max(1, S.qty - 1); price(); });
+    $('[data-increase]').addEventListener('click', () => { S.qty = Math.min(20, S.qty + 1); price(); });
+    $('[data-start]').addEventListener('click', () => step('flavour'));
+    $('[data-skip]').addEventListener('click', () => step('flavour'));
+    $('[data-continue]').addEventListener('click', () => step('summary'));
+    $('[data-mobile-back]').addEventListener('click', () => step('welcome'));
+    $('[data-summary-back]').addEventListener('click', () => step('flavour'));
+    $$('[data-step-target]').forEach((b) => b.addEventListener('click', () => step(b.dataset.stepTarget)));
+    $('[data-buy]').addEventListener('click', addToBasket);
+    $$('[data-open-basket]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (S.cart > 0) window.location.href = 'order.html';
+        else step(window.matchMedia('(max-width:760px)').matches ? 'flavour' : 'welcome');
+      });
+    });
+
+    E.track.addEventListener('pointerdown', (e) => {
+      if (e.button && e.button !== 0) return;
+      S.startX = e.clientX;
+      S.delta = 0;
+      S.drag = true;
+      try { E.track.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    E.track.addEventListener('pointermove', (e) => {
+      if (S.drag) S.delta = e.clientX - S.startX;
+    });
+    function up(e) {
+      if (!S.drag) return;
+      const t = Math.min(90, window.innerWidth * 0.14);
+      if (S.delta <= -t) next();
+      else if (S.delta >= t) prev();
+      S.startX = null;
+      S.delta = 0;
+      S.drag = false;
+      try { E.track.releasePointerCapture(e.pointerId); } catch (_) {}
+    }
+    E.track.addEventListener('pointerup', up);
+    E.track.addEventListener('pointercancel', up);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+    });
+
+    // Deep-link: ?flavour=mangofunk or ?id=summerset
+    const params = new URLSearchParams(location.search);
+    const flavourKey = params.get('flavour') || params.get('id');
+    if (flavourKey) {
+      const idx = drinks.findIndex((d) => d.id === flavourKey || d.name.toLowerCase() === flavourKey.toLowerCase());
+      if (idx >= 0) S.index = idx;
+    }
+
+    loadBasket();
+    build();
+    positions();
+    render();
+    counts();
+    // Deep-link step: ?step=welcome|flavour|summary (mobile flow); desktop always shows the full page.
+    const stepKey = params.get('step');
+    const validSteps = ['welcome', 'flavour', 'summary'];
+    step(validSteps.includes(stepKey) ? stepKey : (window.matchMedia('(max-width:760px)').matches ? 'welcome' : 'flavour'));
+  </script>
+</body>
+</html>
