@@ -250,10 +250,6 @@
       .shell{min-height:auto;overflow:visible}
       .experience{display:block;min-height:calc(100svh - 5.5625rem);padding:0;background:var(--paper)}
       .experience::before,.experience::after{display:none}
-      .mobile-top{position:absolute;z-index:60;top:max(.8rem,env(safe-area-inset-top));right:1.3rem;left:1.3rem;display:flex;align-items:center;justify-content:flex-end;pointer-events:none}
-      .mobile-top>*{pointer-events:auto}
-      .experience[data-step="summary"] .mobile-top{display:none}
-      .skip{border:0;border-radius:99px;background:rgba(17,17,17,.62);color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;min-height:44px;padding:.55rem 1.05rem;backdrop-filter:blur(6px)}
       .mobile-progress{position:fixed;z-index:80;right:0;bottom:max(1.3rem,env(safe-area-inset-bottom));left:0;display:flex;justify-content:center;gap:.8rem;width:max-content;margin:0 auto;padding:.55rem .9rem;border-radius:99px;background:rgba(255,249,232,.88);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(42,31,6,.12);pointer-events:none}
       .mobile-progress button{width:11px;height:11px;border:0;border-radius:50%;background:#d1c8b8;pointer-events:auto;padding:0}
       .mobile-progress button.active{background:var(--red)}
@@ -305,6 +301,10 @@
       .dots{margin-top:.85rem}
       .swipe{display:none}
       .swipe-copy span{display:none}
+      .swipe-hint{display:flex;align-items:center;justify-content:center;gap:.65rem;padding:.35rem 0 0;color:var(--muted);font-size:.69rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;opacity:.6;animation:swipePulse 2.2s ease-in-out infinite;user-select:none;pointer-events:none}
+      @keyframes swipePulse{0%,100%{opacity:.35;transform:translateX(-4px)}50%{opacity:.75;transform:translateX(4px)}}
+      .mobile-format-row{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:1rem 1.1rem 0;padding:.55rem .9rem;border-radius:16px;background:rgba(255,249,232,.88);box-shadow:0 6px 18px rgba(42,31,6,.08);backdrop-filter:blur(6px)}
+      .mobile-format-row .label{font-size:.7rem;margin-bottom:0}
       .mobile-progress,.carousel-copy .description,.carousel-copy .tags,.dots,.swipe-copy{display:none}
       .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:auto 1.25rem 0}
 
@@ -440,9 +440,6 @@
     <main>
       <section class="experience" id="flavours" data-step="welcome" aria-label="Choose your vibe">
         <div class="experience-bg" aria-hidden="true"></div>
-        <div class="mobile-top">
-          <button class="skip" type="button" data-skip>Skip</button>
-        </div>
         <div class="mobile-progress" role="tablist" aria-label="Onboarding progress">
           <button type="button" class="active" data-step-target="welcome" aria-label="Welcome"></button>
           <button type="button" data-step-target="flavour" aria-label="Flavour"></button>
@@ -488,6 +485,7 @@
             <div class="track" data-track role="group" aria-live="polite"></div>
             <button class="arrow next-arrow" type="button" data-next aria-label="Next flavour">›</button>
           </div>
+          <div class="swipe-hint" aria-hidden="true">← swipe →</div>
           <div class="carousel-copy">
             <h2 class="display" data-name>Drink name</h2>
             <p class="ingredients" data-ingredients>Ingredients</p>
@@ -495,6 +493,13 @@
             <div class="tags" data-tags></div>
           </div>
           <div class="dots" data-dots role="tablist" aria-label="Flavour pagination"></div>
+          <div class="mobile-format-row">
+            <span class="label">Format</span>
+            <div class="format-toggle" role="group" aria-label="Choose container" data-format-toggle>
+              <button type="button" class="format-btn active" data-format="pouch" aria-pressed="true">Pouch</button>
+              <button type="button" class="format-btn" data-format="bottle" aria-pressed="false">Bottle</button>
+            </div>
+          </div>
           <button class="primary mobile-continue" type="button" data-continue><span>Choose this flavour</span><span aria-hidden="true">→</span></button>
         </section>
 
@@ -927,9 +932,8 @@
       });
     });
     $('[data-start]').addEventListener('click', () => step('flavour'));
-    $('[data-skip]').addEventListener('click', () => step('flavour'));
     $('[data-continue]').addEventListener('click', () => step('summary'));
-    $('[data-mobile-back]').addEventListener('click', () => step('welcome'));
+    $('[data-mobile-back]').addEventListener('click', () => { window.location.href = 'index.html'; });
     $('[data-summary-back]').addEventListener('click', () => step('flavour'));
     $$('[data-step-target]').forEach((b) => b.addEventListener('click', () => step(b.dataset.stepTarget)));
     $('[data-buy]').addEventListener('click', addToBasket);
@@ -984,7 +988,7 @@
     // Deep-link step: ?step=welcome|flavour|summary (mobile flow); desktop always shows the full page.
     const stepKey = params.get('step');
     const validSteps = ['welcome', 'flavour', 'summary'];
-    step(validSteps.includes(stepKey) ? stepKey : (window.matchMedia('(max-width:760px)').matches ? 'welcome' : 'flavour'));
+    step(validSteps.includes(stepKey) ? stepKey : 'flavour');
 
     // Site header — homepage behaviour: scroll states + offcanvas menu
     const offcanvasToggle = document.querySelector('.offcanvas-toggle');
