@@ -673,7 +673,7 @@
     const MULTI_BUY_RATE = 0.10; // 10% off when qty >= 2
     const BASKET_KEY = 'drinkstop_vibe_basket';
 
-    const S = { index: 0, qty: 1, cart: 0, format: 'pouch', startX: null, delta: 0, drag: false, basket: [] };
+    const S = { index: 0, qtys: drinks.map(() => 1), cart: 0, format: 'pouch', startX: null, delta: 0, drag: false, basket: [] };
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => [...document.querySelectorAll(s)];
     const money = (n) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
@@ -818,7 +818,7 @@
 
     function price() {
       const d = drinks[S.index];
-      const qty = S.qty;
+      const qty = S.qtys[S.index];
       const base = d.price * qty;
       const total = lineTotal(d, qty);
       E.qty.textContent = String(qty);
@@ -865,7 +865,6 @@
       const n = ((i % drinks.length) + drinks.length) % drinks.length;
       if (n === S.index) return;
       S.index = n;
-      S.qty = 1;
       E.stage.classList.add('changing');
       positions();
       render();
@@ -887,22 +886,23 @@
 
     function addToBasket() {
       const d = drinks[S.index];
+      const qty = S.qtys[S.index];
       const existing = S.basket.find((line) => line.id === d.id && line.size === 250);
-      if (existing) existing.qty += S.qty;
-      else S.basket.push({ id: d.id, name: d.name, size: 250, qty: S.qty, unitPrice: d.price });
+      if (existing) existing.qty += qty;
+      else S.basket.push({ id: d.id, name: d.name, size: 250, qty: qty, unitPrice: d.price });
       S.cart = S.basket.reduce((n, line) => n + line.qty, 0);
       saveBasket();
       counts();
       E.dialogTitle.textContent = d.name;
-      E.dialogCopy.textContent = `${S.qty} × 250 ml — ${E.total.textContent}`;
+      E.dialogCopy.textContent = `${S.qtys[S.index]} × 250 ml — ${E.total.textContent}`;
       if (E.dialog.showModal) E.dialog.showModal();
       else window.alert(`${d.name} added to basket.`);
     }
 
     $('[data-prev]').addEventListener('click', prev);
     $('[data-next]').addEventListener('click', next);
-    $('[data-decrease]').addEventListener('click', () => { S.qty = Math.max(1, S.qty - 1); price(); });
-    $('[data-increase]').addEventListener('click', () => { S.qty = Math.min(20, S.qty + 1); price(); });
+    $('[data-decrease]').addEventListener('click', () => { S.qtys[S.index] = Math.max(1, S.qtys[S.index] - 1); price(); });
+    $('[data-increase]').addEventListener('click', () => { S.qtys[S.index] = Math.min(20, S.qtys[S.index] + 1); price(); });
     $$('[data-format]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const format = btn.dataset.format;
