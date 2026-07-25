@@ -185,6 +185,10 @@
     .purchase .description{font-size:1rem}
     .purchase hr{border:0;height:7px;margin:1.6rem 0;background-image:radial-gradient(circle,rgba(17,17,17,.45) 2.1px,transparent 2.3px);background-size:15px 7px;background-repeat:repeat-x;background-position:left center}
     .control-row,.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem}
+    .format-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+    .format-toggle{display:inline-flex;padding:4px;border:2px solid var(--ink);border-radius:99px;background:#fff}
+    .format-btn{border:0;background:transparent;padding:.5rem 1.15rem;border-radius:99px;font-family:inherit;font-weight:900;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);cursor:pointer;transition:.2s var(--ui)}
+    .format-btn.active{background:var(--ink);color:#fff}
     .label{display:block;margin-bottom:.55rem;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
     .stepper{display:grid;min-width:132px;min-height:58px;grid-template-columns:1fr 1fr 1fr;align-items:center;border:2px solid var(--ink);border-radius:99px;overflow:hidden;background:#fff}
     .stepper button{height:100%;border:0;background:transparent;font-size:1.3rem;font-weight:900;cursor:pointer;transition:background .15s var(--ui)}
@@ -315,6 +319,9 @@
       .purchase .description{display:none}
       .purchase hr{height:auto;border-top:3px solid var(--ink);background:none;margin:1rem 0}
       .control-row>div{flex:1}
+      .format-row{flex-wrap:wrap;justify-content:center;gap:.6rem}
+      .format-toggle{margin:0 auto}
+      .format-btn{padding:.42rem .9rem;font-size:.7rem}
       .stepper{border:1px solid rgba(17,17,17,.22);border-radius:14px;background:none}
       .stepper,.size{width:100%;min-width:0}
       .size{background:var(--yellow);color:var(--ink);box-shadow:none}
@@ -509,6 +516,14 @@
             <p class="ingredients" data-purchase-ingredients>Ingredients</p>
             <p class="description" data-purchase-description>Description</p>
             <hr>
+            <div class="format-row">
+              <span class="label">Format</span>
+              <div class="format-toggle" role="group" aria-label="Choose container" data-format-toggle>
+                <button type="button" class="format-btn active" data-format="pouch" aria-pressed="true">Pouch</button>
+                <button type="button" class="format-btn" data-format="bottle" aria-pressed="false">Bottle</button>
+              </div>
+            </div>
+            <hr>
             <div class="control-row">
               <div>
                 <span class="label" id="qty-label">Quantity</span>
@@ -573,6 +588,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rumbaclart-2.webp`,
+        bottle: `${VIBE_ASSET}/bottle-rumbaclart-2.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rumbaclart-2.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-2.webp`
       },
@@ -586,6 +602,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rum-for-your-life.webp`,
+        bottle: `${VIBE_ASSET}/bottle-rum-for-your-life.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rum-for-your-life.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rum-for-your-life.webp`
       },
@@ -599,6 +616,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-suck-your-rum.webp`,
+        bottle: `${VIBE_ASSET}/bottle-suck-your-rum.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-suck-your-rum.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-suck-your-rum.webp`
       },
@@ -612,6 +630,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-blutiful.webp`,
+        bottle: `${VIBE_ASSET}/bottle-blutiful.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-blutiful.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-blutiful.webp`
       },
@@ -625,6 +644,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rumbaclart-1.webp`,
+        bottle: `${VIBE_ASSET}/bottle-rumbaclart-1.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rumbaclart-1.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-1.webp`
       },
@@ -638,6 +658,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rumazing.webp`,
+        bottle: `${VIBE_ASSET}/bottle-rumazing.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rumazing.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rumazing.webp`
       },
@@ -651,6 +672,7 @@
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-summer-set.webp`,
+        bottle: `${VIBE_ASSET}/bottle-summer-set.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-summer-set.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-summer-set.webp`
       }
@@ -660,7 +682,7 @@
     const MULTI_BUY_RATE = 0.10; // 10% off when qty >= 2
     const BASKET_KEY = 'drinkstop_vibe_basket';
 
-    const S = { index: 0, qty: 1, cart: 0, startX: null, delta: 0, drag: false, basket: [] };
+    const S = { index: 0, qty: 1, cart: 0, format: 'pouch', startX: null, delta: 0, drag: false, basket: [] };
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => [...document.querySelectorAll(s)];
     const money = (n) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
@@ -707,20 +729,30 @@
     }
 
     function productNode(d, { eager = false } = {}) {
-      if (!d.product) {
+      const src = S.format === 'bottle' && d.bottle ? d.bottle : d.product;
+      if (!src) {
         const box = document.createElement('div');
         box.className = 'fallback';
         box.innerHTML = `<strong>${d.name}</strong><small>Add product image</small>`;
         return box;
       }
       const img = document.createElement('img');
-      img.src = d.product;
-      img.alt = `${d.name} frozen cocktail pouch`;
+      img.src = src;
+      img.alt = `${d.name} frozen cocktail ${S.format === 'bottle' && d.bottle ? 'bottle' : 'pouch'}`;
       img.draggable = false;
       img.decoding = 'async';
       if (eager) img.loading = 'eager';
       else img.loading = 'lazy';
       return img;
+    }
+
+    function rebuildProducts() {
+      [...E.track.children].forEach((card, i) => {
+        card.replaceChildren(productNode(drinks[i], { eager: Math.abs(i - S.index) <= 1 }));
+      });
+      const d = drinks[S.index];
+      renderProduct(E.welcome, d);
+      renderProduct(E.summary, d);
     }
 
     function build() {
@@ -880,6 +912,19 @@
     $('[data-next]').addEventListener('click', next);
     $('[data-decrease]').addEventListener('click', () => { S.qty = Math.max(1, S.qty - 1); price(); });
     $('[data-increase]').addEventListener('click', () => { S.qty = Math.min(20, S.qty + 1); price(); });
+    $$('[data-format]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const format = btn.dataset.format;
+        if (format === S.format) return;
+        S.format = format;
+        $$('[data-format]').forEach((b) => {
+          const on = b.dataset.format === format;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        rebuildProducts();
+      });
+    });
     $('[data-start]').addEventListener('click', () => step('flavour'));
     $('[data-skip]').addEventListener('click', () => step('flavour'));
     $('[data-continue]').addEventListener('click', () => step('summary'));
