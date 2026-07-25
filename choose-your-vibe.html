@@ -210,6 +210,9 @@
     .price-row strong{display:block;font-family:'Adieu','Arial Black',Impact,sans-serif;font-size:clamp(3.1rem,4.4vw,5.4rem);letter-spacing:-.02em;line-height:.9}
     .price-row .was{display:block;margin-top:.25rem;color:var(--muted);font-size:.85rem;font-weight:700;text-decoration:line-through}
     .save{display:inline-block;margin-top:.4rem;padding:.35rem .65rem;border:2px solid var(--green);border-radius:10px;color:var(--green);font-size:.68rem;font-weight:900;line-height:1.3;text-transform:uppercase;white-space:nowrap}
+    .basket-total-row{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem}
+    .basket-total-row .label{margin:0}
+    .basket-total-row strong{font-family:'Adieu','Arial Black',Impact,sans-serif;font-size:1.3rem;letter-spacing:-.01em}
     .primary{display:inline-flex;min-height:58px;align-items:center;justify-content:space-between;gap:1rem;border:0;border-radius:99px;padding:0 1.55rem;background:var(--ink);color:#fff;box-shadow:0 12px 25px rgba(17,17,17,.14);cursor:pointer;font-size:.94rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em;transition:.22s var(--ui)}
     .primary:hover{transform:translateY(-2px);box-shadow:0 17px 30px rgba(17,17,17,.2)}
     .primary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
@@ -581,6 +584,11 @@
                 <span class="price-accent price-accent--b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 5 2 6 7 7-5 1-6 2-7 7-1-5-2-6-7-7 5-1 6-2 7-7z"/></svg></span>
               </div>
             </div>
+            <hr>
+            <div class="basket-total-row">
+              <span class="label">Basket total</span>
+              <strong data-basket-total>£6.99</strong>
+            </div>
             <button class="primary buy" type="button" data-buy><span>Buy now</span><span aria-hidden="true">→</span></button>
           </div>
         </aside>
@@ -860,6 +868,15 @@
       return base;
     }
 
+    function basketLineTotal(line) {
+      const base = line.unitPrice * line.qty;
+      return line.qty >= MULTI_BUY_MIN ? base * (1 - MULTI_BUY_RATE) : base;
+    }
+
+    function basketTotal() {
+      return S.basket.reduce((sum, line) => sum + basketLineTotal(line), 0);
+    }
+
     function price() {
       const d = drinks[S.index];
       const qty = S.qtys[S.index][S.format];
@@ -867,6 +884,7 @@
       const total = lineTotal(d, qty);
       $$('[data-quantity]').forEach(el => el.textContent = String(qty));
       $$('[data-total]').forEach(el => el.textContent = money(total));
+      $$('[data-basket-total]').forEach(el => el.textContent = money(basketTotal() + total));
       const multi = qty >= MULTI_BUY_MIN;
       E.save.hidden = !multi;
       if (multi) {
