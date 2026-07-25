@@ -189,7 +189,7 @@
     .control-row,.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem}
     .format-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
     .format-toggle{display:inline-flex;padding:4px;border:2px solid var(--ink);border-radius:99px;background:#fff}
-    .format-btn{border:0;background:transparent;padding:.5rem 1.15rem;border-radius:99px;font-family:inherit;font-weight:900;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);cursor:pointer;transition:.2s var(--ui)}
+    .format-btn{border:0;background:transparent;padding:.5rem 1.15rem;border-radius:99px;font-family:inherit;font-weight:900;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);cursor:pointer;transition:.2s var(--ui);line-height:1;display:inline-flex;align-items:center;justify-content:center}
     .format-btn.active{background:var(--ink);color:#fff}
     .label{display:block;margin-bottom:.55rem;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
     .stepper{display:grid;min-width:132px;min-height:58px;grid-template-columns:1fr 1fr 1fr;align-items:center;border:2px solid var(--ink);border-radius:99px;overflow:hidden;background:#fff}
@@ -293,8 +293,9 @@
       .product.far-prev{--x:-133%;--s:.42;--b:10px;--o:.15}
       .product.far-next{--x:133%;--s:.42;--b:10px;--o:.15}
       .arrow{display:none}
-      .carousel-copy{display:block;position:relative;z-index:12;text-align:center;margin:.4rem 1.1rem 0;padding:.7rem 1rem .85rem;border-radius:20px;background:rgba(255,249,232,.88);box-shadow:0 8px 22px rgba(42,31,6,.12);backdrop-filter:blur(8px)}
-      .carousel-copy h2{font-size:clamp(1.75rem,7.4vw,2.6rem)}
+      .carousel-copy{display:block;position:relative;z-index:12;text-align:center;margin:.4rem 1.1rem 0;padding:.45rem .85rem .55rem;border-radius:16px;background:rgba(255,249,232,.88);box-shadow:0 6px 18px rgba(42,31,6,.1);backdrop-filter:blur(8px)}
+      .carousel-copy h2{font-size:clamp(1.35rem,5.8vw,2rem)}
+      .carousel-copy .ingredients{font-size:.74rem}
       .ingredients{font-size:.88rem}
       .description{font-size:.88rem}
       .tag{padding:.42rem .7rem;font-size:.61rem}
@@ -304,7 +305,7 @@
       .swipe-hint{display:flex;align-items:center;justify-content:center;gap:.65rem;padding:.35rem 0 0;color:var(--muted);font-size:.69rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;opacity:.6;animation:swipePulse 2.2s ease-in-out infinite;user-select:none;pointer-events:none}
       @keyframes swipePulse{0%,100%{opacity:.35;transform:translateX(-4px)}50%{opacity:.75;transform:translateX(4px)}}
       .mobile-progress,.carousel-copy .description,.carousel-copy .tags,.dots,.swipe-copy{display:none}
-      .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:auto 1.25rem 0}
+      .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:.55rem 1.25rem auto}
 
       .purchase{min-height:calc(100svh - 5.5625rem);flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
       .mobile-summary-hero{position:relative;display:grid;min-height:31svh;place-items:center;overflow:hidden;isolation:isolate}
@@ -320,7 +321,7 @@
       .control-row>div{flex:1}
       .format-row{flex-wrap:wrap;justify-content:center;gap:.6rem}
       .format-toggle{margin:0 auto}
-      .format-btn{padding:.42rem .9rem;font-size:.7rem}
+      .format-btn{padding:.38rem .85rem;font-size:.69rem;line-height:1}
       .stepper{border:1px solid rgba(17,17,17,.22);border-radius:14px;background:none}
       .stepper,.size{width:100%;min-width:0}
       .size{background:var(--yellow);color:var(--ink);box-shadow:none}
