@@ -507,7 +507,6 @@
             <p class="eyebrow">You've chosen</p>
             <h2 class="display" data-purchase-name>Drink name</h2>
             <p class="ingredients" data-purchase-ingredients>Ingredients</p>
-            <p class="description" data-purchase-description>Description</p>
             <hr>
             <div class="format-row">
               <span class="label">Format</span>
@@ -543,7 +542,6 @@
               <span class="save" data-save>Save 10%<br>multi-buys</span>
             </div>
             <button class="primary buy" type="button" data-buy><span>Buy now</span><span aria-hidden="true">→</span></button>
-            <p class="delivery"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Frozen delivery across the UK</p>
           </div>
         </aside>
       </section>
@@ -691,7 +689,7 @@
       tags: $('[data-tags]'),
       purchaseName: $('[data-purchase-name]'),
       purchaseIngredients: $('[data-purchase-ingredients]'),
-      purchaseDescription: $('[data-purchase-description]'),
+      purchaseDescription: null, // removed from desktop
       welcome: $('[data-welcome-product]'),
       summary: $('[data-summary-product]'),
       qty: $('[data-quantity]'),
@@ -849,7 +847,7 @@
       E.description.textContent = d.description;
       E.purchaseName.textContent = d.name;
       E.purchaseIngredients.textContent = d.ingredients;
-      E.purchaseDescription.textContent = d.description;
+      if (E.purchaseDescription) E.purchaseDescription.textContent = d.description;
       E.tags.replaceChildren();
       (d.tags || ['Real rum', 'Frozen', 'Party ready']).forEach((t) => {
         const s = document.createElement('span');
