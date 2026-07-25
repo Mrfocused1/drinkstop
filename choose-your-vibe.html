@@ -219,7 +219,7 @@
     .trust+.trust{border-left:1px solid var(--line)}
     .trust i{width:52px;height:52px}
 
-    .mobile-top,.mobile-progress,.welcome,.mobile-head,.mobile-summary-hero,.mobile-continue{display:none}
+    .mobile-top,.mobile-progress,.welcome,.mobile-head,.mobile-summary-hero,.mobile-continue,.mobile-controls{display:none}
 
     /* DIALOG */
     dialog{border:0;border-radius:26px;padding:0;background:transparent;max-width:calc(100vw - 2rem)}
@@ -304,6 +304,14 @@
       @keyframes swipePulse{0%,100%{opacity:.35;transform:translateX(-4px)}50%{opacity:.75;transform:translateX(4px)}}
       .mobile-progress,.carousel-copy .description,.carousel-copy .tags,.dots,.swipe-copy{display:none}
       .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:.55rem 1.25rem auto}
+      .mobile-controls{display:flex;gap:.75rem;margin:0 1.1rem;align-items:flex-end}
+      .mobile-controls>div{flex:1}
+      .mobile-controls .label{font-size:.7rem;margin-bottom:.3rem}
+      .mobile-controls .stepper{min-height:44px;border-radius:12px}
+      .mobile-controls .stepper button{font-size:1.1rem}
+      .mobile-controls .stepper output{font-size:1rem}
+      .mobile-controls .size-toggle{width:100%;justify-content:center}
+      .mobile-controls .size-btn{flex:1;text-align:center;font-size:.65rem;padding:.3rem .5rem}
 
       .purchase{min-height:calc(100svh - 5.5625rem);flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
       .mobile-summary-hero{position:relative;display:grid;min-height:31svh;place-items:center;overflow:hidden;isolation:isolate}
@@ -489,6 +497,23 @@
             <div class="tags" data-tags></div>
           </div>
           <div class="dots" data-dots role="tablist" aria-label="Flavour pagination"></div>
+          <div class="mobile-controls">
+            <div>
+              <span class="label">Qty</span>
+              <div class="stepper" role="group">
+                <button type="button" data-decrease aria-label="Decrease quantity">−</button>
+                <output data-quantity aria-live="polite">1</output>
+                <button type="button" data-increase aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+            <div>
+              <span class="label">Size</span>
+              <div class="size-toggle" role="group" aria-label="Choose size">
+                <button type="button" class="size-btn" data-size="150" aria-pressed="false">150 ml</button>
+                <button type="button" class="size-btn active" data-size="250" aria-pressed="true">250 ml</button>
+              </div>
+            </div>
+          </div>
           <button class="primary mobile-continue" type="button" data-continue><span>Choose this flavour</span><span aria-hidden="true">→</span></button>
         </section>
 
@@ -511,7 +536,6 @@
             <p class="ingredients" data-purchase-ingredients>Ingredients</p>
             <hr>
             <div class="format-row">
-              <span class="label">Format</span>
               <div class="format-toggle" role="group" aria-label="Choose container" data-format-toggle>
                 <button type="button" class="format-btn active" data-format="pouch" aria-pressed="true">Pouch</button>
                 <button type="button" class="format-btn" data-format="bottle" aria-pressed="false">Bottle</button>
@@ -830,7 +854,7 @@
       const qty = S.qtys[S.index];
       const base = d.price * qty;
       const total = lineTotal(d, qty);
-      E.qty.textContent = String(qty);
+      $$('[data-quantity]').forEach(el => el.textContent = String(qty));
       E.total.textContent = money(total);
       const multi = qty >= MULTI_BUY_MIN;
       E.save.hidden = !multi;
@@ -910,8 +934,8 @@
 
     $('[data-prev]').addEventListener('click', prev);
     $('[data-next]').addEventListener('click', next);
-    $('[data-decrease]').addEventListener('click', () => { S.qtys[S.index] = Math.max(1, S.qtys[S.index] - 1); price(); });
-    $('[data-increase]').addEventListener('click', () => { S.qtys[S.index] = Math.min(20, S.qtys[S.index] + 1); price(); });
+    $$('[data-decrease]').forEach(el => el.addEventListener('click', () => { S.qtys[S.index] = Math.max(1, S.qtys[S.index] - 1); price(); }));
+    $$('[data-increase]').forEach(el => el.addEventListener('click', () => { S.qtys[S.index] = Math.min(20, S.qtys[S.index] + 1); price(); }));
     $$('[data-format]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const format = btn.dataset.format;
