@@ -202,7 +202,7 @@
     .price-accent--b{bottom:-6px;right:-22px;transform:rotate(174deg)}
     .price-row strong{display:block;font-family:'Adieu','Arial Black',Impact,sans-serif;font-size:clamp(3.1rem,4.4vw,5.4rem);letter-spacing:-.02em;line-height:.9}
     .price-row .was{display:block;margin-top:.25rem;color:var(--muted);font-size:.85rem;font-weight:700;text-decoration:line-through}
-    .save{padding:.65rem .8rem;border:2px solid var(--green);border-radius:13px;color:var(--green);font-size:.78rem;font-weight:900;line-height:1.1;text-align:center;text-transform:uppercase}
+    .save{padding:.45rem .75rem;border:2px solid var(--green);border-radius:11px;color:var(--green);font-size:.7rem;font-weight:900;line-height:1.25;text-align:center;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center}
     .primary{display:inline-flex;min-height:58px;align-items:center;justify-content:space-between;gap:1rem;border:0;border-radius:99px;padding:0 1.55rem;background:var(--ink);color:#fff;box-shadow:0 12px 25px rgba(17,17,17,.14);cursor:pointer;font-size:.94rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em;transition:.22s var(--ui)}
     .primary:hover{transform:translateY(-2px);box-shadow:0 17px 30px rgba(17,17,17,.2)}
     .primary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
@@ -539,7 +539,7 @@
                 <span class="was" data-was hidden></span>
                 <span class="price-accent price-accent--b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 5 2 6 7 7-5 1-6 2-7 7-1-5-2-6-7-7 5-1 6-2 7-7z"/></svg></span>
               </div>
-              <span class="save" data-save>Save 10%<br>multi-buys</span>
+              <span class="save" data-save hidden>Save 10%</span>
             </div>
             <button class="primary buy" type="button" data-buy><span>Buy now</span><span aria-hidden="true">→</span></button>
           </div>
@@ -827,7 +827,7 @@
       E.save.hidden = !multi;
       if (multi) {
         const pct = Math.round(MULTI_BUY_RATE * 100);
-        E.save.innerHTML = `Save ${pct}%<br>multi-buys`;
+        E.save.textContent = `Save ${pct}%`;
         E.was.hidden = false;
         E.was.textContent = money(base);
       } else {
