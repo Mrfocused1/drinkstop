@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/product-rumbaclart-2.webp" />
+  <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/product-rumbaclart-2.png" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-desktop-rumbaclart-2.webp" media="(min-width:761px)" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-mobile-rumbaclart-2.webp" media="(max-width:760px)" />
   <style>
@@ -140,13 +140,15 @@
     .product{
       --x:0%;--s:1;--b:0px;--o:1;--r:0deg;
       position:absolute;top:49%;left:50%;
+      width:clamp(240px,33vh,365px);
+      height:clamp(420px,58vh,640px);
       opacity:var(--o);filter:blur(var(--b)) saturate(calc(.55 + var(--o)*.45));
       transform:translate(-50%,-50%) translateX(var(--x)) scale(var(--s)) rotate(var(--r));
       transform-origin:50% 76%;
       transition:transform var(--duration) var(--pop),filter .42s var(--ui),opacity .36s ease;
       will-change:transform,filter,opacity;cursor:pointer;
     }
-    .product img{display:block;width:auto;height:clamp(380px,52vh,580px);pointer-events:none;filter:drop-shadow(0 28px 31px rgba(30,20,0,.18))}
+    .product img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;max-width:none;height:100%;pointer-events:none;filter:drop-shadow(0 28px 31px rgba(30,20,0,.18))}
     .product.active{z-index:7;--x:0%;--s:1;--b:0px;--o:1}
     .product.prev{z-index:4;--x:-122%;--s:.64;--b:7px;--o:.54;--r:-2deg}
     .product.next{z-index:4;--x:122%;--s:.64;--b:7px;--o:.54;--r:2deg}
@@ -267,7 +269,7 @@
       .welcome-visual{position:relative;min-height:41svh;margin:0 -1.35rem;overflow:hidden;isolation:isolate}
       .welcome-bg{position:absolute;z-index:-1;inset:-1rem;background-image:var(--mobile-bg);background-position:center bottom;background-repeat:no-repeat;background-size:cover}
       .welcome-product{position:absolute;right:0;bottom:-.5rem;left:0;display:grid;place-items:center}
-      .welcome-product img{width:auto;height:min(40svh,340px);filter:drop-shadow(0 21px 25px rgba(32,16,0,.2))}
+      .welcome-product img{width:auto;max-width:none;height:min(44svh,378px);filter:drop-shadow(0 21px 25px rgba(32,16,0,.2))}
       .welcome-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
       .welcome-benefits .benefit{align-items:start}
       .welcome-benefits .benefit:nth-child(3){display:none}
@@ -289,12 +291,11 @@
       .stage{flex:1;min-height:41svh;margin-top:.25rem;border-radius:0}
       .stage::after{display:none}
       .experience-bg{display:none}
-      .product{top:52%}
-      .product img{height:min(38svh,335px)}
-      .product.prev{--x:-82%;--s:.6;--b:6px;--o:.42}
-      .product.next{--x:82%;--s:.6;--b:6px;--o:.42}
-      .product.far-prev{--x:-145%;--s:.42;--b:10px;--o:.15}
-      .product.far-next{--x:145%;--s:.42;--b:10px;--o:.15}
+      .product{top:52%;width:min(24svh,212px);height:min(42svh,372px)}
+      .product.prev{--x:-75%;--s:.6;--b:6px;--o:.42}
+      .product.next{--x:75%;--s:.6;--b:6px;--o:.42}
+      .product.far-prev{--x:-133%;--s:.42;--b:10px;--o:.15}
+      .product.far-next{--x:133%;--s:.42;--b:10px;--o:.15}
       .arrow{display:none}
       .carousel-copy{display:block;position:relative;z-index:12;text-align:center;margin:.4rem 1.1rem 0;padding:.7rem 1rem .85rem;border-radius:20px;background:rgba(255,249,232,.88);box-shadow:0 8px 22px rgba(42,31,6,.12);backdrop-filter:blur(8px)}
       .carousel-copy h2{font-size:clamp(1.75rem,7.4vw,2.6rem)}
@@ -310,7 +311,7 @@
       .purchase{min-height:calc(100svh - 5.5625rem);flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
       .mobile-summary-hero{position:relative;display:grid;min-height:31svh;place-items:center;overflow:hidden;isolation:isolate}
       .mobile-summary-bg{position:absolute;z-index:-1;inset:0;background-image:var(--mobile-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.84}
-      .mobile-summary-hero img{width:auto;height:min(27svh,235px);filter:drop-shadow(0 18px 25px rgba(26,17,0,.18))}
+      .mobile-summary-hero img{width:auto;max-width:none;height:min(30svh,261px);filter:drop-shadow(0 18px 25px rgba(26,17,0,.18))}
       .purchase-content{padding:1rem 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4rem));text-align:center}
       .purchase::before{display:none}
       .purchase .eyebrow{display:none}
@@ -587,7 +588,7 @@
         soft: 'rgba(43,142,45,.12)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-rumbaclart-2.webp`,
+        product: `${VIBE_ASSET}/product-rumbaclart-2.png`,
         bottle: `${VIBE_ASSET}/bottle-rumbaclart-2.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rumbaclart-2.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-2.webp`
@@ -601,7 +602,7 @@
         soft: 'rgba(233,4,13,.12)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-rum-for-your-life.webp`,
+        product: `${VIBE_ASSET}/product-rum-for-your-life.png`,
         bottle: `${VIBE_ASSET}/bottle-rum-for-your-life.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rum-for-your-life.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rum-for-your-life.webp`
@@ -615,7 +616,7 @@
         soft: 'rgba(51,7,108,.12)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-suck-your-rum.webp`,
+        product: `${VIBE_ASSET}/product-suck-your-rum.png`,
         bottle: `${VIBE_ASSET}/bottle-suck-your-rum.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-suck-your-rum.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-suck-your-rum.webp`
@@ -629,7 +630,7 @@
         soft: 'rgba(20,87,230,.12)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-blutiful.webp`,
+        product: `${VIBE_ASSET}/product-blutiful.png`,
         bottle: `${VIBE_ASSET}/bottle-blutiful.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-blutiful.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-blutiful.webp`
@@ -643,7 +644,7 @@
         soft: 'rgba(252,104,1,.12)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-rumbaclart-1.webp`,
+        product: `${VIBE_ASSET}/product-rumbaclart-1.png`,
         bottle: `${VIBE_ASSET}/bottle-rumbaclart-1.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rumbaclart-1.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-1.webp`
@@ -657,7 +658,7 @@
         soft: 'rgba(229,0,125,.12)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-rumazing.webp`,
+        product: `${VIBE_ASSET}/product-rumazing.png`,
         bottle: `${VIBE_ASSET}/bottle-rumazing.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-rumazing.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-rumazing.webp`
@@ -671,7 +672,7 @@
         soft: 'rgba(233,4,13,.10)',
         price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
-        product: `${VIBE_ASSET}/product-summer-set.webp`,
+        product: `${VIBE_ASSET}/product-summer-set.png`,
         bottle: `${VIBE_ASSET}/bottle-summer-set.webp`,
         desktop: `${VIBE_ASSET}/background-desktop-summer-set.webp`,
         mobile: `${VIBE_ASSET}/background-mobile-summer-set.webp`
