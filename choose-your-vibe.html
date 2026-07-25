@@ -709,7 +709,7 @@
     const MULTI_BUY_RATE = 0.10; // 10% off when qty >= 2
     const BASKET_KEY = 'drinkstop_vibe_basket';
 
-    const S = { index: 0, qtys: drinks.map(() => 1), cart: 0, format: 'pouch', size: 250, startX: null, delta: 0, drag: false, basket: [] };
+    const S = { index: 0, qtys: drinks.map(() => ({ pouch: 1, bottle: 1 })), cart: 0, format: 'pouch', size: 250, startX: null, delta: 0, drag: false, basket: [] };
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => [...document.querySelectorAll(s)];
     const money = (n) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
@@ -858,7 +858,7 @@
 
     function price() {
       const d = drinks[S.index];
-      const qty = S.qtys[S.index];
+      const qty = S.qtys[S.index][S.format];
       const base = d.price * qty;
       const total = lineTotal(d, qty);
       $$('[data-quantity]').forEach(el => el.textContent = String(qty));
@@ -926,23 +926,23 @@
 
     function addToBasket() {
       const d = drinks[S.index];
-      const qty = S.qtys[S.index];
-      const existing = S.basket.find((line) => line.id === d.id && line.size === S.size);
+      const qty = S.qtys[S.index][S.format];
+      const existing = S.basket.find((line) => line.id === d.id && line.size === S.size && line.format === S.format);
       if (existing) existing.qty += qty;
-      else S.basket.push({ id: d.id, name: d.name, size: S.size, qty: qty, unitPrice: sizePrice(d) });
+      else S.basket.push({ id: d.id, name: d.name, format: S.format, size: S.size, qty: qty, unitPrice: sizePrice(d) });
       S.cart = S.basket.reduce((n, line) => n + line.qty, 0);
       saveBasket();
       counts();
       E.dialogTitle.textContent = d.name;
-      E.dialogCopy.textContent = `${S.qtys[S.index]} × ${S.size} ml — ${E.total.textContent}`;
+      E.dialogCopy.textContent = `${S.qtys[S.index][S.format]} × ${S.size} ml — ${E.total.textContent}`;
       if (E.dialog.showModal) E.dialog.showModal();
       else window.alert(`${d.name} added to basket.`);
     }
 
     $('[data-prev]').addEventListener('click', prev);
     $('[data-next]').addEventListener('click', next);
-    $$('[data-decrease]').forEach(el => el.addEventListener('click', () => { S.qtys[S.index] = Math.max(1, S.qtys[S.index] - 1); price(); }));
-    $$('[data-increase]').forEach(el => el.addEventListener('click', () => { S.qtys[S.index] = Math.min(20, S.qtys[S.index] + 1); price(); }));
+    $$('[data-decrease]').forEach(el => el.addEventListener('click', () => { S.qtys[S.index][S.format] = Math.max(1, S.qtys[S.index][S.format] - 1); price(); }));
+    $$('[data-increase]').forEach(el => el.addEventListener('click', () => { S.qtys[S.index][S.format] = Math.min(20, S.qtys[S.index][S.format] + 1); price(); }));
     $$('[data-format]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const format = btn.dataset.format;
@@ -954,6 +954,7 @@
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
         rebuildProducts();
+        price();
       });
     });
     $$('[data-size]').forEach((btn) => {
