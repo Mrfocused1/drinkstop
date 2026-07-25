@@ -24,14 +24,15 @@
     }
     :root{
       --ink:#111111;--paper:#fff9e8;--paper2:#fffdf5;--red:#e9040d;--yellow:#fdcc04;
-      --orange:#fc6801;--purple:#33076c;--green:#2b8e2d;--muted:#716b61;--line:rgba(17,17,17,.14);
-      --active:#2b8e2d;--active-soft:rgba(43,142,45,.12);--desktop-bg:none;--mobile-bg:none;
+      --orange:#fc6801;--purple:#33076c;--green:#237324;--muted:#716b61;--line:rgba(17,17,17,.14);
+      --active:#237324;--active-soft:rgba(35,115,36,.12);--desktop-bg:none;--mobile-bg:none;
       --pop:cubic-bezier(.18,.84,.28,1);--ui:cubic-bezier(.22,1,.36,1);
       --shadow:0 24px 70px rgba(65,44,5,.11),0 4px 16px rgba(65,44,5,.08);
       --duration:.52s;--copy-duration:.32s;
       --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     *,*::before,*::after{box-sizing:border-box}
+    [hidden]{display:none!important}
     html{scroll-behavior:smooth}
     body{margin:0;min-width:320px;padding-top:5.5625rem;color:var(--ink);background:var(--paper);font-family:'Manrope',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
     button,input{font:inherit}button{color:inherit}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
@@ -144,7 +145,7 @@
       transition:transform var(--duration) var(--pop),filter .42s var(--ui),opacity .36s ease;
       will-change:transform,filter,opacity;cursor:pointer;
     }
-    .product img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;max-width:none;height:100%;pointer-events:none;filter:drop-shadow(0 28px 31px rgba(30,20,0,.18))}
+    .product img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;max-width:none;height:100%;pointer-events:none;filter:drop-shadow(0 8px 10px rgba(20,14,0,.32)) drop-shadow(0 34px 38px rgba(20,14,0,.22))}
     .product.active{z-index:7;--x:0%;--s:1;--b:0px;--o:1}
     .product.prev{z-index:4;--x:-122%;--s:.64;--b:7px;--o:.54;--r:-2deg}
     .product.next{z-index:4;--x:122%;--s:.64;--b:7px;--o:.54;--r:2deg}
@@ -193,6 +194,8 @@
     .label{display:block;margin-bottom:.55rem;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
     .stepper{display:grid;min-width:132px;min-height:58px;grid-template-columns:1fr 1fr 1fr;align-items:center;border:2px solid var(--ink);border-radius:99px;overflow:hidden;background:#fff}
     .stepper button{height:100%;border:0;background:transparent;font-size:1.3rem;font-weight:900;cursor:pointer;transition:background .15s var(--ui)}
+    .stepper button:first-child{border-right:1px solid var(--line)}
+    .stepper button:last-child{border-left:1px solid var(--line)}
     .stepper button:hover{background:rgba(17,17,17,.06)}
     .stepper button:focus-visible{outline:2px solid var(--active);outline-offset:-2px}
     .stepper output{text-align:center;font-weight:900;font-size:1.15rem}
@@ -307,9 +310,9 @@
       @keyframes swipePulse{0%,100%{opacity:.35;transform:translateX(-4px)}50%{opacity:.75;transform:translateX(4px)}}
       .mobile-progress,.carousel-copy .description,.carousel-copy .tags,.dots,.swipe-copy{display:none}
       .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:.55rem 1.25rem auto}
-      .mobile-controls{display:flex;gap:.5rem;margin:.65rem .85rem 0;align-items:stretch}
+      .mobile-controls{display:flex;gap:.5rem;margin:.65rem .85rem 0;padding:.6rem .7rem .7rem;border-radius:16px;background:rgba(255,249,232,.88);box-shadow:0 6px 18px rgba(42,31,6,.1);backdrop-filter:blur(8px);align-items:stretch}
       .mobile-controls>div{flex:1;min-width:0}
-      .mobile-controls .label{font-size:.66rem;margin-bottom:.2rem;opacity:.55}
+      .mobile-controls .label{font-size:.66rem;margin-bottom:.3rem;opacity:.85}
       .mobile-controls .stepper{min-height:44px;height:44px;border-radius:12px}
       .mobile-controls .stepper button{font-size:1.1rem}
       .mobile-controls .stepper output{font-size:.95rem}
