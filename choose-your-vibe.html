@@ -193,8 +193,9 @@
     .stepper button:hover{background:rgba(17,17,17,.06)}
     .stepper button:focus-visible{outline:2px solid var(--active);outline-offset:-2px}
     .stepper output{text-align:center;font-weight:900;font-size:1.15rem}
-    .size{position:relative;display:flex;align-items:center;justify-content:center;gap:.3rem;min-width:104px;min-height:48px;padding:0 1.3rem;border-radius:99px;background:var(--green);color:#fff;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;box-shadow:0 10px 22px rgba(43,142,45,.32)}
-    .size-chevron{width:7px;height:7px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);margin-left:.2rem;margin-top:-.2rem}
+    .size-toggle{display:inline-flex;padding:4px;border:2px solid var(--ink);border-radius:99px;background:#fff}
+    .size-btn{border:0;background:transparent;padding:.42rem 1rem;border-radius:99px;font-family:inherit;font-weight:900;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);cursor:pointer;transition:.2s var(--ui);line-height:1.25;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+    .size-btn.active{background:var(--green);color:#fff}
     .price-hero{position:relative}
     .price-accent{position:absolute;color:var(--green);pointer-events:none}
     .price-accent svg{display:block;width:30px;height:30px}
@@ -320,9 +321,10 @@
       .format-toggle{margin:0 auto}
       .format-btn{padding:.34rem .85rem;font-size:.69rem;line-height:1.2}
       .stepper{border:2px solid var(--ink);border-radius:14px;background:#fff}
-      .stepper,.size{width:100%;min-width:0}
-      .size{background:var(--yellow);color:var(--ink);box-shadow:none;display:flex;align-items:center;justify-content:center;min-height:48px}
-      .size-chevron{border-color:var(--ink)}
+      .stepper,.size-toggle{width:100%}
+      .size-toggle{justify-content:center}
+      .size-btn{padding:.34rem .85rem;font-size:.69rem;line-height:1.2}
+      .size-btn.active{background:var(--green);color:#fff}
       .price-row{align-items:center;text-align:left}
       .price-hero{position:static}
       .price-accent{display:none}
@@ -527,7 +529,10 @@
               </div>
               <div>
                 <span class="label">Size</span>
-                <span class="size">250 ml<i class="size-chevron" aria-hidden="true"></i></span>
+                <div class="size-toggle" role="group" aria-label="Choose size" data-size-toggle>
+                  <button type="button" class="size-btn" data-size="150" aria-pressed="false">150 ml</button>
+                  <button type="button" class="size-btn active" data-size="250" aria-pressed="true">250 ml</button>
+                </div>
               </div>
             </div>
             <hr>
@@ -673,7 +678,7 @@
     const MULTI_BUY_RATE = 0.10; // 10% off when qty >= 2
     const BASKET_KEY = 'drinkstop_vibe_basket';
 
-    const S = { index: 0, qtys: drinks.map(() => 1), cart: 0, format: 'pouch', startX: null, delta: 0, drag: false, basket: [] };
+    const S = { index: 0, qtys: drinks.map(() => 1), cart: 0, format: 'pouch', size: 250, startX: null, delta: 0, drag: false, basket: [] };
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => [...document.querySelectorAll(s)];
     const money = (n) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
@@ -810,8 +815,12 @@
       });
     }
 
+    function sizePrice(d) {
+      return S.size === 150 ? Math.round(d.price * 0.6 * 100) / 100 : d.price;
+    }
+
     function lineTotal(d, qty) {
-      const base = d.price * qty;
+      const base = sizePrice(d) * qty;
       if (qty >= MULTI_BUY_MIN) return base * (1 - MULTI_BUY_RATE);
       return base;
     }
@@ -887,14 +896,14 @@
     function addToBasket() {
       const d = drinks[S.index];
       const qty = S.qtys[S.index];
-      const existing = S.basket.find((line) => line.id === d.id && line.size === 250);
+      const existing = S.basket.find((line) => line.id === d.id && line.size === S.size);
       if (existing) existing.qty += qty;
-      else S.basket.push({ id: d.id, name: d.name, size: 250, qty: qty, unitPrice: d.price });
+      else S.basket.push({ id: d.id, name: d.name, size: S.size, qty: qty, unitPrice: sizePrice(d) });
       S.cart = S.basket.reduce((n, line) => n + line.qty, 0);
       saveBasket();
       counts();
       E.dialogTitle.textContent = d.name;
-      E.dialogCopy.textContent = `${S.qtys[S.index]} × 250 ml — ${E.total.textContent}`;
+      E.dialogCopy.textContent = `${S.qtys[S.index]} × ${S.size} ml — ${E.total.textContent}`;
       if (E.dialog.showModal) E.dialog.showModal();
       else window.alert(`${d.name} added to basket.`);
     }
@@ -914,6 +923,19 @@
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
         rebuildProducts();
+      });
+    });
+    $$('[data-size]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const size = parseInt(btn.dataset.size);
+        if (size === S.size) return;
+        S.size = size;
+        $$('[data-size]').forEach((b) => {
+          const on = parseInt(b.dataset.size) === size;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        price();
       });
     });
     $('[data-start]').addEventListener('click', () => step('flavour'));
