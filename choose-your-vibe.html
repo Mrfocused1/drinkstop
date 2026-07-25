@@ -111,9 +111,12 @@
     .count{position:absolute;top:0;right:-2px;display:grid;min-width:24px;height:24px;place-items:center;border:2px solid var(--ink);border-radius:99px;background:var(--yellow);color:var(--ink);font-size:.72rem;font-weight:900}
 
     /* DESKTOP LAYOUT */
-    .experience{position:relative;display:grid;min-height:calc(100vh - 5.5625rem);grid-template-columns:minmax(235px,.8fr) minmax(520px,1.65fr) minmax(320px,.93fr);grid-template-rows:minmax(660px,1fr) auto;column-gap:clamp(1.7rem,3vw,4rem);padding:clamp(2.4rem,4vw,4.3rem) clamp(2rem,4vw,4.5rem) 1.8rem;background:radial-gradient(circle at 48% 45%,#fff 0,rgba(255,255,255,.72) 18rem,transparent 40rem),var(--paper);isolation:isolate}
-    .experience::before{position:absolute;z-index:-1;inset:0;background-image:radial-gradient(circle at 15% 15%,var(--active-soft),transparent 25rem),radial-gradient(circle at 80% 60%,var(--active-soft),transparent 30rem);content:"";opacity:.55;transition:var(--copy-duration) var(--ui)}
-    .intro{align-self:center;padding-bottom:3rem}
+    .experience{position:relative;display:grid;min-height:calc(100vh - 5.5625rem);grid-template-columns:minmax(220px,.6fr) minmax(600px,2.35fr) minmax(300px,.85fr);grid-template-rows:minmax(680px,1fr) auto;column-gap:clamp(1.4rem,2.6vw,3.2rem);padding:clamp(2rem,3vw,3.6rem) clamp(1.4rem,2.6vw,3.2rem) 1.8rem;background:var(--paper);isolation:isolate}
+    .experience-bg{position:absolute;z-index:-3;inset:0;background-image:var(--desktop-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:1;transform:scale(1.02);transition:opacity .3s ease,transform .65s var(--ui)}
+    .experience:has(.stage.changing) .experience-bg{opacity:.6;transform:scale(1.05)}
+    .experience::before{position:absolute;z-index:-1;inset:0;background-image:radial-gradient(circle at 15% 15%,var(--active-soft),transparent 25rem),radial-gradient(circle at 80% 60%,var(--active-soft),transparent 30rem);content:"";opacity:.4;transition:var(--copy-duration) var(--ui)}
+    .experience::after{position:absolute;z-index:-2;right:0;bottom:0;left:0;height:26%;background:linear-gradient(180deg,transparent,rgba(255,249,232,.88));content:"";pointer-events:none}
+    .intro{align-self:center;padding:1.7rem 1.9rem;border-radius:28px;background:rgba(255,249,232,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(59,43,10,.12)}
     .intro h1{max-width:9ch;margin:0;font-size:clamp(2.7rem,3.4vw,3.6rem)}
     .strap{margin:1.1rem 0 0;color:var(--red);font-size:clamp(1.05rem,1.5vw,1.45rem);font-weight:900;text-transform:uppercase;letter-spacing:.02em}
     .intro-copy{max-width:27rem;margin:1rem 0 0;font-weight:500;color:#3d3a34}
@@ -126,10 +129,7 @@
 
     /* CAROUSEL */
     .carousel-panel{position:relative;display:flex;min-width:0;flex-direction:column;justify-content:center}
-    .stage{position:relative;min-height:clamp(520px,62vh,720px);overflow:hidden;border-radius:34px;isolation:isolate}
-    .stage::after{position:absolute;z-index:8;right:0;bottom:0;left:0;height:24%;background:linear-gradient(180deg,transparent,rgba(255,249,232,.65));content:"";pointer-events:none}
-    .stage-bg{position:absolute;z-index:-1;inset:0;background-image:var(--desktop-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.97;transform:scale(1.035);transition:opacity .3s ease,transform .65s var(--ui)}
-    .stage.changing .stage-bg{opacity:.42;transform:scale(1.075)}
+    .stage{position:relative;min-height:clamp(600px,74vh,840px);overflow:hidden;isolation:isolate}
     .track{position:absolute;z-index:2;inset:0;touch-action:pan-y;user-select:none;-webkit-user-select:none}
     .product{
       --x:0%;--s:1;--b:0px;--o:1;--r:0deg;
@@ -140,7 +140,7 @@
       transition:transform var(--duration) var(--pop),filter .42s var(--ui),opacity .36s ease;
       will-change:transform,filter,opacity;cursor:pointer;
     }
-    .product img{display:block;width:auto;height:clamp(360px,47vh,520px);pointer-events:none;filter:drop-shadow(0 28px 31px rgba(30,20,0,.18))}
+    .product img{display:block;width:auto;height:clamp(380px,52vh,580px);pointer-events:none;filter:drop-shadow(0 28px 31px rgba(30,20,0,.18))}
     .product.active{z-index:7;--x:0%;--s:1;--b:0px;--o:1}
     .product.prev{z-index:4;--x:-122%;--s:.64;--b:7px;--o:.54;--r:-2deg}
     .product.next{z-index:4;--x:122%;--s:.64;--b:7px;--o:.54;--r:2deg}
@@ -155,12 +155,12 @@
     .carousel-copy h2{margin:0;font-size:clamp(1.6rem,2.6vw,2.9rem);overflow-wrap:break-word}
     .ingredients{margin:.35rem 0 0;color:var(--active);font-size:clamp(.94rem,1.25vw,1.2rem);font-weight:900;text-transform:uppercase;transition:color var(--copy-duration)}
     .description{margin:.7rem auto 0;max-width:28rem;color:#4a463f;font-weight:500}
-    .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin-top:1rem}
+    .tags{display:none;flex-wrap:wrap;justify-content:center;gap:.55rem;margin-top:1rem}
     .tag{padding:.48rem .9rem;border-radius:99px;background:var(--ink);color:#fff;font-size:.69rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
     .tag:nth-child(1){background:var(--yellow);color:var(--ink)}
     .tag:nth-child(2){background:var(--active)}
     .tag:nth-child(3){background:var(--purple)}
-    .dots{position:relative;z-index:12;display:flex;justify-content:center;gap:.72rem;margin-top:1rem}
+    .dots{position:relative;z-index:12;display:none;justify-content:center;gap:.72rem;margin-top:1rem}
     .dot{width:12px;height:12px;border:0;border-radius:50%;background:#c7c0b1;cursor:pointer;transition:.26s var(--ui);padding:0}
     .dot.active{width:31px;border-radius:99px;background:var(--active)}
     .dot:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
@@ -224,9 +224,9 @@
     @media(max-width:760px){
       body{background:var(--paper)}
       .intro,.trust-strip{display:none}
-      .shell{overflow:visible}
+      .shell{min-height:auto;overflow:visible}
       .experience{display:block;min-height:calc(100svh - 5.5625rem);padding:0;background:var(--paper)}
-      .experience::before{display:none}
+      .experience::before,.experience::after{display:none}
       .mobile-top{position:absolute;z-index:60;top:max(.8rem,env(safe-area-inset-top));right:1.3rem;left:1.3rem;display:flex;align-items:center;justify-content:flex-end;pointer-events:none}
       .mobile-top>*{pointer-events:auto}
       .experience[data-step="summary"] .mobile-top{display:none}
@@ -267,7 +267,7 @@
       .carousel-panel{min-height:calc(100svh - 5.5625rem);flex-direction:column;padding:0 0 max(1.1rem,calc(env(safe-area-inset-bottom) + .8rem));background-image:var(--mobile-bg);background-position:center;background-repeat:no-repeat;background-size:cover}
       .stage{flex:1;min-height:41svh;margin-top:.25rem;border-radius:0}
       .stage::after{display:none}
-      .stage-bg{display:none}
+      .experience-bg{display:none}
       .product{top:52%}
       .product img{height:min(38svh,335px)}
       .product.prev{--x:-82%;--s:.6;--b:6px;--o:.42}
@@ -406,6 +406,7 @@
 
     <main>
       <section class="experience" id="flavours" data-step="welcome" aria-label="Choose your vibe">
+        <div class="experience-bg" aria-hidden="true"></div>
         <div class="mobile-top">
           <button class="skip" type="button" data-skip>Skip</button>
         </div>
@@ -436,13 +437,6 @@
         <section class="intro" aria-label="Introduction">
           <p class="eyebrow">Step 1 of 3</p>
           <h1 class="display">Choose<br>your vibe</h1>
-          <p class="strap">Frozen. Rum. Ready.</p>
-          <p class="intro-copy">Real rum cocktails, frozen to perfection and delivered straight to your door.</p>
-          <div class="benefits">
-            <article class="benefit"><i aria-hidden="true">❄</i><div><strong>Frozen for freshness</strong><span>Arrives cold, stays perfect.</span></div></article>
-            <article class="benefit"><i aria-hidden="true">●</i><div><strong>Real rum inside</strong><span>Premium rum. No shortcuts.</span></div></article>
-            <article class="benefit"><i aria-hidden="true">▢</i><div><strong>Pour, squeeze, enjoy</strong><span>No shaker. No mess. Just good vibes.</span></div></article>
-          </div>
         </section>
 
         <section class="carousel-panel" data-mobile-panel="flavour" aria-roledescription="carousel" aria-label="Flavour carousel">
@@ -455,7 +449,6 @@
             <span></span>
           </div>
           <div class="stage" data-stage>
-            <div class="stage-bg" aria-hidden="true"></div>
             <button class="arrow prev-arrow" type="button" data-prev aria-label="Previous flavour">‹</button>
             <div class="track" data-track role="group" aria-live="polite"></div>
             <button class="arrow next-arrow" type="button" data-next aria-label="Next flavour">›</button>
@@ -467,8 +460,6 @@
             <div class="tags" data-tags></div>
           </div>
           <div class="dots" data-dots role="tablist" aria-label="Flavour pagination"></div>
-          <div class="swipe" aria-hidden="true"><span>←</span><b>☝</b><span>→</span></div>
-          <p class="swipe-copy"><strong>Drag or click to explore flavours</strong><span>Active drink expands. Adjacent drinks shrink and blur.</span></p>
           <button class="primary mobile-continue" type="button" data-continue><span>Choose this flavour</span><span aria-hidden="true">→</span></button>
         </section>
 
@@ -518,13 +509,6 @@
             <p class="delivery">▱ Frozen delivery across the UK</p>
           </div>
         </aside>
-
-        <section class="trust-strip" aria-label="Trust and delivery">
-          <article class="trust"><i aria-hidden="true">❄</i><div><strong>Frozen delivery</strong><span>Packed with care. Delivered frozen to your door.</span></div></article>
-          <article class="trust"><i aria-hidden="true">▣</i><div><strong>Secure checkout</strong><span>Pay safely with card, Apple Pay or Klarna.</span></div></article>
-          <article class="trust"><i aria-hidden="true">✪</i><div><strong>Real rum quality</strong><span>Made with premium rum. No shortcuts. Ever.</span></div></article>
-          <article class="trust"><i aria-hidden="true">18+</i><div><strong>Drink responsibly</strong><span>18+ only. Please drink responsibly.</span></div></article>
-        </section>
       </section>
     </main>
 
