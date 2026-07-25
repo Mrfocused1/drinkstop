@@ -274,7 +274,7 @@
       .welcome-benefits .benefit span{font-size:.66rem}
       .welcome .primary{width:100%;margin-top:1.15rem}
 
-      .mobile-head{display:grid;grid-template-columns:48px 1fr 48px;align-items:start;gap:.8rem;padding:max(1rem,env(safe-area-inset-top)) 1.15rem 0}
+      .mobile-head{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:.8rem;padding:max(1rem,env(safe-area-inset-top)) 1.15rem 0}
       .round{display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.9);font-size:1.35rem;cursor:pointer}
       .mobile-head p{margin:.5rem 0 0;font-size:.82rem;font-weight:900;text-align:center;text-transform:uppercase}
       .mobile-head>div{margin:0 .2rem;padding:.1rem .9rem .7rem;border-radius:16px;background:rgba(255,249,232,.88);box-shadow:0 6px 18px rgba(42,31,6,.12);backdrop-filter:blur(8px)}
@@ -303,8 +303,6 @@
       .swipe-copy span{display:none}
       .swipe-hint{display:flex;align-items:center;justify-content:center;gap:.65rem;padding:.35rem 0 0;color:var(--muted);font-size:.69rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;opacity:.6;animation:swipePulse 2.2s ease-in-out infinite;user-select:none;pointer-events:none}
       @keyframes swipePulse{0%,100%{opacity:.35;transform:translateX(-4px)}50%{opacity:.75;transform:translateX(4px)}}
-      .mobile-format-row{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:1rem 1.1rem 0;padding:.55rem .9rem;border-radius:16px;background:rgba(255,249,232,.88);box-shadow:0 6px 18px rgba(42,31,6,.08);backdrop-filter:blur(6px)}
-      .mobile-format-row .label{font-size:.7rem;margin-bottom:0}
       .mobile-progress,.carousel-copy .description,.carousel-copy .tags,.dots,.swipe-copy{display:none}
       .mobile-continue{display:inline-flex;width:calc(100% - 2.5rem);margin:auto 1.25rem 0}
 
@@ -474,11 +472,11 @@
         <section class="carousel-panel" data-mobile-panel="flavour" aria-roledescription="carousel" aria-label="Flavour carousel">
           <div class="mobile-head">
             <button class="round" type="button" data-mobile-back aria-label="Back">←</button>
-            <div>
-              <p>Pick your flavour</p>
-              <div class="step-line" aria-hidden="true"><span class="done"></span><span class="current"></span><span></span><span></span></div>
-            </div>
             <span></span>
+            <div class="format-toggle" role="group" aria-label="Choose container" data-format-toggle>
+              <button type="button" class="format-btn active" data-format="pouch" aria-pressed="true">Pouch</button>
+              <button type="button" class="format-btn" data-format="bottle" aria-pressed="false">Bottle</button>
+            </div>
           </div>
           <div class="stage" data-stage>
             <button class="arrow prev-arrow" type="button" data-prev aria-label="Previous flavour">‹</button>
@@ -493,13 +491,6 @@
             <div class="tags" data-tags></div>
           </div>
           <div class="dots" data-dots role="tablist" aria-label="Flavour pagination"></div>
-          <div class="mobile-format-row">
-            <span class="label">Format</span>
-            <div class="format-toggle" role="group" aria-label="Choose container" data-format-toggle>
-              <button type="button" class="format-btn active" data-format="pouch" aria-pressed="true">Pouch</button>
-              <button type="button" class="format-btn" data-format="bottle" aria-pressed="false">Bottle</button>
-            </div>
-          </div>
           <button class="primary mobile-continue" type="button" data-continue><span>Choose this flavour</span><span aria-hidden="true">→</span></button>
         </section>
 
