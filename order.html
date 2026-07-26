@@ -10,7 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp">
 <style>
-@font-face{font-family:'Adieu';src:url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff2') format('woff2'),url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff') format('woff');font-weight:900;font-display:swap;}
+@font-face{
+      font-family:'DS Display';
+      src:url('fonts/drinkstop-display.woff2') format('woff2');
+      font-weight:900;font-display:swap;
+    }
 :root{--green:#00ef02;--green2:#3cf02d;--cream:#fffbe6;--ink:#0a0a0a;--red:#e8202a;--blue:#1f6fd6;}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -31,13 +35,13 @@ body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--c
 .step{width:100%;max-width:900px;animation:pop .4s cubic-bezier(.2,.7,.2,1)}
 @keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .kicker{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-h1.q{font-family:'Adieu','Manrope',sans-serif;font-weight:900;font-size:clamp(32px,6vw,60px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px}
+h1.q{font-family:'DS Display','Manrope',sans-serif;font-weight:900;font-size:clamp(32px,6vw,60px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px}
 p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:30px}
 /* option cards */
 .cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .card{position:relative;text-align:left;background:#fff;border:3px solid var(--ink);border-radius:22px;padding:26px 24px;cursor:pointer;transition:.18s;overflow:hidden}
 .card:hover{transform:translateY(-4px)}
-.card .ct{font-family:'Adieu','Manrope',sans-serif;font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;margin-bottom:8px}
+.card .ct{font-family:'DS Display','Manrope',sans-serif;font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;margin-bottom:8px}
 .card .cd{font-size:15px;opacity:.72}
 .card .tick{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:900;opacity:0;transform:scale(.5);transition:.18s}
 .card.sel{border-color:var(--green);background:#eafff0;box-shadow:0 10px 0 -4px var(--green)}
@@ -47,10 +51,10 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .qtyrow{display:flex;align-items:center;gap:16px;margin:8px 0 30px}
 .qtybtn{width:56px;height:56px;border-radius:50%;border:3px solid var(--ink);background:#fff;font-size:26px;font-weight:900;cursor:pointer;transition:.15s;color:var(--ink);-webkit-appearance:none;appearance:none}
 .qtybtn:hover{background:var(--ink);color:#fff}
-.qtyval{font-family:'Adieu',sans-serif;font-weight:900;font-size:44px;min-width:80px;text-align:center}
+.qtyval{font-family:'DS Display',sans-serif;font-weight:900;font-size:44px;min-width:80px;text-align:center}
 .qtyunit{opacity:.6;font-weight:700}
 .qtotal{font-size:22px;font-weight:800;margin:-8px 0 26px}
-.qtotal b{font-family:'Adieu',sans-serif;font-size:28px}
+.qtotal b{font-family:'DS Display',sans-serif;font-size:28px}
 .qtotal span{opacity:.55;font-weight:700;font-size:16px}
 /* inputs */
 .field{margin-bottom:18px}
@@ -80,7 +84,7 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .summary .k{font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.06em;opacity:.6}
 .summary .v{text-align:right;font-weight:700}
 .done{text-align:center;padding:20px 0}
-.done .big{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(40px,9vw,86px);line-height:.9}
+.done .big{font-family:'DS Display',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(40px,9vw,86px);line-height:.9}
 .done .check{width:96px;height:96px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:52px}
 .foot{text-align:center;padding:16px;font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.5;text-transform:uppercase}
 .pill{display:inline-block;background:var(--ink);color:var(--cream);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:14px}

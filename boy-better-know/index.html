@@ -10,17 +10,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Adieu';src:url('../wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff2') format('woff2'),url('../wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff') format('woff');font-weight:900;font-display:swap;}
+@font-face{
+      font-family:'DS Display';
+      src:url('../fonts/drinkstop-display.woff2') format('woff2');
+      font-weight:900;font-display:swap;
+    }
 :root{--ink:#0a0a0a;--paper:#f5f2e9;--red:#e8202a;--yellow:#f2b200;--green:#8fc93a;}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--ink);color:#fff;-webkit-font-smoothing:antialiased;line-height:1.45;}
 img{max-width:100%;display:block}
-.adieu{font-family:'Adieu','Manrope',sans-serif;font-weight:900;text-transform:uppercase;}
+.display{font-family:'DS Display','Manrope',sans-serif;font-weight:900;text-transform:uppercase;}
 /* header */
 .hd{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--paper);border-bottom:3px solid #000;}
 .lockup{display:flex;align-items:center;gap:14px;}
 .lockup img{height:44px;width:auto}
-.lockup .x{font-family:'Adieu',sans-serif;font-weight:900;font-size:20px;color:#0a0a0a;}
+.lockup .x{font-family:'DS Display',sans-serif;font-weight:900;font-size:20px;color:#0a0a0a;}
 .hd a.order-link{font-weight:800;text-decoration:none;color:#fff;background:#0a0a0a;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 22px;border-radius:999px;white-space:nowrap;}
 /* hero */
 .hero-img img{width:100%;height:auto;display:block;}
@@ -31,7 +35,7 @@ img{max-width:100%;display:block}
 /* ticker */
 .tick{overflow:hidden;border-top:3px solid #fff;border-bottom:3px solid #fff;padding:14px 0;background:var(--ink);}
 .tick .strip{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:tk 40s linear infinite;}
-.tick span{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(20px,3.4vw,34px);}
+.tick span{font-family:'DS Display',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(20px,3.4vw,34px);}
 @keyframes tk{to{transform:translateX(-50%)}}
 /* light band (story + banner + flavours) */
 .lite{background:var(--paper);color:var(--ink);}
@@ -47,7 +51,7 @@ img{max-width:100%;display:block}
 .story p{font-size:clamp(16px,2.1vw,20px);opacity:.85;margin-bottom:18px;max-width:720px;}
 .story .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:34px;}
 .story .fact{border:2px solid #0a0a0a2e;border-radius:18px;padding:20px;}
-.story .fact b{display:block;font-family:'Adieu',sans-serif;font-size:26px;margin-bottom:6px;}
+.story .fact b{display:block;font-family:'DS Display',sans-serif;font-size:26px;margin-bottom:6px;}
 .story .fact span{font-size:14px;opacity:.7;}
 /* flavours */
 .flav{max-width:1100px;margin:0 auto;padding:30px 22px 70px;}
@@ -58,7 +62,7 @@ img{max-width:100%;display:block}
 .fcard img{width:100%;aspect-ratio:1/1;object-fit:cover;}
 .fcard .nm{display:flex;align-items:center;gap:12px;padding:18px 20px;border-top:3px solid var(--ink);}
 .fcard .dot{width:22px;height:22px;border-radius:50%;flex:none;}
-.fcard h3{font-family:'Adieu',sans-serif;font-size:20px;text-transform:uppercase;}
+.fcard h3{font-family:'DS Display',sans-serif;font-size:20px;text-transform:uppercase;}
 .fcard small{display:block;font-weight:600;opacity:.65;font-size:13px;margin-top:2px;}
 /* order */
 .order{background:var(--paper);color:var(--ink);padding:80px 22px 90px;}
@@ -68,15 +72,15 @@ img{max-width:100%;display:block}
 .ochoice{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:30px;}
 .oc{position:relative;border:3px solid var(--ink);border-radius:18px;background:#fff;padding:16px;cursor:pointer;transition:.15s;text-align:left;font:inherit;}
 .oc .dot{width:20px;height:20px;border-radius:50%;margin-bottom:10px;}
-.oc h4{font-family:'Adieu',sans-serif;font-size:17px;text-transform:uppercase;color:var(--ink);}
+.oc h4{font-family:'DS Display',sans-serif;font-size:17px;text-transform:uppercase;color:var(--ink);}
 .oc.sel{background:#0a0a0a;}
 .oc.sel h4{color:#fff;}
 .qrow{display:flex;align-items:center;gap:16px;margin:6px 0 8px;}
 .qbtn{width:54px;height:54px;border-radius:50%;border:3px solid var(--ink);background:#fff;color:var(--ink);font-size:24px;font-weight:900;cursor:pointer;-webkit-appearance:none;appearance:none;}
-.qval{font-family:'Adieu',sans-serif;font-size:40px;min-width:70px;text-align:center;}
+.qval{font-family:'DS Display',sans-serif;font-size:40px;min-width:70px;text-align:center;}
 .qunit{opacity:.6;font-weight:700;}
 .total{font-size:20px;font-weight:800;margin:6px 0 30px;}
-.total b{font-family:'Adieu',sans-serif;font-size:26px;}
+.total b{font-family:'DS Display',sans-serif;font-size:26px;}
 .total span{opacity:.55;font-size:15px;font-weight:700;}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
 .order input{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:3px solid var(--ink);border-radius:14px;background:#fff;color:var(--ink);}
@@ -85,7 +89,7 @@ img{max-width:100%;display:block}
 .place{width:100%;margin-top:6px;background:var(--ink);color:#fff;border:3px solid var(--ink);font:inherit;font-weight:800;font-size:17px;letter-spacing:.05em;text-transform:uppercase;padding:20px;border-radius:999px;cursor:pointer;-webkit-appearance:none;appearance:none;white-space:nowrap;transition:.15s;}
 .place:hover{transform:translateY(-2px);}
 .done-msg{display:none;text-align:center;padding:30px 0 6px;}
-.done-msg .big{font-family:'Adieu',sans-serif;font-size:clamp(34px,7vw,56px);text-transform:uppercase;}
+.done-msg .big{font-family:'DS Display',sans-serif;font-size:clamp(34px,7vw,56px);text-transform:uppercase;}
 .done-msg p{margin-top:10px;font-weight:600;opacity:.75;}
 /* footer */
 .ft{background:var(--ink);text-align:center;padding:34px 20px;}
@@ -128,15 +132,15 @@ img{max-width:100%;display:block}
 <div class="lite">
 <section class="story">
   <div class="txt">
-    <h2 class="adieu">Grime royalty.<br>Frozen rum.</h2>
+    <h2 class="display">Grime royalty.<br>Frozen rum.</h2>
     <p>Boy Better Know is North London history — the grime collective and label built from the ground up by brothers Skepta and JME in 2005, alongside Jammer, Frisco, Shorty and DJ Maximum. No major label, no permission asked: tunes pressed independently and t-shirts printed by hand and sold at raves, on road, wherever the scene was.</p>
     <p>From winning Red Bull Culture Clash in 2012 to taking over The O2 for a full-day festival in 2017, BBK turned independence into an institution. That's the energy this pouch carries.</p>
     <p>For one event only, DRINK STOP froze that legacy: three colours, real rum, the BBK stamp on the bag. In the stands, in the pit, in the function — pouch in hand.</p>
     <div class="facts">
-      <div class="fact"><b class="adieu">2005</b><span>Founded in North London by Skepta &amp; JME</span></div>
-      <div class="fact"><b class="adieu">2012</b><span>Red Bull Culture Clash champions</span></div>
-      <div class="fact"><b class="adieu">2017</b><span>The O2 Takeover — grime's biggest day out</span></div>
-      <div class="fact"><b class="adieu">1 night</b><span>This pouch exists for one event only</span></div>
+      <div class="fact"><b class="display">2005</b><span>Founded in North London by Skepta &amp; JME</span></div>
+      <div class="fact"><b class="display">2012</b><span>Red Bull Culture Clash champions</span></div>
+      <div class="fact"><b class="display">2017</b><span>The O2 Takeover — grime's biggest day out</span></div>
+      <div class="fact"><b class="display">1 night</b><span>This pouch exists for one event only</span></div>
     </div>
   </div>
   <div class="side">
@@ -149,7 +153,7 @@ img{max-width:100%;display:block}
 </div>
 
 <section class="flav">
-  <h2 class="adieu">Three colours.<br>No refills.</h2>
+  <h2 class="display">Three colours.<br>No refills.</h2>
   <div class="grid">
     <div class="fcard">
       <div class="im"><img src="../wp-content/uploads/2025/bbk/bbk-pouch-red.webp" alt="BBK Red"></div>
@@ -172,7 +176,7 @@ img{max-width:100%;display:block}
 
 <section class="order" id="order">
   <div class="wrap">
-    <h2 class="adieu">Lock yours in.</h2>
+    <h2 class="display">Lock yours in.</h2>
     <p class="lead">No forms marathon. Pick your colours, say how many, drop your details — collect at the event.</p>
 
     <div id="oform">

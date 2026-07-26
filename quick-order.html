@@ -10,7 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp">
 <style>
-@font-face{font-family:'Adieu';src:url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff2') format('woff2'),url('wp-content/themes/pley-by-ney/dist/assets/fonts/adieu-black.woff') format('woff');font-weight:900;font-display:swap;}
+@font-face{
+      font-family:'DS Display';
+      src:url('fonts/drinkstop-display.woff2') format('woff2');
+      font-weight:900;font-display:swap;
+    }
 :root{--green:#00ef02;--cream:#fffbe6;--ink:#0a0a0a;--red:#e8202a;}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -19,7 +23,7 @@ body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--c
 .ohead .logo{height:44px;width:auto;display:block}
 .ohead a.back{font-weight:800;text-decoration:none;color:var(--ink);font-size:14px;display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:2px solid var(--ink);border-radius:999px}
 .ohead a.back:hover{background:var(--ink);color:var(--cream)}
-h1.q{font-family:'Adieu','Manrope',sans-serif;font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:6px}
+h1.q{font-family:'DS Display','Manrope',sans-serif;font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:6px}
 p.sub{opacity:.7;font-size:15px;margin-bottom:28px;max-width:520px}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:start;}
 @media(max-width:900px){.wrap{grid-template-columns:1fr;}}
@@ -38,7 +42,7 @@ p.sub{opacity:.7;font-size:15px;margin-bottom:28px;max-width:520px}
 .qtyrow{display:flex;align-items:center;gap:16px;}
 .qtybtn{width:48px;height:48px;border-radius:50%;border:2.5px solid var(--ink);background:#fff;font-size:22px;font-weight:900;cursor:pointer;color:var(--ink);-webkit-appearance:none;appearance:none}
 .qtybtn:hover{background:var(--ink);color:#fff}
-.qtyval{font-family:'Adieu',sans-serif;font-weight:900;font-size:34px;min-width:64px;text-align:center}
+.qtyval{font-family:'DS Display',sans-serif;font-weight:900;font-size:34px;min-width:64px;text-align:center}
 .custom-panel{margin-top:16px;padding:18px;border:2px dashed var(--ink);border-radius:16px;display:none;}
 .custom-panel.show{display:block;}
 .field{margin-bottom:16px;}
@@ -49,13 +53,13 @@ p.sub{opacity:.7;font-size:15px;margin-bottom:28px;max-width:520px}
 .err{color:var(--red);font-weight:700;font-size:13px;margin-top:4px;min-height:16px}
 /* summary card */
 .summary{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:26px;position:sticky;top:24px;}
-.summary h3{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:20px;margin-bottom:16px;}
+.summary h3{font-family:'DS Display',sans-serif;font-weight:900;text-transform:uppercase;font-size:20px;margin-bottom:16px;}
 .sumrow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;font-size:14px;border-bottom:1px solid #00000012;}
 .sumrow:last-of-type{border-bottom:0;}
 .sumrow .k{opacity:.65;font-weight:700;}
 .sumrow .v{font-weight:800;text-align:right;}
 .sum-total{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 6px;padding-top:14px;border-top:2px solid var(--ink);}
-.sum-total b{font-family:'Adieu',sans-serif;font-size:30px;}
+.sum-total b{font-family:'DS Display',sans-serif;font-size:30px;}
 .sum-note{font-size:12px;opacity:.6;margin-bottom:16px;}
 .placebtn{width:100%;font:inherit;font-weight:800;font-size:16px;letter-spacing:.02em;padding:16px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;background:var(--green);text-transform:uppercase;-webkit-appearance:none;appearance:none;}
 .placebtn:hover{filter:brightness(.94)}
@@ -69,7 +73,7 @@ p.sub{opacity:.7;font-size:15px;margin-bottom:28px;max-width:520px}
 .foot{text-align:center;padding:16px;font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.5;text-transform:uppercase}
 .done-view{max-width:520px;margin:60px auto;text-align:center;padding:0 24px;}
 .done-view .check{width:88px;height:88px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:46px}
-.done-view .big{font-family:'Adieu',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(34px,7vw,60px);line-height:.95;margin-bottom:14px}
+.done-view .big{font-family:'DS Display',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(34px,7vw,60px);line-height:.95;margin-bottom:14px}
 .done-view .btn{display:inline-block;text-decoration:none;font-weight:800;padding:14px 28px;border-radius:999px;border:3px solid var(--ink);color:var(--ink);margin:6px;}
 .done-view .btn.primary{background:var(--green);border-color:var(--green);}
 </style>
