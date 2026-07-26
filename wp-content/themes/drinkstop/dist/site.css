@@ -1483,7 +1483,7 @@ button,input,select,optgroup,textarea,::file-selector-button {
 }
 
 @media (min-width:64em) {
-  #mangofunk .product-image-bg,#tropisamba .product-image-bg,#summerset .product-image-bg,#blutiful .product-image-bg,#rumazing .product-image-bg,#greengroov .product-image-bg,#rumbaclart1 .product-image-bg {
+  #rum-for-your-life .product-image-bg,#rumbaclart-2 .product-image-bg,#summer-set .product-image-bg,#blutiful .product-image-bg,#rumazing .product-image-bg,#suck-your-rum .product-image-bg,#rumbaclart-1 .product-image-bg {
     display: none;
   }
 }

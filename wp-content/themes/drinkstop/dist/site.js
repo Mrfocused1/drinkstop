@@ -2,17 +2,21 @@
  * DRINK STOP — site animation layer.
  *
  * First-party rewrite of the theme's animation module. The previous version was
- * PLEY by Ney's compiled bundle.js: a TranslatePress-era multilingual site with a
- * Contact Form 7 backend, Brazilian phone validation and a Neymar/Santos FC
- * partnership section. Ported over what still applies to this single-locale UK
- * site and dropped what doesn't — see the section notes below.
+ * inherited from an earlier multilingual build of the site, with a different
+ * form backend, a different locale's phone-number format, and a sports
+ * sponsorship section this brand has no part in. Ported over what still
+ * applies to this single-locale UK site and dropped what doesn't — see the
+ * section notes below.
  *
  * Load order matches the vendor <script> tags in index.html: gsap, its plugins,
  * Fancybox, Tabby, Plyr, Swiper, IMask, then this file as a module.
  */
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger, ScrollToPlugin, SplitText);
-// TextPlugin was registered by the old bundle but never used anywhere — dropped.
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger, ScrollToPlugin);
+// TextPlugin and SplitText were both registered by the old bundle. TextPlugin was
+// never used anywhere; SplitText only drove the intro splash, which nothing on
+// this site's pages triggers (see the note at the bottom of this file) — so
+// neither is registered or loaded here.
 
 let smoother;
 
@@ -45,10 +49,10 @@ function initSmoothScroll() {
     end: '+=100%',
   });
 
-  // The old bundle also carried a TranslatePress locale-root URL scheme here
-  // (/en/, /es/, root = Portuguese) for a sessionStorage scroll-restore-after-
-  // navigation flow. This site has one locale and no cross-page anchor jumps
-  // that need it, so it's gone.
+  // The old bundle also carried a multilingual-CMS locale-root URL scheme here
+  // (/en/, /es/, root = a third locale) for a sessionStorage scroll-restore-
+  // after-navigation flow. This site has one locale and no cross-page anchor
+  // jumps that need it, so it's gone.
 }
 
 function initStopMotion() {
@@ -135,7 +139,7 @@ function initHeaderState() {
   });
 
   // The old bundle also rewrote `.languages-menu__link` hrefs for a 3-locale
-  // TranslatePress switcher here. There's no language switcher on this site —
+  // language switcher here. There's no language switcher on this site —
   // dropped along with the markup.
 }
 
@@ -185,21 +189,13 @@ function initFancybox() {
     on: {
       ready: () => smoother && smoother.paused(true),
       close: () => smoother && smoother.paused(false),
-      'Carousel.contentReady': (fancybox) => {
-        const container = fancybox.container;
-        const tabs = container.querySelector('[data-tabs]');
-        if (tabs && window.Tabby) {
-          new Tabby(tabs.matches('[data-tabs]') ? '[data-tabs]' : tabs);
-          const img = container.querySelector('#modal-tab-img');
-          container.querySelectorAll('[data-tabs] a').forEach((a) => {
-            a.addEventListener('click', () => {
-              if (img && a.dataset.img) img.src = a.dataset.img;
-            });
-          });
-        }
-      },
     },
   });
+  // The old bundle also wired a Tabby-tabs + image-swap handler here for a
+  // `[data-tabs]`/`#modal-tab-img` layout inside the product modal. No product
+  // fragment on this site uses either — each is a single nutrition table with
+  // no size-tab switcher — so there's nothing for it to attach to. Tabby is
+  // still loaded (index.html) in case a future product redesign wants it.
 }
 
 function initMarquee() {
@@ -288,11 +284,11 @@ function initCustomPouchReveal() {
   // That element is now a static <img class="packaging-video"> (the pouch
   // section no longer uses a video in this design) — nothing to autoplay.
   //
-  // It separately played `.santos-partnership__media--video` (now
-  // `.collab__media--video`) the same way. That video already carries
-  // `class="lazy-autoplay-video"` and is autoplayed by the IntersectionObserver
-  // in index.html the moment it scrolls into view, with proper lazy `data-src`
-  // loading — a strictly better mechanism than a second ScrollTrigger doing the
+  // It separately played the collab section's video the same way, under its
+  // old selector. That video already carries `class="lazy-autoplay-video"` and
+  // is autoplayed by the IntersectionObserver in index.html the moment it
+  // scrolls into view, with proper lazy `data-src` loading — a strictly better
+  // mechanism than a second ScrollTrigger doing the
   // same job, so it isn't ported here.
 }
 
@@ -379,11 +375,12 @@ function initContactForm() {
       mask: [{ mask: '00000 000000' }, { mask: '0000 000 0000' }],
     });
   }
-  // The old bundle masked input[name="telefone"] against Brazilian formats
-  // ((00) 0000-0000 / (00) 00000-0000) and, on a wpcf7submit failure event,
-  // injected a hardcoded Portuguese error string. Both the field and the
-  // validation now target the renamed UK "phone" field with UK-shaped masks;
-  // the old CF7-specific submit-event hook is gone along with the plugin.
+  // The old bundle masked the phone field against a different locale's format
+  // ((00) 0000-0000 / (00) 00000-0000) and, on a plugin-specific submit-failure
+  // event, injected a hardcoded error string in that locale's language. Both
+  // the field and the validation now target the renamed UK "phone" field with
+  // UK-shaped masks; the old plugin-specific submit-event hook is gone along
+  // with the plugin.
 }
 
 initSmoothScroll();

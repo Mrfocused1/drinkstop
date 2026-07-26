@@ -117,6 +117,7 @@ RESIDUE = {
     'fale-conosco':    r'fale-conosco',
     'onde-encontrar':  r'onde-encontrar',
     'old slugs':       r'\b(mangofunk|tropisamba|greengroov|rumbaclart1|summerset)\b',
+    'sabores (pt)':    r'\bsabores\b',
     'wp plugins':      r'wp-content/plugins|wp-includes',
 }
 

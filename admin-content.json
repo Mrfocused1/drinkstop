@@ -8,15 +8,15 @@
   },
   "products": {
     "items": {
-      "mangofunk":   { "name": "RUM FOR YOUR LIFE", "subtitle": "Rum, fruit punch & watermelon.", "description": "Sweet, loaded and dangerously easy. Frozen rum with a fruit-punch hit — the one you'll be running back for.", "chip": "250 ml/150 ml", "color": "#6CAD1A", "hidden": false },
-      "tropisamba":  { "name": "RUMBACLART 2.0", "subtitle": "Pineapple, apple & guava.", "description": "Tropical, smooth and unapologetic. The remix nobody asked for and everybody finished. Island energy, frozen.", "chip": "250 ml/150 ml", "color": "#FDC901", "hidden": false },
-      "rumbaclart1": { "name": "RUMBACLART 1.0", "subtitle": "Rum, mango, passionfruit & orange.", "description": "The original troublemaker. Mango, passionfruit and ripe orange hauled into frozen rum before the remix was even a thought. Tropical, loud and first to the party.", "chip": "250 ml/150 ml", "color": "#FB5F01", "hidden": false },
-      "summerset":   { "name": "SUMMER SET", "subtitle": "Rum, pineapple & coconut.", "description": "Sunshine in a pouch. Creamy coconut and sweet pineapple over ice-cold rum — bottled summer, no airport required. Sip slow and pretend you're seaside.", "chip": "250 ml/150 ml", "color": "#4E992B", "hidden": false },
+      "rum-for-your-life":   { "name": "RUM FOR YOUR LIFE", "subtitle": "Rum, fruit punch & watermelon.", "description": "Sweet, loaded and dangerously easy. Frozen rum with a fruit-punch hit — the one you'll be running back for.", "chip": "250 ml/150 ml", "color": "#6CAD1A", "hidden": false },
+      "rumbaclart-2":  { "name": "RUMBACLART 2.0", "subtitle": "Pineapple, apple & guava.", "description": "Tropical, smooth and unapologetic. The remix nobody asked for and everybody finished. Island energy, frozen.", "chip": "250 ml/150 ml", "color": "#FDC901", "hidden": false },
+      "rumbaclart-1": { "name": "RUMBACLART 1.0", "subtitle": "Rum, mango, passionfruit & orange.", "description": "The original troublemaker. Mango, passionfruit and ripe orange hauled into frozen rum before the remix was even a thought. Tropical, loud and first to the party.", "chip": "250 ml/150 ml", "color": "#FB5F01", "hidden": false },
+      "summer-set":   { "name": "SUMMER SET", "subtitle": "Rum, pineapple & coconut.", "description": "Sunshine in a pouch. Creamy coconut and sweet pineapple over ice-cold rum — bottled summer, no airport required. Sip slow and pretend you're seaside.", "chip": "250 ml/150 ml", "color": "#4E992B", "hidden": false },
       "blutiful":    { "name": "BLUTIFUL", "subtitle": "Rum, blue raspberry, apple & lemon.", "description": "Pretty in blue. Sharp blue raspberry cut with crisp apple and lemon over frozen rum. Eye-catching, mouth-puckering and gone in seconds.", "chip": "250 ml/150 ml", "color": "#EB030D", "hidden": false },
       "rumazing":    { "name": "RUMAZING", "subtitle": "Rum, apple & mango.", "description": "Unreal. Ripe mango and crisp apple smashed into frozen rum. Dangerously smooth, dangerously moreish — straight-up amazing.", "chip": "250 ml/150 ml", "color": "#FD6B01", "hidden": false },
-      "greengroov":  { "name": "SUCK YOUR RUM", "subtitle": "Rum, apple, lemon & ginger.", "description": "Sharp, zingy and with a proper kick. Ginger heat meets ice-cold rum — sip slow, or don't.", "chip": "250 ml/150 ml", "color": "#8CC212", "hidden": false }
+      "suck-your-rum":  { "name": "SUCK YOUR RUM", "subtitle": "Rum, apple, lemon & ginger.", "description": "Sharp, zingy and with a proper kick. Ginger heat meets ice-cold rum — sip slow, or don't.", "chip": "250 ml/150 ml", "color": "#8CC212", "hidden": false }
     },
-    "order": ["mangofunk", "tropisamba", "rumbaclart1", "summerset", "blutiful", "rumazing", "greengroov"],
+    "order": ["rum-for-your-life", "rumbaclart-2", "rumbaclart-1", "summer-set", "blutiful", "rumazing", "suck-your-rum"],
     "extra": []
   },
   "coolWall": {

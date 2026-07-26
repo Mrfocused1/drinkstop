@@ -374,24 +374,24 @@
           <nav class="main-header-nav" aria-label="Primary">
             <ul class="main-header-nav__list">
               <li>
-                <a href="index.html#sobre">
+                <a href="index.html#about">
                   <div class="main-header__nav-item-text is-default">About</div>
                   <div class="main-header__nav-item-text is-absolute">About</div>
                 </a>
               </li>
               <li class="drinks-dropdown">
-                <a href="index.html#sabores">
+                <a href="index.html#our-drinks">
                   <div class="main-header__nav-item-text is-default">Our Drinks</div>
                   <div class="main-header__nav-item-text is-absolute">Our Drinks</div>
                 </a>
                 <div class="drinks-dropdown__menu">
-                  <a href="index.html#mangofunk">Rum For Your Life</a>
-                  <a href="index.html#tropisamba">Rumbaclart 2.0</a>
-                  <a href="index.html#rumbaclart1">Rumbaclart 1.0</a>
-                  <a href="index.html#summerset">Summer Set</a>
+                  <a href="index.html#rum-for-your-life">Rum For Your Life</a>
+                  <a href="index.html#rumbaclart-2">Rumbaclart 2.0</a>
+                  <a href="index.html#rumbaclart-1">Rumbaclart 1.0</a>
+                  <a href="index.html#summer-set">Summer Set</a>
                   <a href="index.html#blutiful">Blutiful</a>
                   <a href="index.html#rumazing">Rumazing</a>
-                  <a href="index.html#greengroov">Suck Your Rum</a>
+                  <a href="index.html#suck-your-rum">Suck Your Rum</a>
                 </div>
               </li>
               <li>
@@ -436,17 +436,17 @@
     <div class="offcanvas">
       <nav class="offcanvas-nav" aria-label="Mobile">
         <ul class="offcanvas-menu">
-          <li class="offcanvas-menu__item"><a href="index.html#sobre">About</a></li>
+          <li class="offcanvas-menu__item"><a href="index.html#about">About</a></li>
           <li class="offcanvas-menu__item offcanvas-menu__item--has-submenu">
-            <a href="index.html#sabores">Our Drinks</a>
+            <a href="index.html#our-drinks">Our Drinks</a>
             <ul class="offcanvas-submenu">
-              <li class="offcanvas-submenu__item"><a href="index.html#mangofunk">Rum For Your Life</a></li>
-              <li class="offcanvas-submenu__item"><a href="index.html#tropisamba">Rumbaclart 2.0</a></li>
-              <li class="offcanvas-submenu__item"><a href="index.html#rumbaclart1">Rumbaclart 1.0</a></li>
-              <li class="offcanvas-submenu__item"><a href="index.html#summerset">Summer Set</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#rum-for-your-life">Rum For Your Life</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#rumbaclart-2">Rumbaclart 2.0</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#rumbaclart-1">Rumbaclart 1.0</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#summer-set">Summer Set</a></li>
               <li class="offcanvas-submenu__item"><a href="index.html#blutiful">Blutiful</a></li>
               <li class="offcanvas-submenu__item"><a href="index.html#rumazing">Rumazing</a></li>
-              <li class="offcanvas-submenu__item"><a href="index.html#greengroov">Suck Your Rum</a></li>
+              <li class="offcanvas-submenu__item"><a href="index.html#suck-your-rum">Suck Your Rum</a></li>
             </ul>
           </li>
           <li class="offcanvas-menu__item"><a href="choose-your-vibe.html">Order Now</a></li>
@@ -617,7 +617,7 @@
     const VIBE_ASSET = 'wp-content/uploads/2026/07/vibe';
     const drinks = [
       {
-        id: 'tropisamba',
+        id: 'rumbaclart-2',
         name: 'Rumbaclart 2.0',
         ingredients: 'Pineapple, Apple & Guava',
         description: 'Tropical. Punchy. Unstoppable.',
@@ -631,7 +631,7 @@
         mobile: `${VIBE_ASSET}/background-mobile-rumbaclart-2.webp`
       },
       {
-        id: 'mangofunk',
+        id: 'rum-for-your-life',
         name: 'Rum for Your Life',
         ingredients: 'Rum, Fruit Punch & Watermelon',
         description: 'Tropical. Loud. Legendary.',
@@ -645,7 +645,7 @@
         mobile: `${VIBE_ASSET}/background-mobile-rum-for-your-life.webp`
       },
       {
-        id: 'greengroov',
+        id: 'suck-your-rum',
         name: 'Suck Your Rum',
         ingredients: 'Rum, Apple, Lemon & Ginger',
         description: 'Sharp. Warm. Smooth. No apologies.',
@@ -673,7 +673,7 @@
         mobile: `${VIBE_ASSET}/background-mobile-blutiful.webp`
       },
       {
-        id: 'rumbaclart1',
+        id: 'rumbaclart-1',
         name: 'Rumbaclart 1.0',
         ingredients: 'Rum, Mango, Passionfruit & Orange',
         description: 'Juicy. Golden. Pure tropical pressure.',
@@ -701,7 +701,7 @@
         mobile: `${VIBE_ASSET}/background-mobile-rumazing.webp`
       },
       {
-        id: 'summerset',
+        id: 'summer-set',
         name: 'Summer Set',
         ingredients: 'Rum, Pineapple & Coconut',
         description: 'Creamy. Tropical. Sunshine in a pouch.',
@@ -1032,7 +1032,7 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
     });
 
-    // Deep-link: ?flavour=mangofunk or ?id=summerset
+    // Deep-link: ?flavour=rum-for-your-life or ?id=summer-set
     const params = new URLSearchParams(location.search);
     const flavourKey = params.get('flavour') || params.get('id');
     if (flavourKey) {
