@@ -22,6 +22,14 @@
     <circle cx="90" cy="90" r="66" fill="#8cc212"/>
     <path d="M90 90 L90 26 M90 90 L145 58 M90 90 L145 122 M90 90 L90 154 M90 90 L35 122 M90 90 L35 58" stroke="#000" stroke-width="8" stroke-linecap="round" fill="none"/>
   </g>
+  <g id="blob">
+    <path d="M84 8 Q152 8 158 78 Q164 152 84 156 Q6 152 10 78 Q14 8 84 8 Z" fill="#3cf02d"/>
+    <circle cx="58" cy="70" r="10" fill="#000"/><circle cx="110" cy="70" r="10" fill="#000"/>
+    <path d="M54 104 Q84 128 114 104" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="sparkle">
+    <path d="M50 2 Q60 40 98 50 Q60 60 50 98 Q40 60 2 50 Q40 40 50 2 Z" fill="#ffffe7"/>
+  </g>
   <g id="melon">
     <path d="M8 100 A 84 84 0 0 1 176 100 Z" fill="#4e992b"/>
     <path d="M24 100 A 68 68 0 0 1 160 100 Z" fill="#eb030d"/>
@@ -36,29 +44,20 @@
     <path d="M96 40 Q80 -8 34 -8 Q76 14 96 40 Z" fill="#8cc212"/>
     <path d="M96 40 Q112 -8 158 -8 Q116 14 96 40 Z" fill="#8cc212"/>
   </g>
-  <g id="blob">
-    <path d="M84 8 Q152 8 158 78 Q164 152 84 156 Q6 152 10 78 Q14 8 84 8 Z" fill="#3cf02d"/>
-    <circle cx="58" cy="70" r="10" fill="#000"/><circle cx="110" cy="70" r="10" fill="#000"/>
-    <path d="M54 104 Q84 128 114 104" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
-  </g>
-  <g id="sparkle">
-    <path d="M50 2 Q60 40 98 50 Q60 60 50 98 Q40 60 2 50 Q40 40 50 2 Z" fill="#ffffe7"/>
-  </g>
   <g id="ice">
     <path d="M14 30 L70 6 L126 30 L126 92 L70 118 L14 92 Z" fill="#d6f3ff"/>
     <path d="M14 30 L70 56 L126 30 M70 56 L70 118" stroke="#000" stroke-width="7" fill="none"/>
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#pineapple" transform="translate(340,0) rotate(-10) scale(1.25)"/>
-    <use href="#mango" transform="translate(520,60) rotate(12) scale(1.1)"/>
-    <use href="#coconut" transform="translate(740,220) rotate(-15) scale(1.0)"/>
-    <use href="#lime" transform="translate(500,340) rotate(10) scale(1.0)"/>
-    <use href="#melon" transform="translate(170,430) rotate(-8) scale(1.15)"/>
-    <use href="#palm" transform="translate(600,560) rotate(15) scale(1.0)"/>
-    <use href="#blob" transform="translate(80,630) rotate(-12) scale(0.9)"/>
-    <use href="#sparkle" transform="translate(760,40) rotate(0) scale(1.0)"/>
-    <use href="#ice" transform="translate(380,650) rotate(10) scale(0.8)"/>
-    <use href="#sparkle" transform="translate(150,190) rotate(0) scale(0.5)" stroke-width="18.0"/>
+    <use href="#pineapple" transform="translate(-60,-41) rotate(-18.0) scale(2.05)" stroke-width="4.9"/>
+    <use href="#mango" transform="translate(288,-89) rotate(-19.0) scale(1.99)" stroke-width="5.0"/>
+    <use href="#coconut" transform="translate(575,-124) rotate(-13.4) scale(2.74)" stroke-width="3.6"/>
+    <use href="#lime" transform="translate(-58,256) rotate(21.6) scale(2.6)" stroke-width="3.8"/>
+    <use href="#blob" transform="translate(268,215) rotate(-22.6) scale(2.84)" stroke-width="3.5"/>
+    <use href="#sparkle" transform="translate(588,226) rotate(-15.5) scale(4.41)" stroke-width="3.0"/>
+    <use href="#melon" transform="translate(-38,594) rotate(13.7) scale(2.71)" stroke-width="3.7"/>
+    <use href="#palm" transform="translate(201,547) rotate(5.6) scale(2.38)" stroke-width="4.2"/>
+    <use href="#ice" transform="translate(601,551) rotate(14.1) scale(3.15)" stroke-width="3.2"/>
   </g>
 </svg>

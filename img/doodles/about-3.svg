@@ -13,10 +13,18 @@
     <path d="M8 98 H168 M88 18 V178 M32 42 L144 154 M144 42 L32 154" stroke="#000" stroke-width="7"/>
     <path d="M88 18 V-16" stroke="#000" stroke-width="9" stroke-linecap="round"/>
   </g>
+  <g id="sparkle">
+    <path d="M50 2 Q60 40 98 50 Q60 60 50 98 Q40 60 2 50 Q40 40 50 2 Z" fill="#ffffe7"/>
+  </g>
   <g id="vinyl">
     <circle cx="90" cy="90" r="84" fill="#0091ff"/>
     <circle cx="90" cy="90" r="34" fill="#ff82ff"/>
     <circle cx="90" cy="90" r="9" fill="#ffffe7"/>
+  </g>
+  <g id="blob">
+    <path d="M84 8 Q152 8 158 78 Q164 152 84 156 Q6 152 10 78 Q14 8 84 8 Z" fill="#3cf02d"/>
+    <circle cx="58" cy="70" r="10" fill="#000"/><circle cx="110" cy="70" r="10" fill="#000"/>
+    <path d="M54 104 Q84 128 114 104" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
   </g>
   <g id="speaker">
     <rect x="8" y="8" width="114" height="176" rx="10" fill="#0091ff"/>
@@ -38,25 +46,16 @@
     <rect x="10" y="16" width="100" height="20" rx="6" fill="#ffffe7"/>
     <path d="M74 16 L88 -22" stroke="#000" stroke-width="9" stroke-linecap="round"/>
   </g>
-  <g id="sparkle">
-    <path d="M50 2 Q60 40 98 50 Q60 60 50 98 Q40 60 2 50 Q40 40 50 2 Z" fill="#ffffe7"/>
-  </g>
-  <g id="blob">
-    <path d="M84 8 Q152 8 158 78 Q164 152 84 156 Q6 152 10 78 Q14 8 84 8 Z" fill="#3cf02d"/>
-    <circle cx="58" cy="70" r="10" fill="#000"/><circle cx="110" cy="70" r="10" fill="#000"/>
-    <path d="M54 104 Q84 128 114 104" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
-  </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#tower" transform="translate(380,-20) rotate(-8) scale(1.3)"/>
-    <use href="#disco" transform="translate(650,30) rotate(10) scale(1.0)"/>
-    <use href="#vinyl" transform="translate(50,140) rotate(-12) scale(1.0)"/>
-    <use href="#speaker" transform="translate(700,340) rotate(8) scale(1.1)"/>
-    <use href="#bus" transform="translate(-30,550) rotate(-10) scale(1.2)"/>
-    <use href="#bolt" transform="translate(440,590) rotate(15) scale(1.0)"/>
-    <use href="#cup" transform="translate(650,650) rotate(-8) scale(0.9)"/>
-    <use href="#sparkle" transform="translate(850,190) rotate(0) scale(1.0)"/>
-    <use href="#blob" transform="translate(290,690) rotate(10) scale(0.9)"/>
-    <use href="#sparkle" transform="translate(470,400) rotate(0) scale(0.8)"/>
+    <use href="#tower" transform="translate(68,-166) rotate(22.4) scale(2.11)" stroke-width="4.7"/>
+    <use href="#disco" transform="translate(268,-143) rotate(-3.8) scale(2.53)" stroke-width="4.0"/>
+    <use href="#sparkle" transform="translate(544,-80) rotate(-2.8) scale(4.57)" stroke-width="3.0"/>
+    <use href="#vinyl" transform="translate(-30,234) rotate(-20.7) scale(2.45)" stroke-width="4.1"/>
+    <use href="#blob" transform="translate(224,167) rotate(11.7) scale(2.9)" stroke-width="3.4"/>
+    <use href="#speaker" transform="translate(658,224) rotate(4.5) scale(2.68)" stroke-width="3.7"/>
+    <use href="#bus" transform="translate(-68,548) rotate(-6.9) scale(2.58)" stroke-width="3.9"/>
+    <use href="#bolt" transform="translate(318,472) rotate(8.0) scale(2.87)" stroke-width="3.5"/>
+    <use href="#cup" transform="translate(662,526) rotate(10.9) scale(2.69)" stroke-width="3.7"/>
   </g>
 </svg>

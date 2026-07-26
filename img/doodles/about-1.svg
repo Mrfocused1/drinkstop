@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371 497" width="371" height="497">
   <defs>
-  <g id="sparkle">
-    <path d="M50 2 Q60 40 98 50 Q60 60 50 98 Q40 60 2 50 Q40 40 50 2 Z" fill="#ffffe7"/>
-  </g>
   <g id="bottle">
     <rect x="38" y="2" width="34" height="24" rx="4" fill="#ffde14"/>
     <rect x="45" y="24" width="20" height="38" fill="#fb5f01"/>
     <path d="M45 60 Q20 78 18 112 L18 196 Q18 214 36 214 L74 214 Q92 214 92 196 L92 112 Q90 78 65 60 Z" fill="#fb5f01"/>
     <rect x="26" y="122" width="58" height="54" rx="4" fill="#ffffe7"/>
+  </g>
+  <g id="sparkle">
+    <path d="M50 2 Q60 40 98 50 Q60 60 50 98 Q40 60 2 50 Q40 40 50 2 Z" fill="#ffffe7"/>
   </g>
   <g id="lime">
     <circle cx="90" cy="90" r="84" fill="#4e992b"/>
@@ -25,10 +25,10 @@
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#sparkle" transform="translate(140,5) rotate(10) scale(0.9)"/>
-    <use href="#bottle" transform="translate(105,55) rotate(-8) scale(1.0)"/>
-    <use href="#lime" transform="translate(85,245) rotate(12) scale(0.9)"/>
-    <use href="#cup" transform="translate(140,325) rotate(-10) scale(0.8)"/>
-    <use href="#ice" transform="translate(95,420) rotate(8) scale(0.8)"/>
+    <use href="#bottle" transform="translate(-24,-153) rotate(-8) scale(2.25)" stroke-width="4.4"/>
+    <use href="#sparkle" transform="translate(215,-95) rotate(8) scale(1.7)" stroke-width="5.9"/>
+    <use href="#lime" transform="translate(-48,152) rotate(12) scale(1.65)" stroke-width="6.1"/>
+    <use href="#cup" transform="translate(-54,229) rotate(-10) scale(1.9)" stroke-width="5.3"/>
+    <use href="#ice" transform="translate(62,374) rotate(10) scale(1.55)" stroke-width="6.5"/>
   </g>
 </svg>

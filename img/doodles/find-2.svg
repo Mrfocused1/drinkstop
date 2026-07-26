@@ -11,27 +11,15 @@
   <g id="star">
     <path d="M158 12 Q176 74 189 128 Q246 118 299 124 Q253 158 215 189 Q238 245 253 301 Q203 259 158 218 Q112 254 70 291 Q90 241 103 188 Q54 158 11 122 Q70 118 126 126 Q141 70 158 12 Z" fill="#ffde14"/>
   </g>
-  <g id="disco">
-    <circle cx="88" cy="98" r="80" fill="#0091ff"/>
-    <path d="M8 98 H168 M88 18 V178 M32 42 L144 154 M144 42 L32 154" stroke="#000" stroke-width="7"/>
-    <path d="M88 18 V-16" stroke="#000" stroke-width="9" stroke-linecap="round"/>
-  </g>
   <g id="vinyl">
     <circle cx="90" cy="90" r="84" fill="#0091ff"/>
     <circle cx="90" cy="90" r="34" fill="#ff82ff"/>
     <circle cx="90" cy="90" r="9" fill="#ffffe7"/>
   </g>
-  <g id="speaker">
-    <rect x="8" y="8" width="114" height="176" rx="10" fill="#0091ff"/>
-    <circle cx="65" cy="66" r="34" fill="#ffde14"/>
-    <circle cx="65" cy="66" r="12" fill="#000"/>
-    <circle cx="65" cy="142" r="21" fill="#ffde14"/>
-  </g>
-  <g id="bus">
-    <path d="M8 24 L182 24 Q198 24 198 44 L198 130 L8 130 Z" fill="#eb030d"/>
-    <g fill="#d6f3ff"><rect x="24" y="40" width="44" height="34" rx="3"/><rect x="82" y="40" width="44" height="34" rx="3"/><rect x="140" y="40" width="44" height="34" rx="3"/></g>
-    <circle cx="52" cy="134" r="26" fill="#000"/><circle cx="154" cy="134" r="26" fill="#000"/>
-    <circle cx="52" cy="134" r="10" fill="#ffffe7"/><circle cx="154" cy="134" r="10" fill="#ffffe7"/>
+  <g id="disco">
+    <circle cx="88" cy="98" r="80" fill="#0091ff"/>
+    <path d="M8 98 H168 M88 18 V178 M32 42 L144 154 M144 42 L32 154" stroke="#000" stroke-width="7"/>
+    <path d="M88 18 V-16" stroke="#000" stroke-width="9" stroke-linecap="round"/>
   </g>
   <g id="pouch">
     <path d="M46 2 h28 a6 6 0 0 1 6 6 v16 a6 6 0 0 1-6 6 h-28 a6 6 0 0 1-6-6 v-16 a6 6 0 0 1 6-6z" fill="#fff"/>
@@ -45,6 +33,18 @@
     <path d="M45 60 Q20 78 18 112 L18 196 Q18 214 36 214 L74 214 Q92 214 92 196 L92 112 Q90 78 65 60 Z" fill="#fb5f01"/>
     <rect x="26" y="122" width="58" height="54" rx="4" fill="#ffffe7"/>
   </g>
+  <g id="speaker">
+    <rect x="8" y="8" width="114" height="176" rx="10" fill="#0091ff"/>
+    <circle cx="65" cy="66" r="34" fill="#ffde14"/>
+    <circle cx="65" cy="66" r="12" fill="#000"/>
+    <circle cx="65" cy="142" r="21" fill="#ffde14"/>
+  </g>
+  <g id="bus">
+    <path d="M8 24 L182 24 Q198 24 198 44 L198 130 L8 130 Z" fill="#eb030d"/>
+    <g fill="#d6f3ff"><rect x="24" y="40" width="44" height="34" rx="3"/><rect x="82" y="40" width="44" height="34" rx="3"/><rect x="140" y="40" width="44" height="34" rx="3"/></g>
+    <circle cx="52" cy="134" r="26" fill="#000"/><circle cx="154" cy="134" r="26" fill="#000"/>
+    <circle cx="52" cy="134" r="10" fill="#ffffe7"/><circle cx="154" cy="134" r="10" fill="#ffffe7"/>
+  </g>
   <g id="lime">
     <circle cx="90" cy="90" r="84" fill="#4e992b"/>
     <circle cx="90" cy="90" r="66" fill="#8cc212"/>
@@ -57,12 +57,6 @@
     <ellipse cx="112" cy="66" rx="6" ry="9" fill="#000"/>
     <ellipse cx="91" cy="42" rx="6" ry="9" fill="#000"/>
   </g>
-  <g id="pineapple">
-    <path d="M74 4 L52 54 M74 4 L96 54 M40 22 L58 60 M108 22 L90 60" stroke="#4e992b" stroke-width="20" stroke-linecap="round"/>
-    <ellipse cx="74" cy="150" rx="62" ry="90" fill="#ffde14"/>
-    <path d="M22 108 L126 108 M18 150 L130 150 M26 192 L122 192" stroke="#000" stroke-width="7"/>
-    <path d="M40 66 L48 236 M74 60 L74 240 M108 66 L100 236" stroke="#000" stroke-width="7"/>
-  </g>
   <g id="coconut">
     <circle cx="90" cy="90" r="84" fill="#6b3a1a"/>
     <circle cx="90" cy="90" r="60" fill="#ffffe7"/>
@@ -70,30 +64,36 @@
     <circle cx="118" cy="52" r="7" fill="#000"/>
     <circle cx="90" cy="34" r="7" fill="#000"/>
   </g>
-  <g id="mango">
-    <path d="M96 12 Q170 30 172 108 Q174 190 96 214 Q18 190 20 108 Q22 34 96 12 Z" fill="#fd6b01"/>
-    <path d="M96 12 Q120 2 138 14" stroke="#4e992b" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <g id="pineapple">
+    <path d="M74 4 L52 54 M74 4 L96 54 M40 22 L58 60 M108 22 L90 60" stroke="#4e992b" stroke-width="20" stroke-linecap="round"/>
+    <ellipse cx="74" cy="150" rx="62" ry="90" fill="#ffde14"/>
+    <path d="M22 108 L126 108 M18 150 L130 150 M26 192 L122 192" stroke="#000" stroke-width="7"/>
+    <path d="M40 66 L48 236 M74 60 L74 240 M108 66 L100 236" stroke="#000" stroke-width="7"/>
   </g>
   <g id="blob">
     <path d="M84 8 Q152 8 158 78 Q164 152 84 156 Q6 152 10 78 Q14 8 84 8 Z" fill="#3cf02d"/>
     <circle cx="58" cy="70" r="10" fill="#000"/><circle cx="110" cy="70" r="10" fill="#000"/>
     <path d="M54 104 Q84 128 114 104" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
   </g>
+  <g id="mango">
+    <path d="M96 12 Q170 30 172 108 Q174 190 96 214 Q18 190 20 108 Q22 34 96 12 Z" fill="#fd6b01"/>
+    <path d="M96 12 Q120 2 138 14" stroke="#4e992b" stroke-width="16" stroke-linecap="round" fill="none"/>
+  </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#tower" transform="translate(560,-20) rotate(-8) scale(1.2)"/>
-    <use href="#star" transform="translate(850,30) rotate(10) scale(1.0)"/>
-    <use href="#disco" transform="translate(150,80) rotate(-12) scale(1.0)"/>
-    <use href="#vinyl" transform="translate(1050,200) rotate(12) scale(0.9)"/>
-    <use href="#speaker" transform="translate(950,450) rotate(-10) scale(1.0)"/>
-    <use href="#bus" transform="translate(30,350) rotate(8) scale(1.0)"/>
-    <use href="#pouch" transform="translate(300,250) rotate(-15) scale(1.1)"/>
-    <use href="#bottle" transform="translate(450,450) rotate(10) scale(1.0)"/>
-    <use href="#lime" transform="translate(680,550) rotate(-8) scale(1.0)"/>
-    <use href="#melon" transform="translate(850,650) rotate(12) scale(1.1)"/>
-    <use href="#pineapple" transform="translate(130,600) rotate(-10) scale(1.0)"/>
-    <use href="#coconut" transform="translate(1100,700) rotate(8) scale(0.9)"/>
-    <use href="#mango" transform="translate(550,750) rotate(-12) scale(0.9)"/>
-    <use href="#blob" transform="translate(300,780) rotate(10) scale(0.9)"/>
+    <use href="#tower" transform="translate(331,-130) rotate(-14.9) scale(2.04)" stroke-width="4.9"/>
+    <use href="#star" transform="translate(652,-147) rotate(13.8) scale(1.32)" stroke-width="7.6"/>
+    <use href="#vinyl" transform="translate(931,-93) rotate(0.1) scale(2.79)" stroke-width="3.6"/>
+    <use href="#disco" transform="translate(-40,107) rotate(-4.5) scale(2.72)" stroke-width="3.7"/>
+    <use href="#pouch" transform="translate(382,56) rotate(-23.6) scale(2.66)" stroke-width="3.8"/>
+    <use href="#bottle" transform="translate(753,166) rotate(4.9) scale(2.07)" stroke-width="4.8"/>
+    <use href="#speaker" transform="translate(967,155) rotate(16.4) scale(2.45)" stroke-width="4.1"/>
+    <use href="#bus" transform="translate(-99,354) rotate(2.2) scale(2.25)" stroke-width="4.4"/>
+    <use href="#lime" transform="translate(289,390) rotate(5.0) scale(2.42)" stroke-width="4.1"/>
+    <use href="#melon" transform="translate(607,404) rotate(-3.8) scale(2.83)" stroke-width="3.5"/>
+    <use href="#coconut" transform="translate(950,307) rotate(-12.5) scale(2.9)" stroke-width="3.4"/>
+    <use href="#pineapple" transform="translate(-19,532) rotate(0.9) scale(1.96)" stroke-width="5.1"/>
+    <use href="#blob" transform="translate(215,563) rotate(10.7) scale(2.91)" stroke-width="3.4"/>
+    <use href="#mango" transform="translate(674,537) rotate(14.1) scale(2.18)" stroke-width="4.6"/>
   </g>
 </svg>
