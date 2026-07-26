@@ -70,7 +70,7 @@
 <link rel='stylesheet' id='fancybox-css-css' href='cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css' type='text/css' media='all' />
 <link rel='stylesheet' id='swiper-css-css' href='cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' type='text/css' media='all' />
 <link rel='stylesheet' id='plyr-css-css' href='cdn.plyr.io/3.8.3/plyr.css' type='text/css' media='all' />
-<link rel='stylesheet' id='main-css' href='wp-content/themes/pley-by-ney/dist/bundle.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css' href='wp-content/themes/drinkstop/dist/site.css' type='text/css' media='all' />
 
 
 <meta name="generator" content="webp-uploads 2.6.1">
@@ -78,71 +78,6 @@
 <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp" sizes="192x192" />
 <link rel="apple-touch-icon" href="wp-content/uploads/2025/10/cropped-favicon-2-180x180.webp" />
 <meta name="msapplication-TileImage" content="wp-content/uploads/2025/10/cropped-favicon-2-270x270.webp" />
-		<style type="text/css" id="wp-custom-css">
-			.skip-to-content {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    z-index: 1000;
-    padding: 0.75rem 1.25rem;
-    background: #000;
-    color: #fff;
-    text-decoration: none;
-}
-.skip-to-content:focus {
-    left: 0.5rem;
-    top: 0.5rem;
-}
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-			.sustainability__products--image .btn--ghost {
-    display: none !important;
-}
-
-@media (max-width: 768px) {
-    .sustainability__institute {
-        padding: 2rem 0 !important;
-    }
-}
-
-/* Mobile tap target improvements — ensure 44x44px minimum */
-@media (max-width: 64em) {
-    /* Header nav links: add padding to reach 44px height */
-    .main-header-nav__list li a {
-        display: inline-flex;
-        align-items: center;
-        min-height: 2.75rem;
-        padding: 0.5rem 0.75rem;
-    }
-
-    /* Order Now CTA: increase vertical padding to reach 44px height */
-    .btn--icon {
-        min-height: 2.75rem;
-    }
-
-    /* Hamburger/offcanvas toggle: increase size to 44x44px */
-    .offcanvas-toggle {
-        min-width: 2.75rem;
-        min-height: 2.75rem;
-    }
-
-    /* Contact form submit button: increase vertical padding to reach 44px height */
-    .wpcf7-submit {
-        min-height: 2.75rem;
-        padding-top: 0.875rem;
-        padding-bottom: 0.875rem;
-    }
-}		</style>
-		
   
   
   
@@ -180,109 +115,6 @@
       background-color: #d9020f;
     }
   </style>
-<style id="drinkstop-hero">
-.hero-pouch-stack{position:absolute;bottom:-4%;right:2%;height:94%;aspect-ratio:1/1;pointer-events:none;animation:heroPouchFloat 4.5s ease-in-out infinite;}
-.hero-pouch{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .8s ease;filter:drop-shadow(0 14px 26px rgba(0,0,0,.22));}
-.hero-pouch.is-active{opacity:1;}
-.santos-partnership__media--bg-3{object-fit:contain!important;}
-.footer-back-graphic,.footer-front-graphic{display:none!important;}
-/* footer: image fills band, heading text removed */
-.footer-heading{display:none!important;}
-.footer-bg{display:none!important;}
-.footer-topbar .container{position:relative!important;padding:0!important;}
-.footer-animated-bg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;padding:0!important;}
-.footer-neymar{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;}
-.main-header{border-bottom:none!important;}
-.marquee__group{animation:none!important;gap:56px!important;justify-content:flex-start!important;}
-.hero-eyebrow{font-family:'DS Display',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(18px,1.8vw,30px);line-height:1.3;color:#0a0a0a;margin:0 0 3rem;}
-/* mobile hero collage image (hidden on desktop) */
-.hero-mobile-image{display:none;}
-/* plus button on product cards disabled everywhere */
-.product-view__btn{display:none!important;}
-/* extra animated spark stars (mobile hero) */
-.drinkstop-star{display:none;position:absolute;z-index:2;pointer-events:none;}
-.drinkstop-star--1{top:14%;left:5%;width:52px;}
-.drinkstop-star--2{top:34%;right:7%;width:84px;}
-.drinkstop-star--3{top:52%;left:8%;width:64px;}
-.drinkstop-star--4{bottom:8%;right:10%;width:48px;}
-.drinkstop-star--5{bottom:20%;left:14%;width:40px;}
-.marquee__item{flex:0 0 auto!important;white-space:nowrap!important;}
-.marquee__item--text{white-space:nowrap!important;}
-@keyframes heroPouchFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
-.product-versions{display:flex;}
-.product-version-chip{width:auto;white-space:nowrap;flex:0 0 auto;}
-@media(max-width:72em){
-  /* mobile hero: the collage image IS the hero — no text, just the CTA and one star.
-     Hero fills the first viewport minus the ticker, so the marquee hugs the bottom edge. */
-  .hero{height:calc(100svh - 84px)!important;min-height:520px;}
-  .hero-mobile-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
-  .hero-heading,.hero-pouch-stack,.hero-back-graphic,.hero-front-graphic{display:none!important;}
-  .hero .container{position:absolute!important;left:0!important;right:0!important;bottom:4%!important;top:auto!important;z-index:6;height:auto!important;padding:0!important;margin:0!important;gap:0!important;align-items:center!important;justify-content:center!important;}
-  .drinkstop-star--2{display:block;top:3%;right:4%;width:64px;z-index:4;}
-  /* solid white CTA so it reads over the busy collage */
-  .hero .container a.btn{background:#fff!important;}
-  /* transparent header while the hero is in view; solid again once scrolled */
-  .main-header{background-color:transparent!important;border-bottom:none!important;transition:background-color .3s ease;}
-  body.has-scrolled .main-header{background-color:#3cf02d!important;}
-  /* collab video: cap to the viewport instead of filling the container */
-  .santos-partnership__media--video{width:min(64vw,360px)!important;display:block;margin:0 auto;}
-  /* decorative graffiti was covering the where-to-find text on small screens */
-  .sustainability__where-to-find--pattern1,.sustainability__where-to-find--pattern2{display:none!important;}
-  .sustainability__where-to-find--inner{position:relative;z-index:5;}
-  /* footer collage: tall full-bleed band (~3x the old visible height); footer must not clip it */
-  .footer-animated-bg{position:relative!important;width:100%!important;height:min(100vw,760px)!important;aspect-ratio:auto!important;padding-top:0!important;padding-bottom:0!important;}
-  .footer{min-height:calc(min(100vw,760px) + 8rem)!important;}
-  /* product cards: square media box with the drink as the focal point (like the original) */
-  .product-view{aspect-ratio:1/1!important;}
-  .product-image-wrapper{position:absolute!important;inset:0!important;height:auto!important;padding:0!important;}
-  .product-image-bg{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;height:100%!important;width:auto!important;max-width:none!important;}
-}
-@media(max-width:63.99em){
-  /* Bug 1 fix: lifestyle pill title was 2.5rem (40px) — too big for the 20rem/3.75rem pill on mobile. */
-  .lifestyle__card--title{font-size:clamp(1.125rem,4.5vw,1.75rem)!important;}
-  /* Bug 2 fix: metric title was 4.375rem (70px) — "custom" overflowed the 15rem bordered box.
-     Widen the box and scale the type so the word fits on one line without breaking. */
-  .sustainability__products--metric{width:min(88vw,15rem)!important;padding:1rem 1.25rem!important;}
-  .sustainability__products--metric--title{font-size:clamp(2rem,7vw,3.25rem)!important;line-height:1!important;}
-}
-@media(min-width:64em){
-  /* Bug 3 fix: lifestyle pill title was 3.75rem (60px) — wrapped to 2 lines and overflowed the 5.625rem-tall pill on desktop. */
-  .lifestyle__card--title{font-size:2.75rem!important;}
-  /* Bug 4 fix: metric title was 4.375rem (70px) — "custom" overflowed the 15rem bordered box on desktop. */
-  .sustainability__products--metric{width:17rem!important;}
-  .sustainability__products--metric--title{font-size:3.5rem!important;}
-}
-@media(min-width:64em){
-  /* Bug 5 fix: portrait product images (1086x1448, e.g. greengroov/rumbaclart1)
-     had no height cap on desktop, so their auto-height (scaled to 100% width)
-     exceeded the wrapper's height and overflowed/cropped past the card edges.
-     object-fit:contain only works if the box itself doesn't overflow, so give
-     the whole chain (wrapper -> picture -> img) a definite height so the
-     percentage resolves correctly at each level. */
-  .product-image-wrapper picture{height:100%;}
-  .product-image-wrapper img{height:100%!important;}
-}
-@media(max-width:1023px){
-  /* close the desktop scroll-spacer gap between product cards */
-  .products div[style="height: 50svh"]{display:none!important;}
-  /* occasion cards: 4x breathing room (base gap was .625rem) */
-  .lifestyle-column--cards{gap:2.5rem!important;}
-}
-.cool-wall{position:relative;padding:5rem 0;background:#FFF9E0;}
-.cool-wall__title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;text-align:center;margin-bottom:2.5rem;}
-.cool-wall__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.cool-wall__tile{position:relative;aspect-ratio:4/5;border-radius:30px;overflow:hidden;background:#000;}
-.cool-wall__media{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
-.cool-wall__logo{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;object-fit:contain;z-index:1;}
-@media (max-width:64rem){.cool-wall__grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:36rem){.cool-wall__grid{grid-template-columns:repeat(2,1fr);gap:.75rem;}.cool-wall__title{margin-bottom:1.5rem;}.cool-wall__tile{border-radius:16px;}.cool-wall__logo{width:1.75rem;height:1.75rem;top:.5rem;right:.5rem;}}
-/* desktop "Our Drinks" nav dropdown */
-.drinks-dropdown{position:relative;}
-.drinks-dropdown__menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border-radius:1rem;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:.5rem;min-width:200px;opacity:0;visibility:hidden;transition:opacity .15s ease,transform .15s ease;z-index:50;}
-.drinks-dropdown:hover .drinks-dropdown__menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px);}
-.drinks-dropdown__menu a{display:block;padding:.6rem .9rem;border-radius:.6rem;color:#0a0a0a;text-decoration:none;font-size:.9rem;font-weight:600;white-space:nowrap;}
-.drinks-dropdown__menu a:hover{background:#f3f3f3;}
-</style>
 </head>
 
 <body class="home wp-singular page-template-default page page-id-6 wp-embed-responsive wp-theme-pley-by-ney">
@@ -876,55 +708,55 @@
     </div>
   </div>
 </section>
-        <section class="santos-partnership">
+        <section class="collab">
   <div class="container container--lower">
-    <div class="santos-partnership__media">
-      <img width="1208" height="546" loading="lazy" src="wp-content/uploads/2025/10/santos-partner-image-1.webp" class="stop-motion stop-float santos-partnership__media--bg santos-partnership__media--bg-1" alt="">
-      <img width="393" height="329" loading="lazy" src="wp-content/uploads/2025/10/santos-partner-image-2.webp" class="stop-motion stop-swap santos-partnership__media--bg santos-partnership__media--bg-2" alt="">
-      <img width="1400" height="1000" loading="lazy" src="wp-content/uploads/2025/10/bbk-tshirt.webp" class="stop-motion stop-jitter santos-partnership__media--bg santos-partnership__media--bg-3" alt="">
+    <div class="collab__media">
+      <img width="1208" height="546" loading="lazy" src="wp-content/uploads/2025/10/santos-partner-image-1.webp" class="stop-motion stop-float collab__media--bg collab__media--bg-1" alt="">
+      <img width="393" height="329" loading="lazy" src="wp-content/uploads/2025/10/santos-partner-image-2.webp" class="stop-motion stop-swap collab__media--bg collab__media--bg-2" alt="">
+      <img width="1400" height="1000" loading="lazy" src="wp-content/uploads/2025/10/bbk-tshirt.webp" class="stop-motion stop-jitter collab__media--bg collab__media--bg-3" alt="">
 
-      <video class="santos-partnership__media--video lazy-autoplay-video" loop muted playsinline preload="none" poster="wp-content/themes/pley-by-ney/assets/images/collab-reel-poster.jpg">
+      <video class="collab__media--video lazy-autoplay-video" loop muted playsinline preload="none" poster="wp-content/themes/pley-by-ney/assets/images/collab-reel-poster.jpg">
         <source data-src="wp-content/themes/pley-by-ney/assets/images/santos-partnership-reel.mp4" type="video/mp4">
       </video>
     </div>
 
     <div>
-      <h2 class="santos-partnership__title">
+      <h2 class="collab__title">
         <span class="line-1">Cortez.</span>
         <span class="line-2">Boy Better Know.</span>
         <span class="line-3">Pouch in hand.</span>
       </h2>
 
-      <p class="santos-partnership__excerpt">
+      <p class="collab__excerpt">
         When Cortez and Boy Better Know link up, DRINK STOP is in the mix. Real London energy — grime, garms and frozen rum in hand.<br>
         Want us at your event, on your next video or in the function? Let’s collab — scroll down to get in touch.
       </p>
     </div>
   </div>
 </section>
-        <section class="sustainability">
-  <div class="sustainability__bg"></div>
-  <div class="sustainability__products">
+        <section class="custom-pouch">
+  <div class="custom-pouch__bg"></div>
+  <div class="custom-pouch__products">
     <div class="container container--lower">
-      <div class="sustainability__products--heading">
-        <h2 class="sustainability__products--title">Make it yours,</h2>
-        <h3 class="sustainability__products--subtitle">Your design, our rum — one custom pouch.</h3>
-        <div class="sustainability__products--display">
-          <p class="sustainability__products--excerpt">
+      <div class="custom-pouch__products--heading">
+        <h2 class="custom-pouch__products--title">Make it yours,</h2>
+        <h3 class="custom-pouch__products--subtitle">Your design, our rum — one custom pouch.</h3>
+        <div class="custom-pouch__products--display">
+          <p class="custom-pouch__products--excerpt">
             Planning an event, a brand launch or an artist drop? We put your artwork straight onto the pouch. Bring your own design or let our team draw one up. <strong>Same frozen rum inside, your identity outside.</strong>
           </p>
         </div>
       </div>
 
-      <div class="sustainability__products--content">
-        <div class="sustainability__products--metric sustainability__products--metric--left">
+      <div class="custom-pouch__products--content">
+        <div class="custom-pouch__products--metric custom-pouch__products--metric--left">
           <span class="stop-motion stop-float"></span>
-          <h4 class="sustainability__products--metric--subtitle">From</h4>
-          <h5 class="sustainability__products--metric--title">5</h5>
-          <h6 class="sustainability__products--metric--excerpt">pouches per run</h6>
+          <h4 class="custom-pouch__products--metric--subtitle">From</h4>
+          <h5 class="custom-pouch__products--metric--title">5</h5>
+          <h6 class="custom-pouch__products--metric--excerpt">pouches per run</h6>
         </div>
 
-        <div class="sustainability__products--image">
+        <div class="custom-pouch__products--image">
           <img width="1024" height="1024" loading="lazy" class="packaging-video" src="wp-content/uploads/2025/drinks/pouch-red.webp" alt="DRINK STOP pouch" style="width:100%;height:100%;object-fit:contain;">
 
 
@@ -942,34 +774,34 @@
           </a>
         </div>
 
-        <div class="sustainability__products--metric sustainability__products--metric--right">
+        <div class="custom-pouch__products--metric custom-pouch__products--metric--right">
           <span class="stop-motion stop-sway"></span>
-          <h4 class="sustainability__products--metric--subtitle">Fully</h4>
-          <h5 class="sustainability__products--metric--title">custom</h5>
-          <h6 class="sustainability__products--metric--excerpt">your art or ours</h6>
+          <h4 class="custom-pouch__products--metric--subtitle">Fully</h4>
+          <h5 class="custom-pouch__products--metric--title">custom</h5>
+          <h6 class="custom-pouch__products--metric--excerpt">your art or ours</h6>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sustainability__institute">
+  <div class="custom-pouch__institute">
     <div class="container container--lower">
-      <h2 class="sustainability__institute--title">Attitude that <span class="sustainability__institute--title-span"><span class="stop-motion stop-jitter"></span>transforms</span></h2>
-      <h2 class="sustainability__institute--subtitle">More than a drink — it’s a movement.</h2>
-      <p class="sustainability__institute--excerpt">DRINK STOP backs the London scene — the music, the raves and the people who keep the city moving. More than a drink, it’s a movement.</p>
+      <h2 class="custom-pouch__institute--title">Attitude that <span class="custom-pouch__institute--title-span"><span class="stop-motion stop-jitter"></span>transforms</span></h2>
+      <h2 class="custom-pouch__institute--subtitle">More than a drink — it’s a movement.</h2>
+      <p class="custom-pouch__institute--excerpt">DRINK STOP backs the London scene — the music, the raves and the people who keep the city moving. More than a drink, it’s a movement.</p>
     </div>
   </div>
 
-  <div class="sustainability__where-to-find">
-    <div class="sustainability__where-to-find--content">
-      <div class="container container--lower sustainability__where-to-find--content--display">
-        <div class="sustainability__where-to-find--inner">
-          <h2 class="sustainability__where-to-find--inner--title">
+  <div class="custom-pouch__where-to-find">
+    <div class="custom-pouch__where-to-find--content">
+      <div class="container container--lower custom-pouch__where-to-find--content--display">
+        <div class="custom-pouch__where-to-find--inner">
+          <h2 class="custom-pouch__where-to-find--inner--title">
             Fancy a<br>
             DRINK STOP?
           </h2>
-          <h3 class="sustainability__where-to-find--inner--subtitle">We’ll show you where to find it.</h3>
-          <p class="sustainability__where-to-find--inner--excerpt">Find DRINK STOP pouches at stockists across London and beyond — or order direct. Grab your flavour and get the party started.</p>
+          <h3 class="custom-pouch__where-to-find--inner--subtitle">We’ll show you where to find it.</h3>
+          <p class="custom-pouch__where-to-find--inner--excerpt">Find DRINK STOP pouches at stockists across London and beyond — or order direct. Grab your flavour and get the party started.</p>
 
           <a href="onde-encontrar.html" class="btn btn--icon btn--ghost" data-modal data-type="ajax">
             <div class="btn__icon-slot">
@@ -987,8 +819,8 @@
       </div>
     </div>
 
-    <img width="1469" height="559" loading="lazy" class="sustainability__where-to-find--pattern1 stop-motion stop-float" src="wp-content/uploads/2025/10/sustainability-pattern-1.webp" alt="Onde encontrar">
-    <img width="1337" height="926" loading="lazy" class="sustainability__where-to-find--pattern2 stop-motion stop-sway" src="wp-content/uploads/2025/10/sustainability-pattern-2.webp" alt="Onde encontrar">
+    <img width="1469" height="559" loading="lazy" class="custom-pouch__where-to-find--pattern1 stop-motion stop-float" src="wp-content/uploads/2025/10/sustainability-pattern-1.webp" alt="Onde encontrar">
+    <img width="1337" height="926" loading="lazy" class="custom-pouch__where-to-find--pattern2 stop-motion stop-sway" src="wp-content/uploads/2025/10/sustainability-pattern-2.webp" alt="Onde encontrar">
   </div>
 </section>
         <div class="marquee" data-text="Straight outta London"></div>
@@ -1180,7 +1012,7 @@
 
   <div class="footer-animated-bg">
     <img width="1616" height="1196" loading="lazy" class="footer-back-graphic stop-motion stop-jitter" src="wp-content/uploads/2025/10/hero-back-graphic.webp" alt="">
-    <img width="1672" height="941" loading="lazy" class="footer-neymar" src="wp-content/uploads/2025/10/drinkstop-footer.webp" alt="">
+    <img width="1672" height="941" loading="lazy" class="footer-figure" src="wp-content/uploads/2025/10/drinkstop-footer.webp" alt="">
     <img width="968" height="578" loading="lazy" class="footer-front-graphic stop-motion stop-swap" src="wp-content/uploads/2025/10/hero-front-graphic.webp" alt="" >
   </div>
 
