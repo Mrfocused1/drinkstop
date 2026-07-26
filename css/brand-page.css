@@ -173,10 +173,10 @@
 
 .partner-section .hero-drinks {
   position: absolute;
-  left: 54.5%;
+  left: 59%;
   top: 50%;
-  transform: translate(-50%, -80%);
-  width: 445px;
+  transform: translate(-50%, -104%);
+  width: 480px;
   height: 440px;
   z-index: 0;
   pointer-events: none;
@@ -215,7 +215,7 @@
 
 /* Left flanking drink — slightly further back */
 .drink-left {
-  left: 10px;
+  left: 38px;
   width: 130px;
   z-index: 2;
   bottom: 30px;
@@ -229,10 +229,10 @@
 
 /* Right flanking drink */
 .drink-right {
-  right: 10px;
+  right: 76px;
   width: 130px;
   z-index: 1;
-  bottom: 40px;
+  bottom: 16px;
   transform: rotate(6deg);
   filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.2));
 }
