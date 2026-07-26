@@ -28,10 +28,13 @@
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#blob" transform="translate(-40,-37) rotate(-8) scale(1.55)" stroke-width="6.5"/>
-    <use href="#coconut" transform="translate(134,-56) rotate(10) scale(1.4)" stroke-width="7.1"/>
-    <use href="#ice" transform="translate(-35,157) rotate(8) scale(1.5)" stroke-width="6.7"/>
-    <use href="#melon" transform="translate(114,162) rotate(-10) scale(1.7)" stroke-width="5.9"/>
-    <use href="#sparkle" transform="translate(110,100) rotate(0) scale(1.3)" stroke-width="7.7"/>
+    <use href="#coconut" transform="translate(-20,-40) rotate(12) scale(1.0)" stroke-width="10.0"/>
+    <use href="#ice" transform="translate(140,-30) rotate(-10) scale(0.7)" stroke-width="14.3"/>
+    <use href="#melon" transform="translate(290,-40) rotate(8) scale(0.65)" stroke-width="15.4"/>
+    <use href="#blob" transform="translate(20,110) rotate(-15) scale(0.75)" stroke-width="13.3"/>
+    <use href="#sparkle" transform="translate(180,100) rotate(10) scale(0.55)" stroke-width="18.2"/>
+    <use href="#ice" transform="translate(320,120) rotate(-8) scale(0.95)" stroke-width="10.5"/>
+    <use href="#coconut" transform="translate(60,240) rotate(14) scale(0.6)" stroke-width="16.7"/>
+    <use href="#melon" transform="translate(230,250) rotate(-12) scale(0.8)" stroke-width="12.5"/>
   </g>
 </svg>

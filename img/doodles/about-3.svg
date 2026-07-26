@@ -48,14 +48,19 @@
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#tower" transform="translate(68,-166) rotate(22.4) scale(2.11)" stroke-width="4.7"/>
-    <use href="#disco" transform="translate(268,-143) rotate(-3.8) scale(2.53)" stroke-width="4.0"/>
-    <use href="#sparkle" transform="translate(544,-80) rotate(-2.8) scale(4.57)" stroke-width="3.0"/>
-    <use href="#vinyl" transform="translate(-30,234) rotate(-20.7) scale(2.45)" stroke-width="4.1"/>
-    <use href="#blob" transform="translate(224,167) rotate(11.7) scale(2.9)" stroke-width="3.4"/>
-    <use href="#speaker" transform="translate(658,224) rotate(4.5) scale(2.68)" stroke-width="3.7"/>
-    <use href="#bus" transform="translate(-68,548) rotate(-6.9) scale(2.58)" stroke-width="3.9"/>
-    <use href="#bolt" transform="translate(318,472) rotate(8.0) scale(2.87)" stroke-width="3.5"/>
-    <use href="#cup" transform="translate(662,526) rotate(10.9) scale(2.69)" stroke-width="3.7"/>
+    <use href="#tower" transform="translate(-40,-90) rotate(20) scale(2.7)" stroke-width="3.7"/>
+    <use href="#disco" transform="translate(280,-70) rotate(-10) scale(2.3)" stroke-width="4.3"/>
+    <use href="#vinyl" transform="translate(580,-100) rotate(15) scale(2.5)" stroke-width="4.0"/>
+    <use href="#speaker" transform="translate(880,-60) rotate(-8) scale(2.4)" stroke-width="4.2"/>
+    <use href="#bus" transform="translate(20,190) rotate(-12) scale(2.6)" stroke-width="3.8"/>
+    <use href="#blob" transform="translate(320,210) rotate(10) scale(2.0)" stroke-width="5.0"/>
+    <use href="#bolt" transform="translate(600,180) rotate(-18) scale(2.2)" stroke-width="4.5"/>
+    <use href="#cup" transform="translate(870,220) rotate(8) scale(2.1)" stroke-width="4.8"/>
+    <use href="#sparkle" transform="translate(100,450) rotate(14) scale(1.9)" stroke-width="5.3"/>
+    <use href="#tower" transform="translate(460,470) rotate(-15) scale(1.85)" stroke-width="5.4"/>
+    <use href="#disco" transform="translate(800,440) rotate(20) scale(1.6)" stroke-width="6.3"/>
+    <use href="#vinyl" transform="translate(150,680) rotate(-10) scale(1.75)" stroke-width="5.7"/>
+    <use href="#speaker" transform="translate(500,700) rotate(12) scale(1.7)" stroke-width="5.9"/>
+    <use href="#bus" transform="translate(820,670) rotate(-14) scale(1.8)" stroke-width="5.6"/>
   </g>
 </svg>

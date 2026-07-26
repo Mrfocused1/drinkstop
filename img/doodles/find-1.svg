@@ -65,17 +65,19 @@
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#palm" transform="translate(-28,-88) rotate(21.3) scale(1.97)" stroke-width="5.1"/>
-    <use href="#bottle" transform="translate(207,-30) rotate(6.8) scale(2.02)" stroke-width="5.0"/>
-    <use href="#coconut" transform="translate(411,-43) rotate(-9.7) scale(2.14)" stroke-width="4.7"/>
-    <use href="#pineapple" transform="translate(779,-46) rotate(9.3) scale(1.53)" stroke-width="6.5"/>
-    <use href="#cup" transform="translate(993,-110) rotate(6.2) scale(2.39)" stroke-width="4.2"/>
-    <use href="#sparkle" transform="translate(1107,-6) rotate(-1.5) scale(3.93)" stroke-width="3.0"/>
-    <use href="#pouch" transform="translate(7,202) rotate(-20.1) scale(2.08)" stroke-width="4.8"/>
-    <use href="#lime" transform="translate(173,183) rotate(-17.0) scale(2.11)" stroke-width="4.7"/>
-    <use href="#melon" transform="translate(367,344) rotate(0.7) scale(2.23)" stroke-width="4.5"/>
-    <use href="#mango" transform="translate(730,206) rotate(-16.4) scale(1.7)" stroke-width="5.9"/>
-    <use href="#bolt" transform="translate(979,219) rotate(3.0) scale(2.32)" stroke-width="4.3"/>
-    <use href="#ice" transform="translate(1096,274) rotate(-0.9) scale(2.9)" stroke-width="3.4"/>
+    <use href="#palm" transform="translate(-40,-60) rotate(15) scale(1.575)" stroke-width="6.3"/>
+    <use href="#bottle" transform="translate(300,-40) rotate(-10) scale(0.925)" stroke-width="10.8"/>
+    <use href="#coconut" transform="translate(620,-70) rotate(12) scale(1.425)" stroke-width="7.0"/>
+    <use href="#pineapple" transform="translate(950,-50) rotate(-8) scale(1.325)" stroke-width="7.5"/>
+    <use href="#cup" transform="translate(1300,-60) rotate(18) scale(1.475)" stroke-width="6.8"/>
+    <use href="#sparkle" transform="translate(-20,180) rotate(-12) scale(0.975)" stroke-width="10.3"/>
+    <use href="#pouch" transform="translate(280,200) rotate(10) scale(1.225)" stroke-width="8.2"/>
+    <use href="#lime" transform="translate(580,170) rotate(-15) scale(1.075)" stroke-width="9.3"/>
+    <use href="#melon" transform="translate(900,210) rotate(8) scale(1.375)" stroke-width="7.3"/>
+    <use href="#mango" transform="translate(1250,190) rotate(-18) scale(1.125)" stroke-width="8.9"/>
+    <use href="#bolt" transform="translate(100,380) rotate(14) scale(1.275)" stroke-width="7.8"/>
+    <use href="#ice" transform="translate(470,400) rotate(-10) scale(1.525)" stroke-width="6.6"/>
+    <use href="#bottle" transform="translate(850,370) rotate(16) scale(1.025)" stroke-width="9.8"/>
+    <use href="#lime" transform="translate(1200,390) rotate(-12) scale(1.175)" stroke-width="8.5"/>
   </g>
 </svg>

@@ -25,10 +25,14 @@
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#bottle" transform="translate(-24,-153) rotate(-8) scale(2.25)" stroke-width="4.4"/>
-    <use href="#sparkle" transform="translate(215,-95) rotate(8) scale(1.7)" stroke-width="5.9"/>
-    <use href="#lime" transform="translate(-48,152) rotate(12) scale(1.65)" stroke-width="6.1"/>
-    <use href="#cup" transform="translate(-54,229) rotate(-10) scale(1.9)" stroke-width="5.3"/>
-    <use href="#ice" transform="translate(62,374) rotate(10) scale(1.55)" stroke-width="6.5"/>
+    <use href="#bottle" transform="translate(-30,-60) rotate(-8) scale(1.25)" stroke-width="8.0"/>
+    <use href="#sparkle" transform="translate(180,-40) rotate(10) scale(0.95)" stroke-width="10.5"/>
+    <use href="#lime" transform="translate(30,90) rotate(15) scale(1.10)" stroke-width="9.1"/>
+    <use href="#cup" transform="translate(220,130) rotate(-10) scale(1.30)" stroke-width="7.7"/>
+    <use href="#sparkle" transform="translate(90,230) rotate(-15) scale(0.85)" stroke-width="11.8"/>
+    <use href="#ice" transform="translate(250,260) rotate(12) scale(1.05)" stroke-width="9.5"/>
+    <use href="#lime" transform="translate(-20,340) rotate(-12) scale(1.35)" stroke-width="7.4"/>
+    <use href="#bottle" transform="translate(160,370) rotate(8) scale(0.90)" stroke-width="11.1"/>
+    <use href="#cup" transform="translate(60,430) rotate(-6) scale(1.15)" stroke-width="8.7"/>
   </g>
 </svg>

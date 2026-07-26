@@ -50,14 +50,19 @@
   </g>
   </defs>
   <g stroke="#000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#pineapple" transform="translate(-60,-41) rotate(-18.0) scale(2.05)" stroke-width="4.9"/>
-    <use href="#mango" transform="translate(288,-89) rotate(-19.0) scale(1.99)" stroke-width="5.0"/>
-    <use href="#coconut" transform="translate(575,-124) rotate(-13.4) scale(2.74)" stroke-width="3.6"/>
-    <use href="#lime" transform="translate(-58,256) rotate(21.6) scale(2.6)" stroke-width="3.8"/>
-    <use href="#blob" transform="translate(268,215) rotate(-22.6) scale(2.84)" stroke-width="3.5"/>
-    <use href="#sparkle" transform="translate(588,226) rotate(-15.5) scale(4.41)" stroke-width="3.0"/>
-    <use href="#melon" transform="translate(-38,594) rotate(13.7) scale(2.71)" stroke-width="3.7"/>
-    <use href="#palm" transform="translate(201,547) rotate(5.6) scale(2.38)" stroke-width="4.2"/>
-    <use href="#ice" transform="translate(601,551) rotate(14.1) scale(3.15)" stroke-width="3.2"/>
+    <use href="#pineapple" transform="translate(-30,-70) rotate(15) scale(2.4)" stroke-width="4.2"/>
+    <use href="#mango" transform="translate(270,-50) rotate(-12) scale(1.7)" stroke-width="5.9"/>
+    <use href="#coconut" transform="translate(580,-80) rotate(8) scale(2.1)" stroke-width="4.8"/>
+    <use href="#lime" transform="translate(870,-40) rotate(-18) scale(1.9)" stroke-width="5.3"/>
+    <use href="#melon" transform="translate(40,210) rotate(-10) scale(2.2)" stroke-width="4.5"/>
+    <use href="#blob" transform="translate(330,230) rotate(12) scale(1.8)" stroke-width="5.6"/>
+    <use href="#sparkle" transform="translate(600,190) rotate(-20) scale(1.4)" stroke-width="7.1"/>
+    <use href="#palm" transform="translate(850,240) rotate(6) scale(2.0)" stroke-width="5.0"/>
+    <use href="#ice" transform="translate(100,460) rotate(-15) scale(1.6)" stroke-width="6.3"/>
+    <use href="#pineapple" transform="translate(460,480) rotate(10) scale(1.5)" stroke-width="6.7"/>
+    <use href="#mango" transform="translate(800,450) rotate(-8) scale(2.3)" stroke-width="4.3"/>
+    <use href="#coconut" transform="translate(150,680) rotate(18) scale(1.75)" stroke-width="5.7"/>
+    <use href="#lime" transform="translate(500,700) rotate(-12) scale(1.85)" stroke-width="5.4"/>
+    <use href="#melon" transform="translate(800,670) rotate(14) scale(1.95)" stroke-width="5.1"/>
   </g>
 </svg>
