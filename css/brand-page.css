@@ -170,14 +170,7 @@
 /* ── Three-drink hero display — centred behind the heading ───────────── */
 
 .hero-drinks {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -55%);
-  width: 420px;
-  height: 440px;
-  z-index: 1;                  /* behind text content */
-  pointer-events: none;        /* let clicks pass through to text */
+  display: none;
 }
 
 .drink-item {
@@ -292,12 +285,7 @@
 /* ── Introduction copy ──────────────────────────────────────────────── */
 
 .brand-introduction {
-  width: min(480px, 100%);
-  margin: 0;
-
-  font-size: clamp(18px, 1.5vw, 23px);
-  line-height: 1.38;
-  font-weight: 600;
+  display: none;
 }
 
 /* ==========================================================================
