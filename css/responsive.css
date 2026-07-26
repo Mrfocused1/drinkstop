@@ -52,17 +52,17 @@
   /* ── Drinks — scale down on smaller screens */
 
   .hero-drinks {
-    width: 380px;
-    height: 400px;
+    width: 320px;
+    height: 340px;
   }
 
   .drink-hero {
-    width: 180px;
+    width: 130px;
   }
 
   .drink-left,
   .drink-right {
-    width: 145px;
+    width: 105px;
   }
 
   /* ── Logo grid — 12 columns (6 cards per row) ──────────────────── */
@@ -133,25 +133,25 @@
   /* ── Drinks — smaller still on tablet */
 
   .hero-drinks {
-    width: 300px;
-    height: 320px;
+    width: 260px;
+    height: 280px;
   }
 
   .drink-hero {
-    width: 145px;
+    width: 110px;
   }
 
   .drink-left,
   .drink-right {
-    width: 115px;
+    width: 90px;
   }
 
   .drink-left {
-    transform: translateX(0) rotate(-6deg) translateY(20px);
+    transform: translateX(0) rotate(-6deg) translateY(15px);
   }
 
   .drink-right {
-    transform: translateX(0) rotate(5deg) translateY(30px);
+    transform: translateX(0) rotate(5deg) translateY(25px);
   }
 
   /* ── Logo grid — 8 columns (4 cards per row) ───────────────────── */
@@ -289,8 +289,8 @@
   /* ── Mobile drinks — centred below text */
 
   .hero-drinks {
-    width: 300px;
-    height: 200px;
+    width: 260px;
+    height: 170px;
     position: relative;
     left: auto;
     top: auto;
@@ -300,12 +300,12 @@
   }
 
   .drink-hero {
-    width: 130px;
+    width: 100px;
   }
 
   .drink-left,
   .drink-right {
-    width: 105px;
+    width: 80px;
   }
 
   /* ── Partner section ────────────────────────────────────────────── */
@@ -432,25 +432,25 @@
   /* ── Smaller drinks */
 
   .hero-drinks {
-    width: 240px;
-    height: 160px;
+    width: 200px;
+    height: 140px;
   }
 
   .drink-hero {
-    width: 105px;
+    width: 80px;
   }
 
   .drink-left,
   .drink-right {
-    width: 85px;
+    width: 65px;
   }
 
   .drink-left {
-    transform: translateX(0) rotate(-6deg) translateY(15px);
+    transform: translateX(0) rotate(-6deg) translateY(10px);
   }
 
   .drink-right {
-    transform: translateX(0) rotate(5deg) translateY(20px);
+    transform: translateX(0) rotate(5deg) translateY(15px);
   }
 
   .partner-section {
@@ -538,24 +538,24 @@
   /* ── Minimum-size drinks */
 
   .hero-drinks {
-    width: 180px;
-    height: 130px;
+    width: 150px;
+    height: 110px;
   }
 
   .drink-hero {
-    width: 80px;
+    width: 60px;
   }
 
   .drink-left,
   .drink-right {
-    width: 65px;
+    width: 50px;
   }
 
   .drink-left {
-    transform: translateX(0) rotate(-5deg) translateY(10px);
+    transform: translateX(0) rotate(-5deg) translateY(8px);
   }
 
   .drink-right {
-    transform: translateX(0) rotate(4deg) translateY(15px);
+    transform: translateX(0) rotate(4deg) translateY(12px);
   }
 }
