@@ -281,22 +281,11 @@
   }
 
   .brand-introduction {
-    width: min(395px, 80%);
-    font-size: 19px;
-    line-height: 1.38;
+    display: none;
   }
 
-  /* ── Mobile drinks — centred below text */
-
   .hero-drinks {
-    width: 260px;
-    height: 170px;
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    margin: 0 auto;
-    pointer-events: auto;
+    display: none;
   }
 
   .drink-hero {
