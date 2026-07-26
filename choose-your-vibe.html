@@ -218,6 +218,8 @@
     .buy{width:100%;margin-top:1.9rem;min-height:66px;font-size:1rem;letter-spacing:.05em}
     .buy:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 22px 44px rgba(17,17,17,.3);background:#000}
     .buy:active{transform:translateY(-1px) scale(.985)}
+    .add-to-cart{width:100%;margin-top:1rem;min-height:52px;font-size:.95rem;justify-content:center;border-radius:99px;background:transparent;color:var(--ink);box-shadow:none;border:2px solid var(--ink)}
+    .add-to-cart:hover{transform:translateY(-2px);background:var(--ink);color:#fff;box-shadow:0 17px 30px rgba(17,17,17,.2)}
     .delivery{display:flex;width:fit-content;align-items:center;gap:.5rem;margin:1.1rem auto 0;padding:.6rem 1.05rem;border-radius:99px;background:rgba(43,142,45,.1);color:var(--green);font-size:.76rem;font-weight:900;text-align:center;text-transform:uppercase}
     .delivery svg{width:15px;height:15px;flex-shrink:0}
 
@@ -349,6 +351,7 @@
       .price-accent{display:none}
       .price-row strong{font-size:clamp(2.8rem,12vw,4.2rem)}
       .buy{margin-top:1.25rem;min-height:58px}
+      .add-to-cart{margin-top:.75rem;min-height:48px;font-size:.85rem}
       .delivery{width:auto;display:flex;justify-content:center;margin:.9rem 0 0;padding:0;background:none;color:var(--green)}
     }
 
@@ -588,6 +591,7 @@
               <span class="label">Basket total</span>
               <strong data-basket-total>£6.99</strong>
             </div>
+            <button class="primary add-to-cart" type="button" data-add-to-cart><span>Add to cart</span><span aria-hidden="true">+</span></button>
             <button class="primary buy" type="button" data-buy><span>Buy now</span><span aria-hidden="true">→</span></button>
           </div>
         </aside>
@@ -883,7 +887,7 @@
       const total = lineTotal(d, qty);
       $$('[data-quantity]').forEach(el => el.textContent = String(qty));
       $$('[data-total]').forEach(el => el.textContent = money(total));
-      $$('[data-basket-total]').forEach(el => el.textContent = money(basketTotal() + total));
+      $$('[data-basket-total]').forEach(el => el.textContent = money(basketTotal()));
       const multi = qty >= MULTI_BUY_MIN;
       E.save.hidden = !multi;
       if (multi) {
@@ -996,7 +1000,11 @@
     $('[data-mobile-back]').addEventListener('click', () => { window.location.href = 'index.html'; });
     $('[data-summary-back]').addEventListener('click', () => step('flavour'));
     $$('[data-step-target]').forEach((b) => b.addEventListener('click', () => step(b.dataset.stepTarget)));
-    $('[data-buy]').addEventListener('click', addToBasket);
+    $('[data-add-to-cart]').addEventListener('click', addToBasket);
+    $('[data-buy]').addEventListener('click', () => {
+      addToBasket();
+      window.location.href = 'order.html';
+    });
     $$('[data-open-basket]').forEach((btn) => {
       btn.addEventListener('click', () => {
         if (S.cart > 0) window.location.href = 'order.html';
