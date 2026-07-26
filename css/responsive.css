@@ -322,54 +322,16 @@
     text-align: center;
   }
 
-  /* ── Logo grid — 3 columns ─────────────────────────────────────── */
+  /* ── Hide grid, show marquee on mobile ─────────────────────────── */
 
   .partner-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 5px;
+    display: none;
   }
 
-  .partner-card,
-  .partner-card:last-child {
-    grid-column: auto;
-    aspect-ratio: 1.22 / 1;
-    padding: 10px 8px;
-  }
-
-  .partner-card img {
-    width: var(--logo-width, 78%);
-    height: min(var(--logo-height, 58px), 58px);
-  }
-
-  /* ── Centre final two cards on mobile (17 logos → final row = 2) ──── */
-
-  .partner-card:nth-child(16) {
-    grid-column: 1 / 2;
-    transform: translateX(50%);
-  }
-
-  .partner-card:nth-child(17) {
-    grid-column: 2 / 3;
-    transform: translateX(50%);
-  }
-
-  /* Card nth overrides for visible state — keep final-row centring */
-  .partner-card:nth-child(16).is-visible { transform: translateX(50%); }
-  .partner-card:nth-child(17).is-visible { transform: translateX(50%); }
-
-  /* Preserve subtle rotation if we can */
-  .partner-card:nth-child(16) { transform: translateX(50%) rotate(-0.7deg); }
-  .partner-card:nth-child(17) { transform: translateX(50%) rotate(0.5deg); }
-  .partner-card:nth-child(16).is-visible { transform: translateX(50%) rotate(-0.7deg); }
-  .partner-card:nth-child(17).is-visible { transform: translateX(50%) rotate(0.5deg); }
-
-  /* Hover overrides for centred cards */
-  .partner-card:nth-child(16):hover {
-    transform: translateX(50%) translateY(-7px) rotate(-1deg);
-  }
-  .partner-card:nth-child(17):hover {
-    transform: translateX(50%) translateY(-7px) rotate(1deg);
+  .partner-marquee-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   /* ── Mobile slide-in navigation ────────────────────────────────── */
@@ -458,13 +420,10 @@
     padding-right: 10px;
   }
 
-  .partner-card {
-    min-height: 80px;
-    padding: 8px 6px;
-  }
-
-  .partner-card img {
-    height: 48px;
+  .marquee-row .partner-card {
+    width: 90px;
+    height: 60px;
+    padding: 6px;
   }
 }
 
@@ -483,20 +442,10 @@
     padding: 0 17px;
   }
 
-  .partner-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .partner-card:nth-child(16),
-  .partner-card:nth-child(17) {
-    grid-column: auto;
-    transform: none !important;
-  }
-
-  .partner-card:last-child {
-    grid-column: 1 / -1;
-    width: 50%;
-    justify-self: center;
+  .marquee-row .partner-card {
+    width: 80px;
+    height: 55px;
+    padding: 4px;
   }
 }
 
@@ -507,13 +456,10 @@
 
 @media (max-width: 350px) {
 
-  .partner-card {
-    min-height: 70px;
-    padding: 6px 4px;
-  }
-
-  .partner-card img {
-    height: 40px;
+  .marquee-row .partner-card {
+    width: 70px;
+    height: 50px;
+    padding: 4px;
   }
 
   .brand-hero {

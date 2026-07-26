@@ -428,7 +428,57 @@
 }
 
 /* ==========================================================================
-   SECTION 5 — Mobile Navigation (slide-in panel)
+   SECTION 5 — Mobile Marquee (scrolling logo rows)
+   ========================================================================== */
+
+.partner-marquee-mobile {
+  display: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-row {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-row__track {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.marquee-row--left .marquee-row__track {
+  animation: marquee-left 30s linear infinite;
+}
+
+.marquee-row--right .marquee-row__track {
+  animation: marquee-right 30s linear infinite;
+}
+
+.marquee-row .partner-card {
+  flex-shrink: 0;
+  width: 110px;
+  height: 70px;
+  margin: 0;
+  padding: 8px;
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ==========================================================================
+   SECTION 6 — Mobile Navigation (slide-in panel)
    ========================================================================== */
 
 .mobile-navigation {
