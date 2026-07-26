@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316 334" width="316" height="334" role="img" aria-label="">
+  <!-- DRINK STOP star burst. Five uneven spikes with deep notches and a slight
+       wobble on each edge, so it reads as marker-pen rather than geometry.
+       Vector so it stays crisp at the six sizes it is used at. -->
+  <path
+    d="M158 12
+       Q176 74 189 128
+       Q246 118 299 124
+       Q253 158 215 189
+       Q238 245 253 301
+       Q203 259 158 218
+       Q112 254 70 291
+       Q90 241 103 188
+       Q54 158 11 122
+       Q70 118 126 126
+       Q141 70 158 12 Z"
+    fill="#ffde14"
+    stroke="#000"
+    stroke-width="11"
+    stroke-linejoin="round"
+    stroke-linecap="round" />
+</svg>
