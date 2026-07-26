@@ -182,6 +182,10 @@
   pointer-events: none;
 }
 
+.partner-section {
+  overflow: visible;
+}
+
 .drink-item {
   position: absolute;
   bottom: 0;
