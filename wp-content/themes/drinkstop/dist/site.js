@@ -316,43 +316,44 @@ function initProductMarquee() {
         scrub: true,
       });
 
-      const master = gsap.timeline({
-        scrollTrigger: {
-          id: `master-timeline-${gi}`,
-          trigger: cards[0],
-          start: 'top top',
-          end: () => `+=${cards.length * window.innerHeight}`,
-          pin: cards[0],
-          scrub: true,
-        },
-      });
-
+      // Previously card[0] was pinned for the *entire* group duration
+      // (cards.length * innerHeight) via a separate "master timeline" scrollTrigger,
+      // while EVERY card (including card 0's own slot within that same range) also
+      // got pinned individually — two competing pins fighting over the same
+      // document range. That mismatch in reserved scroll distance is what let the
+      // last card's pin release early and .cool-wall scroll up underneath it
+      // while the outgoing card was still on screen. Every card now gets the same
+      // single, uniform per-card pin (one viewport-height each), so the group's
+      // total scroll distance actually matches what each card's pin reserves.
       cards.forEach((card, i) => {
         const content = card.querySelector('.product-content');
         const tl = gsap.timeline();
+        // Previously animated clip-path: inset(8%->0%) on the whole card, which
+        // hard-crops any content near the edges mid-scrub — including the first
+        // letter(s) of the product text. Since this is a scrubbed (not snapped)
+        // ScrollTrigger, a user can stop scrolling at any point in the range and
+        // get stuck looking at visibly chopped-off text. Scale-only avoids that
+        // while keeping the same "settling into place" feel; corners stay rounded
+        // via the card's own static border-radius in CSS.
         tl.fromTo(
           card,
-          { clipPath: 'inset(8% round 40px)', scale: 0.94 },
-          { clipPath: 'inset(0% round 0px)', scale: 1, ease: 'none' }
+          { scale: 0.94 },
+          { scale: 1, ease: 'none' }
         );
         if (content) tl.fromTo(content, { opacity: 0 }, { opacity: 1, ease: 'none' }, '<');
         if (i < cards.length - 1) {
           tl.to(card, { scale: 0.96, rotationX: 4, ease: 'none' });
         }
 
-        if (i === 0) {
-          master.add(tl);
-        } else {
-          ScrollTrigger.create({
-            id: `card-${gi}-${i + 1}`,
-            trigger: card,
-            start: 'top top',
-            end: () => `+=${window.innerHeight}`,
-            pin: card,
-            scrub: true,
-            animation: tl,
-          });
-        }
+        ScrollTrigger.create({
+          id: `card-${gi}-${i}`,
+          trigger: card,
+          start: 'top top',
+          end: () => `+=${window.innerHeight}`,
+          pin: card,
+          scrub: true,
+          animation: tl,
+        });
       });
     });
   });

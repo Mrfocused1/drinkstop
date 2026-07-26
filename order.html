@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp">
 <style>
 @font-face{
@@ -69,6 +69,8 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .thumb{max-height:160px;border-radius:12px;margin:0 auto 10px;display:block}
 /* nav buttons */
 .nav{display:flex;justify-content:space-between;gap:14px;margin-top:34px;max-width:900px}
+.nav-left{display:flex;gap:14px;align-items:center}
+.nav-right{display:flex;gap:14px;align-items:center}
 .btn{font:inherit;font-weight:800;font-size:16px;letter-spacing:.02em;padding:16px 34px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;transition:.18s;text-transform:uppercase;color:var(--ink);-webkit-appearance:none;appearance:none;white-space:nowrap}
 @media(max-width:480px){.btn{padding:14px 22px;font-size:15px}}
 .btn.prev{background:transparent}
@@ -77,6 +79,46 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .btn.next:hover{filter:brightness(.92);transform:translateX(3px)}
 .btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important;filter:none!important}
 .err{color:var(--red);font-weight:700;font-size:14px;margin-top:8px;min-height:18px}
+/* persistent order summary */
+.order-summary{display:none;position:sticky;top:24px;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:20px 22px;font-size:14px}
+.order-summary h3{font-family:'DS Display',sans-serif;font-weight:900;text-transform:uppercase;font-size:18px;margin-bottom:14px;letter-spacing:-.01em}
+.os-row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #00000012;font-size:13px}
+.os-row:last-of-type{border-bottom:none}
+.os-row .os-k{opacity:.6;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+.os-row .os-v{font-weight:800;text-align:right}
+.os-total{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 4px;padding-top:10px;border-top:2px solid var(--ink)}
+.os-total strong{font-family:'DS Display',sans-serif;font-size:24px}
+.os-note{font-size:11px;opacity:.55;margin-bottom:6px;line-height:1.4}
+.os-vibe{border:2px dashed var(--green);border-radius:14px;padding:12px;margin-bottom:14px;background:#eafff0;font-size:12px}
+.os-vibe strong{display:block;margin-bottom:4px;text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+.os-vibe span{opacity:.7}
+/* desktop: two-column stage layout */
+@media(min-width:800px){
+  .stage{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:flex-start;padding:24px 28px 60px;max-width:1200px;margin:0 auto;width:100%}
+  .step{max-width:none;width:100%}
+  .order-summary{display:block}
+  .prog{margin:0 auto;max-width:1200px;padding:0 28px 8px}
+}
+/* mobile: sticky nav bar at bottom */
+@media(max-width:799px){
+  .stage{flex-direction:column;align-items:stretch;padding:24px 16px max(120px,calc(env(safe-area-inset-bottom) + 100px))}
+  .nav{position:fixed;bottom:0;left:0;right:0;margin:0;padding:12px 16px;background:var(--cream);border-top:2px solid var(--ink);z-index:100;border-radius:0}
+  .nav-left .btn.prev{padding:12px 16px;font-size:14px}
+  .nav-right .btn.next{padding:12px 20px;font-size:14px;flex:1}
+  .order-summary{display:none}
+  /* mobile floating total chip */
+  .nav-total{display:flex;align-items:center;gap:6px;font-weight:800;font-size:13px;text-transform:uppercase;white-space:nowrap;margin-right:8px}
+  .nav-total b{font-family:'DS Display',sans-serif;font-size:20px;margin-left:4px}
+}
+@media(min-width:800px){.nav-total{display:none}}
+/* vibe basket banner on intro */
+.vibe-banner{border:2px solid var(--green);border-radius:18px;padding:20px;margin-bottom:28px;background:#eafff0}
+.vibe-banner .pill{background:var(--green);color:var(--ink)}
+.vibe-items{margin:12px 0;display:flex;flex-direction:column;gap:8px}
+.vibe-item{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;padding:6px 0;border-bottom:1px solid #00000012}
+.vibe-item:last-child{border-bottom:0}
+.vibe-item span{opacity:.65;font-weight:400}
+.vibe-actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
 /* summary + done */
 .summary{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:24px 26px}
 .summary .row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #00000012}
@@ -115,6 +157,85 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .mixrow-sub{font-weight:800;font-size:16px;white-space:nowrap}
 .mixrow-x{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);background:#fff;cursor:pointer;font-weight:900;color:var(--ink);flex-shrink:0;-webkit-appearance:none;appearance:none}
 .mixrow-x:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* ===== PARTY INTRO REDESIGN (Step 1 / intro step only) ===== */
+.party-headline{position:relative;font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:clamp(44px,7vw,92px);line-height:.88;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:6px}
+.party-headline em{color:var(--red);font-style:normal}
+.party-underline{display:block;width:min(260px,60%);height:12px;margin:6px 0 18px 4px;border-top:6px solid var(--ink);border-radius:50%;transform:rotate(-3deg)}
+.party-sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:520px;margin-bottom:26px}
+.party-benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;list-style:none;margin:0 0 30px;padding:0}
+.party-benefit{min-width:0;text-align:center}
+.party-benefit i{width:52px;height:52px;margin:0 auto 8px;padding:13px;border-radius:50%;display:grid;place-items:center;background:var(--ink);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+.party-benefit i img{width:100%;height:100%;filter:brightness(0) invert(1)}
+.party-benefit strong{display:block;color:var(--red);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+.party-benefit small{display:block;margin-top:3px;color:#4c493f;font-size:10px;line-height:1.25}
+.party-hand{font-family:'Permanent Marker',cursive;line-height:.95;transform:rotate(-2deg);margin:0 0 16px 8px}
+.party-hand p{margin:0;font-size:22px}
+.party-hand strong{display:block;margin-top:2px;color:var(--red);font-size:19px;text-transform:uppercase}
+.party-cards{display:grid;gap:16px;margin-bottom:20px}
+.party-card{position:relative;isolation:isolate;overflow:hidden;min-height:230px;border-radius:28px;display:grid;grid-template-columns:44% 56%;box-shadow:0 18px 46px rgba(17,17,17,.16)}
+.party-card::after{content:"";position:absolute;inset:0;z-index:10;pointer-events:none;border:1px solid rgba(255,255,255,.24);border-radius:inherit}
+.party-card--red{color:#fff;background:linear-gradient(135deg,#ff414b 0%,#ed1c24 50%,#c90016 100%)}
+.party-card--yellow{color:var(--ink);background:linear-gradient(135deg,#ffd943 0%,#ffc400 52%,#f3a900 100%)}
+.party-card--green{color:#fff;background:linear-gradient(135deg,#4cc26a 0%,#258f3a 52%,#145423 100%)}
+.party-card--blue{color:#fff;background:linear-gradient(135deg,#4c8dff 0%,#1457e6 52%,#0d3aa6 100%)}
+.party-card--purple{color:#fff;background:linear-gradient(135deg,#6b3fae 0%,#30106b 52%,#1d0940 100%)}
+.party-card-art{position:relative;min-width:0;overflow:hidden}
+.party-card-fruit,.party-card-prop,.party-card-pouch{position:absolute}
+.party-card-fruit--a{width:58%;left:-8%;bottom:-4%;z-index:2;transform:rotate(-8deg);opacity:.92}
+.party-card-fruit--b{width:32%;right:-2%;bottom:2%;z-index:5;transform:rotate(10deg);opacity:.92}
+.party-card-prop{width:26%;right:2%;top:9%;z-index:1;opacity:.7;transform:rotate(9deg)}
+.party-card-pouch{z-index:4;width:56%;height:88%;left:26%;bottom:0;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 16px 12px rgba(0,0,0,.28))}
+.party-card-content{min-width:0;padding:22px 22px 20px 4px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.party-card-eyebrow{margin:0 0 4px;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.party-card-content h3{margin:0;font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.party-card-flavour{margin:7px 0 14px;font-size:12px;line-height:1.3;font-weight:800;text-transform:uppercase}
+.party-qty{min-width:126px;height:44px;padding:0 6px;border-radius:999px;display:grid;grid-template-columns:38px 44px 38px;align-items:center;background:var(--ink);color:#fff}
+.party-qty button{width:38px;height:38px;border:0;border-radius:50%;background:transparent;color:#fff;font-size:16px;font-weight:900;cursor:pointer;-webkit-appearance:none;appearance:none}
+.party-qty button:hover{background:rgba(255,255,255,.18)}
+.party-qty output{text-align:center;font-weight:900;font-size:18px}
+.party-card-footer{width:100%;margin-top:14px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.party-card-meta{font-size:13px;font-weight:700}
+.party-card-price{font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:27px;line-height:1}
+.party-cta{width:100%;min-height:70px;margin-top:4px;padding:0 28px;border:4px solid var(--green);border-radius:999px;display:flex;align-items:center;justify-content:center;gap:20px;color:var(--green);background:var(--ink);box-shadow:0 14px 28px rgba(0,0,0,.2);font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:clamp(22px,3vw,34px);letter-spacing:.01em;text-transform:uppercase;cursor:pointer;transition:.2s var(--ui,ease);-webkit-appearance:none;appearance:none}
+.party-cta:hover{transform:translateY(-3px)}
+.party-cta img{width:32px;height:32px;filter:invert(89%) sepia(96%) saturate(1810%) hue-rotate(18deg) brightness(106%) contrast(105%)}
+.party-secondary{display:block;margin:12px auto 0;padding:6px 10px;border:0;border-bottom:3px solid var(--ink);background:transparent;font-weight:700;font-size:14px;cursor:pointer;transform:rotate(-1deg);-webkit-appearance:none;appearance:none}
+/* black "Your Party" summary — only rendered while the intro step has vibe items */
+.order-summary.party{background:var(--ink);color:#fff;border:0;padding:0;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.25)}
+.party-summary-inner{padding:26px}
+.party-summary-inner h3{font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:30px;line-height:1;text-transform:uppercase;margin-bottom:8px}
+.party-summary-marker{display:block;width:150px;height:7px;margin-bottom:18px;background:var(--green);border-radius:50%;transform:rotate(-2deg)}
+.party-sum-benefits{margin:0 0 18px;padding:0;list-style:none;display:grid}
+.party-sum-benefits li{min-height:58px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.2);display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center}
+.party-sum-benefit-icon{width:36px;height:36px;padding:8px;border-radius:50%;display:grid;place-items:center;background:rgba(60,240,45,.14)}
+.party-sum-benefit-icon img{width:100%;height:100%;filter:invert(89%) sepia(96%) saturate(1810%) hue-rotate(18deg) brightness(106%) contrast(105%)}
+.party-sum-benefits strong{display:block;font-size:12px;text-transform:uppercase}
+.party-sum-benefits small{display:block;margin-top:2px;color:rgba(255,255,255,.65);font-size:10px}
+.party-sum-lines{display:grid}
+.party-sum-line{min-height:60px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:13px}
+.party-sum-line strong{display:block;font-weight:900;text-transform:uppercase}
+.party-sum-line small{display:block;margin-top:2px;color:rgba(255,255,255,.65);font-size:11px}
+.party-sum-line b{font-weight:800;white-space:nowrap}
+.party-sum-total{padding:18px 0 4px;display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.party-sum-total span{color:var(--green);font-size:13px;font-weight:900;text-transform:uppercase}
+.party-sum-total strong{font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:38px;line-height:.9}
+.party-checkout-btn{width:100%;min-height:54px;margin-top:14px;padding:0 18px;border:0;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:12px;color:var(--ink);background:var(--green);font-size:13px;font-weight:900;text-transform:uppercase;cursor:pointer;transition:transform .16s ease;-webkit-appearance:none;appearance:none}
+.party-checkout-btn:hover{transform:translateY(-2px)}
+.party-checkout-btn img{width:20px;height:20px}
+.party-secure{margin:12px 0 0;display:flex;align-items:center;justify-content:center;gap:7px;color:rgba(255,255,255,.6);font-size:11px}
+.party-secure img{width:14px;height:14px;filter:brightness(0) invert(1);opacity:.66}
+@media(max-width:799px){
+  .party-benefits{gap:6px;margin-bottom:24px}
+  .party-benefit i{width:44px;height:44px;padding:11px}
+  .party-benefit small{max-width:70px;margin:3px auto 0}
+  .party-card{min-height:180px;border-radius:22px}
+  .party-card-content{padding:16px 14px 14px 0}
+  .party-card-content h3{font-size:clamp(22px,7vw,30px)}
+  .party-card-price{font-size:21px}
+  .party-cta{min-height:60px;gap:14px;font-size:clamp(18px,6vw,26px)}
+  .order-summary.party{display:block;margin-top:22px;position:static}
+}
 </style>
 </head>
 <body>
@@ -123,8 +244,7 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
     <a href="index.html"><img class="logo" src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="DRINK STOP"></a>
     <a class="back" href="index.html">✕ Close</a>
   </header>
-  <div class="prog"><div class="bar"><i id="pbar"></i></div><div class="lab" id="plab">Step 1</div></div>
-  <main class="stage"><div class="step" id="step"></div></main>
+  <main class="stage"><div class="step" id="step"></div><aside class="order-summary" id="summary"></aside></main>
   <div class="foot">DRINK STOP · Please drink responsibly · 18+ only</div>
 </div>
 
@@ -138,6 +258,20 @@ const INTRO_POUCHES=[
   {src:'wp-content/uploads/2025/drinks/pouch-6.webp',alt:'DRINK STOP pouch'},
   {src:'wp-content/uploads/2025/drinks/pouch-7.webp',alt:'DRINK STOP pouch'},
 ];
+const PARTY_ICON='assets/party/icons/', PARTY_DECOR='assets/party/decor/';
+const PARTY_THEMES=[
+  {cls:'red',    fruitA:PARTY_DECOR+'watermelon.svg',   fruitB:PARTY_DECOR+'strawberry.svg',   prop:PARTY_DECOR+'disco-ball.svg'},
+  {cls:'yellow', fruitA:PARTY_DECOR+'pineapple.svg',     fruitB:PARTY_DECOR+'passionfruit.svg', prop:PARTY_DECOR+'speaker.svg'},
+  {cls:'green',  fruitA:PARTY_DECOR+'pineapple.svg',     fruitB:PARTY_DECOR+'strawberry.svg',   prop:PARTY_DECOR+'record.svg'},
+  {cls:'blue',   fruitA:PARTY_DECOR+'watermelon.svg',    fruitB:PARTY_DECOR+'passionfruit.svg', prop:PARTY_DECOR+'disco-ball.svg'},
+  {cls:'purple', fruitA:PARTY_DECOR+'pineapple.svg',     fruitB:PARTY_DECOR+'strawberry.svg',   prop:PARTY_DECOR+'speaker.svg'},
+];
+function partyTheme(i){ return PARTY_THEMES[i % PARTY_THEMES.length]; }
+function partyPouchSrc(item){
+  return item.format==='bottle'
+    ? 'wp-content/uploads/2026/07/vibe/bottle-'+item.id+'.webp'
+    : 'wp-content/uploads/2026/07/vibe/product-'+item.id+'.png';
+}
 const FLAVOURS=[
   {id:'run',name:'Rum For Your Life',desc:'Rum, fruit punch & watermelon',color:'#e8202a'},
   {id:'suck',name:'Suck Your Rum',desc:'Rum, apple, lemon & ginger',color:'#f2b200'},
@@ -165,30 +299,30 @@ document.addEventListener('drinkstop:content-applied', e => {
 });
 function unitPrice(design,type,size){const d=design==='custom'?'custom':'original';return PRICING[d][type||'alcohol'][size||150];}
 function price(){return unitPrice(S.design,S.type,S.size);}
+// mix items carried over from the vibe page keep their own price (per-flavour, may include multi-buy discount)
+// so they don't silently change price when they land in the generic mix builder.
+function mixUnitPrice(it){ return it.fixedPrice!=null ? it.fixedPrice : unitPrice(it.design,it.type,it.size); }
+function mixItemLabel(it){ return (it.name?it.name+' · ':'')+`${it.qty}x ${it.type==='mocktail'?'Mocktail':'Alcohol'} · ${it.packaging==='bottle'?'Bottle':'Pouch'} · ${it.size}ml${it.design==='custom'?' · Custom design':''}`; }
 const S={design:null, type:null, size:null, flavours:[], qty:5, occasion:'', customFlavours:[], artwork:null, artworkName:'', brief:'', designMode:null, name:'', email:'', phone:'', area:'',
-  mix:[], mixCur:{type:'alcohol',packaging:'pouch',design:'original',size:150,qty:5}};
+  mix:[], mixCur:{type:'alcohol',packaging:'pouch',design:'original',size:150,qty:5}, vibeBasket:[]};
 let idx=0;
 
-// build the ordered list of step-keys based on branch
+// build the ordered list of step-keys based on branch (no more 'choose' fork)
 function sequence(){
-  const base=['intro','choose','design','type','size'];
+  const base=['intro','design','type','size'];
   if(S.design==='original') return [...base,'flavours','qty','details','review','done'];
   if(S.design==='custom')   return [...base,'occasion','customflav','qtyc','artwork','details','review','done'];
-  if(S.design==='mix')      return ['intro','choose','design','mixbuilder','details','review','done'];
+  if(S.design==='mix')      return ['intro','design','mixbuilder','details','review','done'];
   return base;
 }
 const el=document.getElementById('step');
-const pbar=document.getElementById('pbar'), plab=document.getElementById('plab');
 
-function render(){
+function render(keepScroll){
   const seq=sequence(); const key=seq[idx];
-  const totalSteps = S.design ? (seq.length-1) : 9; // exclude 'done'; estimate 9 before branch chosen
-  const shown = Math.min(idx+1, totalSteps);
-  pbar.style.width=(key==='done'?100:(idx/totalSteps)*100)+'%';
-  plab.textContent = key==='done' ? 'Done' : ('Step '+shown+' of '+totalSteps);
   el.innerHTML=STEPS[key]();
   wire(key);
-  window.scrollTo({top:0,behavior:'smooth'});
+  renderSummary();
+  if(!keepScroll) window.scrollTo({top:0,behavior:'smooth'});
 }
 function go(n){ idx=Math.max(0,idx+n); render(); }
 function reseq(){ idx=Math.min(idx, sequence().length-1); }
@@ -200,25 +334,54 @@ function navHtml(nextLabel, canBack=true, nextId='next', nextDisabled=false){
 }
 
 const STEPS={
- intro:()=>`
-  <h1 class="q">Let's get<br>the party started.</h1>
-  <p class="sub">Frozen rum cocktails, delivered your way. Answer a few quick questions and we'll sort your order — standard flavours or a fully custom, branded pouch.</p>
-  <div class="pouch-row">
-    ${INTRO_POUCHES.map((p,i)=>`<img src="${p.src}" alt="${p.alt}" class="pouch-row__img" style="animation-delay:${i*0.09}s">`).join('')}
-  </div>
-  ${navHtml('Start →', false)}`,
+ intro:()=>{
+  const hasVibe=S.vibeBasket.length>0;
+  const headline=`
+  <h1 class="party-headline">Let's get<br>the <em>party</em><br>started.</h1>
+  <span class="party-underline" aria-hidden="true"></span>
+  <p class="party-sub">You're one step away from frozen cocktails delivered your way. In a hurry? Try the <a href="quick-order.html" style="color:inherit">quick order form</a> instead.</p>`;
 
- choose:()=>`
-  <div class="kicker">The basics</div>
-  <h1 class="q">Quick order,<br>or the full experience?</h1>
-  <p class="sub">However you'd rather do this — both get you the same pouches.</p>
-  <div class="cards">
-    <div class="card" data-choice="quick"><div class="tick">✓</div>
-      <div class="ct">Quick Order</div><div class="cd">One page, pick your pouch and go. Fastest way to order.</div></div>
-    <div class="card" data-choice="full"><div class="tick">✓</div>
-      <div class="ct">Full Experience</div><div class="cd">Step-by-step, with mix &amp; match and custom design options.</div></div>
-  </div>
-  <div class="nav"><button class="btn prev" id="prev">← Back</button></div>`,
+  if(!hasVibe){
+    return headline+`
+    <div class="pouch-row" id="introPouches">
+      ${INTRO_POUCHES.map((p,i)=>'<img src="'+p.src+'" alt="'+p.alt+'" class="pouch-row__img" style="animation-delay:'+(i*0.09)+'s">').join('')}
+    </div>
+    ${navHtml('Start →', false)}`;
+  }
+
+  const cards=S.vibeBasket.map((item,i)=>{
+    const t=partyTheme(i);
+    return `
+    <article class="party-card party-card--${t.cls}" data-vibe-idx="${i}">
+      <div class="party-card-art" aria-hidden="true">
+        <img class="party-card-fruit party-card-fruit--a" src="${t.fruitA}" alt="">
+        <img class="party-card-fruit party-card-fruit--b" src="${t.fruitB}" alt="">
+        <img class="party-card-prop" src="${t.prop}" alt="">
+        <img class="party-card-pouch" src="${partyPouchSrc(item)}" alt="${esc(item.name)}">
+      </div>
+      <div class="party-card-content">
+        <div>
+          <p class="party-card-eyebrow">Frozen rum cocktail</p>
+          <h3>${esc(item.name)}</h3>
+        </div>
+        <div class="party-qty" role="group" aria-label="${esc(item.name)} quantity">
+          <button type="button" data-vqty="-1" data-idx="${i}" aria-label="Remove one ${esc(item.name)}">−</button>
+          <output aria-live="polite">${item.qty}</output>
+          <button type="button" data-vqty="1" data-idx="${i}" aria-label="Add one ${esc(item.name)}">+</button>
+        </div>
+        <div class="party-card-footer">
+          <span class="party-card-meta">${item.qty} × ${item.size}ml</span>
+          <strong class="party-card-price">£${(item.unitPrice*item.qty).toFixed(2)}</strong>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+
+  return headline+`
+  <div class="party-hand"><p>Your vibe</p><strong>Continue this party ↘</strong></div>
+  <div class="party-cards">${cards}</div>
+  <button class="party-secondary" type="button" id="vibeFresh">Start again</button>`;
+ },
 
  design:()=>`
   <div class="kicker">The basics</div>
@@ -263,11 +426,11 @@ const STEPS={
    const curPrice=unitPrice(cur.design,cur.type,cur.size);
    const rows=S.mix.map((it,i)=>`
      <div class="mixrow">
-       <div class="mixrow-info">${it.qty}x ${it.type==='mocktail'?'Mocktail':'Alcohol'} · ${it.packaging==='bottle'?'Bottle':'Pouch'} · ${it.size}ml${it.design==='custom'?' · Custom design':''}</div>
-       <div class="mixrow-sub">£${unitPrice(it.design,it.type,it.size)*it.qty}</div>
+       <div class="mixrow-info">${mixItemLabel(it)}</div>
+       <div class="mixrow-sub">£${(mixUnitPrice(it)*it.qty).toFixed(2)}</div>
        <button class="mixrow-x" data-rm="${i}">✕</button>
      </div>`).join('');
-   const productTotal=S.mix.reduce((sum,it)=>sum+unitPrice(it.design,it.type,it.size)*it.qty,0);
+   const productTotal=S.mix.reduce((sum,it)=>sum+mixUnitPrice(it)*it.qty,0);
    const hasCustom=S.mix.some(it=>it.design==='custom');
    const totalQty=S.mix.reduce((sum,it)=>sum+it.qty,0);
    return `
@@ -305,7 +468,7 @@ const STEPS={
 
    ${S.mix.length?`<div class="mixlist">${rows}</div>`:''}
 
-   <div class="qtotal">Running total <b id="mixtotal">£${productTotal}</b>${hasCustom?`<span> + custom design fee, ${CUSTOM_DESIGN_FEE_NOTE}</span>`:''}</div>
+   <div class="qtotal">Running total <b id="mixtotal">£${productTotal.toFixed(2)}</b>${hasCustom?`<span> + custom design fee, ${CUSTOM_DESIGN_FEE_NOTE}</span>`:''}</div>
    <div class="err" id="err">${totalQty>0&&totalQty<5?'Minimum 5 pouches total across your mix.':''}</div>
    ${navHtml('Continue →', true,'next', S.mix.length===0)}`;
  },
@@ -393,11 +556,11 @@ const STEPS={
  review:()=>{
    let rows=[];
    if(S.design==='mix'){
-     const productTotal=S.mix.reduce((sum,it)=>sum+unitPrice(it.design,it.type,it.size)*it.qty,0);
+     const productTotal=S.mix.reduce((sum,it)=>sum+mixUnitPrice(it)*it.qty,0);
      const hasCustom=S.mix.some(it=>it.design==='custom');
      rows.push(['Design', 'Mix & match']);
-     S.mix.forEach((it,i)=>{ rows.push(['Item '+(i+1), `${it.qty}x ${it.type==='mocktail'?'Mocktail':'Alcohol'} · ${it.packaging==='bottle'?'Bottle':'Pouch'} · ${it.size}ml${it.design==='custom'?' · Custom design':''} — £${unitPrice(it.design,it.type,it.size)*it.qty}`]); });
-     rows.push(['Total', '£'+productTotal+(hasCustom?' + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE:'')]);
+     S.mix.forEach((it,i)=>{ rows.push(['Item '+(i+1), `${mixItemLabel(it)} — £${(mixUnitPrice(it)*it.qty).toFixed(2)}`]); });
+     rows.push(['Total', '£'+productTotal.toFixed(2)+(hasCustom?' + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE:'')]);
    } else {
      rows.push(['Design', S.design==='custom'?'Custom design':'Original design'], ['Style', S.type==='mocktail'?'Mocktail (alcohol-free)':'Alcohol'], ['Size', S.size+'ml']);
      if(S.design==='original'){ rows.push(['Flavours', S.flavours.map(id=>fname(id)).join(', ')]); rows.push(['Quantity', S.qty+' pouches']); rows.push(['Total', '£'+(S.qty*price())+' (£'+price()+' each)']); }
@@ -415,12 +578,13 @@ const STEPS={
 
  done:()=>{
    const body=encodeURIComponent(orderText());
+   const name=esc(S.name.split(' ')[0]||'');
    return `<div class="done">
      <div class="check">✓</div>
      <div class="big">Order in.</div>
-     <p class="sub" style="margin:18px auto 26px">Nice one, ${esc(S.name.split(' ')[0]||'')}. Your order's with the DRINK STOP crew — we'll email <b>${esc(S.email)}</b> shortly with pricing${S.designMode==='request'?' and a first design concept':''}.</p>
+     <p class="sub" style="margin:18px auto 26px">Nice one, ${name}. Your order's with the DRINK STOP crew — we'll email <b>${esc(S.email)}</b> shortly with pricing${S.designMode==='request'?' and a first design concept':''}.</p>
      <div class="nav" style="justify-content:center;margin-top:0">
-       <a class="btn next" style="text-decoration:none;text-align:center" href="mailto:hello@drinkstop.co.uk?subject=DRINK%20STOP%20Order&body=${body}">Email us a copy →</a>
+       ${SENT_OK?'':'<a class="btn next" style="text-decoration:none;text-align:center" href="mailto:hello@drinkstop.co.uk?subject=DRINK%20STOP%20Order&body='+body+'">Email us a copy →</a>'}
        <a class="btn prev" style="text-decoration:none;text-align:center" href="index.html">Back to site</a>
      </div></div>`;
  }
@@ -431,11 +595,11 @@ function esc(s){return (''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':
 function orderText(){
   let t='DRINK STOP order\n\n';
   if(S.design==='mix'){
-    const productTotal=S.mix.reduce((sum,it)=>sum+unitPrice(it.design,it.type,it.size)*it.qty,0);
+    const productTotal=S.mix.reduce((sum,it)=>sum+mixUnitPrice(it)*it.qty,0);
     const hasCustom=S.mix.some(it=>it.design==='custom');
     t+='Design: Mix & match\n';
-    S.mix.forEach((it,i)=>{ t+='Item '+(i+1)+': '+it.qty+'x '+(it.type==='mocktail'?'Mocktail':'Alcohol')+' · '+(it.packaging==='bottle'?'Bottle':'Pouch')+' · '+it.size+'ml'+(it.design==='custom'?' · Custom design':'')+' — £'+(unitPrice(it.design,it.type,it.size)*it.qty)+'\n'; });
-    t+='Total: £'+productTotal+(hasCustom?' + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE:'')+'\n';
+    S.mix.forEach((it,i)=>{ t+='Item '+(i+1)+': '+mixItemLabel(it)+' — £'+(mixUnitPrice(it)*it.qty).toFixed(2)+'\n'; });
+    t+='Total: £'+productTotal.toFixed(2)+(hasCustom?' + custom design fee, '+CUSTOM_DESIGN_FEE_NOTE:'')+'\n';
   } else {
     t+='Design: '+(S.design==='custom'?'Custom design':'Original design')+'\nStyle: '+(S.type==='mocktail'?'Mocktail (alcohol-free)':'Alcohol')+'\nSize: '+S.size+'ml\n';
     if(S.design==='original'){t+='Flavours: '+S.flavours.map(fname).join(', ')+'\nQuantity: '+S.qty+' pouches\nTotal: £'+(S.qty*price())+' (£'+price()+' each)\n';}
@@ -464,13 +628,86 @@ function dmPanel(){
 function artworkValid(){ return S.designMode==='upload' ? (!!S.artwork||!!S.artworkName) : S.designMode==='request' ? S.brief.trim().length>3 : false; }
 function updateNext(){ const n=document.getElementById('next'); if(n && sequence()[idx]==='artwork') n.disabled=!artworkValid(); }
 
+function keepThisVibe(){
+  S.mix=S.vibeBasket.map(i=>({type:'alcohol',packaging:i.format||'pouch',design:'original',size:parseInt(i.size)||150,qty:parseInt(i.qty)||1,name:i.name,fixedPrice:i.unitPrice}));
+  S.design='mix';
+  // clear once converted — S.mix is now the source of truth, so the sidebar/summary
+  // doesn't keep showing the pre-conversion vibe prices/names alongside the mix builder's own totals.
+  S.vibeBasket=[];
+  localStorage.removeItem('drinkstop_vibe_basket');
+  const seq=sequence();
+  idx=seq.indexOf('mixbuilder');
+  if(idx<0) idx=1;
+  render();
+}
+
+function renderSummary(){
+  const s=document.getElementById('summary'); if(!s)return;
+  if(sequence()[idx]==='intro' && S.vibeBasket.length){
+    s.classList.add('party');
+    const icon=n=>'<img src="'+PARTY_ICON+n+'.svg" alt="">';
+    const total=S.vibeBasket.reduce((sum,i)=>sum+(i.unitPrice||0)*i.qty,0);
+    const lines=S.vibeBasket.map(i=>`
+      <div class="party-sum-line">
+        <span><strong>${esc(i.name)}</strong><small>${i.qty} × ${i.size}ml</small></span>
+        <b>£${(i.unitPrice*i.qty).toFixed(2)}</b>
+      </div>`).join('');
+    s.innerHTML=`<div class="party-summary-inner">
+      <h3>Your Party</h3>
+      <span class="party-summary-marker" aria-hidden="true"></span>
+      <div class="party-sum-lines">${lines}</div>
+      <div class="party-sum-total"><span>Total</span><strong>£${total.toFixed(2)}</strong></div>
+      <button class="party-checkout-btn" type="button" id="partyCheckout"><span>Proceed to checkout</span>${icon('arrow-right')}</button>
+      <p class="party-secure">${icon('lock')} Secure checkout</p>
+    </div>`;
+    const pc=document.getElementById('partyCheckout'); if(pc) pc.onclick=keepThisVibe;
+    return;
+  }
+  s.classList.remove('party');
+  let rows=[];
+  if(S.vibeBasket.length){
+    S.vibeBasket.forEach(i=>rows.push(['<span>'+esc(i.name)+'</span>', i.qty+' &times; '+i.size+'ml']));
+  } else if(S.design==='mix'){
+    S.mix.forEach((it,i)=>rows.push([it.name?esc(it.name):'Item '+(i+1), it.qty+'x '+(it.type==='mocktail'?'Mocktail':'Alcohol')]));
+  } else {
+    if(S.type) rows.push(['Style', S.type==='mocktail'?'Mocktail':'Alcohol']);
+    if(S.size) rows.push(['Size', S.size+'ml']);
+    if(S.flavours.length) rows.push(['Flavours', S.flavours.map(fname).join(', ')]);
+    if(S.qty) rows.push(['Qty', S.qty+' pouches']);
+  }
+  let total='';
+  if(S.vibeBasket.length){
+    const t=S.vibeBasket.reduce((s,i)=>s+(i.unitPrice||unitPrice('original','alcohol',i.size))*i.qty,0);
+    total='&pound;'+t.toFixed(2);
+  } else if(S.design==='mix'){
+    const t=S.mix.reduce((s,it)=>s+mixUnitPrice(it)*it.qty,0);
+    total='&pound;'+t.toFixed(2)+(S.mix.some(it=>it.design==='custom')?' <span class=\"os-note\">+design fee</span>':'');
+  } else if(S.type&&S.size&&S.design){
+    const p=S.qty*price();
+    total='&pound;'+p+(S.design==='custom'?' <span class=\"os-note\">+design fee</span>':'');
+  } else {
+    total='&pound;0';
+  }
+  s.innerHTML='<h3>Order summary</h3>'+
+    (S.vibeBasket.length?'<div class=\"os-vibe\"><strong>From vibe page</strong><span>'+S.vibeBasket.length+' item(s)</span></div>':'')+
+    rows.map(r=>'<div class=\"os-row\"><span class=\"os-k\">'+r[0]+'</span><span class=\"os-v\">'+r[1]+'</span></div>').join('')+
+    '<div class=\"os-total\"><span class=\"os-k\">Total</span><strong>'+total+'</strong></div>';
+}
+
+let SENT_OK=false;
+async function submitOrder(){
+  const body=orderText();
+  try {
+    const r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({order:S,summary:body,timestamp:new Date().toISOString(),source:window.location.href})});
+    const data=await r.json();
+    if(r.ok&&data.success){ SENT_OK=true; return; }
+    throw new Error(data.error||'API error');
+  } catch(e){ /* server not wired yet — mailto fallback available on done screen */ }
+}
+
 function wire(key){
   const prev=document.getElementById('prev'); if(prev) prev.onclick=()=>go(-1);
   const next=document.getElementById('next'); if(next) next.onclick=()=>{ if(!validate(key))return; go(1); };
-  if(key==='choose') el.querySelectorAll('[data-choice]').forEach(c=>c.onclick=()=>{
-    if(c.dataset.choice==='quick'){ window.location.href='quick-order.html'; return; }
-    go(1);
-  });
   if(key==='design') el.querySelectorAll('[data-d]').forEach(c=>c.onclick=()=>{S.design=c.dataset.d; S.qty=5; S.type=null; S.size=null; reseq();render();});
   if(key==='type') el.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>{S.type=c.dataset.t;render();});
   if(key==='size') el.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>{S.size=parseInt(c.dataset.s);render();});
@@ -485,8 +722,20 @@ function wire(key){
   if(key==='occasion') el.querySelectorAll('[data-o]').forEach(c=>c.onclick=()=>{S.occasion=c.dataset.o;render();});
   if(key==='qty'||key==='qtyc'){el.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const min=5,step=parseInt(b.dataset.q); S.qty=Math.max(min,(S.qty<min?min:S.qty)+step); document.getElementById('qv').textContent=S.qty; const qt=document.getElementById('qtotal'); if(qt)qt.textContent='£'+(S.qty*price());});}
   if(key==='artwork'){el.querySelectorAll('[data-dm]').forEach(c=>c.onclick=()=>{S.designMode=c.dataset.dm;render();}); dmPanel(); updateNext();}
+  if(key==='intro'){
+    const vf=document.getElementById('vibeFresh'); if(vf) vf.onclick=()=>{
+      S.vibeBasket=[]; localStorage.removeItem('drinkstop_vibe_basket'); idx=0; render();
+    };
+    el.querySelectorAll('[data-vqty]').forEach(b=>b.onclick=()=>{
+      const i=parseInt(b.dataset.idx), delta=parseInt(b.dataset.vqty);
+      const item=S.vibeBasket[i]; if(!item) return;
+      item.qty=Math.max(1,(parseInt(item.qty)||1)+delta);
+      try{ localStorage.setItem('drinkstop_vibe_basket', JSON.stringify(S.vibeBasket)); }catch(e){}
+      render(true);
+    });
+  }
   if(key==='details'){['name','email','phone','area'].forEach(k=>{const i=document.getElementById('f_'+k); if(i)i.oninput=e=>S[k]=e.target.value;});}
-  if(key==='review'){const pl=document.getElementById('place'); if(pl)pl.onclick=()=>go(1);}
+  if(key==='review'){const pl=document.getElementById('place'); if(pl)pl.onclick=async()=>{await submitOrder(); go(1);};}
 }
 function toggle(arr,v){const i=arr.indexOf(v); if(i<0)arr.push(v); else arr.splice(i,1);}
 function validate(key){
@@ -498,6 +747,15 @@ function validate(key){
   if(key==='mixbuilder'){ const totalQty=S.mix.reduce((sum,it)=>sum+it.qty,0); if(totalQty<5){ const err=document.getElementById('err'); if(err)err.textContent='Minimum 5 pouches total across your mix.'; return false; } }
   return true;
 }
+
+// load vibe basket from choose-your-vibe page
+(function(){
+  try {
+    const raw=localStorage.getItem('drinkstop_vibe_basket');
+    if(raw){const items=JSON.parse(raw); if(Array.isArray(items)&&items.length) S.vibeBasket=items;}
+  } catch(e){}
+})();
+
 render();
 </script>
 <script src="assets/content-loader.js"></script>
