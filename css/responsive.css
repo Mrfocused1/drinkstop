@@ -245,9 +245,9 @@
 
   .brand-hero {
     width: 100%;
-    min-height: 720px;
+    min-height: auto;
 
-    padding: 70px 30px 30px;
+    padding: 70px 30px 10px;
   }
 
   .brand-hero-inner {
@@ -295,7 +295,7 @@
     left: auto;
     top: auto;
     transform: none;
-    margin: 20px auto 0;
+    margin: 0 auto;
     pointer-events: auto;
   }
 
@@ -312,7 +312,7 @@
 
   .partner-section {
     width: 100%;
-    padding: 20px 18px 120px;
+    padding: 20px 18px 60px;
   }
 
   .partner-section-heading {
@@ -334,7 +334,7 @@
   .partner-card:last-child {
     grid-column: auto;
     aspect-ratio: 1.22 / 1;
-    padding: 15px 10px;
+    padding: 10px 8px;
   }
 
   .partner-card img {
@@ -416,8 +416,8 @@
 @media (max-width: 430px) {
 
   .brand-hero {
-    min-height: 650px;
-    padding: 55px 20px 20px;
+    min-height: auto;
+    padding: 50px 20px 10px;
   }
 
   .brand-hero h1 {
@@ -459,8 +459,8 @@
   }
 
   .partner-card {
-    min-height: 106px;
-    padding: 12px 8px;
+    min-height: 80px;
+    padding: 8px 6px;
   }
 
   .partner-card img {
@@ -508,8 +508,8 @@
 @media (max-width: 350px) {
 
   .partner-card {
-    min-height: 92px;
-    padding: 10px 6px;
+    min-height: 70px;
+    padding: 6px 4px;
   }
 
   .partner-card img {
@@ -517,8 +517,8 @@
   }
 
   .brand-hero {
-    min-height: 580px;
-    padding: 40px 14px 14px;
+    min-height: auto;
+    padding: 40px 14px 10px;
   }
 
   .eyebrow-label {
