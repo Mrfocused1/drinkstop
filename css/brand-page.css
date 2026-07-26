@@ -172,7 +172,14 @@
 /* ── Three-drink hero display — centred behind the heading ───────────── */
 
 .hero-drinks {
-  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  width: 420px;
+  height: 440px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .drink-item {
