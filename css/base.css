@@ -64,6 +64,5 @@ a:focus-visible {
 .brand-page {
   min-height: 100vh;
   position: relative;
-  overflow-x: clip;       /* prevent decorative overflow from causing scroll */
   background-color: var(--cream);
 }
