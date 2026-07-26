@@ -19,8 +19,8 @@
   position: relative;
   z-index: 100;
 
-  background: rgba(255, 250, 240, 0.97);
-  border-bottom: 1px solid rgba(16, 16, 16, 0.1);
+  /* Transparent header — lets the collage background show through */
+  background: transparent;
 }
 
 /* ── Site logo ──────────────────────────────────────────────────────── */
