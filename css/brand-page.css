@@ -16,7 +16,10 @@
   align-items: center;
   gap: 42px;
 
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
 
   /* Transparent header — lets the collage background show through */
@@ -128,6 +131,7 @@
 
 .brand-page-main {
   min-height: calc(100vh - var(--header-height-desktop));
+  padding-top: var(--header-height-desktop);
 
   position: relative;
 
