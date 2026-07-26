@@ -52,17 +52,17 @@
   /* ── Drinks — scale down on smaller screens */
 
   .hero-drinks {
-    width: 360px;
-    height: 380px;
+    width: 380px;
+    height: 400px;
   }
 
   .drink-hero {
-    width: 170px;
+    width: 180px;
   }
 
   .drink-left,
   .drink-right {
-    width: 140px;
+    width: 145px;
   }
 
   /* ── Logo grid — 12 columns (6 cards per row) ──────────────────── */
@@ -133,25 +133,25 @@
   /* ── Drinks — smaller still on tablet */
 
   .hero-drinks {
-    width: 280px;
-    height: 300px;
+    width: 300px;
+    height: 320px;
   }
 
   .drink-hero {
-    width: 135px;
+    width: 145px;
   }
 
   .drink-left,
   .drink-right {
-    width: 110px;
+    width: 115px;
   }
 
   .drink-left {
-    transform: translateX(8px) rotate(-5deg);
+    transform: translateX(0) rotate(-6deg) translateY(20px);
   }
 
   .drink-right {
-    transform: translateX(-8px) rotate(4deg);
+    transform: translateX(0) rotate(5deg) translateY(30px);
   }
 
   /* ── Logo grid — 8 columns (4 cards per row) ───────────────────── */
@@ -248,9 +248,12 @@
     min-height: 720px;
 
     padding: 70px 30px 30px;
+  }
 
-    display: flex;
+  .brand-hero-inner {
+    flex-direction: column;
     align-items: flex-start;
+    min-height: 0;
   }
 
   .brand-hero-content {
@@ -288,8 +291,12 @@
   .hero-drinks {
     width: 300px;
     height: 200px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
     margin: 20px auto 0;
-    align-self: center;
+    pointer-events: auto;
   }
 
   .drink-hero {
@@ -438,6 +445,14 @@
     width: 85px;
   }
 
+  .drink-left {
+    transform: translateX(0) rotate(-6deg) translateY(15px);
+  }
+
+  .drink-right {
+    transform: translateX(0) rotate(5deg) translateY(20px);
+  }
+
   .partner-section {
     padding-left: 10px;
     padding-right: 10px;
@@ -534,5 +549,13 @@
   .drink-left,
   .drink-right {
     width: 65px;
+  }
+
+  .drink-left {
+    transform: translateX(0) rotate(-5deg) translateY(10px);
+  }
+
+  .drink-right {
+    transform: translateX(0) rotate(4deg) translateY(15px);
   }
 }
