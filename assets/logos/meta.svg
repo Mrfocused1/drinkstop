@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#1877F2">
+  <!-- Meta logo -->
+  <g transform="translate(0, 10)">
+    <path d="M100 0 C110 0 118 6 118 18 C118 30 110 38 100 44 C88 38 78 30 78 18 C78 6 88 0 100 0 Z" fill="#1877F2"/>
+    <path d="M60 10 C72 10 80 18 80 28 C80 42 68 52 56 60 C44 52 32 42 32 28 C32 18 42 10 60 10 Z" fill="#1877F2"/>
+    <path d="M130 16 C138 16 144 22 144 30 C144 42 134 50 126 56 C118 50 108 42 108 30 C108 22 116 16 130 16 Z" fill="#1877F2"/>
+    <!-- Infinity-like shape for Meta brand -->
+    <path d="M100 44 C110 38 118 30 118 18 C118 6 110 0 100 0 C88 0 80 6 80 18 C80 30 72 38 60 44 C48 50 40 56 40 64 C40 76 50 84 60 84 C70 84 78 78 80 70" fill="none" stroke="#1877F2" stroke-width="4" stroke-linecap="round"/>
+    <path d="M100 44 C110 38 118 30 118 18 C118 6 110 0 100 0 C88 0 80 6 80 18 C80 30 72 38 60 44 C48 50 40 56 40 64 C40 76 50 84 60 84 C70 84 78 78 80 70 L80 50" fill="none" stroke="#1877F2" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

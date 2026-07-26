@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- Nike Swoosh -->
+  <path d="M0 82 C28 72 52 56 72 34 C82 24 88 16 92 8 C90 16 84 30 74 46 C56 72 28 90 0 98 Z"/>
+  <path d="M92 8 C90 14 84 28 74 44 C72 48 68 52 64 56 C72 48 82 38 92 8 Z"/>
+  <!-- Simplified Nike wordmark -->
+  <g transform="translate(102, 75)">
+    <text font-family="'Arial Black', 'Impact', sans-serif" font-size="22" font-weight="900" fill="#101010">NIKE</text>
+  </g>
+</svg>

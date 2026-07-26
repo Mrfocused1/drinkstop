@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#6B3FA0">
+  <!-- ItsAtHome logo -->
+  <g transform="translate(15, 20)">
+    <!-- House shape -->
+    <path d="M40 15 L80 15 L95 40 L95 70 L25 70 L25 40 Z" fill="#6B3FA0"/>
+    <path d="M20 40 L60 5 L100 40" fill="none" stroke="#6B3FA0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Door -->
+    <rect x="48" y="45" width="14" height="25" rx="2" fill="#fff" opacity="0.3"/>
+    <!-- Text -->
+    <text font-family="'Arial', sans-serif" font-size="15" font-weight="700" x="105" y="50" letter-spacing="0.5">ItsAtHome</text>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- A Jewellers logo -->
+  <g transform="translate(15, 15)">
+    <!-- Diamond/Jewel shape -->
+    <path d="M45 5 L75 5 L95 40 L75 80 L45 80 L25 40 Z" fill="none" stroke="#101010" stroke-width="3"/>
+    <path d="M55 10 L65 10 L80 40 L65 75 L55 75 L40 40 Z" fill="#101010" opacity="0.1"/>
+    <!-- Gem facet lines -->
+    <path d="M45 5 L60 40 L45 80" fill="none" stroke="#101010" stroke-width="1.5"/>
+    <path d="M75 5 L60 40 L75 80" fill="none" stroke="#101010" stroke-width="1.5"/>
+    <path d="M25 40 L60 40 L95 40" fill="none" stroke="#101010" stroke-width="1.5"/>
+    <!-- Diamond highlight -->
+    <polygon points="55,10 65,10 60,40" fill="#185dff" opacity="0.3"/>
+    <!-- Text -->
+    <text font-family="'Times New Roman', Georgia, serif" font-size="14" font-weight="700" x="105" y="40">A JEWELLERS</text>
+    <text font-family="'Times New Roman', Georgia, serif" font-size="10" font-weight="400" x="105" y="56" fill="#666">EST. SINCE 1985</text>
+  </g>
+</svg>

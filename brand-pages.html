@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+    Responsive viewport with viewport-fit=cover so safe areas
+    (notch / home indicator) don't clip content on iOS.
+  -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <title>Who We've Worked With | Drink Stop</title>
+
+  <meta
+    name="description"
+    content="From global giants to culture shapers — explore the brands and organisations Drink Stop has collaborated with."
+  >
+
+  <!-- ── Preload appropriate background image ─────────────────────── -->
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/backgrounds/brand-page-desktop.webp"
+    media="(min-width: 768px)"
+  >
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/backgrounds/brand-page-mobile.webp"
+    media="(max-width: 767px)"
+  >
+
+  <!-- ── Google Fonts ─────────────────────────────────────────────── -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ── Stylesheets ──────────────────────────────────────────────── -->
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/brand-page.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body>
+
+  <!-- ================================================================
+       Page Wrapper
+       ================================================================ -->
+  <div class="brand-page">
+
+    <!-- ==============================================================
+         HEADER
+         ============================================================== -->
+    <header class="site-header">
+
+      <!-- Mobile menu toggle (hidden on desktop) -->
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Drink Stop logo, links to homepage -->
+      <a
+        class="site-logo"
+        href="index.html"
+        aria-label="Drink Stop homepage"
+      >
+        <img
+          src="assets/brand/drink-stop-logo.svg"
+          alt="Drink Stop"
+          width="116"
+          height="75"
+        >
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav
+        class="desktop-navigation"
+        aria-label="Primary navigation"
+      >
+        <a href="index.html">About</a>
+        <a href="index.html#our-drinks">Our Drinks</a>
+        <a href="choose-your-vibe.html">Order Now</a>
+        <a href="brand-pages.html" class="is-active">Brand Pages</a>
+      </nav>
+
+      <!-- Header Order Now pill button -->
+      <a class="header-order-button" href="choose-your-vibe.html">
+        <span class="order-arrow" aria-hidden="true">➤</span>
+        <span>Order Now</span>
+      </a>
+
+    </header>
+
+    <!-- ==============================================================
+         MAIN CONTENT
+         ============================================================== -->
+    <main class="brand-page-main">
+
+      <!-- ─────────────────────────────────────────────────────────────
+           HERO SECTION
+           ───────────────────────────────────────────────────────────── -->
+      <section
+        class="brand-hero"
+        aria-labelledby="brand-page-title"
+      >
+        <div class="brand-hero-inner">
+
+          <div class="brand-hero-content">
+
+            <!-- Eyebrow: black tape label -->
+            <div class="eyebrow-label">
+              Brand Pages
+            </div>
+
+            <!-- Main H1 heading -->
+            <h1 id="brand-page-title">
+              <span>Made for</span>
+              <strong>Great Company</strong>
+            </h1>
+
+            <!-- Hand-drawn underline -->
+            <div class="headline-underline" aria-hidden="true"></div>
+
+            <!-- Introduction paragraph -->
+            <p class="brand-introduction">
+              From global giants to culture shapers,
+              we collaborate with brands and organisations
+              that move the world forward.
+            </p>
+
+          </div>
+
+          <!-- ── Three-drink hero display ────────────────────────────
+               Uses actual Drink Stop product bottle shots.
+               Swap src to change which products appear.
+               ────────────────────────────────────────────────────── -->
+          <div class="hero-drinks" aria-hidden="true">
+
+            <div class="drink-item drink-left">
+              <img
+                src="wp-content/uploads/2026/07/vibe/bottle-rum-for-your-life.webp"
+                alt=""
+                class="drink-can"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="drink-item drink-hero">
+              <img
+                src="wp-content/uploads/2026/07/vibe/bottle-rumbaclart-1.webp"
+                alt=""
+                class="drink-can"
+                loading="eager"
+              >
+            </div>
+
+            <div class="drink-item drink-right">
+              <img
+                src="wp-content/uploads/2026/07/vibe/bottle-summer-set.webp"
+                alt=""
+                class="drink-can"
+                loading="lazy"
+              >
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────────────────────────────────────
+           PARTNER LOGO SECTION
+           ───────────────────────────────────────────────────────────── -->
+      <section
+        class="partner-section"
+        aria-labelledby="partner-section-title"
+      >
+
+        <!-- Lime handwritten label -->
+        <h2
+          class="partner-section-heading"
+          id="partner-section-title"
+        >
+          Who We've Worked With
+        </h2>
+
+        <!-- Logo card grid -->
+                <!-- Logo card grid
+             ──────────────────────────────────────────────────────────────
+             Cards use torn-paper texture as CSS background-image.
+             Drop an <img> inside each <article> to add a brand logo.
+             Example:
+               <img src="assets/logos/nike.svg" alt="Nike"
+                    style="--logo-width: 76%; --logo-height: 64px;">
+             ────────────────────────────────────────────────────────────── -->
+        <div class="partner-grid">
+
+          <!-- 1 — Nike -->
+                    <article class="partner-card" data-brand="Nike">
+          </article>
+
+          <!-- 2 — Netflix -->
+                    <article class="partner-card" data-brand="Netflix">
+          </article>
+
+          <!-- 3 — Snapchat -->
+                    <article class="partner-card" data-brand="Snapchat">
+          </article>
+
+          <!-- 4 — Deliveroo -->
+                    <article class="partner-card" data-brand="Deliveroo">
+          </article>
+
+          <!-- 5 — Meta -->
+                    <article class="partner-card" data-brand="Meta">
+          </article>
+
+          <!-- 6 — Adidas -->
+                    <article class="partner-card" data-brand="Adidas">
+          </article>
+
+          <!-- 7 — Jamaica Football Federation / JFF -->
+                    <article class="partner-card" data-brand="JFF">
+          </article>
+
+          <!-- 8 — AFTV -->
+                    <article class="partner-card" data-brand="AFTV">
+          </article>
+
+          <!-- 9 — Motiv -->
+                    <article class="partner-card" data-brand="Motiv">
+          </article>
+
+          <!-- 10 — ItsAtHome -->
+                    <article class="partner-card" data-brand="ItsAtHome">
+          </article>
+
+          <!-- 11 — Footasylum -->
+                    <article class="partner-card" data-brand="Footasylum">
+          </article>
+
+          <!-- 12 — The Basement -->
+                    <article class="partner-card" data-brand="The Basement">
+          </article>
+
+          <!-- 13 — Jordan -->
+                    <article class="partner-card" data-brand="Jordan">
+          </article>
+
+          <!-- 14 — A Jewellers -->
+                    <article class="partner-card" data-brand="A Jewellers">
+          </article>
+
+          <!-- 15 — Ballers League -->
+                    <article class="partner-card" data-brand="Ballers League">
+          </article>
+
+          <!-- 16 — Hackney Council -->
+                    <article class="partner-card" data-brand="Hackney Council">
+          </article>
+
+          <!-- 17 — Starz League -->
+                    <article class="partner-card" data-brand="Starz League">
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==============================================================
+         MOBILE NAVIGATION (slide-in panel)
+         ============================================================== -->
+    <nav
+      class="mobile-navigation"
+      id="mobile-navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html">About</a>
+      <a href="index.html#our-drinks">Our Drinks</a>
+      <a href="choose-your-vibe.html">Order Now</a>
+      <a href="brand-pages.html">Brand Pages</a>
+    </nav>
+
+  </div><!-- /.brand-page -->
+
+  <script src="js/brand-page.js"></script>
+
+</body>
+</html>

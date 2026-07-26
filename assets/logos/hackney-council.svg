@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- Hackney Council logo -->
+  <g transform="translate(15, 18)">
+    <!-- Stylised H bridge/council motif -->
+    <rect x="10" y="5" width="12" height="60" rx="2" fill="#101010"/>
+    <rect x="40" y="5" width="12" height="60" rx="2" fill="#101010"/>
+    <path d="M10 35 L52 35" stroke="#101010" stroke-width="9" stroke-linecap="round"/>
+    <!-- Bridge arch -->
+    <path d="M0 65 L10 40 L30 55 L52 40 L62 65" fill="none" stroke="#101010" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Text -->
+    <text font-family="'Arial', sans-serif" font-size="12" font-weight="700" x="72" y="35" letter-spacing="1">HACKNEY</text>
+    <text font-family="'Arial', sans-serif" font-size="11" font-weight="400" x="72" y="50" letter-spacing="0.5">COUNCIL</text>
+  </g>
+</svg>

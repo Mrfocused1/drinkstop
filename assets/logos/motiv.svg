@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- Motiv logo -->
+  <g transform="translate(20, 15)">
+    <!-- Hexagon with M -->
+    <polygon points="40,0 85,0 105,45 85,90 40,90 20,45" fill="none" stroke="#101010" stroke-width="4"/>
+    <polygon points="45,10 80,10 96,45 80,80 45,80 29,45" fill="#101010"/>
+    <polygon points="50,18 75,18 88,45 75,72 50,72 37,45" fill="#fff"/>
+    <!-- M letterform negative space -->
+    <path d="M45 28 L52 28 L52 62 L45 62 Z" fill="#101010"/>
+    <path d="M55 35 L62 35 L62 55 L55 55 Z" fill="#101010"/>
+    <path d="M65 28 L72 28 L72 62 L65 62 Z" fill="#101010"/>
+    <!-- Wordmark -->
+    <text font-family="'Arial', sans-serif" font-size="20" font-weight="800" x="110" y="55" letter-spacing="1">MOTIV</text>
+  </g>
+</svg>

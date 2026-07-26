@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Drink Stop — Brand Page
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* ── Colour palette ────────────────────────────────────────────────── */
+
+  /* Base tones */
+  --cream:            #f8f1df;
+  --paper:            #fffaf0;
+  --black:            #101010;
+
+  /* Brand accents */
+  --lime:             #b7ed00;
+  --lime-bright:      #c7ff00;
+  --pink:             #ff3e83;
+  --blue:             #185dff;
+  --yellow:           #ffc400;
+
+  /* ── Typography ───────────────────────────────────────────────────── */
+
+  --font-display:     "Anton", "Arial Narrow", Impact, sans-serif;
+  --font-body:        "Inter", Arial, Helvetica, sans-serif;
+  --font-hand:        "Permanent Marker", "Comic Sans MS", cursive;
+
+  /* ── Layout ───────────────────────────────────────────────────────── */
+
+  --desktop-max-width:        1536px;
+  --header-height-desktop:    92px;
+  --header-height-mobile:     90px;
+
+  /* ── Radii ────────────────────────────────────────────────────────── */
+
+  --radius-button:    999px;
+
+  /* ── Shadows ──────────────────────────────────────────────────────── */
+
+  --paper-shadow:
+    0 10px 18px rgba(28, 20, 10, 0.16);
+
+  --button-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.14);
+
+  /* ── Transitions ──────────────────────────────────────────────────── */
+
+  --ease-out:
+    cubic-bezier(.2, .8, .2, 1);
+}

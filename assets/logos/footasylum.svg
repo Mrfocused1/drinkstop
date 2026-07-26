@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- Footasylum logo -->
+  <g transform="translate(10, 20)">
+    <!-- Stylised F mark -->
+    <path d="M20 0 L65 0 L65 15 L38 15 L38 28 L60 28 L60 43 L38 43 L38 70 L20 70 Z" fill="#101010"/>
+    <!-- Text -->
+    <text font-family="'Arial Black', 'Impact', sans-serif" font-size="20" font-weight="900" x="75" y="48">Footasylum</text>
+  </g>
+</svg>

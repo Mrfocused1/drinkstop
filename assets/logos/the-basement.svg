@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- The Basement logo -->
+  <g transform="translate(15, 18)">
+    <!-- Building/basement window motif -->
+    <rect x="10" y="10" width="80" height="65" rx="4" fill="none" stroke="#101010" stroke-width="4"/>
+    <rect x="10" y="10" width="80" height="22" rx="4" fill="#101010"/>
+    <text font-family="'Arial Black', sans-serif" font-size="12" font-weight="900" fill="#fff" x="22" y="26">BASEMENT</text>
+    <!-- Steps down -->
+    <path d="M0 75 L10 65 L20 75" fill="none" stroke="#101010" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M4 78 L14 68 L24 78" fill="none" stroke="#101010" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Windows -->
+    <rect x="22" y="40" width="14" height="14" rx="1" fill="#ffc400"/>
+    <rect x="43" y="40" width="14" height="14" rx="1" fill="#b7ed00"/>
+    <rect x="64" y="40" width="14" height="14" rx="1" fill="#ff3e83"/>
+    <!-- Full wordmark -->
+    <text font-family="'Arial', sans-serif" font-size="14" font-weight="700" x="105" y="48">THE BASEMENT</text>
+  </g>
+</svg>

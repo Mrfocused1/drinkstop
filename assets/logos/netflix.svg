@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#E50914">
+  <!-- Netflix N -->
+  <g transform="translate(10, 8)">
+    <path d="M0 4 L20 4 L20 84 L0 68 Z"/>
+    <path d="M28 4 L48 4 L28 84 L28 4 Z"/>
+    <path d="M56 4 L76 4 L76 84 L56 72 Z"/>
+    <!-- Diagonal connection -->
+    <path d="M0 68 L20 84 L48 4 L76 84 L76 72 L56 4 L28 84 L0 68 Z" fill="#E50914"/>
+  </g>
+</svg>

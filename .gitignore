@@ -2,3 +2,5 @@
 *.orig.webp
 .vercel
 node_modules/
+/GPT-SoVITS/
+/pley-clone/

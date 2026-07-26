@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Drink Stop — Brand Page
+   Base / Global Reset
+   ========================================================================== */
+
+/* ── Reset ────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--cream);
+}
+
+body {
+  margin: 0;
+  color: var(--black);
+  background: var(--cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* ── Tap highlight ──────────────────────────────────────────────────── */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Focus ───────────────────────────────────────────────────────────── */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 4px solid var(--blue);
+  outline-offset: 4px;
+}
+
+/* ── Page wrapper ────────────────────────────────────────────────────── */
+
+.brand-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: clip;       /* prevent decorative overflow from causing scroll */
+  background-color: var(--cream);
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#FFFC00">
+  <!-- Snapchat Ghost -->
+  <g transform="translate(12, 5)">
+    <path d="M88 0 C40 0 12 8 12 30 C12 50 20 58 28 62 C22 64 18 70 20 76 C22 82 30 86 42 90 C48 92 52 96 60 96 C68 96 72 92 78 90 C90 86 98 82 100 76 C102 70 98 64 92 62 C100 58 108 50 108 30 C108 8 80 0 88 0 Z" fill="#FFFC00" stroke="#101010" stroke-width="3"/>
+    <!-- Eyes -->
+    <ellipse cx="42" cy="36" rx="5" ry="6" fill="#101010"/>
+    <ellipse cx="78" cy="36" rx="5" ry="6" fill="#101010"/>
+    <!-- Tongue -->
+    <path d="M55 56 C50 56 48 62 52 64 C56 68 64 68 68 64 C72 62 70 56 65 56 Z" fill="#ff3e83"/>
+  </g>
+</svg>

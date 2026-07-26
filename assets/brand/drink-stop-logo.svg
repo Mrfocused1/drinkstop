@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 564 362" fill="none">
+  <!-- Drink Stop Logo -->
+  <defs>
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff3e83"/>
+      <stop offset="100%" stop-color="#cc1155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Drink illustration -->
+  <g transform="translate(30, 50)">
+    <!-- Speech bubble outline -->
+    <rect x="0" y="0" width="158" height="265" rx="38" fill="none" stroke="#101010" stroke-width="4.5" transform="rotate(-5, 79, 132)"/>
+    <!-- Bubble tail -->
+    <path d="M38 243 L58 210 L24 228 Z" fill="#fffaf0" stroke="#101010" stroke-width="4.5" stroke-linejoin="round" transform="rotate(-5, 41, 225)"/>
+    <path d="M43 238 L58 212 L31 226 Z" fill="#fffaf0" transform="rotate(-5, 41, 225)"/>
+
+    <!-- Drink glass inside bubble -->
+    <g transform="translate(79, 148)">
+      <!-- Glass outline -->
+      <path d="M-32,-48 L-22,62 L22,62 L32,-48 Z" fill="#fff" stroke="#101010" stroke-width="4" stroke-linejoin="round"/>
+      <!-- Pink liquid -->
+      <path d="M-27,-12 L-22,58 L22,58 L27,-12 Z" fill="url(#logoGrad)"/>
+      <!-- Wave line on liquid -->
+      <path d="M-27,-12 Q-14,-6 0,-12 Q14,-18 27,-12" fill="none" stroke="#ff6ba8" stroke-width="1.5" opacity="0.5"/>
+      <!-- Ice cubes -->
+      <rect x="-12" y="-30" width="11" height="11" rx="3" fill="rgba(255,255,255,0.4)" stroke="#ddd" stroke-width="1" transform="rotate(12, -6, -24)"/>
+      <rect x="2" y="-22" width="10" height="10" rx="3" fill="rgba(255,255,255,0.35)" stroke="#ddd" stroke-width="1" transform="rotate(-8, 7, -17)"/>
+      <!-- Straw -->
+      <path d="M2 60 L36 -58 L52 -52" stroke="#101010" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M2 60 L36 -58 L52 -52" stroke="#ffc400" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <!-- Lime wheel -->
+      <circle cx="-24" cy="-14" r="11" fill="#b7ed00" stroke="#101010" stroke-width="2.5"/>
+      <circle cx="-24" cy="-14" r="3" fill="#101010"/>
+      <line x1="-24" y1="-25" x2="-24" y2="-3" stroke="#101010" stroke-width="1.5"/>
+      <line x1="-35" y1="-14" x2="-13" y2="-14" stroke="#101010" stroke-width="1.5"/>
+      <!-- Bubbles -->
+      <circle cx="-10" cy="10" r="3" fill="rgba(255,255,255,0.4)"/>
+      <circle cx="6" cy="25" r="2" fill="rgba(255,255,255,0.3)"/>
+      <circle cx="-6" cy="35" r="2.5" fill="rgba(255,255,255,0.25)"/>
+    </g>
+  </g>
+
+  <!-- Right: DRINK STOP text -->
+  <g transform="translate(228, 68)">
+    <!-- DRINK -->
+    <text font-family="'Arial Black', 'Impact', sans-serif" font-size="76" font-weight="900" letter-spacing="3" fill="#101010">
+      DRINK
+    </text>
+    <!-- Red accent underline for DRINK -->
+    <rect x="0" y="78" width="210" height="5" rx="2.5" fill="#ff3e83"/>
+
+    <!-- STOP -->
+    <text font-family="'Arial Black', 'Impact', sans-serif" font-size="76" font-weight="900" letter-spacing="3" fill="#101010" y="98">
+      STOP
+    </text>
+
+    <!-- Lime underline -->
+    <rect x="0" y="178" width="240" height="6" rx="3" fill="#b7ed00"/>
+
+    <!-- Subtle rotation effect -->
+    <g transform="rotate(-1.5, 120, 88)" opacity="0.03">
+      <text font-family="'Arial Black', 'Impact', sans-serif" font-size="76" font-weight="900" letter-spacing="3" fill="#ff3e83">
+        DRINK
+      </text>
+      <text font-family="'Arial Black', 'Impact', sans-serif" font-size="76" font-weight="900" letter-spacing="3" fill="#ff3e83" y="98">
+        STOP
+      </text>
+    </g>
+  </g>
+
+  <!-- Small tagline -->
+  <text x="310" y="311" font-family="'Arial', sans-serif" font-size="12" font-weight="700" letter-spacing="2.5" fill="#777">LONDON · EST. 2024</text>
+
+  <!-- Decorative dots -->
+  <circle cx="295" cy="308" r="2" fill="#b7ed00"/>
+  <circle cx="475" cy="308" r="2" fill="#ff3e83"/>
+</svg>

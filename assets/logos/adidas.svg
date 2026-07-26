@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="#101010">
+  <!-- Adidas trefoil/three stripes -->
+  <g transform="translate(30, 20)">
+    <!-- Three stripes -->
+    <rect x="0" y="0" width="12" height="60" rx="2" fill="#101010"/>
+    <rect x="18" y="0" width="12" height="60" rx="2" fill="#101010"/>
+    <rect x="36" y="0" width="12" height="60" rx="2" fill="#101010"/>
+    <!-- Wordmark -->
+    <text font-family="'Arial', sans-serif" font-size="18" font-weight="700" x="0" y="82" letter-spacing="1">adidas</text>
+  </g>
+</svg>

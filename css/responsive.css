@@ -1,0 +1,538 @@
+/* ==========================================================================
+   Drink Stop — Brand Page
+   Responsive Breakpoints
+   ========================================================================== */
+
+/*
+   Breakpoint ranges:
+   1200px+  — Full desktop (16-column grid)
+   900–1199 — Tablet landscape (12-column grid, smaller nav)
+   768–899  — Tablet portrait (keep desktop bg, 4 cols)
+   767↓     — Mobile (mobile bg, 3-col grid, slide-in nav)
+   430↓     — Small mobile
+   350↓     — Tiny mobile (2-col grid)
+*/
+
+
+/* ==========================================================================
+   BREAKPOINT 1: 1199px and below — tablet landscape / small desktop
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+
+  /* ── Header ──────────────────────────────────────────────────────── */
+
+  .site-header {
+    grid-template-columns: 130px minmax(0, 1fr) auto;
+    gap: 24px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .desktop-navigation {
+    gap: 28px;
+  }
+
+  .header-order-button {
+    min-width: 185px;
+    padding: 0 22px;
+    font-size: 16px;
+  }
+
+  /* ── Hero ────────────────────────────────────────────────────────── */
+
+  .brand-hero-content {
+    width: min(560px, 48vw);
+  }
+
+  .brand-hero h1 {
+    font-size: clamp(66px, 7vw, 96px);
+  }
+
+  /* ── Drinks — scale down on smaller screens */
+
+  .hero-drinks {
+    width: 360px;
+    height: 380px;
+  }
+
+  .drink-hero {
+    width: 170px;
+  }
+
+  .drink-left,
+  .drink-right {
+    width: 140px;
+  }
+
+  /* ── Logo grid — 12 columns (6 cards per row) ──────────────────── */
+
+  .partner-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .partner-card {
+    grid-column: span 2;
+  }
+
+  .partner-card:last-child {
+    grid-column: 6 / span 2;
+  }
+}
+
+
+/* ==========================================================================
+   BREAKPOINT 2: 899px and below — tablet portrait
+   ========================================================================== */
+
+@media (max-width: 899px) {
+
+  .site-header {
+    grid-template-columns: 120px minmax(0, 1fr) auto;
+    gap: 16px;
+  }
+
+  .desktop-navigation {
+    gap: 18px;
+  }
+
+  .desktop-navigation a {
+    font-size: 14px;
+  }
+
+  .header-order-button {
+    min-width: 160px;
+    padding: 0 18px;
+    font-size: 14px;
+    min-height: 50px;
+  }
+
+  .order-arrow {
+    font-size: 19px;
+  }
+
+  /* ── Hero ────────────────────────────────────────────────────────── */
+
+  .brand-hero-content {
+    width: min(500px, 52vw);
+  }
+
+  .brand-hero h1 {
+    font-size: clamp(58px, 7.5vw, 82px);
+  }
+
+  .headline-underline {
+    height: 14px;
+    border-top-width: 5px;
+  }
+
+  .brand-introduction {
+    font-size: 18px;
+  }
+
+  /* ── Drinks — smaller still on tablet */
+
+  .hero-drinks {
+    width: 280px;
+    height: 300px;
+  }
+
+  .drink-hero {
+    width: 135px;
+  }
+
+  .drink-left,
+  .drink-right {
+    width: 110px;
+  }
+
+  .drink-left {
+    transform: translateX(8px) rotate(-5deg);
+  }
+
+  .drink-right {
+    transform: translateX(-8px) rotate(4deg);
+  }
+
+  /* ── Logo grid — 8 columns (4 cards per row) ───────────────────── */
+
+  .partner-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  .partner-card {
+    grid-column: span 2;
+  }
+
+  .partner-card:last-child {
+    grid-column: 4 / span 2;
+  }
+}
+
+
+/* ==========================================================================
+   BREAKPOINT 3: 767px and below — MOBILE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+
+  /* ── Background switch to mobile artwork ────────────────────────── */
+
+  .brand-page-main {
+    min-height: calc(100vh - var(--header-height-mobile));
+
+    background-image: url("../assets/backgrounds/brand-page-mobile.webp");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+  }
+
+  /* ── Mobile header ──────────────────────────────────────────────── */
+
+  .site-header {
+    min-height: var(--header-height-mobile);
+    padding: 13px 18px;
+
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .desktop-navigation {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+
+    cursor: pointer;
+  }
+
+  .mobile-menu-button span {
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--black);
+    display: block;
+  }
+
+  .site-logo {
+    width: 106px;
+    justify-self: center;
+  }
+
+  .header-order-button {
+    min-width: 0;
+    min-height: 54px;
+    padding: 0 19px;
+    gap: 9px;
+    font-size: 15px;
+  }
+
+  .order-arrow {
+    font-size: 18px;
+  }
+
+  /* ── Mobile hero ────────────────────────────────────────────────── */
+
+  .brand-hero {
+    width: 100%;
+    min-height: 720px;
+
+    padding: 70px 30px 30px;
+
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .brand-hero-content {
+    width: min(100%, 520px);
+    margin-top: 25px;
+  }
+
+  .eyebrow-label {
+    margin-bottom: 28px;
+    padding: 10px 24px;
+    font-size: 19px;
+  }
+
+  .brand-hero h1 {
+    max-width: 470px;
+    font-size: clamp(63px, 16vw, 94px);
+    line-height: 0.92;
+  }
+
+  .headline-underline {
+    width: 92%;
+    max-width: 430px;
+    margin: 18px 0 22px;
+    border-top-width: 5px;
+  }
+
+  .brand-introduction {
+    width: min(395px, 80%);
+    font-size: 19px;
+    line-height: 1.38;
+  }
+
+  /* ── Mobile drinks — centred below text */
+
+  .hero-drinks {
+    width: 300px;
+    height: 200px;
+    margin: 20px auto 0;
+    align-self: center;
+  }
+
+  .drink-hero {
+    width: 130px;
+  }
+
+  .drink-left,
+  .drink-right {
+    width: 105px;
+  }
+
+  /* ── Partner section ────────────────────────────────────────────── */
+
+  .partner-section {
+    width: 100%;
+    padding: 20px 18px 120px;
+  }
+
+  .partner-section-heading {
+    margin: 0 auto 24px;
+    padding: 10px 23px;
+    font-size: 19px;
+    text-align: center;
+  }
+
+  /* ── Logo grid — 3 columns ─────────────────────────────────────── */
+
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .partner-card,
+  .partner-card:last-child {
+    grid-column: auto;
+    aspect-ratio: 1.22 / 1;
+    padding: 15px 10px;
+  }
+
+  .partner-card img {
+    width: var(--logo-width, 78%);
+    height: min(var(--logo-height, 58px), 58px);
+  }
+
+  /* ── Centre final two cards on mobile (17 logos → final row = 2) ──── */
+
+  .partner-card:nth-child(16) {
+    grid-column: 1 / 2;
+    transform: translateX(50%);
+  }
+
+  .partner-card:nth-child(17) {
+    grid-column: 2 / 3;
+    transform: translateX(50%);
+  }
+
+  /* Card nth overrides for visible state — keep final-row centring */
+  .partner-card:nth-child(16).is-visible { transform: translateX(50%); }
+  .partner-card:nth-child(17).is-visible { transform: translateX(50%); }
+
+  /* Preserve subtle rotation if we can */
+  .partner-card:nth-child(16) { transform: translateX(50%) rotate(-0.7deg); }
+  .partner-card:nth-child(17) { transform: translateX(50%) rotate(0.5deg); }
+  .partner-card:nth-child(16).is-visible { transform: translateX(50%) rotate(-0.7deg); }
+  .partner-card:nth-child(17).is-visible { transform: translateX(50%) rotate(0.5deg); }
+
+  /* Hover overrides for centred cards */
+  .partner-card:nth-child(16):hover {
+    transform: translateX(50%) translateY(-7px) rotate(-1deg);
+  }
+  .partner-card:nth-child(17):hover {
+    transform: translateX(50%) translateY(-7px) rotate(1deg);
+  }
+
+  /* ── Mobile slide-in navigation ────────────────────────────────── */
+
+  .mobile-navigation {
+    position: fixed;
+    inset: var(--header-height-mobile) 0 0 0;
+    z-index: 200;
+
+    padding: 45px 30px calc(45px + env(safe-area-inset-bottom));
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    color: var(--paper);
+    background: var(--black);
+
+    transform: translateX(-100%);
+    transition: transform 260ms var(--ease-out);
+  }
+
+  .mobile-navigation.is-open {
+    transform: translateX(0);
+  }
+
+  .mobile-navigation a {
+    font-family: var(--font-display);
+    font-size: 47px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+
+/* ==========================================================================
+   BREAKPOINT 4: 430px and below — small mobile
+   ========================================================================== */
+
+@media (max-width: 430px) {
+
+  .brand-hero {
+    min-height: 650px;
+    padding: 55px 20px 20px;
+  }
+
+  .brand-hero h1 {
+    font-size: clamp(54px, 15.5vw, 75px);
+  }
+
+  .brand-introduction {
+    width: 76%;
+    font-size: 17px;
+  }
+
+  /* ── Smaller drinks */
+
+  .hero-drinks {
+    width: 240px;
+    height: 160px;
+  }
+
+  .drink-hero {
+    width: 105px;
+  }
+
+  .drink-left,
+  .drink-right {
+    width: 85px;
+  }
+
+  .partner-section {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .partner-card {
+    min-height: 106px;
+    padding: 12px 8px;
+  }
+
+  .partner-card img {
+    height: 48px;
+  }
+}
+
+
+/* ==========================================================================
+   BREAKPOINT 5: 370px and below — tiny mobile
+   ========================================================================== */
+
+@media (max-width: 370px) {
+
+  .header-order-button .order-arrow {
+    display: none;
+  }
+
+  .header-order-button {
+    padding: 0 17px;
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partner-card:nth-child(16),
+  .partner-card:nth-child(17) {
+    grid-column: auto;
+    transform: none !important;
+  }
+
+  .partner-card:last-child {
+    grid-column: 1 / -1;
+    width: 50%;
+    justify-self: center;
+  }
+}
+
+
+/* ==========================================================================
+   BREAKPOINT 6: 350px and below — absolute minimum
+   ========================================================================== */
+
+@media (max-width: 350px) {
+
+  .partner-card {
+    min-height: 92px;
+    padding: 10px 6px;
+  }
+
+  .partner-card img {
+    height: 40px;
+  }
+
+  .brand-hero {
+    min-height: 580px;
+    padding: 40px 14px 14px;
+  }
+
+  .eyebrow-label {
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+
+  .brand-hero h1 {
+    font-size: clamp(44px, 14vw, 60px);
+  }
+
+  .brand-introduction {
+    width: 90%;
+    font-size: 15px;
+  }
+
+  /* ── Minimum-size drinks */
+
+  .hero-drinks {
+    width: 180px;
+    height: 130px;
+  }
+
+  .drink-hero {
+    width: 80px;
+  }
+
+  .drink-left,
+  .drink-right {
+    width: 65px;
+  }
+}
