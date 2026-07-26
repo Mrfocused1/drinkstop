@@ -411,16 +411,20 @@
 
 /* ── Last card centering ────────────────────────────────────────────── */
 
-.partner-card:last-child {
-  grid-column: 8 / span 2;
-}
+
 
 /* ==========================================================================
    SECTION 5 — Mobile Marquee (scrolling logo rows)
    ========================================================================== */
 
-.partner-marquee-mobile {
+.partner-grid {
   display: none;
+}
+
+.partner-marquee-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   overflow: hidden;
   width: 100%;
 }
@@ -447,10 +451,10 @@
 
 .marquee-row .partner-card {
   flex-shrink: 0;
-  width: 110px;
-  height: 70px;
+  width: 140px;
+  height: 90px;
   margin: 0;
-  padding: 8px;
+  padding: 12px;
   opacity: 1;
   transform: none;
 }

@@ -311,15 +311,7 @@
     text-align: center;
   }
 
-  /* ── Hide grid, show marquee on mobile ─────────────────────────── */
-
-  .partner-grid {
-    display: none;
-  }
-
   .partner-marquee-mobile {
-    display: flex;
-    flex-direction: column;
     gap: 8px;
   }
 
