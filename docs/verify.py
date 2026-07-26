@@ -78,6 +78,13 @@ def check_refs():
                 if '${' in t or '{{' in t:      # template placeholder, not a real path
                     continue
                 t = t.split('?')[0].split('#')[0]
+                # Values assigned at runtime by inline JS (src=blob, src=d.desktop,
+                # href=%23n) are not paths. A real one has a directory separator or
+                # a recognisable file extension.
+                if '/' not in t and not re.search(r'\.[a-z0-9]{2,5}$', t, re.I):
+                    continue
+                if re.fullmatch(r'[A-Za-z_$][\w$]*\.[A-Za-z_$][\w$]*', t):
+                    continue               # bare JS member expression, e.g. d.mobile
                 resolved = os.path.normpath(os.path.join(base, t))
                 checked += 1
                 if not os.path.exists(resolved):
