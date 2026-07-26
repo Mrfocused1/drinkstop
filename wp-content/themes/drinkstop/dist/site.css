@@ -3972,6 +3972,11 @@ button,input,select,optgroup,textarea,::file-selector-button {
   color: #0a0a0a;
 }
 .hero-badge img { width: 13px; height: 13px; }
+
+@media (min-width:64em) {
+  .hero-badge { display: none; }
+}
+
 .hero-sub {
   max-width: 30rem;
   margin: 2.5rem 0 0;
