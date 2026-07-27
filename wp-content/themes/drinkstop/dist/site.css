@@ -4066,15 +4066,21 @@ button,input,select,optgroup,textarea,::file-selector-button {
 @media (min-width: 64em) {
   /* Centre the nav in the header, like the Clients page, instead of it
      sitting flush after the logo. .main-header-wrapper is unwrapped via
-     display:contents so nav + actions become direct grid children. */
+     display:contents so nav + actions become direct grid children.
+     Columns/gap/padding/logo size match .site-header on brand-pages.html
+     exactly, so the header reads identically across pages. */
   .main-header .container {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: 160px minmax(0, 1fr) auto;
     align-items: center;
-    gap: 24px;
+    gap: 42px;
+    padding-left: clamp(34px, 4vw, 72px) !important;
+    padding-right: clamp(34px, 4vw, 72px) !important;
   }
 
   .main-header .container > .main-header__logo {
+    width: 116px;
+    height: auto;
     margin-right: 0;
   }
 
@@ -4085,6 +4091,10 @@ button,input,select,optgroup,textarea,::file-selector-button {
   .main-header-nav {
     display: flex;
     justify-content: center;
+  }
+
+  .main-header-nav__list {
+    gap: clamp(36px, 5vw, 72px) !important;
   }
 
   .main-header-actions {
@@ -4129,7 +4139,8 @@ button,input,select,optgroup,textarea,::file-selector-button {
   .main-header .btn--icon.btn--ghost {
     background: #c7ff00;
     border: none;
-    min-height: 46px;
+    min-width: 220px;
+    min-height: 58px;
     padding: 0 28px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
     transition:
