@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <title>Contact Drink Stop | Customer Support & Wholesale</title>
+
+  <meta
+    name="description"
+    content="Contact Drink Stop for customer support, wholesale enquiries, partnerships and general questions."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/backgrounds/contact-desktop.webp"
+    media="(min-width: 768px)"
+  >
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/backgrounds/contact-mobile.webp"
+    media="(max-width: 767px)"
+  >
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/products/featured-drink.webp"
+  >
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/brand-page.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/contact.css">
+
+</head>
+<body>
+
+  <div class="contact-page">
+
+    <aside class="announcement-bar">
+      <div class="announcement-inner">
+
+        <p class="announcement-message">
+          <span>Frozen cocktails.</span>
+          Anytime. Anywhere.
+        </p>
+
+        <a class="announcement-cta" href="choose-your-vibe.html">
+          Order yours now
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+
+        <div class="announcement-meta">
+          <span>Fast delivery</span>
+          <span>Keep frozen</span>
+        </div>
+
+      </div>
+    </aside>
+
+    <header class="site-header">
+
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a
+        class="site-logo"
+        href="index.html"
+        aria-label="Drink Stop homepage"
+      >
+        <img
+          src="wp-content/uploads/2025/10/drinkstop-logo.webp"
+          alt="Drink Stop"
+          width="116"
+          height="75"
+        >
+      </a>
+
+      <nav
+        class="desktop-navigation"
+        aria-label="Primary navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="our-drinks.html">Our Drinks</a>
+        <a href="choose-your-vibe.html">Order Now</a>
+        <a href="brand-pages.html">Clients</a>
+        <a href="contact.html" class="is-active" aria-current="page">Contact</a>
+      </nav>
+
+      <a class="header-order-button" href="choose-your-vibe.html">
+        <span class="order-arrow" aria-hidden="true">&#9654;</span>
+        <span>Order Now</span>
+      </a>
+
+    </header>
+
+    <main class="contact-main">
+
+      <section
+        class="contact-hero"
+        aria-labelledby="contact-title"
+      >
+
+        <div class="contact-layout">
+
+          <div class="contact-copy">
+
+            <h1 id="contact-title">
+              <span>Get In</span>
+              <strong>Touch</strong>
+            </h1>
+
+            <p class="contact-handwritten">
+              We&rsquo;d love to hear from you!
+            </p>
+
+            <span
+              class="handwritten-underline"
+              aria-hidden="true"
+            ></span>
+
+            <p class="contact-introduction">
+              Got a question, feedback or just fancy saying hello?
+              Drop us a message using the form and we&rsquo;ll get back
+              to you as soon as we can.
+            </p>
+
+          </div>
+
+          <div
+            class="contact-product-stage"
+            aria-label="Featured Drink Stop cocktail"
+          >
+
+            <img
+              class="contact-product-background"
+              src="assets/decor/featured-drink-background.webp"
+              alt=""
+              aria-hidden="true"
+            >
+
+            <img
+              class="contact-product-image"
+              src="assets/products/featured-drink.webp"
+              alt="Drink Stop Rum For Your Life frozen cocktail pouch"
+            >
+
+          </div>
+
+          <div class="contact-form-column">
+
+            <form
+              class="contact-form"
+              id="contact-form"
+              action="/contact-submit"
+              method="post"
+              novalidate
+            >
+
+              <h2>Send Us A Message</h2>
+
+              <div class="form-field">
+
+                <label for="full-name">
+                  Full name
+                  <span aria-hidden="true">*</span>
+                </label>
+
+                <input
+                  id="full-name"
+                  name="fullName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Your name"
+                  required
+                  aria-describedby="full-name-error"
+                >
+
+                <p
+                  class="field-error"
+                  id="full-name-error"
+                  aria-live="polite"
+                ></p>
+
+              </div>
+
+              <div class="form-field">
+
+                <label for="email-address">
+                  Email address
+                  <span aria-hidden="true">*</span>
+                </label>
+
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="Your email"
+                  required
+                  aria-describedby="email-address-error"
+                >
+
+                <p
+                  class="field-error"
+                  id="email-address-error"
+                  aria-live="polite"
+                ></p>
+
+              </div>
+
+              <div class="form-field">
+
+                <label for="subject">
+                  Subject
+                  <span aria-hidden="true">*</span>
+                </label>
+
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="What&rsquo;s this about?"
+                  required
+                  aria-describedby="subject-error"
+                >
+
+                <p
+                  class="field-error"
+                  id="subject-error"
+                  aria-live="polite"
+                ></p>
+
+              </div>
+
+              <div class="form-field">
+
+                <label for="message">
+                  Message
+                  <span aria-hidden="true">*</span>
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="7"
+                  placeholder="Type your message here..."
+                  required
+                  aria-describedby="message-error"
+                ></textarea>
+
+                <p
+                  class="field-error"
+                  id="message-error"
+                  aria-live="polite"
+                ></p>
+
+              </div>
+
+              <input
+                type="text"
+                name="website"
+                class="form-honeypot"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              >
+
+              <button
+                class="contact-submit-button"
+                type="submit"
+              >
+                <img
+                  src="assets/icons/paper-plane.svg"
+                  alt=""
+                  aria-hidden="true"
+                >
+
+                <span>Send Message</span>
+
+                <img
+                  src="assets/party/icons/arrow-right.svg"
+                  alt=""
+                  aria-hidden="true"
+                >
+              </button>
+
+              <p
+                class="form-status"
+                id="form-status"
+                aria-live="polite"
+              ></p>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section
+        class="contact-information"
+        aria-labelledby="help-heading"
+      >
+
+        <div class="contact-information-inner">
+
+          <div class="help-heading-wrap">
+
+            <h2 id="help-heading">
+              We&rsquo;re Here To Help
+            </h2>
+
+            <span
+              class="help-heading-marker"
+              aria-hidden="true"
+            ></span>
+
+          </div>
+
+          <div class="contact-info-grid">
+
+            <article class="contact-info-item">
+
+              <img
+                src="assets/icons/support.svg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <div>
+                <h3>Customer Support</h3>
+
+                <p>
+                  Got a question? Our team is ready to help.
+                </p>
+
+                <a href="mailto:hello@drinkstop.me">
+                  hello@drinkstop.me
+                </a>
+              </div>
+
+            </article>
+
+            <article class="contact-info-item">
+
+              <img
+                src="assets/party/icons/truck.svg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <div>
+                <h3>Wholesale Enquiries</h3>
+
+                <p>
+                  Interested in stocking Drink Stop?
+                </p>
+
+                <a href="mailto:trade@drinkstop.me">
+                  trade@drinkstop.me
+                </a>
+              </div>
+
+            </article>
+
+            <article class="contact-info-item">
+
+              <img
+                src="assets/icons/location.svg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <div>
+                <h3>Address</h3>
+
+                <address>
+                  Unit 7, Ice Works<br>
+                  Cold Storage Park<br>
+                  London, NW10 7FQ
+                </address>
+              </div>
+
+            </article>
+
+            <article class="contact-info-item">
+
+              <img
+                src="assets/icons/clock.svg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <div>
+                <h3>Hours</h3>
+
+                <p>
+                  Monday &ndash; Friday: 9AM &ndash; 6PM<br>
+                  Saturday &ndash; Sunday: Closed
+                </p>
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <nav
+      class="mobile-navigation"
+      id="mobile-navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html">Home</a>
+      <a href="our-drinks.html">Our Drinks</a>
+      <a href="choose-your-vibe.html">Order Now</a>
+      <a href="brand-pages.html">Clients</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+
+  </div>
+
+  <script src="js/contact-form.js" defer></script>
+  <script src="js/mobile-navigation.js" defer></script>
+
+</body>
+</html>
