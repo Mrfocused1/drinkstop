@@ -372,6 +372,85 @@
       *,*::before,*::after{scroll-behavior:auto!important;transition-duration:1ms!important;animation-duration:1ms!important}
       .product{transition:none!important}
     }
+
+    /* ===== Clients-page nav style, applied to the main header (desktop) ===== */
+    @media (min-width: 64em) {
+      .main-header-nav__list li a {
+        position: relative;
+        font-family: "Inter", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        color: #101010;
+        border-bottom: none;
+        padding: 15px 0 13px;
+        min-height: 0;
+      }
+
+      .main-header-nav__list li:hover .main-header__nav-item-text.is-default,
+      .main-header-nav__list li:hover .main-header__nav-item-text.is-absolute {
+        transform: none;
+      }
+
+      .main-header-nav__list li a::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 4px;
+        width: 0;
+        height: 3px;
+        background: #b7ed00;
+        transform: translateX(-50%);
+        transition: width 180ms ease;
+      }
+
+      .main-header-nav__list li:hover a::after,
+      .main-header-nav__list li a[aria-current="page"]::after {
+        width: 100%;
+      }
+
+      .main-header .btn--icon.btn--ghost {
+        background: #c7ff00;
+        border: none;
+        min-height: 46px;
+        padding: 0 28px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+        transition:
+          transform 180ms cubic-bezier(.2, .8, .2, 1),
+          box-shadow 180ms ease;
+      }
+
+      .main-header .btn--icon.btn--ghost:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+        background: #c7ff00;
+      }
+
+      .main-header .btn--icon.btn--ghost:hover .btn__icon-slot {
+        background-color: transparent;
+      }
+
+      .main-header .btn--icon .btn__icon-slot {
+        display: none;
+      }
+
+      .main-header .btn--icon .btn-text-wrapper {
+        position: relative;
+        padding-left: 22px;
+        font-family: "Inter", Arial, Helvetica, sans-serif;
+      }
+
+      .main-header .btn--icon .btn-text-wrapper::before {
+        content: "\27A4";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        font-size: 18px;
+        color: #101010;
+        transform: translateY(-50%) rotate(-25deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -385,8 +464,8 @@
             <ul class="main-header-nav__list">
               <li>
                 <a href="index.html#about">
-                  <div class="main-header__nav-item-text is-default">About</div>
-                  <div class="main-header__nav-item-text is-absolute">About</div>
+                  <div class="main-header__nav-item-text is-default">Home</div>
+                  <div class="main-header__nav-item-text is-absolute">Home</div>
                 </a>
               </li>
               <li class="drinks-dropdown">
@@ -446,7 +525,7 @@
     <div class="offcanvas">
       <nav class="offcanvas-nav" aria-label="Mobile">
         <ul class="offcanvas-menu">
-          <li class="offcanvas-menu__item"><a href="index.html#about">About</a></li>
+          <li class="offcanvas-menu__item"><a href="index.html#about">Home</a></li>
           <li class="offcanvas-menu__item offcanvas-menu__item--has-submenu">
             <a href="index.html#our-drinks">Our Drinks</a>
             <ul class="offcanvas-submenu">

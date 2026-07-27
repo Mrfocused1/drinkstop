@@ -4059,3 +4059,84 @@ button,input,select,optgroup,textarea,::file-selector-button {
   color: #0a0a0a;
 }
 .promo-bar__social img { width: 12px; height: 12px; }
+
+/* ===== Clients-page nav style, applied to the main header (desktop) =====
+   Scoped to .main-header so it doesn't touch the same .btn--icon/.btn--ghost
+   classes used elsewhere on the page (hero CTA, etc). */
+@media (min-width: 64em) {
+  .main-header-nav__list li a {
+    position: relative;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #101010;
+    border-bottom: none;
+    padding: 15px 0 13px;
+    min-height: 0;
+  }
+
+  .main-header-nav__list li:hover .main-header__nav-item-text.is-default,
+  .main-header-nav__list li:hover .main-header__nav-item-text.is-absolute {
+    transform: none;
+  }
+
+  .main-header-nav__list li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0;
+    height: 3px;
+    background: #b7ed00;
+    transform: translateX(-50%);
+    transition: width 180ms ease;
+  }
+
+  .main-header-nav__list li:hover a::after,
+  .main-header-nav__list li.main-header-nav__item--current > a::after {
+    width: 100%;
+  }
+
+  .main-header .btn--icon.btn--ghost {
+    background: #c7ff00;
+    border: none;
+    min-height: 46px;
+    padding: 0 28px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+    transition:
+      transform 180ms cubic-bezier(.2, .8, .2, 1),
+      box-shadow 180ms ease;
+  }
+
+  .main-header .btn--icon.btn--ghost:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+    background: #c7ff00;
+  }
+
+  .main-header .btn--icon.btn--ghost:hover .btn__icon-slot {
+    background-color: transparent;
+  }
+
+  .main-header .btn--icon .btn__icon-slot {
+    display: none;
+  }
+
+  .main-header .btn--icon .btn-text-wrapper {
+    position: relative;
+    padding-left: 22px;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+  }
+
+  .main-header .btn--icon .btn-text-wrapper::before {
+    content: "\27A4";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    font-size: 18px;
+    color: #101010;
+    transform: translateY(-50%) rotate(-25deg);
+  }
+}
