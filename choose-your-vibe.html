@@ -218,7 +218,7 @@
     .trust+.trust{border-left:1px solid var(--line)}
     .trust i{width:40px;height:40px;font-size:.9rem}
 
-    .mobile-top,.mobile-progress,.welcome,.mobile-head,.mobile-summary-hero,.mobile-basket-row,.mobile-buy-row,.mobile-controls,.swipe-hint{display:none}
+    .mobile-top,.mobile-progress,.welcome,.mobile-head,.mobile-basket-row,.mobile-buy-row,.mobile-controls,.swipe-hint{display:none}
 
     /* DIALOG */
     dialog{border:0;border-radius:26px;padding:0;background:transparent;max-width:calc(100vw - 2rem)}
@@ -254,8 +254,9 @@
       .mobile-progress button.active{background:var(--red)}
       [data-mobile-panel]{display:none}
       .experience[data-step="welcome"] [data-mobile-panel="welcome"],
-      .experience[data-step="flavour"] [data-mobile-panel="flavour"],
-      .experience[data-step="summary"] [data-mobile-panel="summary"]{display:flex}
+      .experience[data-step="flavour"] [data-mobile-panel="flavour"]{display:flex}
+      /* no summary step: the .purchase aside (data-mobile-panel="summary") stays
+         hidden on mobile and only renders in the desktop layout */
 
       .welcome{min-height:calc(100svh - 5.5625rem);flex-direction:column;padding:max(4.4rem,calc(env(safe-area-inset-top) + 3.4rem)) 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4.2rem));background:radial-gradient(circle at 50% 14%,rgba(255,255,255,.5),transparent 15rem),var(--yellow)}
       .welcome h1{max-width:7.5ch;margin:0;font-size:clamp(2.5rem,11.5vw,3.4rem)}
@@ -321,17 +322,6 @@
       .mobile-controls .size-toggle{min-height:44px;height:44px;width:100%;justify-content:center;padding:3px}
       .mobile-controls .size-btn{flex:1;align-self:stretch;text-align:center;font-size:.64rem;padding:0 .2rem;letter-spacing:0;line-height:1.1}
 
-      .purchase{min-height:calc(100svh - 5.5625rem);flex-direction:column;align-self:stretch;border:0;border-radius:0;background:var(--paper);box-shadow:none;padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
-      .mobile-summary-hero{position:relative;display:grid;min-height:31svh;place-items:center;overflow:hidden;isolation:isolate}
-      .mobile-summary-bg{position:absolute;z-index:-1;inset:0;background-image:var(--mobile-bg);background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.84}
-      .mobile-summary-hero img{width:auto;max-width:none;height:min(30svh,261px);filter:drop-shadow(0 18px 25px rgba(26,17,0,.18))}
-      .purchase-content{padding:1rem 1.35rem max(5rem,calc(env(safe-area-inset-bottom) + 4rem));text-align:center}
-      .purchase::before{display:none}
-      .purchase .eyebrow{display:none}
-      .purchase h2{font-size:clamp(1.5rem,6.9vw,2.6rem);transform:none;text-shadow:none}
-      .purchase .ingredients{font-size:.98rem;letter-spacing:.02em;margin-top:.35rem}
-      .purchase .description{display:none}
-      .purchase hr{height:auto;border-top:3px solid var(--ink);background:none;margin:1rem 0}
       .control-row>div{flex:1}
       .format-row{flex-wrap:wrap;justify-content:center;gap:.6rem}
       .format-toggle{margin:0 auto}
@@ -576,7 +566,6 @@
         <div class="mobile-progress" role="tablist" aria-label="Onboarding progress">
           <button type="button" class="active" data-step-target="welcome" aria-label="Welcome"></button>
           <button type="button" data-step-target="flavour" aria-label="Flavour"></button>
-          <button type="button" data-step-target="summary" aria-label="Summary"></button>
         </div>
 
         <section class="welcome" data-mobile-panel="welcome" aria-label="Welcome">
@@ -651,18 +640,6 @@
         </section>
 
         <aside class="purchase" data-mobile-panel="summary" aria-label="Purchase panel">
-          <div class="mobile-head">
-            <button class="round" type="button" data-summary-back aria-label="Back">←</button>
-            <div>
-              <p>You've chosen</p>
-              <div class="step-line" aria-hidden="true"><span class="done"></span><span class="done"></span><span class="done"></span><span class="current"></span></div>
-            </div>
-            <button class="cart" type="button" aria-label="Basket" data-open-basket>🛍<span class="count" data-cart-count>0</span></button>
-          </div>
-          <div class="mobile-summary-hero">
-            <div class="mobile-summary-bg" aria-hidden="true"></div>
-            <div data-summary-product></div>
-          </div>
           <div class="purchase-content">
             <p class="eyebrow">You've chosen</p>
             <h2 class="display" data-purchase-name>Drink name</h2>
@@ -985,7 +962,6 @@
       purchaseIngredients: $('[data-purchase-ingredients]'),
       purchaseDescription: null, // removed from desktop
       welcome: $('[data-welcome-product]'),
-      summary: $('[data-summary-product]'),
       qty: $('[data-quantity]'),
       total: $('[data-total]'),
       was: $('[data-was]'),
@@ -1037,7 +1013,6 @@
       });
       const d = drinks[S.index];
       renderProduct(E.welcome, d);
-      renderProduct(E.summary, d);
     }
 
     function build() {
@@ -1164,7 +1139,6 @@
         E.tags.append(s);
       });
       renderProduct(E.welcome, d);
-      renderProduct(E.summary, d);
       price();
       preloadAround(S.index);
     }
@@ -1243,7 +1217,6 @@
     });
     $('[data-start]').addEventListener('click', () => step('flavour'));
     $('[data-mobile-back]').addEventListener('click', () => { step('welcome'); });
-    $('[data-summary-back]').addEventListener('click', () => step('flavour'));
     $$('[data-step-target]').forEach((b) => b.addEventListener('click', () => step(b.dataset.stepTarget)));
     $$('[data-add-to-cart]').forEach((btn) => btn.addEventListener('click', () => addToBasket(false)));
     $$('[data-buy]').forEach((btn) => btn.addEventListener('click', () => {
@@ -1298,9 +1271,9 @@
     positions();
     render();
     counts();
-    // Deep-link step: ?step=welcome|flavour|summary (mobile flow); desktop always shows the full page.
+    // Deep-link step: ?step=welcome|flavour (mobile flow); desktop always shows the full page.
     const stepKey = params.get('step');
-    const validSteps = ['welcome', 'flavour', 'summary'];
+    const validSteps = ['welcome', 'flavour'];
     step(validSteps.includes(stepKey) ? stepKey : 'flavour');
 
     // Site header — homepage behaviour: scroll states.

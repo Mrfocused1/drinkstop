@@ -813,13 +813,13 @@ function validate(key){
   } catch(e){}
 })();
 
-// Close returns to the vibe page (the "Order Now" page). The basket is already
-// persisted in localStorage, so with items still in it we land on its summary
-// step and the party continues where it left off; empty basket = fresh start.
+// Close returns to the vibe page (the "Order Now" page) — the same view the
+// menu's Order Now link opens. The basket is persisted in localStorage, so the
+// cart badge/total is right there when the party continues.
 const closeLink=document.getElementById('closeLink');
 if(closeLink) closeLink.addEventListener('click',e=>{
   e.preventDefault();
-  window.location.href='choose-your-vibe.html'+(S.vibeBasket.length?'?step=summary':'');
+  window.location.href='choose-your-vibe.html';
 });
 
 render();
