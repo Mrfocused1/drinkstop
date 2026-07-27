@@ -249,15 +249,20 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 </div>
 
 <script>
-const INTRO_POUCHES=[
-  {src:'wp-content/uploads/2025/drinks/pouch-red.webp',alt:'Rum For Your Life'},
-  {src:'wp-content/uploads/2025/drinks/pouch-green.webp',alt:'Rumbaclart 2.0'},
-  {src:'wp-content/uploads/2025/drinks/pouch-yellow.webp',alt:'Suck Your Rum'},
-  {src:'wp-content/uploads/2025/drinks/pouch-4.webp',alt:'DRINK STOP pouch'},
-  {src:'wp-content/uploads/2025/drinks/pouch-5.webp',alt:'DRINK STOP pouch'},
-  {src:'wp-content/uploads/2025/drinks/pouch-6.webp',alt:'DRINK STOP pouch'},
-  {src:'wp-content/uploads/2025/drinks/pouch-7.webp',alt:'DRINK STOP pouch'},
+const INTRO_DRINK_IDS=[
+  ['rum-for-your-life','Rum For Your Life'],
+  ['rumbaclart-2','Rumbaclart 2.0'],
+  ['rumbaclart-1','Rumbaclart 1.0'],
+  ['summer-set','Summer Set'],
+  ['blutiful','Blutiful'],
+  ['rumazing','Rumazing'],
+  ['suck-your-rum','Suck Your Rum'],
 ];
+// one bottle + one pouch shot per flavour, so the intro row shows the full range
+const INTRO_POUCHES=INTRO_DRINK_IDS.flatMap(([id,name])=>[
+  {src:'wp-content/uploads/2026/07/vibe/bottle-'+id+'.webp',alt:name+' bottle'},
+  {src:'wp-content/uploads/2026/07/vibe/product-'+id+'.png',alt:name+' pouch'},
+]);
 const PARTY_ICON='assets/party/icons/', PARTY_DECOR='assets/party/decor/';
 const PARTY_THEMES=[
   {cls:'red',    fruitA:PARTY_DECOR+'watermelon.svg',   fruitB:PARTY_DECOR+'strawberry.svg',   prop:PARTY_DECOR+'disco-ball.svg'},
@@ -346,7 +351,7 @@ const STEPS={
     <div class="pouch-row" id="introPouches">
       ${INTRO_POUCHES.map((p,i)=>'<img src="'+p.src+'" alt="'+p.alt+'" class="pouch-row__img" style="animation-delay:'+(i*0.09)+'s">').join('')}
     </div>
-    ${navHtml('Start →', false)}`;
+    ${navHtml('Start →', true)}`;
   }
 
   const cards=S.vibeBasket.map((item,i)=>{
@@ -723,6 +728,10 @@ function wire(key){
   if(key==='qty'||key==='qtyc'){el.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const min=5,step=parseInt(b.dataset.q); S.qty=Math.max(min,(S.qty<min?min:S.qty)+step); document.getElementById('qv').textContent=S.qty; const qt=document.getElementById('qtotal'); if(qt)qt.textContent='£'+(S.qty*price());});}
   if(key==='artwork'){el.querySelectorAll('[data-dm]').forEach(c=>c.onclick=()=>{S.designMode=c.dataset.dm;render();}); dmPanel(); updateNext();}
   if(key==='intro'){
+    // idx is already 0 here, so the generic go(-1) prev wiring above is a no-op —
+    // send the very first step's back button out of the wizard instead.
+    const introPrev=document.getElementById('prev');
+    if(introPrev) introPrev.onclick=()=>{ history.back(); };
     const vf=document.getElementById('vibeFresh'); if(vf) vf.onclick=()=>{
       S.vibeBasket=[]; localStorage.removeItem('drinkstop_vibe_basket'); idx=0; render();
     };
