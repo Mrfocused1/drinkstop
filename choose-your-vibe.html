@@ -375,6 +375,14 @@
 
     /* ===== Clients-page nav style, applied to the main header (desktop) ===== */
     @media (min-width: 64em) {
+      /* Match the homepage/Clients page: transparent header instead of a
+         solid green bar. The existing scroll-in cream overlay (.main-header:before,
+         toggled by .has-scrolled) still works on top of this unchanged. */
+      .main-header {
+        background-color: transparent !important;
+        border-bottom-color: transparent;
+      }
+
       /* Centre the nav in the header, like the Clients page, instead of it
          sitting flush after the logo. .main-header-wrapper is unwrapped via
          display:contents so nav + actions become direct grid children. */
@@ -514,6 +522,12 @@
                 <a href="choose-your-vibe.html" aria-current="page">
                   <div class="main-header__nav-item-text is-default">Order Now</div>
                   <div class="main-header__nav-item-text is-absolute">Order Now</div>
+                </a>
+              </li>
+              <li>
+                <a href="brand-pages.html">
+                  <div class="main-header__nav-item-text is-default">Clients</div>
+                  <div class="main-header__nav-item-text is-absolute">Clients</div>
                 </a>
               </li>
             </ul>
