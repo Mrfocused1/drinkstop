@@ -36,7 +36,7 @@
       wrap.innerHTML = `
         <img
           class="hero-product-image"
-          src="${drink.productImage}"
+          src="${drink.heroProductImage}"
           alt="${drink.productAltText}"
           loading="eager"
           decoding="async"
