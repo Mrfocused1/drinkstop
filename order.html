@@ -39,7 +39,7 @@ body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--c
 .prog .lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-top:10px}
 /* stage */
 .stage{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px 24px 60px}
-.step{width:100%;max-width:900px;animation:pop .4s cubic-bezier(.2,.7,.2,1)}
+.step{width:100%;max-width:900px;min-width:0;animation:pop .4s cubic-bezier(.2,.7,.2,1)}
 @keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .kicker{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
 h1.q{font-family:'DS Display','Manrope',sans-serif;font-weight:900;font-size:clamp(32px,6vw,60px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px}
@@ -102,7 +102,7 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 /* desktop: two-column stage layout */
 @media(min-width:800px){
   .stage{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:flex-start;padding:24px 28px 60px;max-width:1200px;margin:0 auto;width:100%}
-  .step{max-width:none;width:100%}
+  .step{max-width:none;width:100%;min-width:0}
   .order-summary{display:block}
   .prog{margin:0 auto;max-width:1200px;padding:0 28px 8px}
 }
@@ -137,11 +137,19 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .done .check{width:96px;height:96px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:52px}
 .foot{text-align:center;padding:16px;font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.5;text-transform:uppercase}
 .pill{display:inline-block;background:var(--ink);color:var(--cream);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:14px}
-/* intro pouch row */
-.pouch-row{display:flex;overflow-x:auto;align-items:flex-end;gap:14px;margin:8px 0 34px;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;-webkit-mask:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 30px),transparent);mask:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 30px),transparent);}
+/* intro pouch row — a "shop the range" shelf: uniform labelled cards so bottle vs
+   pouch photos of very different native proportions still read as one consistent row.
+   min-width:0 keeps this shelf from forcing its full scroll width onto the desktop
+   grid item (.step) it sits in — without it the unshrinkable row inflates .step's
+   intrinsic width and blows out the whole two-column layout. */
+.pouch-row{display:flex;overflow-x:auto;min-width:0;gap:14px;margin:8px 0 34px;padding:6px 2px 16px;scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;-webkit-mask:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
 .pouch-row::-webkit-scrollbar{display:none}
-.pouch-row__img{width:90px;height:90px;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.18));opacity:0;animation:pouchBounceIn .7s cubic-bezier(.34,1.56,.64,1) forwards;}
-@media(max-width:640px){.pouch-row__img{width:64px;height:64px}}
+.pouch-card{flex:0 0 auto;scroll-snap-align:start;width:124px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 8px 12px;background:#fff;border:2px solid rgba(10,10,10,.08);border-radius:20px;box-shadow:0 8px 18px rgba(20,15,0,.07);opacity:0;transform:translateY(40px) scale(.9);animation:pouchBounceIn .7s cubic-bezier(.34,1.56,.64,1) forwards;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+.pouch-card:hover{transform:translateY(-4px);box-shadow:0 14px 26px rgba(20,15,0,.13);border-color:rgba(10,10,10,.14)}
+.pouch-card__imgs{display:flex;align-items:flex-end;justify-content:center;gap:6px;height:82px;width:100%;}
+.pouch-card__img{flex:0 1 auto;max-width:46px;max-height:82px;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.16));}
+.pouch-card__name{font-size:11px;font-weight:800;text-align:center;line-height:1.25;text-transform:uppercase;letter-spacing:.02em;opacity:.72;min-height:2.5em;display:flex;align-items:center}
+@media(max-width:640px){.pouch-card{width:100px;padding:12px 6px 10px}.pouch-card__imgs{height:62px}.pouch-card__img{max-width:36px;max-height:62px}.pouch-card__name{font-size:10px}}
 @keyframes pouchBounceIn{
   0%{opacity:0;transform:translateY(40px) scale(.5);}
   60%{opacity:1;transform:translateY(-8px) scale(1.06);}
@@ -429,11 +437,17 @@ const INTRO_DRINK_IDS=[
   ['rumazing','Rumazing'],
   ['suck-your-rum','Suck Your Rum'],
 ];
-// one bottle + one pouch shot per flavour, so the intro row shows the full range
-const INTRO_POUCHES=INTRO_DRINK_IDS.flatMap(([id,name])=>[
-  {src:'wp-content/uploads/2026/07/vibe/bottle-'+id+'.webp',alt:name+' bottle'},
-  {src:'wp-content/uploads/2026/07/vibe/product-'+id+'.png',alt:name+' pouch'},
-]);
+// bottle + pouch shot per flavour, grouped into one labelled card each so the intro
+// shelf shows the full range without the two formats reading as unrelated clutter
+function introShelfCard([id,name],i){
+  return `<div class="pouch-card" style="animation-delay:${(i*0.09).toFixed(2)}s">
+    <div class="pouch-card__imgs">
+      <img src="wp-content/uploads/2026/07/vibe/bottle-${id}.webp" alt="${esc(name)} bottle" class="pouch-card__img" loading="lazy">
+      <img src="wp-content/uploads/2026/07/vibe/product-${id}.png" alt="${esc(name)} pouch" class="pouch-card__img" loading="lazy">
+    </div>
+    <span class="pouch-card__name">${esc(name)}</span>
+  </div>`;
+}
 const PARTY_ICON='assets/party/icons/', PARTY_DECOR='assets/party/decor/';
 const PARTY_THEMES=[
   {cls:'red',    fruitA:PARTY_DECOR+'watermelon.svg',   fruitB:PARTY_DECOR+'strawberry.svg',   prop:PARTY_DECOR+'disco-ball.svg'},
@@ -544,7 +558,7 @@ const STEPS={
   if(!hasVibe){
     return headline+`
     <div class="pouch-row" id="introPouches">
-      ${INTRO_POUCHES.map((p,i)=>'<img src="'+p.src+'" alt="'+p.alt+'" class="pouch-row__img" style="animation-delay:'+(i*0.09)+'s">').join('')}
+      ${INTRO_DRINK_IDS.map(introShelfCard).join('')}
     </div>
     <div class="nav">
       <button class="btn prev" id="prev">← Back</button>
