@@ -138,8 +138,9 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .foot{text-align:center;padding:16px;font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.5;text-transform:uppercase}
 .pill{display:inline-block;background:var(--ink);color:var(--cream);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:14px}
 /* intro pouch row */
-.pouch-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px;margin:8px 0 34px;}
-.pouch-row__img{width:90px;height:90px;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.18));opacity:0;animation:pouchBounceIn .7s cubic-bezier(.34,1.56,.64,1) forwards;}
+.pouch-row{display:flex;overflow-x:auto;align-items:flex-end;gap:14px;margin:8px 0 34px;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;-webkit-mask:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 30px),transparent);mask:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 30px),transparent);}
+.pouch-row::-webkit-scrollbar{display:none}
+.pouch-row__img{width:90px;height:90px;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.18));opacity:0;animation:pouchBounceIn .7s cubic-bezier(.34,1.56,.64,1) forwards;}
 @media(max-width:640px){.pouch-row__img{width:64px;height:64px}}
 @keyframes pouchBounceIn{
   0%{opacity:0;transform:translateY(40px) scale(.5);}
@@ -518,6 +519,9 @@ function render(keepScroll){
   el.innerHTML=STEPS[key]();
   wire(key);
   renderSummary();
+  document.querySelectorAll('[data-cart-count]').forEach(el=>{
+    el.textContent=String(S.vibeBasket.reduce((n,line)=>n+(line.qty||0),0));
+  });
   if(!keepScroll) window.scrollTo({top:0,behavior:'smooth'});
 }
 function go(n){ idx=Math.max(0,idx+n); render(); }
@@ -542,7 +546,10 @@ const STEPS={
     <div class="pouch-row" id="introPouches">
       ${INTRO_POUCHES.map((p,i)=>'<img src="'+p.src+'" alt="'+p.alt+'" class="pouch-row__img" style="animation-delay:'+(i*0.09)+'s">').join('')}
     </div>
-    ${navHtml('Start →', true)}`;
+    <div class="nav">
+      <button class="btn prev" id="prev">← Back</button>
+      <span></span>
+    </div>`;
   }
 
   const cards=S.vibeBasket.map((item,i)=>{
@@ -866,24 +873,29 @@ function keepThisVibe(){
 
 function renderSummary(){
   const s=document.getElementById('summary'); if(!s)return;
-  if(sequence()[idx]==='intro' && S.vibeBasket.length){
-    s.classList.add('party');
-    const icon=n=>'<img src="'+PARTY_ICON+n+'.svg" alt="">';
-    const total=S.vibeBasket.reduce((sum,i)=>sum+(i.unitPrice||0)*i.qty,0);
-    const lines=S.vibeBasket.map(i=>`
-      <div class="party-sum-line">
-        <span><strong>${esc(i.name)}</strong><small>${i.qty} × ${i.size}ml</small></span>
-        <b>£${(i.unitPrice*i.qty).toFixed(2)}</b>
-      </div>`).join('');
-    s.innerHTML=`<div class="party-summary-inner">
-      <h3>Your Party</h3>
-      <span class="party-summary-marker" aria-hidden="true"></span>
-      <div class="party-sum-lines">${lines}</div>
-      <div class="party-sum-total"><span>Total</span><strong>£${total.toFixed(2)}</strong></div>
-      <button class="party-checkout-btn" type="button" id="partyCheckout"><span>Proceed to checkout</span>${icon('arrow-right')}</button>
-      <p class="party-secure">${icon('lock')} Secure checkout</p>
-    </div>`;
-    const pc=document.getElementById('partyCheckout'); if(pc) pc.onclick=keepThisVibe;
+  if(sequence()[idx]==='intro'){
+    if(S.vibeBasket.length){
+      s.classList.add('party');
+      const icon=n=>'<img src="'+PARTY_ICON+n+'.svg" alt="">';
+      const total=S.vibeBasket.reduce((sum,i)=>sum+(i.unitPrice||0)*i.qty,0);
+      const lines=S.vibeBasket.map(i=>`
+        <div class="party-sum-line">
+          <span><strong>${esc(i.name)}</strong><small>${i.qty} × ${i.size}ml</small></span>
+          <b>£${(i.unitPrice*i.qty).toFixed(2)}</b>
+        </div>`).join('');
+      s.innerHTML=`<div class="party-summary-inner">
+        <h3>Your Party</h3>
+        <span class="party-summary-marker" aria-hidden="true"></span>
+        <div class="party-sum-lines">${lines}</div>
+        <div class="party-sum-total"><span>Total</span><strong>£${total.toFixed(2)}</strong></div>
+        <button class="party-checkout-btn" type="button" id="partyCheckout"><span>Proceed to checkout</span>${icon('arrow-right')}</button>
+        <p class="party-secure">${icon('lock')} Secure checkout</p>
+      </div>`;
+      const pc=document.getElementById('partyCheckout'); if(pc) pc.onclick=keepThisVibe;
+      return;
+    }
+    s.classList.remove('party');
+    s.innerHTML='<h3>Order summary</h3><div class="os-total"><span class="os-k">Total</span><strong>&pound;0</strong></div>';
     return;
   }
   s.classList.remove('party');
