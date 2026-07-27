@@ -494,8 +494,9 @@
 }
 
 @media (max-width: 767px) {
+  /* black promo bar above the header is removed on mobile */
   .announcement-bar {
-    min-height: var(--announcement-height-mobile);
+    display: none;
   }
 
   .announcement-inner {
@@ -525,13 +526,12 @@
   }
 
   .site-header {
-    top: var(--announcement-height-mobile);
+    top: 0;
   }
 
   .contact-main {
-    padding-top: calc(var(--announcement-height-mobile) + var(--header-height-mobile));
-    min-height: calc(100vh - var(--announcement-height-mobile) - var(--header-height-mobile));
-    min-height: calc(100vh - var(--announcement-height-mobile) - var(--header-height-mobile));
+    padding-top: var(--header-height-mobile);
+    min-height: calc(100vh - var(--header-height-mobile));
     background-image: url("../assets/backgrounds/contact-mobile.webp");
     background-repeat: no-repeat;
     background-position: top center;

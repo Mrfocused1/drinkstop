@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="css/brand-page.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/mobile-menu.css">
+  <link rel="stylesheet" href="css/vibe-cart.css">
 
 </head>
 <body>
@@ -107,6 +108,11 @@
       </nav>
 
       <!-- Header Order Now pill button -->
+      <button class="vibe-cart" type="button" aria-label="Basket" data-open-basket>
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="#ffffe7"/></svg>
+        <span class="count" data-cart-count>0</span>
+      </button>
+
       <a class="header-order-button" href="choose-your-vibe.html">
         <span class="order-arrow" aria-hidden="true">➤</span>
         <span>Order Now</span>
@@ -446,6 +452,7 @@
   <script src="js/brand-page.js"></script>
 
   <script src="js/mobile-menu.js" defer></script>
+  <script src="js/vibe-cart.js" defer></script>
 
 </body>
 </html>

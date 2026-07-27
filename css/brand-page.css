@@ -12,7 +12,7 @@
   padding: 14px clamp(34px, 4vw, 72px);
 
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr) auto;
+  grid-template-columns: 160px minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 42px;
 

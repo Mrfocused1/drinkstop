@@ -51,7 +51,12 @@
           <path d="M3 8h10M8.5 3.5 13 8l-4.5 4.5" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-    `).join("");
+    `).join("") + `
+      <a class="ds-menu__view-all" href="our-drinks.html" style="--row-delay:${DRINKS.length * 45}ms">
+        <span>View All</span>
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 32h45M39 17l15 15-15 15" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    `;
   }
 
   /* ── Active nav item ─────────────────────────────────────────────────── */
@@ -213,7 +218,7 @@
 
   if (drinkList) {
     drinkList.addEventListener("click", (event) => {
-      if (event.target.closest(".ds-menu__drink-row")) closeMenu();
+      if (event.target.closest(".ds-menu__drink-row, .ds-menu__view-all")) closeMenu();
     });
   }
 

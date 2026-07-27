@@ -7,7 +7,9 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Anton&family=Permanent+Marker&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mobile-menu.css">
+<link rel="stylesheet" href="css/vibe-cart.css">
 <link rel="icon" href="wp-content/uploads/2025/10/cropped-favicon-2-192x192.webp">
 <style>
 @font-face{
@@ -25,6 +27,11 @@ body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--c
 .ohead .logo{height:44px;width:auto;display:block}
 .ohead a.back{font-weight:800;text-decoration:none;color:var(--ink);font-size:14px;letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:2px solid var(--ink);border-radius:999px;transition:.2s}
 .ohead a.back:hover{background:var(--ink);color:var(--cream)}
+/* header right cluster: basket + close + menu button (ds-menu, same as the rest of the site) */
+.ohead-right{display:flex;align-items:center;gap:14px}
+.ohead .mobile-menu-button{width:48px;height:48px;padding:11px;display:flex;flex-direction:column;justify-content:center;gap:6px;border:0;border-radius:50%;background:var(--ink);cursor:pointer;flex-shrink:0;-webkit-appearance:none;appearance:none}
+.ohead .mobile-menu-button span{width:100%;height:3px;border-radius:99px;background:var(--cream);display:block}
+@media(max-width:480px){.ohead{padding:14px 16px}.ohead-right{gap:10px}.ohead a.back{padding:9px 14px;font-size:13px}}
 /* progress */
 .prog{padding:0 28px 8px;max-width:900px;margin:0 auto;width:100%}
 .prog .bar{height:8px;background:#00000014;border-radius:999px;overflow:hidden}
@@ -212,6 +219,13 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .party-cta img{width:32px;height:32px;filter:invert(89%) sepia(96%) saturate(1810%) hue-rotate(18deg) brightness(106%) contrast(105%)}
 .party-secondary{display:flex;align-items:center;gap:8px;width:max-content;margin:16px auto 0;padding:11px 24px;border:2px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.15s;-webkit-appearance:none;appearance:none}
 .party-secondary:hover{background:var(--ink);color:var(--cream)}
+/* poof removal — minus on the last pouch of a drink */
+.party-card--poof{animation:cardPoof .42s cubic-bezier(.5,0,.7,.4) forwards;pointer-events:none}
+@keyframes cardPoof{0%{opacity:1;transform:scale(1)}25%{opacity:1;transform:scale(1.03)}100%{opacity:0;transform:scale(.55) rotate(-4deg)}}
+.poof-puff{position:fixed;z-index:200;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(255,251,230,.95) 0%,rgba(255,251,230,.55) 45%,rgba(255,251,230,0) 70%);animation:puffUp .45s ease-out forwards}
+@keyframes puffUp{0%{transform:translate(-50%,-50%) scale(.2);opacity:1}100%{transform:translate(-50%,-50%) scale(1.15);opacity:0}}
+.poof-crumb{position:fixed;z-index:201;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;pointer-events:none;animation:crumbFly var(--d,.4s) ease-out forwards}
+@keyframes crumbFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
 /* black "Your Party" summary — only rendered while the intro step has vibe items */
 .order-summary.party{background:var(--ink);color:#fff;border:0;padding:0;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.25)}
 .party-summary-inner{padding:26px}
@@ -263,10 +277,145 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 <div class="wrap">
   <header class="ohead">
     <a href="index.html"><img class="logo" src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="DRINK STOP"></a>
-    <a class="back" id="closeLink" href="choose-your-vibe.html">✕ Close</a>
+    <div class="ohead-right">
+      <button class="vibe-cart" type="button" aria-label="Basket" data-open-basket>
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="#ffffe7"/></svg>
+        <span class="count" data-cart-count>0</span>
+      </button>
+      <a class="back" id="closeLink" href="choose-your-vibe.html">✕ Close</a>
+      <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="ds-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
   <main class="stage"><div class="step" id="step"></div><aside class="order-summary" id="summary"></aside></main>
   <div class="foot">DRINK STOP · Please drink responsibly · 18+ only</div>
+</div>
+
+<!-- ==============================================================
+     PREMIUM MOBILE MENU (Drink Stop) — same as every other page
+     ============================================================== -->
+<div class="ds-menu" id="ds-menu" data-current="order" aria-hidden="true">
+  <div class="ds-menu__scrim" data-ds-close></div>
+
+  <div class="ds-menu__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+
+    <div class="ds-menu__view ds-menu__view--main">
+
+      <div class="ds-menu__header">
+        <a href="index.html" class="ds-menu__logo" tabindex="-1" aria-hidden="true">
+          <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="" width="96" height="62">
+        </a>
+        <button type="button" class="ds-menu__close" data-ds-close aria-label="Close menu">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <nav class="ds-menu__nav" aria-label="Primary">
+
+        <a href="index.html#about" class="ds-menu__link" data-key="about">
+          <span class="ds-menu__link-label">
+            About
+            <svg class="ds-menu__brush" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10c22-7 40 6 62-1s42 8 64 1 46-6 68 2"/></svg>
+          </span>
+          <span class="ds-menu__link-icon">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 32h45M39 17l15 15-15 15" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <button type="button" class="ds-menu__link" data-key="drinks" data-ds-open-submenu="drinks">
+          <span class="ds-menu__link-label">
+            Our Drinks
+            <svg class="ds-menu__brush" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10c22-7 40 6 62-1s42 8 64 1 46-6 68 2"/></svg>
+          </span>
+          <span class="ds-menu__link-icon" style="transform:rotate(-90deg)">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M12 22l20 20 20-20" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+
+        <a href="choose-your-vibe.html" class="ds-menu__link" data-key="order">
+          <span class="ds-menu__link-label">
+            Order Now
+            <svg class="ds-menu__brush" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10c22-7 40 6 62-1s42 8 64 1 46-6 68 2"/></svg>
+          </span>
+          <span class="ds-menu__link-icon">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 32h45M39 17l15 15-15 15" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a href="brand-pages.html" class="ds-menu__link" data-key="brand">
+          <span class="ds-menu__link-label">
+            Brand Pages
+            <svg class="ds-menu__brush" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10c22-7 40 6 62-1s42 8 64 1 46-6 68 2"/></svg>
+          </span>
+          <span class="ds-menu__link-icon">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 32h45M39 17l15 15-15 15" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a href="contact.html" class="ds-menu__link" data-key="contact">
+          <span class="ds-menu__link-label">
+            Contact
+            <svg class="ds-menu__brush" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10c22-7 40 6 62-1s42 8 64 1 46-6 68 2"/></svg>
+          </span>
+          <span class="ds-menu__link-icon">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="6" stroke-linecap="round"><path d="M32 12v40M12 32h40"/></g></svg>
+          </span>
+        </a>
+
+      </nav>
+
+      <a href="choose-your-vibe.html" class="ds-menu__cta">
+        <span class="ds-menu__cta-icon">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 32h45M39 17l15 15-15 15" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Order Now</span>
+      </a>
+
+      <div class="ds-menu__social">
+        <a class="ds-menu__social-btn" href="https://instagram.com/drinkstopldn" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/></svg>
+        </a>
+        <a class="ds-menu__social-btn" href="https://tiktok.com/@drinkstopldn" aria-label="TikTok" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.2 2.5v11.9a3.6 3.6 0 1 1-3.1-3.57V14.2a1.2 1.2 0 1 0 1.2 1.2V2.5h1.9z" fill="currentColor"/><path d="M14.2 2.5a4.5 4.5 0 0 0 4.4 4.5V9.3a6.6 6.6 0 0 1-4.4-1.68V2.5z" fill="currentColor"/></svg>
+        </a>
+        <a class="ds-menu__social-btn" href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="2"/><path d="M13.4 9.1h1.4V6.8h-1.6c-1.8 0-2.7.98-2.7 2.63V11H9v2.2h1.5V18h2.2v-4.8h1.9l.35-2.2h-2.25V9.7c0-.4.18-.6.65-.6z" fill="currentColor"/></svg>
+        </a>
+      </div>
+
+      <ul class="ds-menu__info">
+        <li>
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 5v54M9 18l46 28M9 46l46-28"/><path d="M32 5l-7 7M32 5l7 7M32 59l-7-7M32 59l7-7"/><path d="M9 18l10 1M9 18l4-9M55 46l-10-1M55 46l-4 9"/><path d="M9 46l10-1M9 46l4 9M55 18l-10 1M55 18l-4-9"/></g></svg>
+          Keep Frozen
+        </li>
+        <li>
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14h32v31H6z"/><path d="M38 26h10l10 11v8H38z"/><circle cx="18" cy="49" r="6"/><circle cx="49" cy="49" r="6"/><path d="M38 37h20"/></g></svg>
+          Fast Delivery
+        </li>
+        <li>
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10h44L32 35 10 10z"/><path d="M32 35v16M21 56h22"/><path d="M42 15l9-8M48 7h7"/><circle cx="22" cy="18" r="3"/></g></svg>
+          Premium Cocktails
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="ds-menu__view ds-menu__view--submenu">
+      <div class="ds-menu__subheader">
+        <button type="button" class="ds-menu__back" data-ds-back>
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7.5 3.5 3 8l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+        <span class="ds-menu__subtitle">Our Drinks</span>
+        <button type="button" class="ds-menu__close" data-ds-close aria-label="Close menu">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="ds-menu__drink-list" data-ds-drink-list></div>
+    </div>
+
+  </div>
 </div>
 
 <script>
@@ -681,6 +830,27 @@ function dmPanel(){
 function artworkValid(){ return S.designMode==='upload' ? (!!S.artwork||!!S.artworkName) : S.designMode==='request' ? S.brief.trim().length>3 : false; }
 function updateNext(){ const n=document.getElementById('next'); if(n && sequence()[idx]==='artwork') n.disabled=!artworkValid(); }
 
+// poof: smoke puff + crumbs burst, then the card shrinks away
+function poofCard(card,done){
+  if(!card || window.matchMedia('(prefers-reduced-motion: reduce)').matches){done();return;}
+  const r=card.getBoundingClientRect();
+  const cx=r.left+r.width/2, cy=r.top+r.height/2, size=Math.max(r.width,130);
+  const puff=document.createElement('div');
+  puff.className='poof-puff';
+  puff.style.cssText=`left:${cx}px;top:${cy}px;width:${size}px;height:${size}px`;
+  document.body.appendChild(puff);
+  for(let n=0;n<8;n++){
+    const c=document.createElement('i');
+    c.className='poof-crumb';
+    const ang=(n/8)*Math.PI*2+Math.random()*.6, dist=60+Math.random()*80;
+    c.style.cssText=`left:${cx}px;top:${cy}px;background:${n%2?'var(--green)':'var(--ink)'};--dx:${Math.cos(ang)*dist}px;--dy:${Math.sin(ang)*dist}px;--d:${(.35+Math.random()*.3).toFixed(2)}s`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),850);
+  }
+  card.classList.add('party-card--poof');
+  setTimeout(()=>{puff.remove();done();},430);
+}
+
 function keepThisVibe(){
   S.mix=S.vibeBasket.map(i=>({type:'alcohol',packaging:i.format||'pouch',design:'original',size:parseInt(i.size)||150,qty:parseInt(i.qty)||1,name:i.name,fixedPrice:i.unitPrice}));
   S.design='mix';
@@ -786,6 +956,19 @@ function wire(key){
     el.querySelectorAll('[data-vqty]').forEach(b=>b.onclick=()=>{
       const i=parseInt(b.dataset.idx), delta=parseInt(b.dataset.vqty);
       const item=S.vibeBasket[i]; if(!item) return;
+      // minus on the last one of this drink: poof it off the list instead of going below 1
+      if(delta<0 && (parseInt(item.qty)||1)<=1){
+        poofCard(b.closest('.party-card'),()=>{
+          const at=S.vibeBasket.indexOf(item);
+          if(at>=0) S.vibeBasket.splice(at,1);
+          try{
+            if(S.vibeBasket.length) localStorage.setItem('drinkstop_vibe_basket',JSON.stringify(S.vibeBasket));
+            else localStorage.removeItem('drinkstop_vibe_basket');
+          }catch(e){}
+          render(true);
+        });
+        return;
+      }
       item.qty=Math.max(1,(parseInt(item.qty)||1)+delta);
       try{ localStorage.setItem('drinkstop_vibe_basket', JSON.stringify(S.vibeBasket)); }catch(e){}
       render(true);
@@ -824,6 +1007,8 @@ if(closeLink) closeLink.addEventListener('click',e=>{
 
 render();
 </script>
+<script src="js/mobile-menu.js" defer></script>
+<script src="js/vibe-cart.js" defer></script>
 <script src="assets/content-loader.js"></script>
 </body>
 </html>

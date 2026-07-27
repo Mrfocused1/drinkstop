@@ -484,6 +484,48 @@
   background: var(--ds-row-bg-active);
 }
 
+/* "View All" button at the bottom of the drinks submenu → our-drinks.html */
+.ds-menu__view-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 56px;
+  margin-top: 18px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--ds-lime);
+  color: var(--ds-black);
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 14px 32px rgba(17, 17, 17, 0.12);
+  transition: transform 180ms var(--ds-ease), box-shadow 180ms var(--ds-ease);
+
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.ds-menu__panel.is-submenu-open .ds-menu__view-all {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 300ms var(--ds-ease) var(--row-delay, 0ms),
+    transform 300ms var(--ds-ease) var(--row-delay, 0ms),
+    box-shadow 180ms var(--ds-ease);
+}
+
+.ds-menu__view-all svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ds-menu__view-all:hover {
+  box-shadow: 0 20px 44px rgba(17, 17, 17, 0.18);
+}
+
 .ds-menu__drink-thumb {
   flex: 0 0 auto;
   width: 52px;

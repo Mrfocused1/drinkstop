@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Drink Stop — shared header cart button ("vibe-cart")
+   Black circle + yellow count badge. Markup lives inline in each page's
+   header; behaviour in js/vibe-cart.js (choose-your-vibe.html wires its own).
+   ========================================================================== */
+
+.vibe-cart{position:relative;display:flex;align-items:center;justify-content:center;width:2.1875rem;height:2.1875rem;border:0;border-radius:50%;background:#000;cursor:pointer;transition:background-color .3s;padding:0}
+.vibe-cart svg{pointer-events:none}
+.vibe-cart svg path{fill:#ffffe7;transition:fill .3s}
+.vibe-cart:hover{background-color:#ffffe7}
+.vibe-cart:hover svg path{fill:#000}
+.vibe-cart .count{position:absolute;top:-8px;right:-8px;display:grid;min-width:22px;height:22px;place-items:center;border:2px solid #000;border-radius:99px;background:var(--yellow,#fdcc04);color:#111;font-size:.68rem;font-weight:900;font-family:inherit}
+
+/* mobile twin: sits in the top bar, left of the hamburger (used where the
+   desktop header hides its action row on mobile — e.g. homepage, vibe page) */
+.vibe-cart--mobile{position:absolute;top:1.5625rem;right:4.7rem;z-index:61}
+@media(min-width:64em){.vibe-cart--mobile{display:none}}
