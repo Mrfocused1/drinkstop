@@ -4,78 +4,14 @@
   background: var(--cream);
 }
 
-.announcement-bar {
-  min-height: var(--announcement-height);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 120;
-  display: flex;
-  align-items: center;
-  color: var(--white);
-  background: var(--black);
-}
-
-.announcement-inner {
-  width: min(var(--page-max-width), calc(100% - 72px));
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  gap: 28px;
-}
-
-.announcement-message {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.announcement-message span {
-  color: var(--lime-bright);
-}
-
-.announcement-cta {
-  min-height: 36px;
-  padding: 0 22px;
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: var(--black);
-  background: var(--lime-bright);
-  font-size: 13px;
-  font-weight: 900;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: transform var(--ease-out) var(--duration-fast);
-}
-
-.announcement-cta:hover {
-  transform: translateY(-1px);
-}
-
-.announcement-meta {
-  display: flex;
-  justify-content: flex-end;
-  gap: 32px;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
 .site-header {
-  top: var(--announcement-height);
   background: rgba(255, 249, 232, 0.97);
   border-bottom: 1px solid rgba(17, 17, 17, 0.10);
 }
 
 .contact-main {
-  padding-top: calc(var(--announcement-height) + var(--header-height-desktop));
-  min-height: calc(100vh - var(--announcement-height) - var(--header-height-desktop));
+  padding-top: var(--header-height-desktop);
+  min-height: calc(100vh - var(--header-height-desktop));
   position: relative;
   background-image: url("../assets/backgrounds/contact-desktop.webp");
   background-repeat: no-repeat;
@@ -445,44 +381,9 @@
 }
 
 @media (max-width: 767px) {
-  .announcement-bar {
-    min-height: var(--announcement-height-mobile);
-  }
-
-  .announcement-inner {
-    width: 100%;
-    padding: 8px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 7px 14px;
-  }
-
-  .announcement-message {
-    width: 100%;
-    text-align: center;
-    font-size: clamp(11px, 3vw, 14px);
-  }
-
-  .announcement-cta {
-    min-height: 32px;
-    padding: 0 17px;
-    font-size: 11px;
-  }
-
-  .announcement-meta {
-    display: none;
-  }
-
-  .site-header {
-    top: var(--announcement-height-mobile);
-  }
-
   .contact-main {
-    padding-top: calc(var(--announcement-height-mobile) + var(--header-height-mobile));
-    min-height: calc(100vh - var(--announcement-height-mobile) - var(--header-height-mobile));
-    min-height: calc(100vh - var(--announcement-height-mobile) - var(--header-height-mobile));
+    padding-top: var(--header-height-mobile);
+    min-height: calc(100vh - var(--header-height-mobile));
     background-image: url("../assets/backgrounds/contact-mobile.webp");
     background-repeat: no-repeat;
     background-position: top center;
@@ -494,70 +395,84 @@
     padding: 40px 0 20px;
   }
 
+  /* Text (heading + handwritten note) sits left, the pouch sits in its own
+     column top-right — .contact-copy is display:contents so its children
+     (h1 / handwritten / underline / intro) place directly into this grid
+     rather than as one block, letting the intro paragraph drop to its own
+     full-width row below the pouch instead of squeezing beside it. */
   .contact-layout {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr minmax(120px, 38%);
+    column-gap: 14px;
+    row-gap: 4px;
   }
 
   .contact-copy {
-    width: 100%;
-    padding: 0 24px;
-    position: relative;
-    z-index: 6;
+    display: contents;
   }
 
   .contact-copy h1 {
+    grid-column: 1;
+    grid-row: 1;
     width: auto;
-    font-size: clamp(56px, 17vw, 84px);
-    line-height: 0.92;
+    font-size: clamp(34px, 12vw, 50px);
+    line-height: 0.95;
   }
 
   .contact-handwritten {
+    grid-column: 1;
+    grid-row: 2;
     width: auto;
-    margin: 14px 0 0 4px;
-    font-size: clamp(19px, 5.4vw, 27px);
-    line-height: 1.2;
+    margin: 12px 0 0 2px;
+    font-size: clamp(15px, 4.6vw, 20px);
+    line-height: 1.25;
   }
 
   .handwritten-underline {
-    width: min(300px, 82%);
-    margin: 6px 0 16px 4px;
+    grid-column: 1;
+    grid-row: 3;
+    width: min(200px, 90%);
+    margin: 4px 0 0 2px;
     border-top-width: 5px;
   }
 
   .contact-introduction {
+    grid-column: 1 / -1;
+    grid-row: 4;
     width: 100%;
     max-width: 440px;
     min-height: 0;
-    margin-top: 6px;
+    margin-top: 18px;
     font-size: clamp(15px, 4vw, 18px);
     line-height: 1.55;
   }
 
   .contact-product-stage {
-    width: 100%;
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: start;
     min-height: 0;
-    margin: 8px 0 0;
-    padding: 0 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
+    padding: 0;
+    display: block;
     position: relative;
     z-index: 3;
   }
 
   .contact-product-image {
     position: static;
-    width: clamp(200px, 58vw, 300px);
+    width: 100%;
     height: auto;
     transform: rotate(3deg);
   }
 
   .contact-form-column {
+    grid-column: 1 / -1;
+    grid-row: 5;
     width: 100%;
-    padding: 0 20px;
+    padding: 0;
     margin-top: 12px;
   }
 

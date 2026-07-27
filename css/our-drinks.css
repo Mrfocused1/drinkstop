@@ -4,8 +4,8 @@
 
    variables.css / base.css / brand-page.css / responsive.css (loaded before
    this file) already provide the design tokens and the shared transparent
-   header + mobile slide-in nav used on the Clients page. Everything below
-   is specific to this page: announcement bar, hero, benefits and the
+   header used on the Clients page (mobile nav is css/mobile-menu.css).
+   Everything below is specific to this page: hero, benefits and the
    flavour card grid.
    ========================================================================== */
 
@@ -20,121 +20,7 @@
 }
 
 .our-drinks-main {
-  padding-top: calc(var(--announcement-height) + var(--header-height-desktop));
-}
-
-/* Header sits below the announcement bar on this page only. */
-.site-header {
-  top: var(--announcement-height);
-}
-
-/* Mobile slide-in nav must start below the (taller, two-bar) header too. */
-.mobile-navigation {
-  inset: calc(var(--announcement-height) + var(--header-height-desktop)) 0 0 0;
-}
-
-/* ==========================================================================
-   SECTION 1 — Announcement Bar
-   ========================================================================== */
-
-.announcement-bar {
-  min-height: var(--announcement-height);
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 110;
-
-  display: flex;
-  align-items: center;
-
-  color: var(--paper);
-  background: var(--black);
-}
-
-.announcement-inner {
-  width: min(var(--desktop-max-width), calc(100% - 72px));
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  gap: 26px;
-}
-
-.announcement-message {
-  min-width: 0;
-  margin: 0;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  overflow: hidden;
-
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.announcement-icon {
-  width: 14px;
-  height: 14px;
-  filter: brightness(0) invert(1);
-}
-
-.announcement-message strong {
-  color: var(--lime-bright);
-}
-
-.announcement-cta {
-  min-height: 34px;
-  padding: 0 20px;
-  border-radius: var(--radius-button);
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  color: var(--black);
-  background: var(--lime-bright);
-
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-  white-space: nowrap;
-
-  transition: transform var(--ease-out) 160ms;
-}
-
-.announcement-cta:hover {
-  transform: translateY(-1px);
-}
-
-.announcement-cta-short {
-  display: none;
-}
-
-.announcement-cta img {
-  width: 10px;
-  height: 10px;
-}
-
-.announcement-meta {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 26px;
-
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  padding-top: var(--header-height-desktop);
 }
 
 /* ==========================================================================
@@ -681,69 +567,10 @@
   }
 }
 
-@media (max-width: 899px) and (min-width: 768px) {
-  .announcement-meta {
-    display: none;
-  }
-}
-
 @media (max-width: 767px) {
 
-  /* ── Announcement bar ──────────────────────────────────────────── */
-
-  .announcement-bar {
-    min-height: var(--announcement-height-mobile);
-  }
-
   .our-drinks-main {
-    padding-top: calc(var(--announcement-height-mobile) + var(--header-height-mobile));
-  }
-
-  .site-header {
-    top: var(--announcement-height-mobile);
-  }
-
-  .mobile-navigation {
-    inset: calc(var(--announcement-height-mobile) + var(--header-height-mobile)) 0 0 0;
-  }
-
-  .announcement-inner {
-    width: 100%;
-    padding: 0 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .announcement-message {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: clamp(9px, 2.6vw, 11px);
-  }
-
-  .announcement-message strong {
-    white-space: nowrap;
-  }
-
-  .announcement-cta {
-    flex-shrink: 0;
-    min-height: 30px;
-    padding: 0 12px;
-    font-size: 10px;
-  }
-
-  .announcement-cta-full {
-    display: none;
-  }
-
-  .announcement-cta-short {
-    display: inline;
-  }
-
-  .announcement-meta {
-    display: none;
+    padding-top: var(--header-height-mobile);
   }
 
   /* ── Hero ──────────────────────────────────────────────────────── */
