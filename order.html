@@ -161,6 +161,7 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 /* ===== PARTY INTRO REDESIGN (Step 1 / intro step only) ===== */
 .party-headline{position:relative;font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:clamp(44px,7vw,92px);line-height:.88;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:6px}
 .party-headline em{color:var(--red);font-style:normal}
+.party-headline .ph-m{display:none}
 .party-underline{display:block;width:min(260px,60%);height:12px;margin:6px 0 18px 4px;border-top:6px solid var(--ink);border-radius:50%;transform:rotate(-3deg)}
 .party-sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:520px;margin-bottom:26px}
 .party-benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;list-style:none;margin:0 0 30px;padding:0}
@@ -209,7 +210,8 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .party-cta{width:100%;min-height:70px;margin-top:4px;padding:0 28px;border:4px solid var(--green);border-radius:999px;display:flex;align-items:center;justify-content:center;gap:20px;color:var(--green);background:var(--ink);box-shadow:0 14px 28px rgba(0,0,0,.2);font-family:'Anton','DS Display',sans-serif;font-weight:400;font-size:clamp(22px,3vw,34px);letter-spacing:.01em;text-transform:uppercase;cursor:pointer;transition:.2s var(--ui,ease);-webkit-appearance:none;appearance:none}
 .party-cta:hover{transform:translateY(-3px)}
 .party-cta img{width:32px;height:32px;filter:invert(89%) sepia(96%) saturate(1810%) hue-rotate(18deg) brightness(106%) contrast(105%)}
-.party-secondary{display:block;margin:12px auto 0;padding:6px 10px;border:0;border-bottom:3px solid var(--ink);background:transparent;font-weight:700;font-size:14px;cursor:pointer;transform:rotate(-1deg);-webkit-appearance:none;appearance:none}
+.party-secondary{display:flex;align-items:center;gap:8px;width:max-content;margin:16px auto 0;padding:11px 24px;border:2px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.15s;-webkit-appearance:none;appearance:none}
+.party-secondary:hover{background:var(--ink);color:var(--cream)}
 /* black "Your Party" summary — only rendered while the intro step has vibe items */
 .order-summary.party{background:var(--ink);color:#fff;border:0;padding:0;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.25)}
 .party-summary-inner{padding:26px}
@@ -235,6 +237,14 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .party-secure{margin:12px 0 0;display:flex;align-items:center;justify-content:center;gap:7px;color:rgba(255,255,255,.6);font-size:11px}
 .party-secure img{width:14px;height:14px;filter:brightness(0) invert(1);opacity:.66}
 @media(max-width:799px){
+  /* headline: centred, two lines; sub copy: centred + bold */
+  .party-headline{text-align:center}
+  .party-headline .ph-d{display:none}
+  .party-headline .ph-m{display:inline}
+  /* keep the 2-line split intact on very small phones (Galaxy Fold etc.) */
+  @media(max-width:340px){.party-headline{font-size:42px}}
+  .party-underline{margin-left:auto;margin-right:auto}
+  .party-sub{text-align:center;font-weight:700;margin-left:auto;margin-right:auto}
   .party-benefits{gap:6px;margin-bottom:24px}
   .party-benefit i{width:44px;height:44px;padding:11px}
   .party-benefit small{max-width:70px;margin:3px auto 0}
@@ -253,7 +263,7 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 <div class="wrap">
   <header class="ohead">
     <a href="index.html"><img class="logo" src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="DRINK STOP"></a>
-    <a class="back" href="index.html">✕ Close</a>
+    <a class="back" id="closeLink" href="choose-your-vibe.html">✕ Close</a>
   </header>
   <main class="stage"><div class="step" id="step"></div><aside class="order-summary" id="summary"></aside></main>
   <div class="foot">DRINK STOP · Please drink responsibly · 18+ only</div>
@@ -374,7 +384,7 @@ const STEPS={
  intro:()=>{
   const hasVibe=S.vibeBasket.length>0;
   const headline=`
-  <h1 class="party-headline">Let's get<br>the <em>party</em><br>started.</h1>
+  <h1 class="party-headline"><span class="ph-d">Let's get<br>the <em>party</em><br>started.</span><span class="ph-m">Let's get the<br><em>party</em> started.</span></h1>
   <span class="party-underline" aria-hidden="true"></span>
   <p class="party-sub">You're one step away from frozen cocktails delivered your way. In a hurry? Try the <a href="quick-order.html" style="color:inherit">quick order form</a> instead.</p>`;
 
@@ -423,7 +433,7 @@ const STEPS={
   return headline+`
   <div class="party-hand"><p>Your vibe</p><strong>Continue this party ↘</strong></div>
   <div class="party-cards">${cards}</div>
-  <button class="party-secondary" type="button" id="vibeFresh">Start again</button>`;
+  <button class="party-secondary" type="button" id="vibeFresh"><span aria-hidden="true">↺</span> Start again</button>`;
  },
 
  design:()=>`
@@ -802,6 +812,15 @@ function validate(key){
     if(raw){const items=JSON.parse(raw); if(Array.isArray(items)&&items.length) S.vibeBasket=items;}
   } catch(e){}
 })();
+
+// Close returns to the vibe page (the "Order Now" page). The basket is already
+// persisted in localStorage, so with items still in it we land on its summary
+// step and the party continues where it left off; empty basket = fresh start.
+const closeLink=document.getElementById('closeLink');
+if(closeLink) closeLink.addEventListener('click',e=>{
+  e.preventDefault();
+  window.location.href='choose-your-vibe.html'+(S.vibeBasket.length?'?step=summary':'');
+});
 
 render();
 </script>
