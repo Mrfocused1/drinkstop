@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="wp-content/uploads/2025/10/cropped-favicon-2-180x180.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/product-rumbaclart-2.png" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-desktop-rumbaclart-2.webp" media="(min-width:761px)" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-mobile-rumbaclart-2.webp" media="(max-width:760px)" />
@@ -495,6 +495,36 @@
         font-size: 18px;
         color: #101010;
         transform: translateY(-50%) rotate(-25deg);
+      }
+    }
+
+    /* ===== Clients-page mobile menu style (colours, font, spacing) =====
+       Matches .mobile-navigation on brand-pages.html: black panel, cream
+       Anton links. The toggle button and offcanvas open/close mechanism,
+       and dropdown submenu are left as-is (page-specific). */
+    @media (max-width: 63.99em) {
+      .offcanvas {
+        background-color: #101010;
+      }
+
+      .offcanvas-menu {
+        gap: 28px;
+      }
+
+      .offcanvas-menu__item a,
+      .offcanvas-submenu__item a {
+        color: #fffaf0;
+        font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+        font-weight: 400;
+      }
+
+      .offcanvas-menu__item a {
+        font-size: 40px;
+      }
+
+      .offcanvas-menu__item--has-submenu > a::after,
+      .offcanvas-menu__item--open > a::after {
+        filter: invert(1);
       }
     }
   </style>
