@@ -180,6 +180,15 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
 .party-card--green{color:#fff;background:linear-gradient(135deg,#4cc26a 0%,#258f3a 52%,#145423 100%)}
 .party-card--blue{color:#fff;background:linear-gradient(135deg,#4c8dff 0%,#1457e6 52%,#0d3aa6 100%)}
 .party-card--purple{color:#fff;background:linear-gradient(135deg,#6b3fae 0%,#30106b 52%,#1d0940 100%)}
+/* drink-matched vibe card: the drink's own background asset + accent colour.
+   --vibe-bg-d / --vibe-bg-m are set inline per card; mobile asset swaps in under 800px. */
+.party-card--vibe{color:var(--ink);background-color:var(--cream)}
+.party-card--vibe::before{content:"";position:absolute;inset:0;z-index:0;background-image:var(--vibe-bg-d);background-size:cover;background-position:center}
+.party-card--vibe .party-card-art,.party-card--vibe .party-card-content{z-index:1}
+/* frosted cream chip behind the copy (same treatment as the vibe page's own chips)
+   keeps name/price readable where the background's edge decorations reach the centre */
+.party-card--vibe .party-card-content{align-self:center;margin:14px 16px 14px 0;padding:16px 18px 14px;border-radius:18px;background:rgba(255,251,230,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(42,31,6,.14)}
+.party-card--vibe .party-card-eyebrow{color:var(--vibe-accent,var(--red));opacity:1}
 .party-card-art{position:relative;min-width:0;overflow:hidden}
 .party-card-fruit,.party-card-prop,.party-card-pouch{position:absolute}
 .party-card-fruit--a{width:58%;left:-8%;bottom:-4%;z-index:2;transform:rotate(-8deg);opacity:.92}
@@ -229,6 +238,8 @@ p.sub{font-size:clamp(15px,2vw,19px);opacity:.75;max-width:620px;margin-bottom:3
   .party-benefits{gap:6px;margin-bottom:24px}
   .party-benefit i{width:44px;height:44px;padding:11px}
   .party-benefit small{max-width:70px;margin:3px auto 0}
+  .party-card--vibe::before{background-image:var(--vibe-bg-m)}
+  .party-card--vibe .party-card-content{margin:10px 12px 10px 0;padding:12px 14px 10px}
   .party-card{min-height:180px;border-radius:22px}
   .party-card-content{padding:16px 14px 14px 0}
   .party-card-content h3{font-size:clamp(22px,7vw,30px)}
@@ -272,6 +283,27 @@ const PARTY_THEMES=[
   {cls:'purple', fruitA:PARTY_DECOR+'pineapple.svg',     fruitB:PARTY_DECOR+'strawberry.svg',   prop:PARTY_DECOR+'speaker.svg'},
 ];
 function partyTheme(i){ return PARTY_THEMES[i % PARTY_THEMES.length]; }
+// per-drink accent colours — keep in sync with the drinks data on choose-your-vibe.html.
+// background asset paths are derived from the drink id, same convention as partyPouchSrc.
+const VIBE_ASSET='wp-content/uploads/2026/07/vibe';
+const VIBE_DRINK_ACCENTS={
+  'rumbaclart-2':'#2B8E2D',
+  'rum-for-your-life':'#E9040D',
+  'suck-your-rum':'#33076C',
+  'blutiful':'#1457E6',
+  'rumbaclart-1':'#FC6801',
+  'rumazing':'#E5007D',
+  'summer-set':'#E9040D',
+};
+// match a vibe basket item to its own background + accent; null if the drink is unknown
+// (callers then fall back to the generic partyTheme gradients).
+function vibeTheme(item){
+  const accent=item && VIBE_DRINK_ACCENTS[item.id];
+  if(!accent) return null;
+  return {accent:accent,
+    desktop:VIBE_ASSET+'/background-desktop-'+item.id+'.webp',
+    mobile:VIBE_ASSET+'/background-mobile-'+item.id+'.webp'};
+}
 function partyPouchSrc(item){
   return item.format==='bottle'
     ? 'wp-content/uploads/2026/07/vibe/bottle-'+item.id+'.webp'
@@ -355,15 +387,21 @@ const STEPS={
   }
 
   const cards=S.vibeBasket.map((item,i)=>{
-    const t=partyTheme(i);
+    const vt=vibeTheme(item);
+    const t=vt?null:partyTheme(i);
+    // drink-matched cards use the drink's own background asset, so the fruit/prop SVG
+    // decorations are baked in — only the pouch shot goes on top. Unknown drinks keep
+    // the old gradient + SVG decor treatment.
+    const art=(vt?'':
+      `<img class="party-card-fruit party-card-fruit--a" src="${t.fruitA}" alt="">
+       <img class="party-card-fruit party-card-fruit--b" src="${t.fruitB}" alt="">
+       <img class="party-card-prop" src="${t.prop}" alt="">`)
+      +`<img class="party-card-pouch" src="${partyPouchSrc(item)}" alt="${esc(item.name)}">`;
+    const cls=vt?'party-card--vibe':'party-card--'+t.cls;
+    const style=vt?` style="--vibe-accent:${vt.accent};--vibe-bg-d:url('${vt.desktop}');--vibe-bg-m:url('${vt.mobile}')"`:'';
     return `
-    <article class="party-card party-card--${t.cls}" data-vibe-idx="${i}">
-      <div class="party-card-art" aria-hidden="true">
-        <img class="party-card-fruit party-card-fruit--a" src="${t.fruitA}" alt="">
-        <img class="party-card-fruit party-card-fruit--b" src="${t.fruitB}" alt="">
-        <img class="party-card-prop" src="${t.prop}" alt="">
-        <img class="party-card-pouch" src="${partyPouchSrc(item)}" alt="${esc(item.name)}">
-      </div>
+    <article class="party-card ${cls}" data-vibe-idx="${i}"${style}>
+      <div class="party-card-art" aria-hidden="true">${art}</div>
       <div class="party-card-content">
         <div>
           <p class="party-card-eyebrow">Frozen rum cocktail</p>
