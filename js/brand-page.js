@@ -1,65 +1,15 @@
 /* ==========================================================================
    Drink Stop — Brand Page
-   JavaScript — Mobile Menu & Scroll Animations
+   JavaScript — Scroll Animations
    ========================================================================== */
 
 (() => {
   "use strict";
 
   /* ================================================================
-     MODULE 1 — Mobile Menu Toggle
-     ================================================================ */
-
-  const menuButton = document.querySelector(".mobile-menu-button");
-  const mobileNavigation = document.querySelector(".mobile-navigation");
-
-  if (menuButton && mobileNavigation) {
-
-    /** Close the mobile navigation panel. */
-    function closeMenu() {
-      menuButton.setAttribute("aria-expanded", "false");
-      mobileNavigation.classList.remove("is-open");
-      document.body.classList.remove("menu-open");
-    }
-
-    /** Open the mobile navigation panel. */
-    function openMenu() {
-      menuButton.setAttribute("aria-expanded", "true");
-      mobileNavigation.classList.add("is-open");
-      document.body.classList.add("menu-open");
-    }
-
-    /**
-     * Toggle menu state on button click.
-     * Reads the current aria-expanded attribute to decide.
-     */
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    // Close menu when any navigation link is clicked
-    mobileNavigation.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    // Close menu on Escape key
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-  } // end menu guard
-
-
-  /* ================================================================
-     MODULE 2 — Staggered Logo Card Entrance Animation
+     Staggered Logo Card Entrance Animation
+     (Mobile menu behaviour now lives in js/mobile-menu.js — the .ds-menu
+     component shared across every page.)
      ================================================================ */
 
   const logoCards = document.querySelectorAll(".partner-card");

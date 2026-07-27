@@ -26,6 +26,10 @@ function initSmoothScroll() {
     effects: true,
     normalizeScroll: { nestedScroll: true },
   });
+  // Exposed so js/mobile-menu.js can pause/resume the smoother while the
+  // premium mobile nav (.ds-menu) is open — that panel owns .offcanvas-toggle
+  // now, this module no longer does (see the initOffcanvas removal note below).
+  window.dsSmoother = smoother;
 
   // Same-page anchor links scroll smoothly instead of jumping.
   document.querySelectorAll('a[href*="#"]:not([href="#"])').forEach((a) => {
@@ -143,42 +147,13 @@ function initHeaderState() {
   // dropped along with the markup.
 }
 
-function initOffcanvas() {
-  const toggle = document.querySelector('.offcanvas-toggle');
-  const body = document.body;
-  if (!toggle) return;
-
-  toggle.addEventListener('click', () => {
-    const open = body.classList.toggle('has-offcanvas');
-    if (smoother) smoother.paused(open);
-  });
-
-  document.querySelectorAll('.offcanvas-menu__item--has-submenu > a').forEach((a) => {
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      a.closest('.offcanvas-menu__item').classList.toggle('offcanvas-menu__item--open');
-    });
-  });
-
-  document
-    .querySelectorAll('.offcanvas-menu__item:not(.offcanvas-menu__item--has-submenu) a')
-    .forEach((a) => {
-      a.addEventListener('click', () => {
-        body.classList.remove('has-offcanvas');
-        if (smoother) smoother.paused(false);
-      });
-    });
-
-  // The old bundle force-navigated to "/" on every non-submenu offcanvas link
-  // click when not already on the homepage — a leftover from a single-page,
-  // anchor-only structure. This site has real multi-page navigation
-  // (choose-your-vibe.html, order.html, product pages), so that redirect would
-  // break normal link clicks. Dropped.
-  //
-  // It also wired `.offcanvas-products-category-link` clicks to a global
-  // `handleTabClick`, which isn't defined anywhere in this codebase — those
-  // links are plain anchor jumps to product sections and need no JS at all.
-}
+// initOffcanvas() previously owned .offcanvas-toggle: it toggled a
+// `has-offcanvas` body class (paired with CSS-only icon swap + ScrollSmoother
+// pause) and drove the old green `.offcanvas` panel's submenu accordion. That
+// panel is gone — replaced by the premium `.ds-menu` component — and
+// js/mobile-menu.js is now the sole owner of `.offcanvas-toggle` clicks
+// (including the `has-offcanvas` class and pausing `window.dsSmoother`), so
+// this module no longer binds anything to that button.
 
 function initFancybox() {
   Fancybox.bind('[data-modal], [data-product-modal]', {
@@ -387,7 +362,6 @@ function initContactForm() {
 initSmoothScroll();
 initStopMotion();
 initHeaderState();
-initOffcanvas();
 initFancybox();
 initMarquee();
 
