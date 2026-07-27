@@ -315,13 +315,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
 }
 
+/* Positioned against .brand-page-main (full-height ancestor) rather than
+   .partner-section, so the drinks can sit in the hero whitespace above
+   the logo grid instead of being confined to the section's own box. */
 .partner-section .hero-drinks {
   position: absolute;
   left: 50%;
-  top: 20%;
+  top: 38.5%;
   transform: translate(-50%, -50%);
   width: 420px;
   height: 440px;
