@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="wp-content/uploads/2025/10/cropped-favicon-2-180x180.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/product-rumbaclart-2.png" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-desktop-rumbaclart-2.webp" media="(min-width:761px)" />
   <link rel="preload" as="image" href="wp-content/uploads/2026/07/vibe/background-mobile-rumbaclart-2.webp" media="(max-width:760px)" />
@@ -375,6 +375,33 @@
 
     /* ===== Clients-page nav style, applied to the main header (desktop) ===== */
     @media (min-width: 64em) {
+      /* Centre the nav in the header, like the Clients page, instead of it
+         sitting flush after the logo. .main-header-wrapper is unwrapped via
+         display:contents so nav + actions become direct grid children. */
+      .main-header .container {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .main-header .container > .main-header__logo {
+        margin-right: 0;
+      }
+
+      .main-header-wrapper {
+        display: contents !important;
+      }
+
+      .main-header-nav {
+        display: flex;
+        justify-content: center;
+      }
+
+      .main-header-actions {
+        justify-self: end;
+      }
+
       .main-header-nav__list li a {
         position: relative;
         font-family: "Inter", Arial, Helvetica, sans-serif;
