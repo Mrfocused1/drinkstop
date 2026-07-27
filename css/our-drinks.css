@@ -1,0 +1,919 @@
+/* ==========================================================================
+   Drink Stop — Our Drinks
+   Page-specific styles.
+
+   variables.css / base.css / brand-page.css / responsive.css (loaded before
+   this file) already provide the design tokens and the shared transparent
+   header + mobile slide-in nav used on the Clients page. Everything below
+   is specific to this page: announcement bar, hero, benefits and the
+   flavour card grid.
+   ========================================================================== */
+
+/* ==========================================================================
+   SECTION 0 — Page Wrapper
+   ========================================================================== */
+
+.our-drinks-page {
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--cream);
+}
+
+.our-drinks-main {
+  padding-top: calc(var(--announcement-height) + var(--header-height-desktop));
+}
+
+/* Header sits below the announcement bar on this page only. */
+.site-header {
+  top: var(--announcement-height);
+}
+
+/* Mobile slide-in nav must start below the (taller, two-bar) header too. */
+.mobile-navigation {
+  inset: calc(var(--announcement-height) + var(--header-height-desktop)) 0 0 0;
+}
+
+/* ==========================================================================
+   SECTION 1 — Announcement Bar
+   ========================================================================== */
+
+.announcement-bar {
+  min-height: var(--announcement-height);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--paper);
+  background: var(--black);
+}
+
+.announcement-inner {
+  width: min(var(--desktop-max-width), calc(100% - 72px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 26px;
+}
+
+.announcement-message {
+  min-width: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.announcement-icon {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+}
+
+.announcement-message strong {
+  color: var(--lime-bright);
+}
+
+.announcement-cta {
+  min-height: 34px;
+  padding: 0 20px;
+  border-radius: var(--radius-button);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: var(--black);
+  background: var(--lime-bright);
+
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transition: transform var(--ease-out) 160ms;
+}
+
+.announcement-cta:hover {
+  transform: translateY(-1px);
+}
+
+.announcement-cta-short {
+  display: none;
+}
+
+.announcement-cta img {
+  width: 10px;
+  height: 10px;
+}
+
+.announcement-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 26px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   SECTION 2 — Hero
+   ========================================================================== */
+
+.drinks-hero {
+  min-height: clamp(455px, 36vw, 610px);
+
+  position: relative;
+  overflow: hidden;
+
+  background-image: url("../assets/backgrounds/our-drinks-desktop.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.drinks-hero-inner {
+  width: min(var(--desktop-max-width), calc(100% - 80px));
+  height: 100%;
+  min-height: inherit;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(350px, 0.76fr) minmax(500px, 1.35fr);
+  align-items: center;
+  gap: 20px;
+
+  position: relative;
+  padding: 48px 0;
+}
+
+/* ── Hero heading / handwritten copy ──────────────────────────────────── */
+
+.drinks-hero-copy {
+  position: relative;
+  z-index: 5;
+  padding-left: clamp(10px, 2vw, 32px);
+}
+
+.drinks-hero h1 {
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-display);
+  font-size: clamp(80px, 7.4vw, 128px);
+  line-height: 0.87;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.drinks-hero h1 span {
+  color: var(--black);
+}
+
+.drinks-hero h1 strong {
+  color: var(--lime);
+  font-weight: inherit;
+}
+
+.hero-handwritten-copy {
+  margin: 16px 0 0 26px;
+
+  font-family: var(--font-hand);
+  font-size: clamp(22px, 1.9vw, 34px);
+  line-height: 1.08;
+  text-transform: uppercase;
+
+  transform: rotate(-3deg);
+}
+
+.hero-copy-underline {
+  display: block;
+  width: min(340px, 82%);
+  height: 15px;
+
+  margin: 8px 0 0 36px;
+
+  border-top: 6px solid var(--black);
+  border-radius: 50%;
+
+  transform: rotate(-3deg);
+}
+
+/* ── Hero product stage ───────────────────────────────────────────────── */
+
+.hero-product-stage {
+  min-height: 460px;
+  height: 100%;
+
+  position: relative;
+  z-index: 3;
+}
+
+.hero-product {
+  width: clamp(210px, 18vw, 300px);
+  height: clamp(370px, 32vw, 500px);
+
+  position: absolute;
+  bottom: -10px;
+
+  transform-origin: center bottom;
+
+  transition:
+    transform var(--ease-out) 260ms,
+    filter 260ms ease,
+    opacity 260ms ease;
+}
+
+.hero-product-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  filter: drop-shadow(0 22px 16px rgba(0, 0, 0, 0.18));
+}
+
+.hero-product--left {
+  left: 2%;
+  z-index: 2;
+  transform: rotate(-5deg) scale(0.9);
+}
+
+.hero-product--centre {
+  left: 33%;
+  z-index: 4;
+  transform: translateY(-6px) rotate(0deg) scale(1.02);
+}
+
+.hero-product--right {
+  right: 2%;
+  z-index: 3;
+  transform: rotate(7deg) scale(0.92);
+}
+
+.hero-product:hover,
+.hero-product.is-active-product {
+  z-index: 8;
+  transform: translateY(-18px) rotate(0deg) scale(1.05);
+}
+
+.hero-product-stage.has-active-product .hero-product:not(.is-active-product) {
+  opacity: 0.78;
+  filter: saturate(0.78);
+}
+
+/* ── Hero editorial note (brush-stroke label) ─────────────────────────── */
+
+.hero-editorial-note {
+  max-width: 320px;
+  padding: 13px 24px;
+
+  position: absolute;
+  right: 2%;
+  bottom: 8%;
+  z-index: 8;
+
+  color: var(--lime-bright);
+  background: var(--black);
+
+  font-family: var(--font-hand);
+  font-size: clamp(17px, 1.5vw, 24px);
+  line-height: 1.18;
+  text-align: center;
+  text-transform: uppercase;
+
+  transform: rotate(2deg);
+
+  clip-path: polygon(2% 8%, 100% 0, 97% 92%, 3% 100%);
+}
+
+/* ==========================================================================
+   SECTION 3 — Benefits Strip
+   ========================================================================== */
+
+.drinks-benefits {
+  position: relative;
+  z-index: 10;
+
+  background: rgba(255, 253, 245, 0.96);
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.benefits-list {
+  width: min(1250px, calc(100% - 70px));
+  min-height: 110px;
+
+  margin: 0 auto;
+  padding: 18px 0;
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.benefit-item {
+  min-width: 0;
+  padding: 8px 30px;
+
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 16px;
+  align-items: center;
+
+  position: relative;
+}
+
+.benefit-item:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 65%;
+
+  position: absolute;
+  right: 0;
+  top: 17.5%;
+
+  background: rgba(17, 17, 17, 0.15);
+}
+
+.benefit-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--lime);
+}
+
+.benefit-item h2 {
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.benefit-item p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   SECTION 4 — Choose Your Flavour
+   ========================================================================== */
+
+.flavour-section {
+  padding: clamp(36px, 4vw, 62px) 0 110px;
+  position: relative;
+  background: var(--cream);
+}
+
+.section-heading-wrap {
+  width: fit-content;
+  margin: 0 auto 28px;
+  position: relative;
+}
+
+.section-heading-wrap h2 {
+  margin: 0;
+
+  font-family: var(--font-hand);
+  font-size: clamp(34px, 3.2vw, 50px);
+  line-height: 1;
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.section-heading-marker {
+  display: block;
+  width: 90%;
+  height: 8px;
+
+  margin: 8px auto 0;
+
+  background: var(--lime);
+  border-radius: 50%;
+
+  transform: rotate(-1deg);
+}
+
+/* ── Card grid ─────────────────────────────────────────────────────────── */
+
+.drinks-card-grid {
+  width: min(var(--desktop-max-width), calc(100% - 80px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 26px);
+}
+
+.drink-card {
+  --drink-accent: var(--lime);
+  --drink-border: var(--lime);
+
+  min-height: clamp(290px, 23vw, 375px);
+  overflow: hidden;
+
+  position: relative;
+
+  border: 2px solid var(--drink-border);
+  border-radius: var(--radius-medium);
+
+  display: grid;
+  grid-template-columns: 42% 58%;
+
+  background: rgba(255, 253, 245, 0.92);
+  box-shadow: 0 12px 34px rgba(17, 17, 17, 0.08);
+
+  transition:
+    transform var(--ease-out) 260ms,
+    box-shadow 260ms ease;
+}
+
+.drink-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 45px rgba(17, 17, 17, 0.14);
+}
+
+/* ── Card art ─────────────────────────────────────────────────────────── */
+
+.drink-card-art {
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.drink-card-product {
+  width: 88%;
+  height: 92%;
+
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  filter: drop-shadow(0 16px 10px rgba(0, 0, 0, 0.16));
+
+  transition: transform var(--ease-out) 260ms;
+}
+
+.drink-card:hover .drink-card-product {
+  transform: translateX(-50%) translateY(-6px) scale(1.03);
+}
+
+/* ── Card content ─────────────────────────────────────────────────────── */
+
+.drink-card-content {
+  min-width: 0;
+  padding: 24px 24px 22px 6px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.drink-card-title {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 10px;
+  padding: 9px 18px;
+
+  color: var(--drink-accent);
+  background: var(--black);
+
+  font-family: var(--font-hand);
+  font-size: clamp(18px, 1.6vw, 26px);
+  line-height: 1;
+  text-transform: uppercase;
+
+  transform: rotate(-1.5deg);
+
+  clip-path: polygon(1% 9%, 99% 0, 97% 93%, 2% 100%);
+}
+
+.drink-card-flavour {
+  margin: 0 0 12px;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.drink-card-description {
+  max-width: 280px;
+  margin: 0 0 12px;
+
+  font-size: clamp(13px, 0.95vw, 16px);
+  line-height: 1.42;
+  font-weight: 500;
+}
+
+.drink-card-alcohol {
+  margin: 0 0 16px;
+
+  color: var(--drink-accent);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.drink-details-button {
+  min-width: 180px;
+  min-height: 46px;
+  padding: 0 18px;
+
+  border: 2px solid var(--black);
+  border-radius: var(--radius-button);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  color: var(--black);
+  background: transparent;
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform var(--ease-out) 160ms;
+}
+
+.drink-details-button:hover {
+  color: var(--paper);
+  background: var(--black);
+  transform: translateY(-2px);
+}
+
+.drink-details-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.drink-details-button:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.drink-details-button.is-unavailable {
+  min-width: 0;
+  border-color: rgba(17, 17, 17, 0.3);
+  color: rgba(17, 17, 17, 0.45);
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   SECTION 5 — Entrance Reveal
+   ========================================================================== */
+
+.reveal,
+.benefit-item,
+.drink-card {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 520ms var(--ease-out),
+    transform 520ms var(--ease-out);
+}
+
+.reveal.is-visible,
+.benefit-item.is-visible,
+.drink-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .benefit-item,
+  .drink-card,
+  .hero-product,
+  .drink-card-product {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   SECTION 6 — Responsive
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .drinks-hero-inner {
+    grid-template-columns: minmax(300px, 0.8fr) minmax(420px, 1.3fr);
+  }
+
+  .drinks-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899px) and (min-width: 768px) {
+  .announcement-meta {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+
+  /* ── Announcement bar ──────────────────────────────────────────── */
+
+  .announcement-bar {
+    min-height: var(--announcement-height-mobile);
+  }
+
+  .our-drinks-main {
+    padding-top: calc(var(--announcement-height-mobile) + var(--header-height-mobile));
+  }
+
+  .site-header {
+    top: var(--announcement-height-mobile);
+  }
+
+  .mobile-navigation {
+    inset: calc(var(--announcement-height-mobile) + var(--header-height-mobile)) 0 0 0;
+  }
+
+  .announcement-inner {
+    width: 100%;
+    padding: 0 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .announcement-message {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: clamp(9px, 2.6vw, 11px);
+  }
+
+  .announcement-message strong {
+    white-space: nowrap;
+  }
+
+  .announcement-cta {
+    flex-shrink: 0;
+    min-height: 30px;
+    padding: 0 12px;
+    font-size: 10px;
+  }
+
+  .announcement-cta-full {
+    display: none;
+  }
+
+  .announcement-cta-short {
+    display: inline;
+  }
+
+  .announcement-meta {
+    display: none;
+  }
+
+  /* ── Hero ──────────────────────────────────────────────────────── */
+
+  .drinks-hero {
+    min-height: clamp(600px, 148vw, 780px);
+
+    background-image: url("../assets/backgrounds/brand-page-mobile.webp");
+    background-position: top center;
+    background-size: 100% auto;
+  }
+
+  .drinks-hero-inner {
+    width: 100%;
+    min-height: inherit;
+
+    padding: 40px 18px 22px;
+
+    display: block;
+  }
+
+  .drinks-hero-copy {
+    width: 54%;
+    padding-left: 6px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .drinks-hero h1 {
+    font-size: clamp(62px, 18vw, 96px);
+    line-height: 0.9;
+  }
+
+  .hero-handwritten-copy {
+    width: 145%;
+    margin: 12px 0 0 6px;
+    font-size: clamp(18px, 5vw, 27px);
+  }
+
+  .hero-copy-underline {
+    width: 128%;
+    margin-left: 8px;
+    border-top-width: 5px;
+  }
+
+  .hero-product-stage {
+    width: 66%;
+    height: 66%;
+    min-height: 420px;
+
+    position: absolute;
+    right: -3%;
+    bottom: 0;
+  }
+
+  .hero-product {
+    width: clamp(150px, 38vw, 230px);
+    height: clamp(300px, 78vw, 470px);
+    bottom: 0;
+  }
+
+  .hero-product--left {
+    left: -6%;
+    transform: rotate(-4deg) scale(0.9);
+  }
+
+  .hero-product--centre {
+    left: 25%;
+    transform: translateY(-4px) scale(1);
+  }
+
+  .hero-product--right {
+    right: -9%;
+    transform: rotate(7deg) scale(0.9);
+  }
+
+  .hero-editorial-note {
+    max-width: 260px;
+    right: auto;
+    left: 6%;
+    bottom: 4%;
+    padding: 10px 16px;
+    font-size: clamp(14px, 4vw, 19px);
+  }
+
+  /* ── Benefits ──────────────────────────────────────────────────── */
+
+  .benefits-list {
+    width: 100%;
+    min-height: 200px;
+    padding: 22px 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .benefit-item {
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .benefit-icon {
+    width: clamp(36px, 9vw, 52px);
+    height: clamp(36px, 9vw, 52px);
+    margin: 0 auto;
+  }
+
+  .benefit-item h2 {
+    font-size: clamp(10px, 2.6vw, 13px);
+  }
+
+  .benefit-item p {
+    font-size: clamp(9px, 2.3vw, 11px);
+  }
+
+  .benefit-item:not(:last-child)::after {
+    height: 76%;
+    top: 12%;
+  }
+
+  /* ── Flavour section / cards ───────────────────────────────────── */
+
+  .flavour-section {
+    padding: 32px 0 80px;
+  }
+
+  .section-heading-wrap h2 {
+    font-size: clamp(29px, 8.5vw, 42px);
+  }
+
+  .drinks-card-grid {
+    width: min(calc(100% - 28px), 650px);
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .drink-card {
+    min-height: clamp(215px, 56vw, 300px);
+    grid-template-columns: 42% 58%;
+    border-radius: 18px;
+  }
+
+  .drink-card-content {
+    padding: 16px 15px 15px 2px;
+  }
+
+  .drink-card-title {
+    margin-bottom: 10px;
+    padding: 7px 12px;
+    font-size: clamp(15px, 4.3vw, 22px);
+  }
+
+  .drink-card-flavour {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  .drink-card-description {
+    margin-bottom: 8px;
+    font-size: clamp(12px, 3.1vw, 15px);
+    line-height: 1.34;
+  }
+
+  .drink-card-alcohol {
+    margin-bottom: 10px;
+    font-size: clamp(11px, 3vw, 13px);
+  }
+
+  .drink-details-button {
+    min-width: clamp(140px, 36vw, 180px);
+    min-height: 40px;
+    padding: 0 14px;
+    gap: 10px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .drinks-hero-copy {
+    width: 58%;
+  }
+
+  .hero-product-stage {
+    width: 70%;
+    right: -6%;
+  }
+}
+
+@media (max-width: 350px) {
+  .benefits-list {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 18px;
+  }
+
+  .benefit-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .drink-card-title {
+    font-size: 15px;
+  }
+
+  .drink-card-description {
+    font-size: 11px;
+  }
+}

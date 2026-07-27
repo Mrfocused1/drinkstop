@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+    Responsive viewport with viewport-fit=cover so safe areas
+    (notch / home indicator) don't clip content on iOS.
+  -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <title>Our Drinks | Frozen Rum Cocktails | Drink Stop</title>
+
+  <meta
+    name="description"
+    content="Explore the Drink Stop frozen cocktail range, including Rum For Your Life, Rumbaclart 1.0, Rumbaclart 2.0, Summer Set, Blutiful, Rumazing and Suck Your Rum. Premium spirits, real fruit and bold frozen flavour."
+  >
+
+  <!-- ── Preload appropriate background image ─────────────────────── -->
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/backgrounds/our-drinks-desktop.webp"
+    media="(min-width: 768px)"
+  >
+
+  <link
+    rel="preload"
+    as="image"
+    href="assets/backgrounds/brand-page-mobile.webp"
+    media="(max-width: 767px)"
+  >
+
+  <!-- Above-the-fold hero product images -->
+  <link rel="preload" as="image" href="assets/drinks/rum-for-your-life/hero.webp">
+  <link rel="preload" as="image" href="assets/drinks/rumbaclart-2/hero.webp">
+  <link rel="preload" as="image" href="assets/drinks/blutiful/hero.webp">
+
+  <!-- ── Google Fonts ─────────────────────────────────────────────── -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ── Stylesheets ──────────────────────────────────────────────── -->
+  <!-- variables/base/brand-page/responsive give us the site-wide header,
+       mobile nav and design tokens already shared with the Clients page.
+       our-drinks.css holds everything specific to this page only. -->
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/brand-page.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/our-drinks.css">
+
+</head>
+<body>
+
+  <!-- ================================================================
+       Page Wrapper
+       ================================================================ -->
+  <div class="our-drinks-page">
+
+    <!-- ==============================================================
+         ANNOUNCEMENT BAR
+         ============================================================== -->
+    <aside class="announcement-bar">
+      <div class="announcement-inner">
+
+        <p class="announcement-message">
+          <img class="announcement-icon" src="assets/party/icons/snowflake.svg" alt="">
+          <strong>Frozen cocktails.</strong>
+          Anytime. Anywhere.
+        </p>
+
+        <a class="announcement-cta" href="choose-your-vibe.html">
+          <span class="announcement-cta-full">Order yours now</span>
+          <span class="announcement-cta-short">Order now</span>
+          <img src="assets/party/icons/arrow-right.svg" alt="" aria-hidden="true">
+        </a>
+
+        <div class="announcement-meta">
+          <span>Fast delivery</span>
+          <span>Keep frozen</span>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ==============================================================
+         HEADER
+         ============================================================== -->
+    <header class="site-header">
+
+      <!-- Mobile menu toggle (hidden on desktop) -->
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Drink Stop logo, links to homepage -->
+      <a
+        class="site-logo"
+        href="index.html"
+        aria-label="Drink Stop homepage"
+      >
+        <img
+          src="wp-content/uploads/2025/10/drinkstop-logo.webp"
+          alt="Drink Stop"
+          width="116"
+          height="75"
+        >
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav
+        class="desktop-navigation"
+        aria-label="Primary navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="our-drinks.html" class="is-active" aria-current="page">Our Drinks</a>
+        <a href="choose-your-vibe.html">Order Now</a>
+        <a href="brand-pages.html">Clients</a>
+      </nav>
+
+      <!-- Header Order Now pill button -->
+      <a class="header-order-button" href="choose-your-vibe.html">
+        <span class="order-arrow" aria-hidden="true">➤</span>
+        <span>Order Now</span>
+      </a>
+
+    </header>
+
+    <!-- ==============================================================
+         MAIN CONTENT
+         ============================================================== -->
+    <main class="our-drinks-main">
+
+      <!-- ─────────────────────────────────────────────────────────────
+           HERO
+           ───────────────────────────────────────────────────────────── -->
+      <section
+        class="drinks-hero"
+        aria-labelledby="our-drinks-title"
+      >
+        <div class="drinks-hero-inner">
+
+          <div class="drinks-hero-copy reveal">
+            <h1 id="our-drinks-title">
+              <span>Our</span>
+              <strong>Drinks</strong>
+            </h1>
+
+            <p class="hero-handwritten-copy">
+              Bold flavours.<br>
+              Frozen to perfection.
+            </p>
+
+            <span class="hero-copy-underline" aria-hidden="true"></span>
+          </div>
+
+          <div
+            class="hero-product-stage reveal"
+            id="hero-product-stage"
+            aria-label="Featured Drink Stop cocktails"
+          >
+            <!-- populated by js/our-drinks.js from the drinks data -->
+          </div>
+
+          <aside class="hero-editorial-note reveal">
+            Made with premium<br>
+            spirits &amp; real fruit
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────────────────────────────────────
+           BENEFITS STRIP
+           ───────────────────────────────────────────────────────────── -->
+      <section
+        class="drinks-benefits"
+        aria-label="Drink Stop benefits"
+      >
+        <ul class="benefits-list">
+
+          <li class="benefit-item reveal">
+            <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 5v54M9 18l46 28M9 46l46-28"/>
+                <path d="M32 5l-7 7M32 5l7 7M32 59l-7-7M32 59l7-7"/>
+                <path d="M9 18l10 1M9 18l4-9M55 46l-10-1M55 46l-4 9"/>
+                <path d="M9 46l10-1M9 46l4 9M55 18l-10 1M55 18l-4-9"/>
+              </g>
+            </svg>
+            <div>
+              <h2>Always Frozen</h2>
+              <p>Stored at -18&deg;C<br>to lock in flavour</p>
+            </div>
+          </li>
+
+          <li class="benefit-item reveal">
+            <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 52C6 34 14 12 40 8c14-2 18 2 16 16-4 26-26 34-44 28Z"/>
+                <path d="M14 50C26 38 34 28 44 14"/>
+              </g>
+            </svg>
+            <div>
+              <h2>Real Ingredients</h2>
+              <p>Made with premium spirits,<br>real fruit and natural flavours</p>
+            </div>
+          </li>
+
+          <li class="benefit-item reveal">
+            <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 14h32v31H6z"/>
+                <path d="M38 26h10l10 11v8H38z"/>
+                <circle cx="18" cy="49" r="6"/>
+                <circle cx="49" cy="49" r="6"/>
+                <path d="M38 37h20"/>
+              </g>
+            </svg>
+            <div>
+              <h2>Fast Delivery</h2>
+              <p>Delivered frozen,<br>ready to enjoy</p>
+            </div>
+          </li>
+
+          <li class="benefit-item reveal">
+            <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 10h44L32 35 10 10z"/>
+                <path d="M32 35v16M21 56h22"/>
+                <path d="M42 15l9-8M48 7h7"/>
+                <circle cx="22" cy="18" r="3"/>
+              </g>
+            </svg>
+            <div>
+              <h2>Shake &amp; Enjoy</h2>
+              <p>No fuss, no mess<br>just pure taste</p>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ─────────────────────────────────────────────────────────────
+           CHOOSE YOUR FLAVOUR
+           ───────────────────────────────────────────────────────────── -->
+      <section
+        class="flavour-section"
+        aria-labelledby="flavour-heading"
+      >
+        <div class="section-heading-wrap reveal">
+          <h2 id="flavour-heading">Choose Your Flavour</h2>
+          <span class="section-heading-marker" aria-hidden="true"></span>
+        </div>
+
+        <div class="drinks-card-grid" id="drinks-card-grid">
+          <!-- populated by js/our-drinks.js from the drinks data -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==============================================================
+         MOBILE NAVIGATION (slide-in panel)
+         ============================================================== -->
+    <nav
+      class="mobile-navigation"
+      id="mobile-navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html">Home</a>
+      <a href="our-drinks.html" aria-current="page">Our Drinks</a>
+      <a href="choose-your-vibe.html">Order Now</a>
+      <a href="brand-pages.html">Clients</a>
+    </nav>
+
+  </div><!-- /.our-drinks-page -->
+
+  <script src="js/brand-page.js"></script>
+  <script src="js/our-drinks-data.js"></script>
+  <script src="js/our-drinks.js"></script>
+
+</body>
+</html>

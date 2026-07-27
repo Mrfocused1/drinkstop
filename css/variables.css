@@ -17,6 +17,8 @@
   --pink:             #ff3e83;
   --blue:             #185dff;
   --yellow:           #ffc400;
+  --orange:           #ff8a00;
+  --purple:           #8b3fd1;
 
   /* ── Typography ───────────────────────────────────────────────────── */
 
@@ -29,10 +31,14 @@
   --desktop-max-width:        1536px;
   --header-height-desktop:    92px;
   --header-height-mobile:     90px;
+  --announcement-height:      54px;
+  --announcement-height-mobile: 44px;
 
   /* ── Radii ────────────────────────────────────────────────────────── */
 
   --radius-button:    999px;
+  --radius-medium:    20px;
+  --radius-large:     30px;
 
   /* ── Shadows ──────────────────────────────────────────────────────── */
 
