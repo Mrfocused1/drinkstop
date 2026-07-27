@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drink Position Tool</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/brand-page.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #222; display: flex; height: 100vh; }
+  #preview { flex: 1; position: relative; overflow: hidden; }
+  #preview .brand-page { height: 100%; }
+  #preview .brand-page-main { height: 100%; }
+  #preview .partner-section { position: relative; overflow: visible !important; }
+  #preview .brand-page-main { overflow: visible !important; }
+  #preview .brand-page { overflow: visible !important; }
+
+  /* Override fixed header in preview */
+  #preview .site-header { position: absolute; }
+
+  /* Make drinks interactive */
+  #preview .hero-drinks { cursor: grab; }
+  #preview .hero-drinks:active { cursor: grabbing; }
+  #preview .hero-drinks img { pointer-events: none; }
+
+  #controls {
+    width: 380px;
+    padding: 20px;
+    overflow-y: auto;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  #controls h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: #aaa; margin-top: 8px; }
+  #controls h2:first-child { margin-top: 0; }
+  .slider-group { display: flex; flex-direction: column; gap: 2px; }
+  .slider-group label { font-size: 12px; color: #ccc; display: flex; justify-content: space-between; }
+  .slider-group input[type="range"] { width: 100%; }
+  #output { background: #1a1a1a; color: #b7ed00; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px; white-space: pre-wrap; word-break: break-all; margin-top: auto; }
+  .btn-copy { background: #b7ed00; color: #111; border: 0; border-radius: 4px; padding: 8px; font-weight: 700; cursor: pointer; font-size: 13px; }
+  .btn-copy:hover { background: #c7ff00; }
+</style>
+</head>
+<body>
+<div id="preview">
+  <div class="brand-page">
+    <header class="site-header">
+      <button class="mobile-menu-button" type="button"><span></span><span></span><span></span></button>
+      <a class="site-logo" href="index.html" aria-label="Drink Stop homepage">
+        <img src="wp-content/uploads/2025/10/drinkstop-logo.webp" alt="Drink Stop" width="116" height="75">
+      </a>
+      <nav class="desktop-navigation" aria-label="Primary navigation">
+        <a href="index.html">About</a>
+        <a href="index.html#our-drinks">Our Drinks</a>
+        <a href="choose-your-vibe.html">Order Now</a>
+        <a href="brand-pages.html" class="is-active">Our Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="header-order-button" href="choose-your-vibe.html">
+        <span class="order-arrow" aria-hidden="true">➤</span>
+        <span>Order Now</span>
+      </a>
+    </header>
+    <main class="brand-page-main">
+      <section class="brand-hero" aria-labelledby="brand-page-title">
+        <div class="brand-hero-inner">
+          <div class="brand-hero-content">
+            <div class="eyebrow-label">Our Clients</div>
+            <h1 id="brand-page-title"><span>Our</span> <strong>Clients</strong></h1>
+            <div class="headline-underline" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+      <section class="partner-section">
+        <h2 class="partner-section-heading">Who We've Worked With</h2>
+
+        <div class="hero-drinks" aria-hidden="true">
+          <div class="drink-item drink-left"><img src="wp-content/uploads/2026/07/vibe/bottle-rum-for-your-life.webp" alt="" class="drink-can"></div>
+          <div class="drink-item drink-hero"><img src="wp-content/uploads/2026/07/vibe/bottle-rumbaclart-1.webp" alt="" class="drink-can"></div>
+          <div class="drink-item drink-right"><img src="wp-content/uploads/2026/07/vibe/bottle-summer-set.webp" alt="" class="drink-can"></div>
+        </div>
+
+        <div class="partner-marquee-mobile">
+          <div class="marquee-row marquee-row--left"><div class="marquee-row__track">
+            <article class="partner-card" data-brand="Nike"></article>
+            <article class="partner-card" data-brand="Netflix"></article>
+            <article class="partner-card" data-brand="Snapchat"></article>
+            <article class="partner-card" data-brand="Deliveroo"></article>
+            <article class="partner-card" data-brand="Meta"></article>
+            <article class="partner-card" data-brand="Adidas"></article>
+            <article class="partner-card" data-brand="JFF"></article>
+            <article class="partner-card" data-brand="AFTV"></article>
+            <article class="partner-card" data-brand="Motiv"></article>
+            <article class="partner-card" data-brand="Nike"></article>
+            <article class="partner-card" data-brand="Netflix"></article>
+            <article class="partner-card" data-brand="Snapchat"></article>
+            <article class="partner-card" data-brand="Deliveroo"></article>
+            <article class="partner-card" data-brand="Meta"></article>
+            <article class="partner-card" data-brand="Adidas"></article>
+            <article class="partner-card" data-brand="JFF"></article>
+            <article class="partner-card" data-brand="AFTV"></article>
+            <article class="partner-card" data-brand="Motiv"></article>
+          </div></div>
+          <div class="marquee-row marquee-row--right"><div class="marquee-row__track">
+            <article class="partner-card" data-brand="ItsAtHome"></article>
+            <article class="partner-card" data-brand="Footasylum"></article>
+            <article class="partner-card" data-brand="The Basement"></article>
+            <article class="partner-card" data-brand="Jordan"></article>
+            <article class="partner-card" data-brand="A Jewellers"></article>
+            <article class="partner-card" data-brand="Ballers League"></article>
+            <article class="partner-card" data-brand="Hackney Council"></article>
+            <article class="partner-card" data-brand="Starz League"></article>
+            <article class="partner-card" data-brand="ItsAtHome"></article>
+            <article class="partner-card" data-brand="Footasylum"></article>
+            <article class="partner-card" data-brand="The Basement"></article>
+            <article class="partner-card" data-brand="Jordan"></article>
+            <article class="partner-card" data-brand="A Jewellers"></article>
+            <article class="partner-card" data-brand="Ballers League"></article>
+            <article class="partner-card" data-brand="Hackney Council"></article>
+            <article class="partner-card" data-brand="Starz League"></article>
+          </div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div id="controls">
+  <h2>Container Position</h2>
+  <div class="slider-group"><label>Container Left <span id="val-containerLeft">50</span>%</label><input type="range" id="containerLeft" min="30" max="70" value="50" step="0.5"></div>
+  <div class="slider-group"><label>Container Top <span id="val-containerTop">50</span>%</label><input type="range" id="containerTop" min="20" max="80" value="50" step="0.5"></div>
+  <div class="slider-group"><label>Translate-Y <span id="val-containerTY">-80</span>%</label><input type="range" id="containerTY" min="-250" max="-20" value="-80" step="1"></div>
+  <div class="slider-group"><label>Container Width <span id="val-containerW">480</span>px</label><input type="range" id="containerW" min="200" max="700" value="480" step="5"></div>
+  <div class="slider-group"><label>Container Height <span id="val-containerH">440</span>px</label><input type="range" id="containerH" min="200" max="700" value="440" step="5"></div>
+
+  <h2>Center Drink</h2>
+  <div class="slider-group"><label>Width <span id="val-heroW">165</span>px</label><input type="range" id="heroW" min="80" max="280" value="165" step="2"></div>
+  <div class="slider-group"><label>Bottom <span id="val-heroB">10</span>px</label><input type="range" id="heroB" min="-40" max="60" value="10" step="1"></div>
+
+  <h2>Left Drink</h2>
+  <div class="slider-group"><label>Left Offset <span id="val-leftL">10</span>px</label><input type="range" id="leftL" min="-80" max="120" value="10" step="1"></div>
+  <div class="slider-group"><label>Width <span id="val-leftW">130</span>px</label><input type="range" id="leftW" min="60" max="220" value="130" step="2"></div>
+  <div class="slider-group"><label>Translate-Y <span id="val-leftTY">30</span>px</label><input type="range" id="leftTY" min="-20" max="80" value="30" step="1"></div>
+  <div class="slider-group"><label>Rotate <span id="val-leftR">-7</span>deg</label><input type="range" id="leftR" min="-20" max="0" value="-7" step="0.5"></div>
+
+  <h2>Right Drink</h2>
+  <div class="slider-group"><label>Right Offset <span id="val-rightR">10</span>px</label><input type="range" id="rightR" min="-80" max="120" value="10" step="1"></div>
+  <div class="slider-group"><label>Width <span id="val-rightW">130</span>px</label><input type="range" id="rightW" min="60" max="220" value="130" step="2"></div>
+  <div class="slider-group"><label>Translate-Y <span id="val-rightTY">40</span>px</label><input type="range" id="rightTY" min="-20" max="80" value="40" step="1"></div>
+  <div class="slider-group"><label>Rotate <span id="val-rightRdeg">6</span>deg</label><input type="range" id="rightRdeg" min="0" max="20" value="6" step="0.5"></div>
+
+  <button class="btn-copy" onclick="copyOutput()">Copy CSS</button>
+  <div id="output">/* CSS will appear here */</div>
+</div>
+
+<script>
+const els = {};
+['containerLeft','containerTop','containerTY','containerW','containerH',
+ 'heroW','heroB','leftL','leftW','leftTY','leftR','rightR','rightW','rightTY','rightRdeg']
+.forEach(id => { els[id] = document.getElementById(id); });
+
+const container = document.querySelector('.partner-section .hero-drinks');
+const hero = container.querySelector('.drink-hero');
+const left = container.querySelector('.drink-left');
+const right = container.querySelector('.drink-right');
+const output = document.getElementById('output');
+
+// Drag to move container
+let dragging = false, startX, startY, startLeft, startTop;
+container.addEventListener('mousedown', e => {
+  dragging = true;
+  startX = e.clientX;
+  startY = e.clientY;
+  const rect = container.getBoundingClientRect();
+  const parentRect = container.parentElement.getBoundingClientRect();
+  startLeft = ((rect.left + rect.width/2 - parentRect.left) / parentRect.width) * 100;
+  startTop = ((rect.top + rect.height/2 - parentRect.top) / parentRect.height) * 100;
+  container.style.cursor = 'grabbing';
+});
+document.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const parentRect = container.parentElement.getBoundingClientRect();
+  const dx = ((e.clientX - startX) / parentRect.width) * 100;
+  const dy = ((e.clientY - startY) / parentRect.height) * 100;
+  const newLeft = Math.round((startLeft + dx) * 10) / 10;
+  const newTop = Math.round((startTop + dy) * 10) / 10;
+  els.containerLeft.value = Math.min(70, Math.max(30, newLeft));
+  els.containerTop.value = Math.min(80, Math.max(20, newTop));
+  update();
+});
+document.addEventListener('mouseup', () => { dragging = false; container.style.cursor = 'grab'; });
+
+function update() {
+  const cl = +els.containerLeft.value;
+  const ct = +els.containerTop.value;
+  const cty = +els.containerTY.value;
+  const cw = +els.containerW.value;
+  const ch = +els.containerH.value;
+  const hw = +els.heroW.value;
+  const hb = +els.heroB.value;
+  const ll = +els.leftL.value;
+  const lw = +els.leftW.value;
+  const lty = +els.leftTY.value;
+  const lr = +els.leftR.value;
+  const rr = +els.rightR.value;
+  const rw = +els.rightW.value;
+  const rty = +els.rightTY.value;
+  const rrd = +els.rightRdeg.value;
+
+  container.style.left = cl + '%';
+  container.style.top = ct + '%';
+  container.style.transform = 'translate(-50%, ' + cty + '%)';
+  container.style.width = cw + 'px';
+  container.style.height = ch + 'px';
+
+  hero.style.width = hw + 'px';
+  hero.style.bottom = hb + 'px';
+  left.style.left = ll + 'px';
+  left.style.width = lw + 'px';
+  left.style.bottom = lty + 'px';
+  left.style.transform = 'rotate(' + lr + 'deg)';
+  right.style.right = rr + 'px';
+  right.style.width = rw + 'px';
+  right.style.bottom = rty + 'px';
+  right.style.transform = 'rotate(' + rrd + 'deg)';
+
+  const docs = [
+    '.partner-section .hero-drinks {',
+    '  position: absolute;',
+    '  left: ' + cl + '%;',
+    '  top: ' + ct + '%;',
+    '  transform: translate(-50%, ' + cty + '%);',
+    '  width: ' + cw + 'px;',
+    '  height: ' + ch + 'px;',
+    '  z-index: 0;',
+    '  pointer-events: none;',
+    '}',
+    '',
+    '.drink-hero {',
+    '  left: 50%;',
+    '  transform: translateX(-50%);',
+    '  width: ' + hw + 'px;',
+    '  z-index: 3;',
+    '  bottom: ' + hb + 'px;',
+    '}',
+    '',
+    '.drink-left {',
+    '  left: ' + ll + 'px;',
+    '  width: ' + lw + 'px;',
+    '  z-index: 2;',
+    '  bottom: ' + lty + 'px;',
+    '  transform: rotate(' + lr + 'deg);',
+    '}',
+    '',
+    '.drink-right {',
+    '  right: ' + rr + 'px;',
+    '  width: ' + rw + 'px;',
+    '  z-index: 1;',
+    '  bottom: ' + rty + 'px;',
+    '  transform: rotate(' + rrd + 'deg);',
+    '}',
+  ].join('\n');
+  output.textContent = docs;
+
+  document.getElementById('val-containerLeft').textContent = cl;
+  document.getElementById('val-containerTop').textContent = ct;
+  document.getElementById('val-containerTY').textContent = cty;
+  document.getElementById('val-containerW').textContent = cw;
+  document.getElementById('val-containerH').textContent = ch;
+  document.getElementById('val-heroW').textContent = hw;
+  document.getElementById('val-heroB').textContent = hb;
+  document.getElementById('val-leftL').textContent = ll;
+  document.getElementById('val-leftW').textContent = lw;
+  document.getElementById('val-leftTY').textContent = lty;
+  document.getElementById('val-leftR').textContent = lr;
+  document.getElementById('val-rightR').textContent = rr;
+  document.getElementById('val-rightW').textContent = rw;
+  document.getElementById('val-rightTY').textContent = rty;
+  document.getElementById('val-rightRdeg').textContent = rrd;
+}
+
+function copyOutput() {
+  navigator.clipboard.writeText(output.textContent).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy CSS', 1500);
+  });
+}
+
+Object.values(els).forEach(el => el.addEventListener('input', update));
+update();
+</script>
+</body>
+</html>
