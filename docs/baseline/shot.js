@@ -1,7 +1,7 @@
-const puppeteer=require('/Users/paulbridges/Desktop/drinkss/pley-clone/node_modules/puppeteer');
+const puppeteer=require('/path/to/workspace/Desktop/drinkss/pley-clone/node_modules/puppeteer');
 (async()=>{
 const b=await puppeteer.launch({args:['--no-sandbox']});
-const out='/private/tmp/claude-501/-Users-paulbridges-Desktop-drinkss/413508c6-5018-4660-b389-25dfa165b3b4/scratchpad/';
+const out='docs/baseline';
 for(const [name,w,h] of [['desk',1440,900],['mob',390,844]]){
   const p=await b.newPage();
   await p.setViewport({width:w,height:h,deviceScaleFactor:1});

@@ -12,10 +12,10 @@
 
 ## Before starting
 
-All work happens in `/Users/paulbridges/Desktop/drinkss/pley-clone`. Confirm the working tree is clean before beginning (this repo already has uncommitted webp/video conversions from a prior session — check with the user before touching those if `git status` isn't clean when you start; don't discard them):
+All work happens in `/path/to/workspace/Desktop/drinkss/pley-clone`. Confirm the working tree is clean before beginning (this repo already has uncommitted webp/video conversions from a prior session — check with the user before touching those if `git status` isn't clean when you start; don't discard them):
 
 ```bash
-cd /Users/paulbridges/Desktop/drinkss/pley-clone && git status --short
+cd /path/to/workspace/Desktop/drinkss/pley-clone && git status --short
 ```
 
 Every task below edits `index.html` unless stated otherwise. Line numbers will drift as edits land — always re-`grep` for the anchor string before editing rather than trusting a remembered line number.
@@ -963,7 +963,7 @@ git commit -m "Increase tap target size for <element> to meet 44px minimum"
 - [ ] **Step 1: Confirm no dead references remain**
 
 ```bash
-cd /Users/paulbridges/Desktop/drinkss/pley-clone
+cd /path/to/workspace/Desktop/drinkss/pley-clone
 grep -ci "translatepress\|jquery\|sbi_styles\|sbiajaxurl" index.html
 ```
 
