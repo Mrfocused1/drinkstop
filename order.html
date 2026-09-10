@@ -496,7 +496,7 @@ const MOCKTAIL_FLAVOURS=[
   {id:'m-ginger-apple-lemon',name:'Ginger, Apple & Lemon',desc:'Ginger, apple and lemon',color:'#3cc24a'},
 ];
 function currentFlavourList(){ return S.type==='mocktail' ? MOCKTAIL_FLAVOURS : FLAVOURS; }
-let PRICING={original:{alcohol:{150:5,250:8},mocktail:{150:3,250:4}},custom:{alcohol:{150:6,250:9},mocktail:{150:4,250:5}}};
+let PRICING={original:{alcohol:{150:5,300:9},mocktail:{150:3,300:4}},custom:{alcohol:{150:6,300:9},mocktail:{150:4,300:5}}};
 let CUSTOM_DESIGN_FEE_NOTE='from £30 (confirmed on request)';
 // TODO(supabase): once wired up, PRICING/CUSTOM_DESIGN_FEE_NOTE should be fetched from Supabase
 // instead of the localStorage-backed admin-content.json flow below.
@@ -508,11 +508,15 @@ document.addEventListener('drinkstop:content-applied', e => {
     render();
   }
 });
-function unitPrice(design,type,size){const d=design==='custom'?'custom':'original';return PRICING[d][type||'alcohol'][size||150];}
+function unitPrice(design,type,size,packaging){
+  if(packaging==='bottle') return 8;
+  const d=design==='custom'?'custom':'original';
+  return PRICING[d][type||'alcohol'][size||150];
+}
 function price(){return unitPrice(S.design,S.type,S.size);}
 // mix items carried over from the vibe page keep their own price (per-flavour, may include multi-buy discount)
 // so they don't silently change price when they land in the generic mix builder.
-function mixUnitPrice(it){ return it.fixedPrice!=null ? it.fixedPrice : unitPrice(it.design,it.type,it.size); }
+function mixUnitPrice(it){ return it.fixedPrice!=null ? it.fixedPrice : unitPrice(it.design,it.type,it.size,it.packaging); }
 function mixItemLabel(it){ return (it.name?it.name+' · ':'')+`${it.qty}x ${it.type==='mocktail'?'Mocktail':'Alcohol'} · ${it.packaging==='bottle'?'Bottle':'Pouch'} · ${it.size}ml${it.design==='custom'?' · Custom design':''}`; }
 const S={design:null, type:null, size:null, flavours:[], qty:5, occasion:'', customFlavours:[], artwork:null, artworkName:'', brief:'', designMode:null, name:'', email:'', phone:'', area:'',
   mix:[], mixCur:{type:'alcohol',packaging:'pouch',design:'original',size:150,qty:5}, vibeBasket:[]};
@@ -639,14 +643,14 @@ const STEPS={
   <div class="cards">
     <div class="card ${S.size===150?'sel':''}" data-s="150"><div class="tick">✓</div>
       <div class="ct">150ml</div><div class="cd">£${PRICING[S.design==='custom'?'custom':'original'][S.type||'alcohol'][150]} per pouch</div></div>
-    <div class="card ${S.size===250?'sel':''}" data-s="250"><div class="tick">✓</div>
-      <div class="ct">250ml</div><div class="cd">£${PRICING[S.design==='custom'?'custom':'original'][S.type||'alcohol'][250]} per pouch</div></div>
+    <div class="card ${S.size===300?'sel':''}" data-s="300"><div class="tick">✓</div>
+      <div class="ct">300ml</div><div class="cd">£${PRICING[S.design==='custom'?'custom':'original'][S.type||'alcohol'][300]} per pouch</div></div>
   </div>
   ${navHtml('Continue →', true,'next', !S.size)}`,
 
  mixbuilder:()=>{
    const cur=S.mixCur;
-   const curPrice=unitPrice(cur.design,cur.type,cur.size);
+   const curPrice=unitPrice(cur.design,cur.type,cur.size,cur.packaging);
    const rows=S.mix.map((it,i)=>`
      <div class="mixrow">
        <div class="mixrow-info">${mixItemLabel(it)}</div>
@@ -675,8 +679,10 @@ const STEPS={
        <button class="segbtn ${cur.design==='custom'?'on':''}" data-cur="design" data-v="custom">Custom</button>
      </div></div>
      <div class="mb-row"><span class="mb-label">Size</span><div class="seg">
-       <button class="segbtn ${cur.size===150?'on':''}" data-cur="size" data-v="150">150ml</button>
-       <button class="segbtn ${cur.size===250?'on':''}" data-cur="size" data-v="250">250ml</button>
+       ${cur.packaging==='bottle'
+         ? `<button class="segbtn on" data-cur="size" data-v="250">250ml</button>`
+         : `<button class="segbtn ${cur.size===150?'on':''}" data-cur="size" data-v="150">150ml</button>
+            <button class="segbtn ${cur.size===300?'on':''}" data-cur="size" data-v="300">300ml</button>`}
      </div></div>
      <div class="mb-row"><span class="mb-label">Qty</span>
        <div class="qtyrow" style="margin:0">
@@ -961,7 +967,12 @@ function wire(key){
   if(key==='type') el.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>{S.type=c.dataset.t;render();});
   if(key==='size') el.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>{S.size=parseInt(c.dataset.s);render();});
   if(key==='mixbuilder'){
-    el.querySelectorAll('[data-cur]').forEach(b=>b.onclick=()=>{const k=b.dataset.cur; S.mixCur[k]=(k==='size')?parseInt(b.dataset.v):b.dataset.v; render();});
+    el.querySelectorAll('[data-cur]').forEach(b=>b.onclick=()=>{
+      const k=b.dataset.cur;
+      S.mixCur[k]=(k==='size')?parseInt(b.dataset.v):b.dataset.v;
+      if(k==='packaging') S.mixCur.size=S.mixCur.packaging==='bottle'?250:150;
+      render();
+    });
     el.querySelectorAll('[data-curq]').forEach(b=>b.onclick=()=>{const step=parseInt(b.dataset.curq); S.mixCur.qty=Math.max(1,S.mixCur.qty+step); document.getElementById('curqv').textContent=S.mixCur.qty;});
     const addBtn=document.getElementById('addmix'); if(addBtn) addBtn.onclick=()=>{S.mix.push({...S.mixCur}); S.mixCur={...S.mixCur, qty:5}; render();};
     el.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{S.mix.splice(parseInt(b.dataset.rm),1); render();});

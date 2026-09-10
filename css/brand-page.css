@@ -444,6 +444,11 @@
   object-position: center;
 }
 
+/* White source logos need dark ink on the cream torn-paper cards. */
+.partner-card img.partner-logo--dark {
+  filter: brightness(0);
+}
+
 /* ── Last card centering ────────────────────────────────────────────── */
 
 
@@ -489,7 +494,7 @@
 
 .marquee-row__track {
   display: flex;
-  gap: 8px;
+  gap: 0;
   flex-shrink: 0;
 }
 
@@ -505,7 +510,7 @@
   flex-shrink: 0;
   width: 140px;
   height: 90px;
-  margin: 0;
+  margin: 0 8px 0 0;
   padding: 12px;
   opacity: 1;
   transform: none;

@@ -18,7 +18,7 @@ const drinks = [
     description:
       "Juicy watermelon and fruit punch, rum-charged and frozen solid.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/rum-for-your-life/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-rum-for-your-life.webp",
     decorativeBackground: "assets/drinks/rum-for-your-life/hero.webp",
@@ -44,7 +44,7 @@ const drinks = [
     description:
       "Tropical pineapple, crisp apple and guava — a properly fruity Caribbean punch.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/rumbaclart-2/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-rumbaclart-2.webp",
     decorativeBackground: "assets/drinks/rumbaclart-2/hero.webp",
@@ -70,7 +70,7 @@ const drinks = [
     description:
       "Bold mango, passionfruit and orange, blended into one exotic slush.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/rumbaclart-1/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-rumbaclart-1.webp",
     decorativeBackground: "assets/drinks/rumbaclart-1/hero.webp",
@@ -96,7 +96,7 @@ const drinks = [
     description:
       "Pineapple and coconut, frozen into the ultimate poolside sipper.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/summer-set/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-summer-set.webp",
     decorativeBackground: "assets/drinks/summer-set/hero.webp",
@@ -122,7 +122,7 @@ const drinks = [
     description:
       "Raspberry, apple and lemon, layered into a bright blue blast of flavour.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/blutiful/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-blutiful.webp",
     decorativeBackground: "assets/drinks/blutiful/hero.webp",
@@ -148,7 +148,7 @@ const drinks = [
     description:
       "Sweet apple and ripe mango, rum-soaked and frozen for the win.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/rumazing/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-rumazing.webp",
     decorativeBackground: "assets/drinks/rumazing/hero.webp",
@@ -174,7 +174,7 @@ const drinks = [
     description:
       "Zesty apple, lemon and a ginger kick — sharp, spicy and refreshing.",
     alcoholPercentage: "5% ABV",
-    size: "150ml / 250ml",
+    size: "150ml / 300ml",
     productImage: "assets/drinks/suck-your-rum/hero.webp",
     heroProductImage: "wp-content/uploads/2026/07/vibe/bottle-suck-your-rum.webp",
     decorativeBackground: "assets/drinks/suck-your-rum/hero.webp",

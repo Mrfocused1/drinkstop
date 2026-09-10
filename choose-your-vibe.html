@@ -626,13 +626,14 @@
             <div>
               <span class="label">Size</span>
               <div class="size-toggle" role="group" aria-label="Choose size">
-                <button type="button" class="size-btn" data-size="150" aria-pressed="false">150 ml</button>
-                <button type="button" class="size-btn active" data-size="250" aria-pressed="true">250 ml</button>
+                <button type="button" class="size-btn active" data-size="150" aria-pressed="true">150 ml</button>
+                <button type="button" class="size-btn" data-size="300" aria-pressed="false">300 ml</button>
+                <button type="button" class="size-btn" data-size="250" aria-pressed="false" hidden>250 ml</button>
               </div>
             </div>
           </div>
           <div class="mobile-basket-row">
-            <div class="mobile-total" data-total>£6.99</div>
+            <div class="mobile-total" data-total>£5.00</div>
             <button class="primary mobile-addcart" type="button" data-add-to-cart><span>Add to cart</span><span aria-hidden="true">+</span></button>
           </div>
           <div class="mobile-buy-row">
@@ -666,8 +667,9 @@
               <div>
                 <span class="label">Size</span>
                 <div class="size-toggle" role="group" aria-label="Choose size" data-size-toggle>
-                  <button type="button" class="size-btn" data-size="150" aria-pressed="false">150 ml</button>
-                  <button type="button" class="size-btn active" data-size="250" aria-pressed="true">250 ml</button>
+                  <button type="button" class="size-btn active" data-size="150" aria-pressed="true">150 ml</button>
+                  <button type="button" class="size-btn" data-size="300" aria-pressed="false">300 ml</button>
+                  <button type="button" class="size-btn" data-size="250" aria-pressed="false" hidden>250 ml</button>
                 </div>
               </div>
             </div>
@@ -676,7 +678,7 @@
               <div class="price-hero">
                 <span class="price-accent price-accent--a" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 5 2 6 7 7-5 1-6 2-7 7-1-5-2-6-7-7 5-1 6-2 7-7z"/></svg></span>
                 <span class="label">Price</span>
-                <strong data-total>£6.99</strong>
+                <strong data-total>£5.00</strong>
                 <span class="was" data-was hidden></span>
                 <span class="save" data-save hidden>Save 10%</span>
                 <span class="price-accent price-accent--b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 5 2 6 7 7-5 1-6 2-7 7-1-5-2-6-7-7 5-1 6-2 7-7z"/></svg></span>
@@ -685,7 +687,7 @@
             <hr>
             <div class="basket-total-row">
               <span class="label">Basket total</span>
-              <strong data-basket-total>£6.99</strong>
+              <strong data-basket-total>£0.00</strong>
             </div>
             <button class="primary add-to-cart" type="button" data-add-to-cart><span>Add to cart</span><span aria-hidden="true">+</span></button>
             <button class="primary buy" type="button" data-buy><span>Buy now</span><span aria-hidden="true">→</span></button>
@@ -825,7 +827,7 @@
         <button class="dialog-close" value="cancel" aria-label="Close">×</button>
         <p class="eyebrow">Added to basket</p>
         <h2 class="display" id="dialog-title" data-dialog-title>Drink name</h2>
-        <p data-dialog-copy>1 × 250 ml</p>
+        <p data-dialog-copy>1 × 150 ml</p>
         <div class="dialog-actions">
           <button class="primary" type="submit" value="continue">Continue browsing</button>
           <a class="ghost" href="order.html" data-checkout>Checkout / full order →</a>
@@ -849,7 +851,6 @@
         description: 'Tropical. Punchy. Unstoppable.',
         accent: '#2B8E2D',
         soft: 'rgba(43,142,45,.12)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rumbaclart-2.webp`,
         bottle: `${VIBE_ASSET}/bottle-rumbaclart-2.webp`,
@@ -863,7 +864,6 @@
         description: 'Tropical. Loud. Legendary.',
         accent: '#E9040D',
         soft: 'rgba(233,4,13,.12)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rum-for-your-life.webp`,
         bottle: `${VIBE_ASSET}/bottle-rum-for-your-life.webp`,
@@ -877,7 +877,6 @@
         description: 'Sharp. Warm. Smooth. No apologies.',
         accent: '#33076C',
         soft: 'rgba(51,7,108,.12)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-suck-your-rum.webp`,
         bottle: `${VIBE_ASSET}/bottle-suck-your-rum.webp`,
@@ -891,7 +890,6 @@
         description: 'Bright. Electric. Ice-cold energy.',
         accent: '#1457E6',
         soft: 'rgba(20,87,230,.12)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-blutiful.webp`,
         bottle: `${VIBE_ASSET}/bottle-blutiful.webp`,
@@ -905,7 +903,6 @@
         description: 'Juicy. Golden. Pure tropical pressure.',
         accent: '#FC6801',
         soft: 'rgba(252,104,1,.12)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rumbaclart-1.webp`,
         bottle: `${VIBE_ASSET}/bottle-rumbaclart-1.webp`,
@@ -919,7 +916,6 @@
         description: 'Sweet. Juicy. Smooth from first squeeze.',
         accent: '#E5007D',
         soft: 'rgba(229,0,125,.12)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-rumazing.webp`,
         bottle: `${VIBE_ASSET}/bottle-rumazing.webp`,
@@ -933,7 +929,6 @@
         description: 'Creamy. Tropical. Sunshine in a pouch.',
         accent: '#E9040D',
         soft: 'rgba(233,4,13,.10)',
-        price: 6.99,
         tags: ['Real rum', 'Frozen', 'Party ready'],
         product: `${VIBE_ASSET}/product-summer-set.webp`,
         bottle: `${VIBE_ASSET}/bottle-summer-set.webp`,
@@ -946,7 +941,7 @@
     const MULTI_BUY_RATE = 0.10; // 10% off when qty >= 2
     const BASKET_KEY = 'drinkstop_vibe_basket';
 
-    const S = { index: 0, qtys: drinks.map(() => ({ pouch: 1, bottle: 1 })), cart: 0, format: 'pouch', size: 250, startX: null, delta: 0, drag: false, basket: [] };
+    const S = { index: 0, qtys: drinks.map(() => ({ pouch: 1, bottle: 1 })), cart: 0, format: 'pouch', size: 150, pouchSize: 150, startX: null, delta: 0, drag: false, basket: [] };
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => [...document.querySelectorAll(s)];
     const money = (n) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
@@ -1081,8 +1076,9 @@
       });
     }
 
-    function sizePrice(d) {
-      return S.size === 150 ? Math.round(d.price * 0.6 * 100) / 100 : d.price;
+    function sizePrice() {
+      if (S.format === 'bottle') return 8;
+      return S.size === 300 ? 9 : 5;
     }
 
     function lineTotal(d, qty) {
@@ -1103,7 +1099,7 @@
     function price() {
       const d = drinks[S.index];
       const qty = S.qtys[S.index][S.format];
-      const base = d.price * qty;
+      const base = sizePrice() * qty;
       const total = lineTotal(d, qty);
       $$('[data-quantity]').forEach(el => el.textContent = String(qty));
       $$('[data-total]').forEach(el => el.textContent = money(total));
@@ -1231,8 +1227,16 @@
         const format = btn.dataset.format;
         if (format === S.format) return;
         S.format = format;
+        S.size = format === 'bottle' ? 250 : S.pouchSize;
         $$('[data-format]').forEach((b) => {
           const on = b.dataset.format === format;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        $$('[data-size]').forEach((b) => {
+          const bottleSize = parseInt(b.dataset.size) === 250;
+          b.hidden = format === 'bottle' ? !bottleSize : bottleSize;
+          const on = parseInt(b.dataset.size) === S.size;
           b.classList.toggle('active', on);
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
@@ -1245,6 +1249,7 @@
         const size = parseInt(btn.dataset.size);
         if (size === S.size) return;
         S.size = size;
+        if (S.format === 'pouch') S.pouchSize = size;
         $$('[data-size]').forEach((b) => {
           const on = parseInt(b.dataset.size) === size;
           b.classList.toggle('active', on);

@@ -188,10 +188,10 @@ body{font-family:'Manrope',system-ui,sans-serif;background:#f4f4ef;color:var(--i
       const p = DATA.pricing;
       const row = (label, design, type) => `
         <div class="field"><label>${label} 150ml</label><input data-price="${design}.${type}.150" value="${p[design][type]['150']}"></div>
-        <div class="field"><label>${label} 250ml</label><input data-price="${design}.${type}.250" value="${p[design][type]['250']}"></div>`;
+        <div class="field"><label>${label} 300ml</label><input data-price="${design}.${type}.300" value="${p[design][type]['300']}"></div>`;
       return `
       <div class="section-title">Pricing</div>
-      <div class="section-sub">Per-pouch prices (£) shown in the order flow. Applies to both pouch and bottle packaging for now.</div>
+      <div class="section-sub">Per-pouch prices (£) shown in the order flow. Bottles are fixed at 250ml for £8.</div>
       <b>Original design</b>
       <div class="pricing-grid">${row('Alcohol','original','alcohol')}${row('Mocktail','original','mocktail')}</div>
       <b>Custom design</b>
@@ -229,7 +229,7 @@ body{font-family:'Manrope',system-ui,sans-serif;background:#f4f4ef;color:var(--i
       });
       document.getElementById('addProduct').onclick = () => {
         const id = uid('product');
-        DATA.products.extra.push({ id, name:'New Product', subtitle:'', description:'', chip:'250 ml/150 ml', color:'#6CAD1A', hidden:false });
+        DATA.products.extra.push({ id, name:'New Product', subtitle:'', description:'', chip:'300 ml/150 ml', color:'#6CAD1A', hidden:false });
         render();
       };
       panel.querySelectorAll('[data-remove-extra]').forEach(btn => {
