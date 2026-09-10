@@ -498,6 +498,11 @@
   flex-shrink: 0;
 }
 
+.marquee-sequence {
+  display: flex;
+  flex-shrink: 0;
+}
+
 .marquee-row--left .marquee-row__track {
   animation: marquee-left 30s linear infinite;
 }
